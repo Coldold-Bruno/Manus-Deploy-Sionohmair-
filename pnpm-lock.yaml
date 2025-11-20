@@ -100,6 +100,9 @@ importers:
       axios:
         specifier: ^1.12.0
         version: 1.12.2
+      badge:
+        specifier: link:@/components/ui/badge
+        version: link:@/components/ui/badge
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
