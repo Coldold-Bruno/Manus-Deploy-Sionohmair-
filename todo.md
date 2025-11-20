@@ -54,3 +54,14 @@
 - [ ] Créer la navigation entre les artefacts
 - [ ] Ajouter les visualisations et schémas des PDF
 - [ ] Intégrer les exemples concrets et cas d'usage
+
+
+## Phase 7 : Intégration Automatisation IA Sionohmair
+- [x] Analyser le PDF Présentoir Automatisation IA
+- [x] Extraire les 7 sections (Positionnement, Périmètre IA, Présentoir artefacts, Workflow, Clauses, Bloc IA, Utilisation concrète)
+- [x] Créer la page Automatisation IA avec toutes les procédures
+- [x] Intégrer le Workflow IA Sionohmair (étapes détaillées)
+- [x] Ajouter les Clauses IA (client & interne) dans les pages de services
+- [x] Intégrer le Bloc Recommandation IA générique dans tous les artefacts
+- [x] Créer la navigation vers la page Automatisation IA
+- [x] Ajouter les exemples d'utilisation concrète (annexes, référentiel interne)
