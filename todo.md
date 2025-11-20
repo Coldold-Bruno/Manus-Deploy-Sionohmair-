@@ -38,3 +38,19 @@
 - [ ] Vérification de tous les liens et CTAs
 - [ ] Optimisation SEO (meta tags, descriptions)
 - [ ] Checkpoint final et déploiement
+
+
+## Phase 6 : Intégration des Artefacts de Clarté (PDF)
+- [x] Analyser Pack_Artefacts_N1 (Usage Interne Client Silver)
+- [x] Analyser N2_Artefacts_Clarte_FR
+- [x] Analyser N3_Artefacts_Clarte_FR
+- [x] Analyser Presentoir_Artefacts_Clarte
+- [x] Extraire toutes les données individuelles et inductives
+- [x] Reconstruire la page Services avec les 3 niveaux complets
+- [x] Créer la page Niveau 1 avec tous les artefacts détaillés
+- [ ] Créer la page Niveau 2 avec Architecture de l'Insight
+- [ ] Créer la page Niveau 3 avec Partenariat Stratégique
+- [ ] Intégrer les structures comparatives entre niveaux
+- [ ] Créer la navigation entre les artefacts
+- [ ] Ajouter les visualisations et schémas des PDF
+- [ ] Intégrer les exemples concrets et cas d'usage

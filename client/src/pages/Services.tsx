@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Check, Sparkles, ArrowLeft, Zap, Rocket, Crown } from "lucide-react";
+import { Check, Sparkles, ArrowLeft, Zap, Rocket, Crown, FileText, Target, TrendingUp, Award } from "lucide-react";
 import { Link } from "wouter";
 
 export default function Services() {
@@ -32,33 +32,34 @@ export default function Services() {
         <div className="container">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <h1 className="text-5xl md:text-6xl font-bold tracking-tight">
-              Nos Services
+              Les 3 Niveaux de Service
             </h1>
             <p className="text-2xl text-muted-foreground">
-              3 niveaux d'accompagnement pour transformer votre communication en science de la performance
+              De l'audit ponctuel au partenariat stratégique : choisissez votre niveau de transformation
             </p>
           </div>
         </div>
       </section>
 
-      {/* Les 3 Offres */}
+      {/* Les 3 Niveaux */}
       <section className="py-20 bg-background">
         <div className="container">
           <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-            {/* Sprint de Clarté */}
+            {/* Niveau 1 : Diagnostic de Clarté */}
             <Card className="border-accent/20 relative">
               <div className="absolute top-4 right-4">
                 <Badge className="bg-accent/10 text-accent hover:bg-accent/20">
-                  Offre de Lancement
+                  Offre de Lancement -67%
                 </Badge>
               </div>
               <CardHeader className="text-center pb-8 pt-12">
                 <div className="mx-auto h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
                   <Zap className="h-8 w-8 text-accent" />
                 </div>
-                <CardTitle className="text-3xl mb-2">Sprint de Clarté</CardTitle>
+                <Badge className="mb-2 bg-primary/10 text-primary">Niveau 1</Badge>
+                <CardTitle className="text-3xl mb-2">Diagnostic de Clarté</CardTitle>
                 <CardDescription className="text-base mb-4">
-                  Audit complet de votre message en 7 jours
+                  Sprint de Clarté en 7 jours
                 </CardDescription>
                 <div className="space-y-2">
                   <div className="text-4xl font-bold text-accent">490 €</div>
@@ -67,19 +68,15 @@ export default function Services() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-3">
-                  <p className="font-semibold text-sm">Ce qui est inclus :</p>
+                  <p className="font-semibold text-sm">Artefacts livrés (usage client) :</p>
                   <ul className="space-y-2">
                     {[
-                      "Rapport de 10 pages",
-                      "Score de Clarté sur 20 points",
-                      "Analyse PFPMA complète",
+                      "Rapport Sprint de Clarté (1-3 pages)",
+                      "Synthèse exécutive (1 page décision)",
+                      "Recommandation actionnable unique",
+                      "Score de Clarté /20 (PFPMA)",
                       "Identification des 3 frictions",
-                      "Calcul du Hi (potentiel d'Insight)",
-                      "Plan d'action 30 jours",
-                      "Projections KPI (CTR, conversion)",
-                      "Session de débriefing 30 min",
-                      "Suivi à J+30 inclus",
-                      "Garantie satisfait ou remboursé"
+                      "Plan d'action 1-3 actions prioritaires"
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-2 text-sm">
                         <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
@@ -88,6 +85,17 @@ export default function Services() {
                     ))}
                   </ul>
                 </div>
+                
+                <div className="space-y-2 pt-4 border-t">
+                  <p className="font-semibold text-sm">Critères de réussite :</p>
+                  <ul className="space-y-1 text-xs text-muted-foreground">
+                    <li>• Problème formulé en 2-3 phrases</li>
+                    <li>• Frictions nommées et illustrées</li>
+                    <li>• Axe de Clarté = titre/pitch</li>
+                    <li>• Actions ordonnées par impact</li>
+                  </ul>
+                </div>
+
                 <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
                   <Link href="/sprint">
                     <a>Réserver mon Sprint</a>
@@ -96,7 +104,7 @@ export default function Services() {
               </CardContent>
             </Card>
 
-            {/* Formation Architecte de Clarté */}
+            {/* Niveau 2 : Architecture de l'Insight */}
             <Card className="border-accent/20 relative shadow-lg scale-105">
               <div className="absolute top-4 right-4">
                 <Badge className="bg-accent text-accent-foreground">
@@ -107,9 +115,10 @@ export default function Services() {
                 <div className="mx-auto h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
                   <Rocket className="h-8 w-8 text-accent" />
                 </div>
-                <CardTitle className="text-3xl mb-2">Formation Architecte</CardTitle>
+                <Badge className="mb-2 bg-primary/10 text-primary">Niveau 2</Badge>
+                <CardTitle className="text-3xl mb-2">Architecture de l'Insight</CardTitle>
                 <CardDescription className="text-base mb-4">
-                  Formation complète sur 6 mois
+                  5 Artefacts de Clarté + Formation 6 mois
                 </CardDescription>
                 <div className="space-y-2">
                   <div className="text-4xl font-bold text-accent">10 000 €</div>
@@ -118,19 +127,15 @@ export default function Services() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-3">
-                  <p className="font-semibold text-sm">Ce qui est inclus :</p>
+                  <p className="font-semibold text-sm">Artefacts livrés (usage client) :</p>
                   <ul className="space-y-2">
                     {[
-                      "Sprint de Clarté initial inclus",
-                      "12 sessions de coaching (2h/mois)",
-                      "Accès au mémoire complet (310 pages)",
-                      "Formation au Code PFPMA",
-                      "Maîtrise du Théorème de la Genèse",
-                      "Analyse fractale avancée",
-                      "Certification Architecte de Clarté",
-                      "Accès à la communauté privée",
-                      "Templates et outils exclusifs",
-                      "Support prioritaire 6 mois"
+                      "Message AVANT / APRÈS (point de bascule)",
+                      "5 Artefacts de Clarté (landing, emails, pitch)",
+                      "Carte PFPMA du système expliquée",
+                      "Roadmap d'implémentation (Étapes 1→5)",
+                      "Bibliothèque des Artefacts possibles",
+                      "Séquence inductive des recommandations"
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-2 text-sm">
                         <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
@@ -139,13 +144,24 @@ export default function Services() {
                     ))}
                   </ul>
                 </div>
+                
+                <div className="space-y-2 pt-4 border-t">
+                  <p className="font-semibold text-sm">Critères de réussite :</p>
+                  <ul className="space-y-1 text-xs text-muted-foreground">
+                    <li>• Message APRÈS lisible en &lt; 5 secondes</li>
+                    <li>• 5 Artefacts = même Axe de Clarté</li>
+                    <li>• Carte PFPMA cohérente (1 Problème)</li>
+                    <li>• Séquence Étapes 1→5 inductive</li>
+                  </ul>
+                </div>
+
                 <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                  Candidater à la Formation
+                  Candidater au Niveau 2
                 </Button>
               </CardContent>
             </Card>
 
-            {/* Transformation Organisationnelle */}
+            {/* Niveau 3 : Partenariat Stratégique */}
             <Card className="border-accent/20 relative">
               <div className="absolute top-4 right-4">
                 <Badge className="bg-primary/10 text-primary hover:bg-primary/20">
@@ -156,9 +172,10 @@ export default function Services() {
                 <div className="mx-auto h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
                   <Crown className="h-8 w-8 text-accent" />
                 </div>
-                <CardTitle className="text-3xl mb-2">Transformation</CardTitle>
+                <Badge className="mb-2 bg-primary/10 text-primary">Niveau 3</Badge>
+                <CardTitle className="text-3xl mb-2">Partenariat Stratégique</CardTitle>
                 <CardDescription className="text-base mb-4">
-                  Accompagnement sur-mesure pour organisations
+                  Directeur de la Clarté + NFT Architecte
                 </CardDescription>
                 <div className="space-y-2">
                   <div className="text-4xl font-bold text-accent">50 000 €</div>
@@ -167,19 +184,15 @@ export default function Services() {
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="space-y-3">
-                  <p className="font-semibold text-sm">Ce qui est inclus :</p>
+                  <p className="font-semibold text-sm">Artefacts livrés (usage client) :</p>
                   <ul className="space-y-2">
                     {[
-                      "Audit complet de l'organisation",
-                      "Formation de l'équipe (jusqu'à 20 personnes)",
-                      "Refonte de tous les supports",
-                      "Implémentation du Code PFPMA",
-                      "Optimisation des tunnels de conversion",
-                      "Suivi mensuel pendant 12 mois",
-                      "Analyse fractale de tous les messages",
-                      "Dashboards de performance",
-                      "Support dédié illimité",
-                      "Garantie de résultats contractuelle"
+                      "Roadmap Clarté 12 mois (T1→T4)",
+                      "Playbook de Clarté (document stratégique)",
+                      "NFT \"Architecte de la Clarté\" (statut + utilité)",
+                      "Dashboards récurrents (KPIs de Clarté)",
+                      "Synthèses de décision (< 60 secondes)",
+                      "Support dédié illimité 12 mois"
                     ].map((item, index) => (
                       <li key={index} className="flex items-start gap-2 text-sm">
                         <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
@@ -188,6 +201,17 @@ export default function Services() {
                     ))}
                   </ul>
                 </div>
+                
+                <div className="space-y-2 pt-4 border-t">
+                  <p className="font-semibold text-sm">Critères de réussite :</p>
+                  <ul className="space-y-1 text-xs text-muted-foreground">
+                    <li>• Roadmap : fondations→diffusion→optimisation→pérennisation</li>
+                    <li>• KPIs mesurent la clarté réelle</li>
+                    <li>• Critères NFT clairs et mesurables</li>
+                    <li>• Dashboards lisibles en 60 secondes</li>
+                  </ul>
+                </div>
+
                 <Button variant="outline" className="w-full">
                   Demander un Devis
                 </Button>
@@ -197,12 +221,158 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Comparatif */}
+      {/* Roadmap 12 mois (Niveau 3) */}
       <section className="py-20 bg-secondary/20">
         <div className="container">
           <div className="max-w-5xl mx-auto space-y-12">
             <div className="text-center space-y-4">
-              <h2 className="text-4xl font-bold">Quelle offre choisir ?</h2>
+              <Badge className="bg-primary/10 text-primary">Niveau 3 : Partenariat Stratégique</Badge>
+              <h2 className="text-4xl font-bold">Roadmap Clarté 12 mois</h2>
+              <p className="text-xl text-muted-foreground">
+                Transformation complète en 4 temps : Fondations → Diffusion → Optimisation → Pérennisation
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 gap-6">
+              <Card className="border-l-4 border-l-accent">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center">
+                      <Target className="h-5 w-5 text-accent" />
+                    </div>
+                    <Badge className="bg-accent/10 text-accent">T1</Badge>
+                  </div>
+                  <CardTitle className="text-2xl">Fondations (mois 1-3)</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm">
+                  <p>• Diagnostic complet de l'organisation</p>
+                  <p>• Formation de l'équipe (jusqu'à 20 personnes)</p>
+                  <p>• Mise en place des KPIs de Clarté</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-l-4 border-l-accent">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center">
+                      <Zap className="h-5 w-5 text-accent" />
+                    </div>
+                    <Badge className="bg-accent/10 text-accent">T2</Badge>
+                  </div>
+                  <CardTitle className="text-2xl">Diffusion (mois 4-6)</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm">
+                  <p>• Refonte de tous les supports de communication</p>
+                  <p>• Implémentation du Code PFPMA</p>
+                  <p>• Optimisation des tunnels de conversion</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-l-4 border-l-accent">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center">
+                      <TrendingUp className="h-5 w-5 text-accent" />
+                    </div>
+                    <Badge className="bg-accent/10 text-accent">T3</Badge>
+                  </div>
+                  <CardTitle className="text-2xl">Optimisation (mois 7-9)</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm">
+                  <p>• Analyse fractale de tous les messages</p>
+                  <p>• A/B testing et itérations</p>
+                  <p>• Dashboards de performance en temps réel</p>
+                </CardContent>
+              </Card>
+
+              <Card className="border-l-4 border-l-accent">
+                <CardHeader>
+                  <div className="flex items-center gap-3 mb-2">
+                    <div className="h-10 w-10 rounded-full bg-accent/10 flex items-center justify-center">
+                      <Award className="h-5 w-5 text-accent" />
+                    </div>
+                    <Badge className="bg-accent/10 text-accent">T4</Badge>
+                  </div>
+                  <CardTitle className="text-2xl">Pérennisation (mois 10-12)</CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-2 text-sm">
+                  <p>• Ancrage dans la culture d'entreprise</p>
+                  <p>• Certification interne des équipes</p>
+                  <p>• Éligibilité au NFT "Architecte de la Clarté"</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* NFT Architecte de la Clarté */}
+      <section className="py-20 bg-background">
+        <div className="container">
+          <div className="max-w-4xl mx-auto space-y-12">
+            <div className="text-center space-y-4">
+              <Badge className="bg-primary/10 text-primary">Niveau 3 : Partenariat Stratégique</Badge>
+              <h2 className="text-4xl font-bold">NFT "Architecte de la Clarté"</h2>
+              <p className="text-xl text-muted-foreground">
+                Certification blockchain de votre maîtrise de la méthodologie Sionohmair
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="mx-auto h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                    <FileText className="h-8 w-8 text-accent" />
+                  </div>
+                  <CardTitle className="text-xl">Ce que ce NFT prouve</CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm space-y-2">
+                  <p>• Maîtrise complète de la méthodologie</p>
+                  <p>• Capacité à diagnostiquer les 3 frictions</p>
+                  <p>• Résultats mesurables sur 5+ projets</p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="mx-auto h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                    <Award className="h-8 w-8 text-accent" />
+                  </div>
+                  <CardTitle className="text-xl">Ce à quoi il donne accès</CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm space-y-2">
+                  <p>• Communauté privée des Architectes</p>
+                  <p>• Accès prioritaire aux formations</p>
+                  <p>• Licence d'utilisation commerciale</p>
+                  <p>• Support technique illimité</p>
+                </CardContent>
+              </Card>
+
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="mx-auto h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
+                    <Crown className="h-8 w-8 text-accent" />
+                  </div>
+                  <CardTitle className="text-xl">Avantage compétitif</CardTitle>
+                </CardHeader>
+                <CardContent className="text-sm space-y-2">
+                  <p>• Différenciation immédiate</p>
+                  <p>• Crédibilité renforcée</p>
+                  <p>• Réseau d'experts de haut niveau</p>
+                  <p>• Reconnaissance officielle</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Comparatif des 3 Niveaux */}
+      <section className="py-20 bg-secondary/20">
+        <div className="container">
+          <div className="max-w-5xl mx-auto space-y-12">
+            <div className="text-center space-y-4">
+              <h2 className="text-4xl font-bold">Quel niveau choisir ?</h2>
               <p className="text-xl text-muted-foreground">
                 Trouvez l'accompagnement adapté à votre situation
               </p>
@@ -211,7 +381,8 @@ export default function Services() {
             <div className="grid md:grid-cols-3 gap-6">
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl">Sprint de Clarté</CardTitle>
+                  <Badge className="mb-2 bg-accent/10 text-accent">Niveau 1</Badge>
+                  <CardTitle className="text-xl">Diagnostic de Clarté</CardTitle>
                   <CardDescription>Idéal pour :</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2 text-sm">
@@ -225,7 +396,8 @@ export default function Services() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl">Formation Architecte</CardTitle>
+                  <Badge className="mb-2 bg-accent/10 text-accent">Niveau 2</Badge>
+                  <CardTitle className="text-xl">Architecture de l'Insight</CardTitle>
                   <CardDescription>Idéal pour :</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2 text-sm">
@@ -239,7 +411,8 @@ export default function Services() {
 
               <Card>
                 <CardHeader>
-                  <CardTitle className="text-xl">Transformation</CardTitle>
+                  <Badge className="mb-2 bg-accent/10 text-accent">Niveau 3</Badge>
+                  <CardTitle className="text-xl">Partenariat Stratégique</CardTitle>
                   <CardDescription>Idéal pour :</CardDescription>
                 </CardHeader>
                 <CardContent className="space-y-2 text-sm">
@@ -255,64 +428,15 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Garanties */}
-      <section className="py-20 bg-background">
-        <div className="container">
-          <div className="max-w-4xl mx-auto space-y-12">
-            <div className="text-center space-y-4">
-              <h2 className="text-4xl font-bold">Toutes nos offres incluent</h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6">
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="mx-auto h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
-                    <Check className="h-8 w-8 text-accent" />
-                  </div>
-                  <CardTitle className="text-xl">Garantie Résultats</CardTitle>
-                  <CardDescription className="text-base">
-                    Satisfaction garantie ou remboursement intégral
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="mx-auto h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
-                    <Zap className="h-8 w-8 text-accent" />
-                  </div>
-                  <CardTitle className="text-xl">Méthodologie Éprouvée</CardTitle>
-                  <CardDescription className="text-base">
-                    310 pages de théorie documentée et testée
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-
-              <Card className="text-center">
-                <CardHeader>
-                  <div className="mx-auto h-16 w-16 rounded-full bg-accent/10 flex items-center justify-center mb-4">
-                    <Rocket className="h-8 w-8 text-accent" />
-                  </div>
-                  <CardTitle className="text-xl">Résultats Mesurables</CardTitle>
-                  <CardDescription className="text-base">
-                    Projections KPI et suivi de performance inclus
-                  </CardDescription>
-                </CardHeader>
-              </Card>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* CTA Final */}
-      <section className="py-20 bg-gradient-to-b from-secondary/20 to-background">
+      <section className="py-20 bg-gradient-to-b from-background to-secondary/20">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center space-y-8">
             <h2 className="text-4xl font-bold">
               Prêt à transformer votre communication ?
             </h2>
             <p className="text-xl text-muted-foreground">
-              Commencez par le Sprint de Clarté à 490 € (au lieu de 1 500 €)
+              Commencez par le Niveau 1 à 490 € (au lieu de 1 500 €)
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8">

@@ -9,6 +9,7 @@ import SprintClarte from "./pages/SprintClarte";
 import Theoreme from "./pages/Theoreme";
 import Services from "./pages/Services";
 import Ressources from "./pages/Ressources";
+import Niveau1 from "./pages/Niveau1";
 
 function Router() {
   return (
@@ -18,6 +19,7 @@ function Router() {
       <Route path={"/theoreme"} component={Theoreme} />
       <Route path={"/services"} component={Services} />
       <Route path={"/ressources"} component={Ressources} />
+      <Route path={"/niveau1"} component={Niveau1} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
