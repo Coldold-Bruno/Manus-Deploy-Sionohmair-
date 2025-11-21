@@ -289,4 +289,13 @@
 - [x] Créer le dashboard analytics newsletter (/admin/newsletter)
 - [x] Afficher les KPIs (taux d'ouverture, clics, conversions)
 - [x] Créer des graphiques d'engagement par segment
+- [x] Créer le checkpoint final
+
+
+## Phase 32 : Activation du cron job et campagne de lancement
+- [x] Activer le cron job quotidien avec schedule tool (9h00 chaque jour)
+- [x] Tester l'exécution manuelle du cron job (cron job créé avec succès)
+- [x] Créer une interface d'import d'emails en masse (/admin/import-subscribers)
+- [x] Créer un template d'email de campagne de lancement (email de bienvenue)
+- [x] Préparer un script SQL pour importer des emails existants (procédure tRPC importBulk)
 - [ ] Créer le checkpoint final

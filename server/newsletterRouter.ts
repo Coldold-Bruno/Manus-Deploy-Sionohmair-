@@ -200,4 +200,102 @@ export const newsletterRouter = router({
 
     return highEngagement;
   }),
+
+  /**
+   * Importer des abonnés en masse (admin uniquement)
+   */
+  importBulk: protectedProcedure
+    .input(
+      z.object({
+        emails: z.array(z.string().email()),
+        defaultInterest: z.enum(['general', 'diagnostic', 'formation', 'transformation']).default('general'),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) {
+        throw new Error('Database not available');
+      }
+
+      // Vérifier que l'utilisateur est admin
+      if (ctx.user.role !== 'admin') {
+        throw new Error('Unauthorized: Admin access required');
+      }
+
+      let success = 0;
+      let failed = 0;
+      const errors: string[] = [];
+
+      for (const email of input.emails) {
+        try {
+          // Vérifier si l'email existe déjà
+          const [existing] = await db
+            .select()
+            .from(subscribers)
+            .where(eq(subscribers.email, email))
+            .limit(1);
+
+          if (existing) {
+            if (existing.status === 'unsubscribed') {
+              // Réactiver l'abonnement
+              await db
+                .update(subscribers)
+                .set({
+                  status: 'active',
+                  subscribedAt: new Date(),
+                  unsubscribedAt: null,
+                  interests: input.defaultInterest,
+                })
+                .where(eq(subscribers.id, existing.id));
+
+              success++;
+            } else {
+              // Email déjà actif, ignorer
+              errors.push(`${email}: Déjà inscrit`);
+              failed++;
+            }
+          } else {
+            // Créer un nouvel abonné
+            await db.insert(subscribers).values({
+              email,
+              source: 'bulk_import',
+              status: 'active',
+              interests: input.defaultInterest,
+              welcomeEmailSent: 'no',
+            });
+
+            // Envoyer l'email de bienvenue
+            try {
+              const htmlContent = getNewsletterWelcomeEmail({ email });
+              
+              await sendEmail({
+                to: email,
+                subject: 'Bienvenue chez Sionohmair Insight Academy - Votre Manuel PFPMA Gratuit',
+                html: htmlContent,
+              });
+
+              // Marquer l'email de bienvenue comme envoyé
+              await db
+                .update(subscribers)
+                .set({ welcomeEmailSent: 'yes' })
+                .where(eq(subscribers.email, email));
+            } catch (emailError) {
+              console.error(`Error sending welcome email to ${email}:`, emailError);
+              // Ne pas bloquer l'import si l'email échoue
+            }
+
+            success++;
+          }
+        } catch (error: any) {
+          errors.push(`${email}: ${error.message}`);
+          failed++;
+        }
+      }
+
+      return {
+        success,
+        failed,
+        errors,
+      };
+    }),
 });
