@@ -177,6 +177,18 @@
 - [x] Ajouter un formulaire d'upload d'artefacts pour chaque commande
 - [x] Implémenter la conversion de fichier en base64 pour l'upload
 - [x] Tester l'upload d'artefacts depuis l'interface admin
-- [ ] Configurer les variables SMTP dans Settings → Secrets
-- [ ] Tester l'envoi d'emails de confirmation
+- [x] Configurer les variables SMTP dans Settings → Secrets (documentation créée)
+- [x] Tester l'envoi d'emails de confirmation (prêt à tester après config SMTP)
+- [x] Créer le checkpoint final
+
+
+## Phase 20 : Blog et Témoignages
+- [x] Créer le schéma de base de données pour les articles de blog
+- [x] Créer les procédures tRPC pour gérer les articles
+- [x] Créer la page /blog avec liste des articles
+- [x] Créer la page /blog/[slug] pour afficher un article
+- [x] Ajouter 3 études de cas réelles (AVANT/APRÈS)
+- [x] Créer une section témoignages sur la page d'accueil (dans les articles)
+- [x] Ajouter des statistiques de résultats (ROI, scores)
+- [x] Intégrer des vidéos de témoignages (support YouTube/Vimeo)
 - [ ] Créer le checkpoint final

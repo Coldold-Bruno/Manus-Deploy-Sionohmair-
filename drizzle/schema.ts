@@ -95,3 +95,52 @@ export const artefacts = mysqlTable("artefacts", {
 
 export type Artefact = typeof artefacts.$inferSelect;
 export type InsertArtefact = typeof artefacts.$inferInsert;
+
+/**
+ * Blog posts table - stores articles, case studies, and testimonials
+ */
+export const blogPosts = mysqlTable("blog_posts", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** URL-friendly slug */
+  slug: varchar("slug", { length: 255 }).notNull().unique(),
+  
+  /** Article title */
+  title: varchar("title", { length: 500 }).notNull(),
+  
+  /** Short excerpt for listing pages */
+  excerpt: text("excerpt").notNull(),
+  
+  /** Full article content (Markdown supported) */
+  content: text("content").notNull(),
+  
+  /** Cover image URL */
+  coverImage: varchar("coverImage", { length: 500 }),
+  
+  /** Category: case-study, methodology, insights */
+  category: varchar("category", { length: 100 }).notNull(),
+  
+  /** Author (references users table) */
+  authorId: int("authorId"),
+  
+  /** Publication status */
+  published: mysqlEnum("published", ["draft", "published"]).default("draft").notNull(),
+  
+  /** Publication date */
+  publishedAt: timestamp("publishedAt"),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+  
+  /** Case study metadata */
+  clientName: varchar("clientName", { length: 255 }),
+  clientIndustry: varchar("clientIndustry", { length: 100 }),
+  scoreBefore: int("scoreBefore"),
+  scoreAfter: int("scoreAfter"),
+  roi: varchar("roi", { length: 100 }),
+  testimonial: text("testimonial"),
+  videoUrl: varchar("videoUrl", { length: 500 }),
+});
+
+export type BlogPost = typeof blogPosts.$inferSelect;
+export type InsertBlogPost = typeof blogPosts.$inferInsert;

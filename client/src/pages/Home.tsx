@@ -39,6 +39,9 @@ export default function Home() {
             <Link href="/calculateur">
               <a className="text-sm font-medium hover:text-accent transition-colors">Calculateur</a>
             </Link>
+            <Link href="/blog">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Blog</a>
+            </Link>
             <Button asChild variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
               <Link href="/sprint">
                 <a>Commencer →</a>
