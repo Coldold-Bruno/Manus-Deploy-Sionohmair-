@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { trpc } from "@/lib/trpc";
-import { Sparkles, ArrowLeft, Package, Calendar, User, Mail, Upload, Loader2, CheckCircle, Clock, XCircle, FileText, Users, ListTodo, FlaskConical } from "lucide-react";
+import { Sparkles, ArrowLeft, Package, Calendar, User, Mail, Upload, Loader2, CheckCircle, Clock, XCircle, FileText, Users, ListTodo, FlaskConical, Send } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -178,6 +178,12 @@ export default function Admin() {
               <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
                 <FlaskConical className="h-4 w-4" />
                 A/B Testing
+              </a>
+            </Link>
+            <Link href="/admin/send-campaign">
+              <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
+                <Send className="h-4 w-4" />
+                Envoyer Campagne
               </a>
             </Link>
             <Link href="/">

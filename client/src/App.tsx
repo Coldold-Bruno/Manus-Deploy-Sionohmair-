@@ -31,6 +31,7 @@ import LeadProfile from "./pages/admin/LeadProfile";
 import Segments from "./pages/admin/Segments";
 import Tasks from "./pages/admin/Tasks";
 import ABTesting from "./pages/admin/ABTesting";
+import SendCampaign from "./pages/admin/SendCampaign";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -57,6 +58,7 @@ function Router() {
       <Route path={"/admin/segments"} component={Segments} />
       <Route path={"/admin/tasks"} component={Tasks} />
       <Route path={"/admin/ab-testing"} component={ABTesting} />
+      <Route path={"/admin/send-campaign"} component={SendCampaign} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />

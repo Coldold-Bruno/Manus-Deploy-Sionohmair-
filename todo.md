@@ -446,4 +446,16 @@
 - [x] Configurer Google Analytics 4 avec événements personnalisés
 - [x] Créer les utilitaires analytics.ts pour tracking facile
 - [x] Créer les guides de configuration (CRISP_SETUP.md, GA4_SETUP.md)
+- [x] Créer le checkpoint final
+
+
+## Phase 47 : Interface d'envoi de campagnes newsletter
+- [x] Créer la page /admin/send-campaign
+- [x] Formulaire de composition (subject, contenu HTML)
+- [x] Sélecteur de segment (all, sprint, n3, ia)
+- [x] Sélecteur de test A/B actif (optionnel)
+- [x] Prévisualisation de l'email
+- [x] Bouton d'envoi avec confirmation
+- [x] Affichage des résultats (envoyés, échoués, erreurs)
+- [x] Ajouter dans la navigation admin
 - [ ] Créer le checkpoint final
