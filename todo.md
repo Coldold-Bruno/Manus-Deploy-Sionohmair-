@@ -155,3 +155,16 @@
 - [x] Tester le flux complet avec carte de test 4242 4242 4242 4242
 - [x] Vérifier que le webhook crée bien la commande
 - [ ] Créer le checkpoint final
+
+
+## Phase 18 : Envoi d'emails et téléchargement des artefacts
+- [x] Configurer l'envoi d'emails automatiques (nodemailer)
+- [x] Créer le template d'email de confirmation de commande
+- [x] Envoyer l'email automatiquement après paiement réussi (webhook)
+- [x] Créer le système de stockage S3 pour les artefacts
+- [x] Ajouter une table artefacts dans la base de données
+- [x] Implémenter l'upload d'artefacts vers S3
+- [x] Créer les procédures tRPC pour gérer les artefacts
+- [x] Ajouter le téléchargement sécurisé dans le Dashboard
+- [x] Tester le flux complet (paiement → email → artefacts)
+- [ ] Créer le checkpoint final

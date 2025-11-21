@@ -15,6 +15,13 @@
       "when": 1763684050628,
       "tag": "0001_thick_grim_reaper",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1763684880597,
+      "tag": "0002_curved_tomorrow_man",
+      "breakpoints": true
     }
   ]
 }

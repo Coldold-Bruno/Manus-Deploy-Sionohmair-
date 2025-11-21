@@ -60,3 +60,38 @@ export const orders = mysqlTable("orders", {
 
 export type Order = typeof orders.$inferSelect;
 export type InsertOrder = typeof orders.$inferInsert;
+
+/**
+ * Artefacts table - stores files/deliverables for orders
+ * Files are stored in S3, this table contains metadata and URLs
+ */
+export const artefacts = mysqlTable("artefacts", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** Order this artefact belongs to */
+  orderId: int("orderId").notNull(),
+  
+  /** Human-readable name of the artefact */
+  name: varchar("name", { length: 255 }).notNull(),
+  
+  /** Description of the artefact */
+  description: text("description"),
+  
+  /** S3 key (path) for the file */
+  s3Key: varchar("s3Key", { length: 500 }).notNull(),
+  
+  /** Public S3 URL for download */
+  s3Url: varchar("s3Url", { length: 1000 }).notNull(),
+  
+  /** File type (e.g., "application/pdf", "image/png") */
+  fileType: varchar("fileType", { length: 100 }),
+  
+  /** File size in bytes */
+  fileSize: int("fileSize"),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Artefact = typeof artefacts.$inferSelect;
+export type InsertArtefact = typeof artefacts.$inferInsert;

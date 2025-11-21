@@ -4,6 +4,7 @@ import { ENV } from './_core/env';
 import { getDb } from './db';
 import { orders, users } from '../drizzle/schema';
 import { eq } from 'drizzle-orm';
+import { sendOrderConfirmationEmail } from './emailService';
 
 const stripe = new Stripe(ENV.stripeSecretKey, {
   apiVersion: '2025-11-17.clover',
@@ -128,6 +129,19 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
     console.log('[Stripe Webhook] Order created successfully for user:', userId);
   } catch (error: any) {
     console.error('[Stripe Webhook] Error creating order:', error);
+    return; // Ne pas continuer si la commande n'a pas été créée
+  }
+
+  // Récupérer la commande créée pour envoyer l'email
+  const [order] = await db
+    .select()
+    .from(orders)
+    .where(eq(orders.stripeSessionId, session.id))
+    .limit(1);
+
+  if (!order) {
+    console.error('[Stripe Webhook] Order not found after creation');
+    return;
   }
 
   // Mettre à jour le Stripe Customer ID si nécessaire
@@ -146,6 +160,32 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
           .where(eq(users.id, parseInt(userId)));
 
         console.log('[Stripe Webhook] Updated Stripe Customer ID for user:', userId);
+      }
+
+      // Envoyer l'email de confirmation de commande
+      if (user && user.email) {
+        const productNames: Record<string, string> = {
+          SPRINT_CLARTE: 'Sprint de Clarté',
+          ARCHITECTURE_INSIGHT: 'Architecture de l\'Insight',
+          PARTENARIAT_STRATEGIQUE: 'Partenariat Stratégique',
+        };
+
+        const productPrices: Record<string, string> = {
+          SPRINT_CLARTE: '490 €',
+          ARCHITECTURE_INSIGHT: '10 000 €',
+          PARTENARIAT_STRATEGIQUE: '50 000 €',
+        };
+
+        await sendOrderConfirmationEmail({
+          to: user.email,
+          customerName: user.name || 'Client',
+          productName: productNames[productId] || productId,
+          productPrice: productPrices[productId] || 'N/A',
+          orderId: order.id,
+          sessionId: session.id,
+        });
+
+        console.log('[Stripe Webhook] Confirmation email sent to:', user.email);
       }
     } catch (error: any) {
       console.error('[Stripe Webhook] Error updating customer ID:', error);
