@@ -341,4 +341,15 @@
 - [x] Ajouter un sélecteur de type de note (appel, email, rendez-vous, objection, autre)
 - [x] Afficher l'historique des notes dans la timeline du profil
 - [x] Ajouter la possibilité de modifier/supprimer ses propres notes
+- [x] Créer le checkpoint final
+
+
+## Phase 37 : Graphiques d'évolution du score
+- [x] Installer Recharts pour les graphiques
+- [x] Créer une procédure tRPC pour récupérer l'historique d'évolution du score
+- [x] Créer le composant ScoreEvolutionChart avec Recharts
+- [x] Afficher l'évolution du score total dans le temps
+- [x] Afficher l'évolution de l'engagement newsletter
+- [x] Ajouter des tooltips avec détails (date, score, événement)
+- [x] Intégrer le graphique dans la page profil de lead
 - [ ] Créer le checkpoint final

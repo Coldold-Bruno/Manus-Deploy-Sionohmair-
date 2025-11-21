@@ -33,6 +33,7 @@ import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { useState } from "react";
 import { toast } from "sonner";
+import { ScoreEvolutionChart } from "@/components/ScoreEvolutionChart";
 
 const ACTIVITY_ICONS: Record<string, any> = {
   page_view: Eye,
@@ -109,6 +110,12 @@ export default function LeadProfile() {
   const [noteType, setNoteType] = useState<"call" | "email" | "meeting" | "objection" | "other">("other");
   const [noteContent, setNoteContent] = useState("");
   const [editingNoteId, setEditingNoteId] = useState<number | null>(null);
+
+  // Score history query
+  const { data: scoreHistory } = trpc.leadScoring.getScoreHistory.useQuery(
+    { email: email || '' },
+    { enabled: !!email }
+  );
 
   // Notes queries and mutations
   const { data: notes, refetch: refetchNotes } = trpc.leadNotes.getNotes.useQuery(
@@ -434,6 +441,11 @@ export default function LeadProfile() {
             </div>
           </CardContent>
         </Card>
+
+        {/* Score Evolution Chart */}
+        <div className="mb-8">
+          <ScoreEvolutionChart history={scoreHistory || []} />
+        </div>
 
         {/* Recommendations Card */}
         <Card className="mb-8 border-accent/30 bg-accent/5">

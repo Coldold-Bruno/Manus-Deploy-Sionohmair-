@@ -354,6 +354,75 @@ export const leadScoringRouter = router({
     }),
 
   /**
+   * Get score evolution history for a lead (admin only)
+   */
+  getScoreHistory: protectedProcedure
+    .input(z.object({
+      email: z.string().email(),
+    }))
+    .query(async ({ input, ctx }) => {
+      if (ctx.user.role !== "admin") {
+        throw new TRPCError({ code: "FORBIDDEN", message: "Admin access required" });
+      }
+
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+      // Get all activities ordered by date
+      const activities = await db
+        .select()
+        .from(leadActivities)
+        .where(eq(leadActivities.email, input.email))
+        .orderBy(leadActivities.createdAt);
+
+      // Get subscriber for engagement score
+      const subscriber = await db
+        .select()
+        .from(subscribers)
+        .where(eq(subscribers.email, input.email))
+        .limit(1);
+
+      const engagementScore = subscriber[0]?.engagementScore || 0;
+
+      // Build cumulative score history
+      const history: Array<{
+        date: string;
+        leadScore: number;
+        activityScore: number;
+        engagementScore: number;
+        activityType?: string;
+      }> = [];
+
+      let cumulativeActivityScore = 0;
+
+      // Add initial point (subscription date)
+      if (subscriber[0]?.subscribedAt) {
+        history.push({
+          date: subscriber[0].subscribedAt.toISOString(),
+          leadScore: engagementScore,
+          activityScore: 0,
+          engagementScore,
+        });
+      }
+
+      // Add points for each activity
+      for (const activity of activities) {
+        cumulativeActivityScore += activity.score;
+        const totalScore = cumulativeActivityScore + engagementScore;
+
+        history.push({
+          date: activity.createdAt.toISOString(),
+          leadScore: totalScore,
+          activityScore: cumulativeActivityScore,
+          engagementScore,
+          activityType: activity.activityType,
+        });
+      }
+
+      return history;
+    }),
+
+  /**
    * Recalculate all lead scores (admin only - for maintenance)
    */
   recalculateAllScores: protectedProcedure
