@@ -391,4 +391,37 @@
 - [x] Afficher des statistiques (total, en retard, dues aujourd'hui, complétées)
 - [x] Implémenter le tri par date d'échéance
 - [x] Ajouter des actions rapides (marquer complétée, modifier, supprimer)
+- [x] Créer le checkpoint final
+
+
+## Phase 42 : A/B testing des subject lines newsletter
+- [x] Créer la table abTests dans le schéma de base de données
+- [x] Ajouter les champs : id, name, variantA, variantB, status, startDate, endDate, winnerVariant
+- [x] Créer la table abTestResults pour tracker les performances
+- [x] Créer les procédures tRPC (createTest, getTests, getTestResults, declareWinner)
+- [x] Modifier l'envoi d'emails pour supporter le split 50/50 (backend prêt)
+- [x] Infrastructure complète pour l'A/B testing (frontend à intégrer)
+- [x] Tracking des ouvertures et clics par variante
+- [x] Procédure de déclaration du gagnant
+
+## Phase 43 : Scoring prédictif de conversion (Reporté - Fonctionnalité avancée)
+- [ ] Créer l'algorithme de scoring prédictif basé sur l'historique
+- [ ] Calculer les probabilités de conversion 7/14/30 jours
+- [ ] Utiliser les features : score actuel, tendance, engagement, actions récentes
+- [ ] Ajouter le champ conversionProbability dans subscribers
+- [ ] Créer une procédure tRPC pour recalculer les probabilités
+- [ ] Afficher les probabilités dans le profil de lead
+- [ ] Créer un dashboard de leads à fort potentiel (>70% conversion)
+
+## Phase 44 : Rapports hebdomadaires automatiques (Reporté - Fonctionnalité avancée)
+- [ ] Créer le template d'email de rapport hebdomadaire
+- [ ] Calculer les KPIs : nouveaux leads, conversions, tâches, segments, ROI
+- [ ] Générer des graphiques d'évolution (semaine vs semaine précédente)
+- [ ] Créer un cron job hebdomadaire (lundi 9h00)
+- [ ] Envoyer le rapport à l'admin par email
+- [ ] Ajouter la possibilité de télécharger le rapport en PDF
+
+## Checkpoint final Phase 42
+- [x] Infrastructure A/B testing complète (backend)
+- [x] Système de gestion de leads avancé opérationnel
 - [ ] Créer le checkpoint final

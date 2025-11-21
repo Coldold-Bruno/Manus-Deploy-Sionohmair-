@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -279,3 +279,73 @@ export const leadTasks = mysqlTable("lead_tasks", {
 
 export type LeadTask = typeof leadTasks.$inferSelect;
 export type InsertLeadTask = typeof leadTasks.$inferInsert;
+
+/**
+ * A/B tests table - stores newsletter subject line A/B tests
+ */
+export const abTests = mysqlTable("ab_tests", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** Test name/description */
+  name: varchar("name", { length: 255 }).notNull(),
+  
+  /** Subject line variant A */
+  variantA: varchar("variantA", { length: 255 }).notNull(),
+  
+  /** Subject line variant B */
+  variantB: varchar("variantB", { length: 255 }).notNull(),
+  
+  /** Email content (same for both variants) */
+  emailContent: text("emailContent").notNull(),
+  
+  /** Test status: draft, running, completed */
+  status: mysqlEnum("status", ["draft", "running", "completed"]).default("draft").notNull(),
+  
+  /** Start date of the test */
+  startDate: timestamp("startDate"),
+  
+  /** End date of the test */
+  endDate: timestamp("endDate"),
+  
+  /** Winning variant: A, B, or null if not determined */
+  winnerVariant: mysqlEnum("winnerVariant", ["A", "B"]),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type AbTest = typeof abTests.$inferSelect;
+export type InsertAbTest = typeof abTests.$inferInsert;
+
+/**
+ * A/B test results table - stores individual email sends and their results
+ */
+export const abTestResults = mysqlTable("ab_test_results", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** A/B test ID */
+  testId: int("testId").notNull(),
+  
+  /** Subscriber email */
+  subscriberEmail: varchar("subscriberEmail", { length: 320 }).notNull(),
+  
+  /** Which variant was sent: A or B */
+  variant: mysqlEnum("variant", ["A", "B"]).notNull(),
+  
+  /** Was the email opened? */
+  opened: boolean("opened").default(false).notNull(),
+  
+  /** Was any link clicked? */
+  clicked: boolean("clicked").default(false).notNull(),
+  
+  /** When was the email opened (if opened) */
+  openedAt: timestamp("openedAt"),
+  
+  /** When was a link clicked (if clicked) */
+  clickedAt: timestamp("clickedAt"),
+  
+  sentAt: timestamp("sentAt").defaultNow().notNull(),
+});
+
+export type AbTestResult = typeof abTestResults.$inferSelect;
+export type InsertAbTestResult = typeof abTestResults.$inferInsert;
