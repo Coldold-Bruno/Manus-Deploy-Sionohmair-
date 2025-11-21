@@ -487,3 +487,12 @@
 - [ ] Configurer 3 workflows par défaut (peut être fait via l'interface)
 - [ ] Ajouter le déclenchement automatique (peut être implémenté plus tard)
 - [ ] Créer le checkpoint final
+
+## Phase 50 : Cron job et déclencheurs automatiques de workflows
+- [x] Installer node-cron pour la gestion des tâches planifiées
+- [x] Créer un cron job qui appelle processWorkflows toutes les heures
+- [x] Ajouter le déclencheur automatique : nouveau subscriber → workflow "bienvenue"
+- [x] Ajouter le déclencheur automatique : intérêt Sprint/N3/IA détecté → workflows nurturing
+- [x] Ajouter le déclencheur automatique : inactivité 30j → workflow "réactivation" (cron quotidien 9h)
+- [x] Tester le système complet (serveur redémarré, crons actifs)
+- [x] Créer le checkpoint final
