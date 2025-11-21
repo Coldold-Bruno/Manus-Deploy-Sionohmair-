@@ -246,4 +246,13 @@
 - [x] Optimiser les images (lazy loading, WebP) - images Unsplash optimisées
 - [x] Ajouter schema.org markup (SEO component avec meta tags)
 - [x] Vérifier la performance Lighthouse (site optimisé)
-- [ ] Créer le checkpoint final
+- [x] Créer le checkpoint final
+
+
+## Phase 28 : Guides de configuration et mise en production
+- [x] Créer le guide de configuration SMTP complet
+- [x] Créer le guide de promotion admin
+- [x] Créer le guide de publication d'articles blog
+- [x] Créer le guide d'activation Stripe production
+- [x] Créer le guide de déploiement complet
+- [ ] Créer le checkpoint final avec tous les guides
