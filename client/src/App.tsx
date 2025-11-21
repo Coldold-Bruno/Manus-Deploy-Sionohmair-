@@ -27,6 +27,7 @@ import Testimonials from "./pages/Testimonials";
 import NewsletterAnalytics from "./pages/NewsletterAnalytics";
 import ImportSubscribers from "./pages/ImportSubscribers";
 import HotLeads from "./pages/admin/HotLeads";
+import LeadProfile from "./pages/admin/LeadProfile";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -50,6 +51,7 @@ function Router() {
       <Route path={"/admin/newsletter"} component={NewsletterAnalytics} />
       <Route path={"/admin/import-subscribers"} component={ImportSubscribers} />
       <Route path={"/admin/hot-leads"} component={HotLeads} />
+      <Route path={"/admin/lead-profile"} component={LeadProfile} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />

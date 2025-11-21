@@ -309,4 +309,15 @@
 - [x] Implémenter la mise à jour automatique du score en temps réel
 - [x] Créer le dashboard de leads chauds (/admin/hot-leads)
 - [x] Ajouter des notifications pour les leads à fort potentiel (score ≥80)
+- [x] Créer le checkpoint final
+
+
+## Phase 34 : Page profil de lead détaillée
+- [x] Créer la page /admin/lead-profile avec paramètre email
+- [x] Afficher les informations du lead (nom, email, score, température, intérêts)
+- [x] Créer une timeline d'activité chronologique avec icônes
+- [x] Ajouter un graphique d'évolution du score dans le temps
+- [x] Afficher les statistiques d'engagement (pages vues, emails ouverts, clics)
+- [x] Créer une section recommandations commerciales basées sur le comportement
+- [x] Ajouter un bouton "Contacter ce lead" avec template d'email pré-rempli
 - [ ] Créer le checkpoint final
