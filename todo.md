@@ -458,4 +458,4 @@
 - [x] Bouton d'envoi avec confirmation
 - [x] Affichage des résultats (envoyés, échoués, erreurs)
 - [x] Ajouter dans la navigation admin
-- [ ] Créer le checkpoint final
+- [x] Créer le checkpoint final
