@@ -1,5 +1,13 @@
 import nodemailer from 'nodemailer';
 import { ENV } from './_core/env';
+import {
+  getOrderConfirmationEmail,
+  getNewsletterWelcomeEmail,
+  getArtefactDeliveryEmail,
+  getReminderEmail,
+  getFeedbackRequestEmail,
+  getFollowUpEmail,
+} from './emailTemplates';
 
 /**
  * Service d'envoi d'emails
@@ -57,7 +65,16 @@ export async function sendOrderConfirmationEmail(params: {
 }) {
   const { to, customerName, productName, productPrice, orderId, sessionId } = params;
 
-  const htmlContent = `
+  const htmlContent = getOrderConfirmationEmail({
+    customerName,
+    customerEmail: to,
+    serviceName: productName,
+    amount: parseFloat(productPrice.replace(/[^0-9.]/g, '')),
+    orderDate: new Date().toLocaleDateString('fr-FR'),
+    orderId: orderId.toString(),
+  });
+
+  const oldHtmlContent = `
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -182,5 +199,139 @@ export async function verifyEmailConfig() {
   } catch (error: any) {
     console.error('[Email] SMTP configuration error:', error.message);
     return false;
+  }
+}
+
+/**
+ * Envoyer un email de livraison d'artefacts
+ */
+export async function sendArtefactDeliveryEmail(params: {
+  to: string;
+  customerName: string;
+  serviceName: string;
+  artefactCount: number;
+}) {
+  const { to, customerName, serviceName, artefactCount } = params;
+
+  const htmlContent = getArtefactDeliveryEmail({
+    customerName,
+    serviceName,
+    artefactCount,
+    dashboardUrl: 'https://sionohmair-insight-academy.manus.space/dashboard',
+  });
+
+  try {
+    const info = await transporter.sendMail({
+      from: `"Sionohmair Insight Academy" <${process.env.SMTP_USER}>`,
+      to: to,
+      subject: `📦 Vos artefacts sont prêts - ${serviceName}`,
+      html: htmlContent,
+    });
+
+    console.log('[Email] Artefact delivery sent:', info.messageId);
+    return { success: true, messageId: info.messageId };
+  } catch (error: any) {
+    console.error('[Email] Error sending artefact delivery:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+/**
+ * Envoyer un email de rappel
+ */
+export async function sendReminderEmail(params: {
+  to: string;
+  customerName: string;
+  serviceName: string;
+  daysRemaining: number;
+}) {
+  const { to, customerName, serviceName, daysRemaining } = params;
+
+  const htmlContent = getReminderEmail({
+    customerName,
+    serviceName,
+    daysRemaining,
+  });
+
+  try {
+    const info = await transporter.sendMail({
+      from: `"Sionohmair Insight Academy" <${process.env.SMTP_USER}>`,
+      to: to,
+      subject: `⏰ Rappel : Complétez votre formulaire - ${serviceName}`,
+      html: htmlContent,
+    });
+
+    console.log('[Email] Reminder sent:', info.messageId);
+    return { success: true, messageId: info.messageId };
+  } catch (error: any) {
+    console.error('[Email] Error sending reminder:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+/**
+ * Envoyer un email de demande d'avis
+ */
+export async function sendFeedbackRequestEmail(params: {
+  to: string;
+  customerName: string;
+  serviceName: string;
+}) {
+  const { to, customerName, serviceName } = params;
+
+  const htmlContent = getFeedbackRequestEmail({
+    customerName,
+    serviceName,
+    feedbackUrl: 'https://sionohmair-insight-academy.manus.space/contact',
+  });
+
+  try {
+    const info = await transporter.sendMail({
+      from: `"Sionohmair Insight Academy" <${process.env.SMTP_USER}>`,
+      to: to,
+      subject: `⭐ Votre avis nous intéresse - ${serviceName}`,
+      html: htmlContent,
+    });
+
+    console.log('[Email] Feedback request sent:', info.messageId);
+    return { success: true, messageId: info.messageId };
+  } catch (error: any) {
+    console.error('[Email] Error sending feedback request:', error);
+    return { success: false, error: error.message };
+  }
+}
+
+/**
+ * Envoyer un email de suivi post-Sprint
+ */
+export async function sendFollowUpEmail(params: {
+  to: string;
+  customerName: string;
+  scoreAvant: number;
+  scoreApres: number;
+}) {
+  const { to, customerName, scoreAvant, scoreApres } = params;
+
+  const htmlContent = getFollowUpEmail({
+    customerName,
+    scoreAvant,
+    scoreApres,
+    nextService: 'Architecture de l\'Insight (Niveau 2)',
+    nextServiceUrl: 'https://sionohmair-insight-academy.manus.space/niveau2',
+  });
+
+  try {
+    const info = await transporter.sendMail({
+      from: `"Sionohmair Insight Academy" <${process.env.SMTP_USER}>`,
+      to: to,
+      subject: `🎯 Félicitations pour vos progrès !`,
+      html: htmlContent,
+    });
+
+    console.log('[Email] Follow-up sent:', info.messageId);
+    return { success: true, messageId: info.messageId };
+  } catch (error: any) {
+    console.error('[Email] Error sending follow-up:', error);
+    return { success: false, error: error.message };
   }
 }

@@ -4,6 +4,7 @@ import { getDb } from './db';
 import { subscribers } from '../drizzle/schema';
 import { eq } from 'drizzle-orm';
 import { sendEmail } from './emailService';
+import { getNewsletterWelcomeEmail } from './emailTemplates';
 
 export const newsletterRouter = router({
   /**
@@ -58,52 +59,14 @@ export const newsletterRouter = router({
         welcomeEmailSent: 'no',
       });
 
-      // Envoyer l'email de bienvenue
+      // Envoyer l'email de bienvenue avec le nouveau template
       try {
+        const htmlContent = getNewsletterWelcomeEmail({ email: input.email });
+        
         await sendEmail({
           to: input.email,
           subject: '🎁 Bienvenue chez Sionohmair Insight Academy - Votre Manuel PFPMA Gratuit',
-          html: `
-            <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-              <h1 style="color: #0A1929;">Bienvenue ${input.name || 'cher abonné'} !</h1>
-              
-              <p>Merci de vous être inscrit à la newsletter Sionohmair Insight Academy.</p>
-              
-              <p>Comme promis, voici votre <strong>Manuel PFPMA gratuit</strong> (50 pages) :</p>
-              
-              <div style="background: #F59E0B; padding: 20px; border-radius: 8px; text-align: center; margin: 30px 0;">
-                <h2 style="color: white; margin: 0;">📚 Le Code PFPMA</h2>
-                <p style="color: white; margin: 10px 0;">La Grammaire de la Clarté</p>
-                <a href="https://sionohmair-insight-academy.manus.space/ressources" 
-                   style="display: inline-block; background: white; color: #0A1929; padding: 12px 24px; text-decoration: none; border-radius: 4px; font-weight: bold; margin-top: 10px;">
-                  Télécharger le Manuel PDF
-                </a>
-              </div>
-              
-              <h3>Ce que vous allez recevoir :</h3>
-              <ul>
-                <li>📊 <strong>Études de cas exclusives</strong> : +250% de conversion, +117% d'inscriptions</li>
-                <li>🎯 <strong>Méthodologie PFPMA</strong> : Les 5 composantes de tout message qui convertit</li>
-                <li>💡 <strong>Insights hebdomadaires</strong> : Conseils actionnables pour éliminer les frictions</li>
-                <li>🚀 <strong>Offres prioritaires</strong> : Accès anticipé au Sprint de Clarté (490 €)</li>
-              </ul>
-              
-              <p>Vous recevrez un email par semaine (maximum) avec du contenu de haute valeur. Pas de spam, promis.</p>
-              
-              <hr style="border: none; border-top: 1px solid #e5e7eb; margin: 30px 0;">
-              
-              <p style="font-size: 14px; color: #6b7280;">
-                Bruno Coldold<br>
-                Fondateur, Sionohmair Insight Academy<br>
-                <a href="https://www.linkedin.com/in/brunocoldold" style="color: #F59E0B;">LinkedIn</a>
-              </p>
-              
-              <p style="font-size: 12px; color: #9ca3af; margin-top: 20px;">
-                Vous recevez cet email car vous vous êtes inscrit sur sionohmair-insight-academy.manus.space.
-                <a href="https://sionohmair-insight-academy.manus.space/unsubscribe?email=${encodeURIComponent(input.email)}" style="color: #9ca3af;">Se désabonner</a>
-              </p>
-            </div>
-          `,
+          html: htmlContent,
         });
 
         // Marquer l'email de bienvenue comme envoyé

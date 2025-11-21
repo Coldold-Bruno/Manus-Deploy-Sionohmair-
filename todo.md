@@ -255,4 +255,15 @@
 - [x] Créer le guide de publication d'articles blog
 - [x] Créer le guide d'activation Stripe production
 - [x] Créer le guide de déploiement complet
-- [ ] Créer le checkpoint final avec tous les guides
+- [x] Créer le checkpoint final avec tous les guides
+
+
+## Phase 29 : Système d'emails automatiques professionnels
+- [x] Créer des templates HTML adaptatifs (responsive)
+- [x] Email de confirmation de commande amélioré
+- [x] Email de bienvenue newsletter amélioré
+- [x] Email de livraison d'artefacts
+- [x] Email de rappel (3 jours après commande)
+- [x] Email de demande d'avis client
+- [x] Email de suivi post-Sprint
+- [ ] Créer le checkpoint final
