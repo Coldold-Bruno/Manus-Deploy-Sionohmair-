@@ -10,7 +10,10 @@ import Theoreme from "./pages/Theoreme";
 import Services from "./pages/Services";
 import Ressources from "./pages/Ressources";
 import Niveau1 from "./pages/Niveau1";
+import Niveau2 from "./pages/Niveau2";
+import Niveau3 from "./pages/Niveau3";
 import AutomatisationIA from "./pages/AutomatisationIA";
+import Calculateur from "./pages/Calculateur";
 
 function Router() {
   return (
@@ -21,7 +24,10 @@ function Router() {
       <Route path={"/services"} component={Services} />
       <Route path={"/ressources"} component={Ressources} />
       <Route path={"/niveau1"} component={Niveau1} />
+      <Route path={"/niveau2"} component={Niveau2} />
+      <Route path={"/niveau3"} component={Niveau3} />
       <Route path={"/automatisation-ia"} component={AutomatisationIA} />
+      <Route path={"/calculateur"} component={Calculateur} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

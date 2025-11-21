@@ -65,3 +65,33 @@
 - [x] Intégrer le Bloc Recommandation IA générique dans tous les artefacts
 - [x] Créer la navigation vers la page Automatisation IA
 - [x] Ajouter les exemples d'utilisation concrète (annexes, référentiel interne)
+
+
+## Phase 8 : Complétion des pages Niveau 2 et Niveau 3
+- [x] Créer la page Niveau 2 (Architecture de l'Insight - 10 000 €)
+- [x] Détailler les artefacts usage client (Message AVANT/APRÈS, 5 Artefacts, Carte PFPMA, Roadmap)
+- [x] Détailler les artefacts usage interne (Formulaire N2, Bibliothèque, Séquence recommandations)
+- [x] Ajouter les critères prévisibles de réussite Niveau 2
+- [x] Intégrer le Bloc Recommandation IA Niveau 2
+- [x] Créer la page Niveau 3 (Partenariat Stratégique - 50 000 €)
+- [x] Détailler les artefacts usage client (Roadmap 12 mois, Playbook, NFT, Dashboards)
+- [x] Détailler les artefacts usage interne (Formulaire N3, Playbook interne, Grille NFT, Templates)
+- [x] Ajouter les critères prévisibles de réussite Niveau 3
+- [x] Intégrer le Bloc Recommandation IA Niveau 3
+
+## Phase 9 : Calculateur interactif de Score de Clarté
+- [x] Créer la page Calculateur avec interface utilisateur
+- [x] Implémenter l'analyse PFPMA automatique (5 critères × 4 points)
+- [x] Ajouter la détection des 3 frictions (Attention, Cognitive, Émotionnelle)
+- [x] Générer le score /20 avec justification détaillée
+- [x] Proposer des recommandations actionnables basées sur le score
+- [x] Intégrer des exemples de messages AVANT/APRÈS
+- [x] Ajouter un CTA vers le Sprint de Clarté (490 €)
+
+## Phase 10 : Formulaire de contact et réservation
+- [ ] Créer le formulaire de réservation Sprint de Clarté
+- [ ] Ajouter la validation des champs (nom, email, message, budget)
+- [ ] Implémenter l'envoi d'email de confirmation
+- [ ] Créer une page de confirmation après soumission
+- [ ] Ajouter un formulaire de contact général
+- [ ] Préparer l'intégration future avec Stripe (paiement en ligne)

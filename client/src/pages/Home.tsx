@@ -31,6 +31,9 @@ export default function Home() {
             <Link href="/automatisation-ia">
               <a className="text-sm font-medium hover:text-accent transition-colors">Automatisation IA</a>
             </Link>
+            <Link href="/calculateur">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Calculateur</a>
+            </Link>
             <Button asChild variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
               <Link href="/sprint">
                 <a>Commencer →</a>
