@@ -186,6 +186,12 @@ export default function Admin() {
                 Envoyer Campagne
               </a>
             </Link>
+            <Link href="/admin/email-templates">
+              <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
+                <Mail className="h-4 w-4" />
+                Templates Email
+              </a>
+            </Link>
             <Link href="/">
               <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />

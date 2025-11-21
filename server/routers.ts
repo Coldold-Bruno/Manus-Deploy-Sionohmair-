@@ -12,6 +12,7 @@ import { leadNotesRouter } from './leadNotesRouter';
 import { leadTasksRouter } from './leadTasksRouter';
 import { leadSegmentsRouter } from './leadSegmentsRouter';
 import { abTestingRouter } from './abTestingRouter';
+import { emailTemplatesRouter } from './emailTemplatesRouter';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -56,6 +57,9 @@ export const appRouter = router({
 
   // A/B testing router
   abTesting: abTestingRouter,
+
+  // Email templates router
+  emailTemplates: emailTemplatesRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({

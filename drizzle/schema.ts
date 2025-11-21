@@ -1,4 +1,4 @@
-import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean } from "drizzle-orm/mysql-core";
+import { int, mysqlEnum, mysqlTable, text, timestamp, varchar, boolean, json } from "drizzle-orm/mysql-core";
 
 /**
  * Core user table backing auth flow.
@@ -349,3 +349,32 @@ export const abTestResults = mysqlTable("ab_test_results", {
 
 export type AbTestResult = typeof abTestResults.$inferSelect;
 export type InsertAbTestResult = typeof abTestResults.$inferInsert;
+
+/**
+ * Email Templates
+ * Pre-registered email templates for campaigns
+ */
+export const emailTemplates = mysqlTable("email_templates", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** Template name */
+  name: varchar("name", { length: 255 }).notNull(),
+  
+  /** Category: welcome, resource, promotion, reactivation, newsletter */
+  category: mysqlEnum("category", ["welcome", "resource", "promotion", "reactivation", "newsletter"]).notNull(),
+  
+  /** Email subject line (can contain variables like {{nom}}) */
+  subject: varchar("subject", { length: 500 }).notNull(),
+  
+  /** Email HTML content (can contain variables) */
+  content: text("content").notNull(),
+  
+  /** JSON array of available variables: ["nom", "email", "score", "interets"] */
+  variables: json("variables"),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type EmailTemplate = typeof emailTemplates.$inferSelect;
+export type InsertEmailTemplate = typeof emailTemplates.$inferInsert;

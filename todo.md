@@ -459,3 +459,17 @@
 - [x] Affichage des résultats (envoyés, échoués, erreurs)
 - [x] Ajouter dans la navigation admin
 - [x] Créer le checkpoint final
+
+
+## Phase 48 : Templates d'emails pré-enregistrés
+- [x] Créer la table emailTemplates dans le schéma de base de données
+- [x] Ajouter les champs : id, name, category, subject, content, variables, createdAt, updatedAt
+- [x] Créer les procédures tRPC (createTemplate, getTemplates, updateTemplate, deleteTemplate, previewTemplate)
+- [x] Créer la page /admin/email-templates pour gérer les templates
+- [x] Interface CRUD complète (Create, Read, Update, Delete)
+- [x] Catégories : Bienvenue, Ressource gratuite, Promotion Sprint, Relance inactifs, Newsletter
+- [x] Support des variables dynamiques : {{nom}}, {{email}}, {{score}}, {{interets}}
+- [x] Prévisualisation en temps réel avec remplacement des variables
+- [x] Intégrer la sélection de template dans /admin/send-campaign
+- [ ] Créer 5 templates par défaut (un par catégorie) - Optionnel
+- [ ] Créer le checkpoint final

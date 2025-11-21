@@ -17,6 +17,7 @@ export default function SendCampaign() {
   const [content, setContent] = useState('');
   const [segment, setSegment] = useState<'all' | 'sprint' | 'n3' | 'ia'>('all');
   const [selectedTestId, setSelectedTestId] = useState<number | undefined>();
+  const [selectedTemplateId, setSelectedTemplateId] = useState<number | undefined>();
   const [showPreview, setShowPreview] = useState(false);
   const [sendResult, setSendResult] = useState<{
     sent: number;
@@ -28,6 +29,20 @@ export default function SendCampaign() {
   // Récupérer les tests A/B actifs
   const { data: abTests } = trpc.abTesting.getTests.useQuery();
   const runningTests = abTests?.filter(test => test.status === 'running') || [];
+
+  // Récupérer les templates d'emails
+  const { data: templates } = trpc.emailTemplates.getTemplates.useQuery();
+
+  // Charger un template sélectionné
+  const handleLoadTemplate = (templateId: number) => {
+    const template = templates?.find(t => t.id === templateId);
+    if (template) {
+      setSubject(template.subject);
+      setContent(template.content);
+      setSelectedTemplateId(templateId);
+      toast.success(`Template "${template.name}" chargé`);
+    }
+  };
 
   // Mutation pour envoyer la campagne
   const sendCampaignMutation = trpc.newsletter.sendCampaign.useMutation({
@@ -106,6 +121,29 @@ export default function SendCampaign() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="space-y-4">
+                {/* Sélecteur de Template */}
+                <div className="space-y-2">
+                  <Label htmlFor="template">Charger un Template (optionnel)</Label>
+                  <Select
+                    value={selectedTemplateId?.toString() || ''}
+                    onValueChange={(value) => value && handleLoadTemplate(parseInt(value))}
+                  >
+                    <SelectTrigger>
+                      <SelectValue placeholder="Sélectionnez un template..." />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {templates?.map((template) => (
+                        <SelectItem key={template.id} value={template.id.toString()}>
+                          {template.name} ({template.category})
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <p className="text-sm text-muted-foreground">
+                    Chargez un template pour pré-remplir le sujet et le contenu
+                  </p>
+                </div>
+
                 {/* Sujet */}
                 <div className="space-y-2">
                   <Label htmlFor="subject">Sujet de l'email</Label>
