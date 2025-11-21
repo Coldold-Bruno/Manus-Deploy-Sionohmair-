@@ -435,4 +435,4 @@
 - [x] Afficher les statistiques comparatives (taux ouverture, clics par variante)
 - [x] Ajouter un bouton "Déclarer gagnant" avec sélection A ou B
 - [x] Intégrer dans la navigation admin
-- [ ] Créer le checkpoint final
+- [x] Créer le checkpoint final
