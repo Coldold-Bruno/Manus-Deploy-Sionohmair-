@@ -436,3 +436,14 @@
 - [x] Ajouter un bouton "Déclarer gagnant" avec sélection A ou B
 - [x] Intégrer dans la navigation admin
 - [x] Créer le checkpoint final
+
+
+## Phase 46 : Quick Wins - Intégration A/B Testing + Chat + Analytics
+- [x] Créer la procédure sendCampaign avec détection tests A/B actifs
+- [x] Implémenter le split 50/50 aléatoire des abonnés
+- [x] Enregistrer automatiquement dans abTestResults lors de l'envoi
+- [x] Installer et configurer Crisp Chat (widget + documentation)
+- [x] Configurer Google Analytics 4 avec événements personnalisés
+- [x] Créer les utilitaires analytics.ts pour tracking facile
+- [x] Créer les guides de configuration (CRISP_SETUP.md, GA4_SETUP.md)
+- [ ] Créer le checkpoint final

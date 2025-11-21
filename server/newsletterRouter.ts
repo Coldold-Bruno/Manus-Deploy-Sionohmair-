@@ -1,7 +1,8 @@
 import { z } from 'zod';
+import { TRPCError } from '@trpc/server';
 import { publicProcedure, protectedProcedure, router } from './_core/trpc';
 import { getDb } from './db';
-import { subscribers } from '../drizzle/schema';
+import { subscribers, abTests, abTestResults } from '../drizzle/schema';
 import { eq } from 'drizzle-orm';
 import { sendEmail } from './emailService';
 import { getNewsletterWelcomeEmail } from './emailTemplates';
@@ -296,6 +297,103 @@ export const newsletterRouter = router({
         success,
         failed,
         errors,
+      };
+    }),
+
+  /**
+   * Envoyer une campagne newsletter (admin uniquement)
+   * Supporte l'A/B testing automatique si un test est actif
+   */
+  sendCampaign: protectedProcedure
+    .input(
+      z.object({
+        subject: z.string().min(1),
+        content: z.string().min(1),
+        testId: z.number().optional(), // ID du test A/B (optionnel)
+        segmentFilter: z.enum(['all', 'sprint', 'n3', 'ia']).default('all'),
+      })
+    )
+    .mutation(async ({ input, ctx }) => {
+      if (ctx.user.role !== 'admin') {
+        throw new TRPCError({ code: 'FORBIDDEN', message: 'Admin access required' });
+      }
+
+      const db = await getDb();
+      if (!db) {
+        throw new TRPCError({ code: 'INTERNAL_SERVER_ERROR', message: 'Database not available' });
+      }
+
+      // Récupérer les abonnés actifs selon le filtre
+      let query = db.select().from(subscribers).where(eq(subscribers.status, 'active'));
+      
+      const activeSubscribers = await query;
+      
+      // Filtrer par segment si nécessaire
+      let filteredSubscribers = activeSubscribers;
+      if (input.segmentFilter !== 'all') {
+        filteredSubscribers = activeSubscribers.filter(sub => {
+          const interests = sub.interests ? sub.interests.split(',') : [];
+          return interests.includes(input.segmentFilter);
+        });
+      }
+
+      if (filteredSubscribers.length === 0) {
+        throw new TRPCError({ code: 'BAD_REQUEST', message: 'Aucun abonné trouvé pour ce segment' });
+      }
+
+      // Vérifier si un test A/B est actif
+      let abTest = null;
+      if (input.testId) {
+        const [test] = await db.select().from(abTests).where(eq(abTests.id, input.testId)).limit(1);
+        if (test && test.status === 'running') {
+          abTest = test;
+        }
+      }
+
+      let sent = 0;
+      let failed = 0;
+      const errors: string[] = [];
+
+      // Envoyer les emails
+      for (const subscriber of filteredSubscribers) {
+        try {
+          let finalSubject = input.subject;
+          let variant: 'A' | 'B' | null = null;
+
+          // Si un test A/B est actif, choisir aléatoirement la variante
+          if (abTest) {
+            variant = Math.random() < 0.5 ? 'A' : 'B';
+            finalSubject = variant === 'A' ? abTest.variantA : abTest.variantB;
+
+            // Enregistrer dans abTestResults
+            await db.insert(abTestResults).values({
+              testId: abTest.id,
+              subscriberEmail: subscriber.email,
+              variant,
+              opened: false,
+              clicked: false,
+            });
+          }
+
+          // Envoyer l'email
+          await sendEmail({
+            to: subscriber.email,
+            subject: finalSubject,
+            html: input.content,
+          });
+
+          sent++;
+        } catch (error: any) {
+          errors.push(`${subscriber.email}: ${error.message}`);
+          failed++;
+        }
+      }
+
+      return {
+        sent,
+        failed,
+        errors,
+        abTestActive: !!abTest,
       };
     }),
 });
