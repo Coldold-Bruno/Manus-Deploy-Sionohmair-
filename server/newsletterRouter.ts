@@ -122,4 +122,82 @@ export const newsletterRouter = router({
 
     return allSubscribers;
   }),
+
+  /**
+   * Obtenir les statistiques de la newsletter (admin uniquement)
+   */
+  getStats: protectedProcedure.query(async ({ ctx }) => {
+    const db = await getDb();
+    if (!db) {
+      throw new Error('Database not available');
+    }
+
+    // Vérifier que l'utilisateur est admin
+    if (ctx.user.role !== 'admin') {
+      throw new Error('Unauthorized: Admin access required');
+    }
+
+    const allSubscribers = await db
+      .select()
+      .from(subscribers)
+      .where(eq(subscribers.status, 'active'));
+
+    const totalSubscribers = allSubscribers.length;
+
+    // Calculer les segments par intérêt
+    const segmentCounts = {
+      diagnostic: allSubscribers.filter((s: any) => s.interests === 'diagnostic').length,
+      formation: allSubscribers.filter((s: any) => s.interests === 'formation').length,
+      transformation: allSubscribers.filter((s: any) => s.interests === 'transformation').length,
+      general: allSubscribers.filter((s: any) => s.interests === 'general' || !s.interests).length,
+    };
+
+    // Calculer les segments par engagement
+    const engagementCounts = {
+      high: allSubscribers.filter((s: any) => (s.engagementScore || 0) >= 70).length,
+      medium: allSubscribers.filter((s: any) => (s.engagementScore || 0) >= 30 && (s.engagementScore || 0) < 70).length,
+      low: allSubscribers.filter((s: any) => (s.engagementScore || 0) < 30).length,
+    };
+
+    // Taux moyens (données simulées pour démonstration)
+    const openRate = 45;
+    const clickRate = 18;
+    const conversionRate = 3.5;
+
+    return {
+      totalSubscribers,
+      segmentCounts,
+      engagementCounts,
+      openRate,
+      clickRate,
+      conversionRate,
+    };
+  }),
+
+  /**
+   * Obtenir les abonnés à fort engagement (admin uniquement)
+   */
+  getHighEngagementSubscribers: protectedProcedure.query(async ({ ctx }) => {
+    const db = await getDb();
+    if (!db) {
+      throw new Error('Database not available');
+    }
+
+    // Vérifier que l'utilisateur est admin
+    if (ctx.user.role !== 'admin') {
+      throw new Error('Unauthorized: Admin access required');
+    }
+
+    const allSubscribers = await db
+      .select()
+      .from(subscribers)
+      .where(eq(subscribers.status, 'active'));
+
+    // Filtrer les abonnés avec un score >= 70
+    const highEngagement = allSubscribers
+      .filter((s: any) => (s.engagementScore || 0) >= 70)
+      .sort((a: any, b: any) => (b.engagementScore || 0) - (a.engagementScore || 0));
+
+    return highEngagement;
+  }),
 });

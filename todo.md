@@ -279,3 +279,14 @@
 - [x] Créer un système de scoring d'engagement
 - [ ] Ajouter l'A/B testing des subject lines
 - [x] Créer le checkpoint final
+
+
+## Phase 31 : Cron job et tracking newsletter
+- [x] Créer un cron job quotidien pour processNewsletterSequence()
+- [x] Implémenter le tracking d'ouverture (pixel 1×1 transparent)
+- [x] Implémenter le tracking de clics (liens avec UTM + route API)
+- [x] Créer les routes API /api/track/open/:subscriberId et /api/track/click/:subscriberId
+- [x] Créer le dashboard analytics newsletter (/admin/newsletter)
+- [x] Afficher les KPIs (taux d'ouverture, clics, conversions)
+- [x] Créer des graphiques d'engagement par segment
+- [ ] Créer le checkpoint final

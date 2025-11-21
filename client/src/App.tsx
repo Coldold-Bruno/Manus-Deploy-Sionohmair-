@@ -24,6 +24,7 @@ import Admin from "./pages/Admin";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
 import Testimonials from "./pages/Testimonials";
+import NewsletterAnalytics from "./pages/NewsletterAnalytics";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -43,8 +44,8 @@ function Router() {
       <Route path={"/contact"} component={Contact} />
       <Route path={"/payment/success"} component={PaymentSuccess} />
       <Route path={"/payment/cancel"} component={PaymentCancel} />
-      <Route path={"/dashboard"} component={Dashboard} />
-      <Route path={"/admin"} component={Admin} />
+      <Route path={"/dashboard"} component={Dashboard} />      <Route path={"/admin"} component={Admin} />
+      <Route path={"/admin/newsletter"} component={NewsletterAnalytics} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />
