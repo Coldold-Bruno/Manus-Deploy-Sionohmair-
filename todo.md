@@ -212,8 +212,8 @@
 - [ ] Améliorer l'accessibilité (ARIA labels, focus management)
 
 ## Phase 23 : Fonctionnalités de croissance
-- [ ] Créer un formulaire d'inscription newsletter
-- [ ] Ajouter des boutons de partage social sur les articles
+- [x] Créer un formulaire d'inscription newsletter
+- [x] Ajouter des boutons de partage social sur les articles
 - [ ] Créer un système de référencement (parrainage)
 - [ ] Ajouter un chat en direct ou chatbot
 - [ ] Créer une page de témoignages dédiée

@@ -144,3 +144,31 @@ export const blogPosts = mysqlTable("blog_posts", {
 
 export type BlogPost = typeof blogPosts.$inferSelect;
 export type InsertBlogPost = typeof blogPosts.$inferInsert;
+
+/**
+ * Newsletter subscribers table
+ */
+export const subscribers = mysqlTable("subscribers", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** Email address */
+  email: varchar("email", { length: 320 }).notNull().unique(),
+  
+  /** Subscriber name (optional) */
+  name: varchar("name", { length: 255 }),
+  
+  /** Subscription status */
+  status: mysqlEnum("status", ["active", "unsubscribed"]).default("active").notNull(),
+  
+  /** Subscription source */
+  source: varchar("source", { length: 100 }).default("website"),
+  
+  /** Welcome email sent */
+  welcomeEmailSent: mysqlEnum("welcomeEmailSent", ["yes", "no"]).default("no").notNull(),
+  
+  subscribedAt: timestamp("subscribedAt").defaultNow().notNull(),
+  unsubscribedAt: timestamp("unsubscribedAt"),
+});
+
+export type Subscriber = typeof subscribers.$inferSelect;
+export type InsertSubscriber = typeof subscribers.$inferInsert;

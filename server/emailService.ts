@@ -18,6 +18,33 @@ const transporter = nodemailer.createTransport({
 });
 
 /**
+ * Envoyer un email générique
+ */
+export async function sendEmail(params: {
+  to: string;
+  subject: string;
+  html: string;
+  from?: string;
+}) {
+  const { to, subject, html, from = 'Sionohmair Insight Academy <noreply@sionohmair.com>' } = params;
+
+  try {
+    const info = await transporter.sendMail({
+      from,
+      to,
+      subject,
+      html,
+    });
+
+    console.log('Email sent:', info.messageId);
+    return { success: true, messageId: info.messageId };
+  } catch (error) {
+    console.error('Error sending email:', error);
+    throw error;
+  }
+}
+
+/**
  * Envoyer un email de confirmation de commande
  */
 export async function sendOrderConfirmationEmail(params: {

@@ -5,6 +5,7 @@ import { publicProcedure, router } from "./_core/trpc";
 import { stripeRouter } from "./stripeRouter";
 import { artefactsRouter } from "./artefactsRouter";
 import { blogRouter } from "./blogRouter";
+import { newsletterRouter } from "./newsletterRouter";
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -28,6 +29,9 @@ export const appRouter = router({
 
   // Blog and case studies router
   blog: blogRouter,
+
+  // Newsletter router
+  newsletter: newsletterRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({

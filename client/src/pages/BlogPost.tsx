@@ -6,6 +6,7 @@ import { Sparkles, ArrowLeft, TrendingUp, BookOpen, Lightbulb, Calendar, User, A
 import { Link, useParams } from "wouter";
 import { Streamdown } from "streamdown";
 import { SEO } from "@/components/SEO";
+import { SocialShare } from "@/components/SocialShare";
 
 const CATEGORY_CONFIG: Record<string, { label: string; color: string; icon: any }> = {
   "case-study": {
@@ -100,9 +101,14 @@ export default function BlogPost() {
           <div className="max-w-4xl mx-auto space-y-6">
             <div className="flex items-center gap-3">
               <Badge className={categoryConfig.color}>
-                <CategoryIcon className="h-3 w-3 mr-1" />
-                {categoryConfig.label}
-              </Badge>
+                  <CategoryIcon className="h-5 w-5 mr-2" />
+              {categoryConfig.label}
+            </Badge>
+            <SocialShare
+              url={`/blog/${slug}`}
+              title={post.title}
+              description={post.excerpt}
+            />
               {post.publishedAt && (
                 <span className="text-sm text-muted-foreground flex items-center gap-1">
                   <Calendar className="h-4 w-4" />

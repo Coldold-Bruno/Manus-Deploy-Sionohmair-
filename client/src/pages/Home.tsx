@@ -1,5 +1,6 @@
 import { useAuth } from "@/_core/hooks/useAuth";
 import { SEO } from "@/components/SEO";
+import { NewsletterForm } from "@/components/NewsletterForm";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Sparkles, Target, TrendingUp, Zap } from "lucide-react";
@@ -252,7 +253,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="border-t py-12 bg-secondary/20">
         <div className="container">
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
                 <Sparkles className="h-6 w-6 text-accent" />
@@ -282,6 +283,13 @@ export default function Home() {
               <p className="text-sm text-muted-foreground">
                 LinkedIn: <a href="https://www.linkedin.com/in/brunocoldold" className="text-accent hover:underline">linkedin.com/in/brunocoldold</a>
               </p>
+            </div>
+            <div>
+              <h4 className="font-semibold mb-4">Newsletter</h4>
+              <p className="text-sm text-muted-foreground mb-4">
+                Recevez le Manuel PFPMA gratuit + études de cas exclusives.
+              </p>
+              <NewsletterForm />
             </div>
           </div>
           <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
