@@ -105,4 +105,40 @@
 - [x] Ajouter une page de confirmation après soumission
 - [x] Mettre à jour tous les liens de navigation
 - [x] Vérifier la cohérence globale du site
+- [x] Créer le checkpoint final
+
+
+## Phase 12 : Upgrade du projet (Serveur + Base de données + Authentification)
+- [x] Utiliser webdev_add_feature pour ajouter serveur, base de données et authentification
+- [x] Configurer le schéma de base de données (users, orders, artefacts)
+- [x] Tester la connexion à la base de données
+- [ ] Vérifier que l'authentification fonctionne
+
+## Phase 13 : Intégration Stripe
+- [x] Utiliser webdev_add_feature pour ajouter Stripe
+- [x] Configurer les clés API Stripe (test et production)
+- [x] Créer les produits Stripe (Sprint 490€, N2 10000€, N3 50000€)
+- [x] Implémenter le flux de paiement pour le Sprint de Clarté
+- [x] Créer le webhook Stripe pour traiter les paiements
+- [x] Ajouter le schéma de base de données pour les commandes
+- [ ] Ajouter les pages frontend de paiement
+- [ ] Tester le paiement en mode test
+
+## Phase 14 : Espace membre
+- [ ] Créer la page Dashboard client
+- [ ] Afficher les commandes du client
+- [ ] Permettre le téléchargement des artefacts
+- [ ] Ajouter un suivi de progression
+- [ ] Créer la page de profil utilisateur
+
+## Phase 15 : Blog et Études de cas
+- [ ] Créer la page Blog avec liste d'articles
+- [ ] Créer la page Études de cas
+- [ ] Ajouter 3-5 études de cas AVANT/APRÈS
+- [ ] Intégrer des témoignages clients détaillés
+- [ ] Ajouter des filtres par secteur/industrie
+
+## Phase 16 : Checkpoint final
+- [ ] Vérifier toutes les fonctionnalités
+- [ ] Tester le parcours complet utilisateur
 - [ ] Créer le checkpoint final
