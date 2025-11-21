@@ -330,4 +330,15 @@
 - [x] Ajouter un flag lastHotNotificationSent pour éviter les doublons
 - [x] Inclure dans l'email : score, température, activités récentes, lien profil
 - [x] Tester le système avec différents scénarios
+- [x] Créer le checkpoint final
+
+
+## Phase 36 : Système de notes/commentaires sur les leads
+- [x] Créer la table leadNotes dans le schéma de base de données
+- [x] Ajouter les champs : id, leadEmail, userId, noteType, content, createdAt
+- [x] Créer les procédures tRPC (addNote, getNotes, updateNote, deleteNote)
+- [x] Créer l'interface d'ajout de note dans la page profil de lead
+- [x] Ajouter un sélecteur de type de note (appel, email, rendez-vous, objection, autre)
+- [x] Afficher l'historique des notes dans la timeline du profil
+- [x] Ajouter la possibilité de modifier/supprimer ses propres notes
 - [ ] Créer le checkpoint final

@@ -217,3 +217,28 @@ export const leadActivities = mysqlTable("lead_activities", {
 
 export type LeadActivity = typeof leadActivities.$inferSelect;
 export type InsertLeadActivity = typeof leadActivities.$inferInsert;
+
+/**
+ * Lead notes table - stores admin notes/comments about leads
+ */
+export const leadNotes = mysqlTable("lead_notes", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** Lead email address */
+  leadEmail: varchar("leadEmail", { length: 320 }).notNull(),
+  
+  /** Admin user who created the note */
+  userId: int("userId").notNull(),
+  
+  /** Type of note: call, email, meeting, objection, other */
+  noteType: mysqlEnum("noteType", ["call", "email", "meeting", "objection", "other"]).default("other").notNull(),
+  
+  /** Note content */
+  content: text("content").notNull(),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type LeadNote = typeof leadNotes.$inferSelect;
+export type InsertLeadNote = typeof leadNotes.$inferInsert;

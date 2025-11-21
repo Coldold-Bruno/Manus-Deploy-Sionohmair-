@@ -16,12 +16,23 @@ import {
   CreditCard,
   Flame,
   Phone,
-  ExternalLink
+  ExternalLink,
+  MessageSquare,
+  Plus,
+  Edit,
+  Trash2,
+  Save,
+  X
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { Badge } from "@/components/ui/badge";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const ACTIVITY_ICONS: Record<string, any> = {
   page_view: Eye,
@@ -56,6 +67,30 @@ const ACTIVITY_COLORS: Record<string, string> = {
   payment_completed: "bg-emerald-100 text-emerald-800",
 };
 
+const NOTE_TYPE_LABELS: Record<string, string> = {
+  call: "Appel téléphonique",
+  email: "Email envoyé",
+  meeting: "Rendez-vous",
+  objection: "Objection",
+  other: "Autre",
+};
+
+const NOTE_TYPE_ICONS: Record<string, any> = {
+  call: Phone,
+  email: Mail,
+  meeting: Calendar,
+  objection: TrendingUp,
+  other: MessageSquare,
+};
+
+const NOTE_TYPE_COLORS: Record<string, string> = {
+  call: "bg-green-100 text-green-800",
+  email: "bg-blue-100 text-blue-800",
+  meeting: "bg-purple-100 text-purple-800",
+  objection: "bg-red-100 text-red-800",
+  other: "bg-gray-100 text-gray-800",
+};
+
 export default function LeadProfile() {
   const { user, loading: authLoading } = useAuth();
   const [location] = useLocation();
@@ -68,6 +103,79 @@ export default function LeadProfile() {
     { email: email || '' },
     { enabled: !!email }
   );
+
+  // Notes state
+  const [showNoteForm, setShowNoteForm] = useState(false);
+  const [noteType, setNoteType] = useState<"call" | "email" | "meeting" | "objection" | "other">("other");
+  const [noteContent, setNoteContent] = useState("");
+  const [editingNoteId, setEditingNoteId] = useState<number | null>(null);
+
+  // Notes queries and mutations
+  const { data: notes, refetch: refetchNotes } = trpc.leadNotes.getNotes.useQuery(
+    { leadEmail: email || '' },
+    { enabled: !!email }
+  );
+  const addNoteMutation = trpc.leadNotes.addNote.useMutation();
+  const updateNoteMutation = trpc.leadNotes.updateNote.useMutation();
+  const deleteNoteMutation = trpc.leadNotes.deleteNote.useMutation();
+
+  const handleAddNote = async () => {
+    if (!email || !noteContent.trim()) {
+      toast.error("Veuillez remplir le contenu de la note");
+      return;
+    }
+
+    try {
+      if (editingNoteId) {
+        await updateNoteMutation.mutateAsync({
+          noteId: editingNoteId,
+          content: noteContent,
+          noteType,
+        });
+        toast.success("Note mise à jour avec succès");
+        setEditingNoteId(null);
+      } else {
+        await addNoteMutation.mutateAsync({
+          leadEmail: email,
+          noteType,
+          content: noteContent,
+        });
+        toast.success("Note ajoutée avec succès");
+      }
+      setNoteContent("");
+      setNoteType("other");
+      setShowNoteForm(false);
+      refetchNotes();
+    } catch (error: any) {
+      toast.error("Erreur : " + error.message);
+    }
+  };
+
+  const handleEditNote = (note: any) => {
+    setEditingNoteId(note.id);
+    setNoteType(note.noteType);
+    setNoteContent(note.content);
+    setShowNoteForm(true);
+  };
+
+  const handleDeleteNote = async (noteId: number) => {
+    if (!confirm("Êtes-vous sûr de vouloir supprimer cette note ?")) return;
+
+    try {
+      await deleteNoteMutation.mutateAsync({ noteId });
+      toast.success("Note supprimée avec succès");
+      refetchNotes();
+    } catch (error: any) {
+      toast.error("Erreur : " + error.message);
+    }
+  };
+
+  const handleCancelNote = () => {
+    setShowNoteForm(false);
+    setEditingNoteId(null);
+    setNoteContent("");
+    setNoteType("other");
+  };
 
   if (authLoading) {
     return (
@@ -386,6 +494,137 @@ export default function LeadProfile() {
                 </p>
               )}
             </div>
+          </CardContent>
+        </Card>
+
+        {/* Notes Section */}
+        <Card className="mb-8">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="flex items-center gap-2">
+                  <MessageSquare className="h-5 w-5 text-accent" />
+                  Notes Commerciales ({notes?.length || 0})
+                </CardTitle>
+                <CardDescription>
+                  Historique des interactions et commentaires
+                </CardDescription>
+              </div>
+              {!showNoteForm && (
+                <Button onClick={() => setShowNoteForm(true)} size="sm">
+                  <Plus className="h-4 w-4 mr-2" />
+                  Ajouter une note
+                </Button>
+              )}
+            </div>
+          </CardHeader>
+          <CardContent>
+            {/* Add Note Form */}
+            {showNoteForm && (
+              <div className="mb-6 p-4 border rounded-lg bg-secondary/20">
+                <h4 className="font-semibold mb-4">
+                  {editingNoteId ? "Modifier la note" : "Nouvelle note"}
+                </h4>
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="noteType">Type de note</Label>
+                    <Select value={noteType} onValueChange={(value: any) => setNoteType(value)}>
+                      <SelectTrigger id="noteType">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="call">Appel téléphonique</SelectItem>
+                        <SelectItem value="email">Émail envoyé</SelectItem>
+                        <SelectItem value="meeting">Rendez-vous</SelectItem>
+                        <SelectItem value="objection">Objection</SelectItem>
+                        <SelectItem value="other">Autre</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <Label htmlFor="noteContent">Contenu</Label>
+                    <Textarea
+                      id="noteContent"
+                      value={noteContent}
+                      onChange={(e) => setNoteContent(e.target.value)}
+                      placeholder="Décrivez l'interaction, les objections, les prochaines étapes..."
+                      rows={4}
+                    />
+                  </div>
+                  <div className="flex gap-2">
+                    <Button onClick={handleAddNote} disabled={addNoteMutation.isPending || updateNoteMutation.isPending}>
+                      <Save className="h-4 w-4 mr-2" />
+                      {editingNoteId ? "Mettre à jour" : "Enregistrer"}
+                    </Button>
+                    <Button onClick={handleCancelNote} variant="outline">
+                      <X className="h-4 w-4 mr-2" />
+                      Annuler
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Notes List */}
+            {!notes || notes.length === 0 ? (
+              <div className="text-center py-8 text-muted-foreground">
+                <MessageSquare className="h-12 w-12 mx-auto mb-3 opacity-20" />
+                <p>Aucune note enregistrée pour ce lead</p>
+                <p className="text-sm mt-1">Ajoutez des notes pour garder trace de vos interactions</p>
+              </div>
+            ) : (
+              <div className="space-y-4">
+                {notes.map((note, index) => {
+                  const Icon = NOTE_TYPE_ICONS[note.noteType] || MessageSquare;
+                  const label = NOTE_TYPE_LABELS[note.noteType] || note.noteType;
+                  const colorClass = NOTE_TYPE_COLORS[note.noteType] || 'bg-gray-100 text-gray-800';
+
+                  return (
+                    <div key={note.id} className="flex gap-4 items-start p-4 border rounded-lg hover:bg-secondary/20 transition-colors">
+                      <div className="flex flex-col items-center">
+                        <div className={`p-2 rounded-full ${colorClass}`}>
+                          <Icon className="h-4 w-4" />
+                        </div>
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex items-center justify-between mb-2">
+                          <div className="flex items-center gap-2">
+                            <p className="font-semibold">{label}</p>
+                            <Badge variant="outline" className="text-xs">
+                              {format(new Date(note.createdAt), 'dd MMM yyyy à HH:mm', { locale: fr })}
+                            </Badge>
+                          </div>
+                          {note.userId === user?.id && (
+                            <div className="flex gap-2">
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => handleEditNote(note)}
+                              >
+                                <Edit className="h-3 w-3" />
+                              </Button>
+                              <Button
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => handleDeleteNote(note.id)}
+                              >
+                                <Trash2 className="h-3 w-3" />
+                              </Button>
+                            </div>
+                          )}
+                        </div>
+                        <p className="text-sm text-muted-foreground whitespace-pre-wrap">{note.content}</p>
+                        {note.updatedAt !== note.createdAt && (
+                          <p className="text-xs text-muted-foreground mt-2 italic">
+                            Modifié le {format(new Date(note.updatedAt), 'dd MMM yyyy à HH:mm', { locale: fr })}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
           </CardContent>
         </Card>
 
