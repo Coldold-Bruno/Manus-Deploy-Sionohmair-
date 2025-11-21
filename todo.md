@@ -266,4 +266,16 @@
 - [x] Email de rappel (3 jours après commande)
 - [x] Email de demande d'avis client
 - [x] Email de suivi post-Sprint
+- [x] Créer le checkpoint final
+
+
+## Phase 30 : Newsletter automatique optimisée
+- [x] Créer une séquence d'onboarding (7 emails sur 14 jours)
+- [x] Créer une séquence de nurturing (études de cas hebdomadaires)
+- [x] Créer une séquence de conversion (Sprint de Clarté)
+- [ ] Implémenter la segmentation par intérêt (diagnostic, formation, transformation)
+- [ ] Ajouter la personnalisation dynamique (nom, entreprise, score)
+- [ ] Configurer les triggers automatiques (inscription, achat, inactivité)
+- [ ] Créer un système de scoring d'engagement
+- [ ] Ajouter l'A/B testing des subject lines
 - [ ] Créer le checkpoint final
