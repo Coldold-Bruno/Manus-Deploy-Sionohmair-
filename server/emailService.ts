@@ -335,3 +335,105 @@ export async function sendFollowUpEmail(params: {
     return { success: false, error: error.message };
   }
 }
+
+/**
+ * Send hot lead notification to admin
+ */
+export async function sendHotLeadNotification(leadEmail: string) {
+  const { getHotLeadNotificationEmail, getHotLeadNotificationSubject } = await import('./emailTemplates/hotLeadNotification');
+  const { getDb } = await import('./db');
+  const { subscribers, leadActivities } = await import('../drizzle/schema');
+  const { eq, desc } = await import('drizzle-orm');
+
+  const db = await getDb();
+  if (!db) throw new Error('Database not available');
+
+  // Get subscriber info
+  const subscriber = await db
+    .select()
+    .from(subscribers)
+    .where(eq(subscribers.email, leadEmail))
+    .limit(1);
+
+  if (subscriber.length === 0) {
+    throw new Error(`Subscriber not found: ${leadEmail}`);
+  }
+
+  const lead = subscriber[0];
+
+  // Get recent activities (last 5)
+  const activities = await db
+    .select()
+    .from(leadActivities)
+    .where(eq(leadActivities.email, leadEmail))
+    .orderBy(desc(leadActivities.createdAt))
+    .limit(5);
+
+  const ACTIVITY_LABELS: Record<string, string> = {
+    page_view: "Page visitée",
+    calculator_use: "Calculateur utilisé",
+    download: "Téléchargement",
+    form_submit: "Formulaire soumis",
+    email_open: "Email ouvert",
+    email_click: "Email cliqué",
+    payment_intent: "Intention de paiement",
+    payment_completed: "Paiement complété",
+  };
+
+  const recentActivities = activities.map(a => {
+    const activityData = a.activityData ? JSON.parse(a.activityData) : null;
+    const page = activityData?.page || '';
+    const timestamp = new Date(a.createdAt).toLocaleString('fr-FR', {
+      day: '2-digit',
+      month: 'short',
+      hour: '2-digit',
+      minute: '2-digit',
+    });
+
+    let label = ACTIVITY_LABELS[a.activityType] || a.activityType;
+    if (page) {
+      label += ` : ${page}`;
+    }
+
+    return {
+      type: a.activityType,
+      label,
+      timestamp,
+      score: a.score,
+    };
+  });
+
+  // Get admin email from env (OWNER_NAME is the admin email)
+  const adminEmail = process.env.OWNER_NAME || 'admin@sionohmair.com';
+
+  // Get profile URL
+  const baseUrl = ENV.VITE_APP_URL || 'https://sionohmair-insight-academy.manus.space';
+  const profileUrl = `${baseUrl}/admin/lead-profile?email=${encodeURIComponent(leadEmail)}`;
+
+  const htmlContent = getHotLeadNotificationEmail({
+    email: lead.email,
+    name: lead.name || undefined,
+    leadScore: lead.leadScore,
+    engagementScore: lead.engagementScore,
+    interests: lead.interests,
+    recentActivities,
+    profileUrl,
+  });
+
+  const subject = getHotLeadNotificationSubject(lead.email, lead.leadScore);
+
+  try {
+    const info = await transporter.sendMail({
+      from: `"Sionohmair Lead Scoring" <${process.env.SMTP_USER}>`,
+      to: adminEmail,
+      subject,
+      html: htmlContent,
+    });
+
+    console.log('[Email] Hot lead notification sent to admin:', info.messageId);
+    return { success: true, messageId: info.messageId };
+  } catch (error: any) {
+    console.error('[Email] Error sending hot lead notification:', error);
+    return { success: false, error: error.message };
+  }
+}

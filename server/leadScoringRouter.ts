@@ -133,14 +133,49 @@ export const leadScoringRouter = router({
         score,
       });
 
+      // Get previous temperature before update
+      const previousSubscriber = await db
+        .select()
+        .from(subscribers)
+        .where(eq(subscribers.email, input.email))
+        .limit(1);
+      
+      const previousTemperature = previousSubscriber[0]?.leadTemperature || "cold";
+      const lastNotificationSent = previousSubscriber[0]?.lastHotNotificationSent;
+
       // Update lead score
       const { totalScore, temperature } = await updateLeadScore(input.email);
+
+      // Check if lead just became hot and notification not sent recently
+      const becameHot = previousTemperature !== "hot" && temperature === "hot";
+      const shouldNotify = becameHot || (
+        temperature === "hot" && 
+        (!lastNotificationSent || 
+          (new Date().getTime() - new Date(lastNotificationSent).getTime()) > 7 * 24 * 60 * 60 * 1000) // 7 days
+      );
+
+      if (shouldNotify) {
+        // Send hot lead notification to admin (async, don't wait)
+        import("./emailService").then(async ({ sendHotLeadNotification }) => {
+          try {
+            await sendHotLeadNotification(input.email);
+            // Update lastHotNotificationSent
+            await db
+              .update(subscribers)
+              .set({ lastHotNotificationSent: new Date() })
+              .where(eq(subscribers.email, input.email));
+          } catch (error) {
+            console.error("Failed to send hot lead notification:", error);
+          }
+        });
+      }
 
       return {
         success: true,
         score,
         totalScore,
         temperature,
+        notificationSent: shouldNotify,
       };
     }),
 

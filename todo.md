@@ -320,4 +320,14 @@
 - [x] Afficher les statistiques d'engagement (pages vues, emails ouverts, clics)
 - [x] Créer une section recommandations commerciales basées sur le comportement
 - [x] Ajouter un bouton "Contacter ce lead" avec template d'email pré-rempli
+- [x] Créer le checkpoint final
+
+
+## Phase 35 : Notifications automatiques pour leads chauds
+- [x] Créer le template d'email de notification lead chaud (HTML responsive)
+- [x] Ajouter la logique de détection dans trackActivity (vérifier si score passe à ≥80)
+- [x] Implémenter l'envoi automatique d'email à l'admin (OWNER_EMAIL)
+- [x] Ajouter un flag lastHotNotificationSent pour éviter les doublons
+- [x] Inclure dans l'email : score, température, activités récentes, lien profil
+- [x] Tester le système avec différents scénarios
 - [ ] Créer le checkpoint final

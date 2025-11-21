@@ -50,6 +50,13 @@
       "when": 1763689945730,
       "tag": "0006_ambitious_nocturne",
       "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "5",
+      "when": 1763690728609,
+      "tag": "0007_parched_starbolt",
+      "breakpoints": true
     }
   ]
 }

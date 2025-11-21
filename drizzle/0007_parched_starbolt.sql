@@ -1,0 +1,1 @@
+ALTER TABLE `subscribers` ADD `lastHotNotificationSent` timestamp;

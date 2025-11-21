@@ -181,6 +181,9 @@ export const subscribers = mysqlTable("subscribers", {
   /** Lead temperature: cold (0-40), warm (41-79), hot (80+) */
   leadTemperature: mysqlEnum("leadTemperature", ["cold", "warm", "hot"]).default("cold"),
   
+  /** Last time a hot lead notification was sent to admin (to avoid duplicates) */
+  lastHotNotificationSent: timestamp("lastHotNotificationSent"),
+  
   subscribedAt: timestamp("subscribedAt").defaultNow().notNull(),
   unsubscribedAt: timestamp("unsubscribedAt"),
 });
