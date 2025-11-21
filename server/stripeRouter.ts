@@ -1,6 +1,6 @@
 import Stripe from 'stripe';
 import { z } from 'zod';
-import { protectedProcedure, router } from './_core/trpc';
+import { protectedProcedure, publicProcedure, router } from './_core/trpc';
 import { ProductId, getProduct } from './products';
 import { ENV } from './_core/env';
 import { getDb } from './db';
@@ -113,6 +113,36 @@ export const stripeRouter = router({
     });
 
     return enrichedOrders;
+  }),
+
+  /**
+   * Récupérer toutes les commandes (admin uniquement)
+   */
+  getAllOrders: protectedProcedure.query(async ({ ctx }) => {
+    const db = await getDb();
+    if (!db) {
+      throw new Error('Database not available');
+    }
+
+    // Vérifier que l'utilisateur est admin
+    if (ctx.user.role !== 'admin') {
+      throw new Error('Unauthorized: Admin access required');
+    }
+
+    // Récupérer toutes les commandes avec les informations utilisateur
+    const allOrders = await db
+      .select({
+        order: orders,
+        user: users,
+      })
+      .from(orders)
+      .leftJoin(users, eq(orders.userId, users.id))
+      .orderBy(desc(orders.createdAt));
+
+    return allOrders.map((row) => ({
+      ...row.order,
+      user: row.user,
+    }));
   }),
 
   /**

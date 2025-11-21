@@ -19,6 +19,7 @@ import Contact from "./pages/Contact";
 import PaymentSuccess from "./pages/PaymentSuccess";
 import PaymentCancel from "./pages/PaymentCancel";
 import Dashboard from "./pages/Dashboard";
+import Admin from "./pages/Admin";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -39,6 +40,7 @@ function Router() {
       <Route path={"/payment/success"} component={PaymentSuccess} />
       <Route path={"/payment/cancel"} component={PaymentCancel} />
       <Route path={"/dashboard"} component={Dashboard} />
+      <Route path={"/admin"} component={Admin} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

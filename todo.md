@@ -168,3 +168,15 @@
 - [x] Ajouter le téléchargement sécurisé dans le Dashboard
 - [x] Tester le flux complet (paiement → email → artefacts)
 - [ ] Créer le checkpoint final
+
+
+## Phase 19 : Interface Admin
+- [x] Créer une procédure tRPC pour récupérer toutes les commandes (admin)
+- [x] Créer la page /admin avec protection par rôle
+- [x] Afficher la liste de toutes les commandes avec filtres
+- [x] Ajouter un formulaire d'upload d'artefacts pour chaque commande
+- [x] Implémenter la conversion de fichier en base64 pour l'upload
+- [x] Tester l'upload d'artefacts depuis l'interface admin
+- [ ] Configurer les variables SMTP dans Settings → Secrets
+- [ ] Tester l'envoi d'emails de confirmation
+- [ ] Créer le checkpoint final
