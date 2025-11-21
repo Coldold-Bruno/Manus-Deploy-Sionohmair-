@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://sionohmair-insight-academy.manus.space/sitemap.xml
+
+# Disallow admin and private pages
+Disallow: /admin
+Disallow: /dashboard
+Disallow: /payment/
+
+# Crawl-delay
+Crawl-delay: 1

@@ -7,6 +7,7 @@ import { registerOAuthRoutes } from "./oauth";
 import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { registerStripeWebhook } from "../stripeWebhook";
+import { generateSitemap } from "../sitemap";
 import { serveStatic, setupVite } from "./vite";
 
 function isPortAvailable(port: number): Promise<boolean> {
@@ -35,6 +36,9 @@ async function startServer() {
   // CRITICAL: Stripe webhook MUST be registered BEFORE express.json()
   // to allow raw body access for signature verification
   registerStripeWebhook(app);
+  
+  // Sitemap endpoint
+  app.get("/sitemap.xml", generateSitemap);
   
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));

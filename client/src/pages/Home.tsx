@@ -1,4 +1,5 @@
 import { useAuth } from "@/_core/hooks/useAuth";
+import { SEO } from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowRight, Sparkles, Target, TrendingUp, Zap } from "lucide-react";
@@ -11,6 +12,11 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <SEO
+        title="L'Ingénierie du Génie"
+        description="Transformez la communication d'un art subjectif en une science de la performance. Sprint de Clarté : 3 frictions éliminées en 7 jours. +250% de conversion en moyenne."
+        keywords={['clarté', 'communication', 'conversion', 'PFPMA', 'insight', 'sprint de clarté', 'méthodologie Sionohmair', 'Bruno Coldold']}
+      />
       {/* Navigation */}
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">

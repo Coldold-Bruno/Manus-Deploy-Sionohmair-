@@ -5,6 +5,7 @@ import { trpc } from "@/lib/trpc";
 import { Sparkles, ArrowLeft, TrendingUp, BookOpen, Lightbulb, Calendar, User, ArrowRight, Loader2 } from "lucide-react";
 import { Link, useParams } from "wouter";
 import { Streamdown } from "streamdown";
+import { SEO } from "@/components/SEO";
 
 const CATEGORY_CONFIG: Record<string, { label: string; color: string; icon: any }> = {
   "case-study": {
@@ -63,6 +64,16 @@ export default function BlogPost() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+      <SEO
+        title={post.title}
+        description={post.excerpt}
+        image={post.coverImage || undefined}
+        type="article"
+        author={post.clientName || "Bruno Coldold"}
+        publishedTime={post.publishedAt?.toISOString()}
+        modifiedTime={post.updatedAt.toISOString()}
+        keywords={[post.category, 'clarté', 'PFPMA', post.clientIndustry || 'business'].filter(Boolean) as string[]}
+      />
       {/* Navigation */}
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
