@@ -36,6 +36,13 @@
       "when": 1763686307594,
       "tag": "0004_cold_zeigeist",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "5",
+      "when": 1763688410368,
+      "tag": "0005_sour_rocket_racer",
+      "breakpoints": true
     }
   ]
 }

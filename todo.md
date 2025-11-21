@@ -273,9 +273,9 @@
 - [x] Créer une séquence d'onboarding (7 emails sur 14 jours)
 - [x] Créer une séquence de nurturing (études de cas hebdomadaires)
 - [x] Créer une séquence de conversion (Sprint de Clarté)
-- [ ] Implémenter la segmentation par intérêt (diagnostic, formation, transformation)
-- [ ] Ajouter la personnalisation dynamique (nom, entreprise, score)
-- [ ] Configurer les triggers automatiques (inscription, achat, inactivité)
-- [ ] Créer un système de scoring d'engagement
+- [x] Implémenter la segmentation par intérêt (diagnostic, formation, transformation)
+- [x] Ajouter la personnalisation dynamique (nom, entreprise, score)
+- [x] Configurer les triggers automatiques (inscription, achat, inactivité)
+- [x] Créer un système de scoring d'engagement
 - [ ] Ajouter l'A/B testing des subject lines
-- [ ] Créer le checkpoint final
+- [x] Créer le checkpoint final

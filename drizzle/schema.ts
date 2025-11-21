@@ -157,6 +157,9 @@ export const subscribers = mysqlTable("subscribers", {
   /** Subscriber name (optional) */
   name: varchar("name", { length: 255 }),
   
+  /** Interests: diagnostic (Sprint), formation (N2), transformation (N3), general */
+  interests: mysqlEnum("interests", ["diagnostic", "formation", "transformation", "general"]).default("general").notNull(),
+  
   /** Subscription status */
   status: mysqlEnum("status", ["active", "unsubscribed"]).default("active").notNull(),
   
@@ -165,6 +168,12 @@ export const subscribers = mysqlTable("subscribers", {
   
   /** Welcome email sent */
   welcomeEmailSent: mysqlEnum("welcomeEmailSent", ["yes", "no"]).default("no").notNull(),
+  
+  /** Last email sent in the sequence (day number: 0, 1, 3, 5, 7, 10, 14) */
+  lastEmailSent: int("lastEmailSent").default(0),
+  
+  /** Engagement score (0-100) based on opens, clicks, conversions */
+  engagementScore: int("engagementScore").default(0),
   
   subscribedAt: timestamp("subscribedAt").defaultNow().notNull(),
   unsubscribedAt: timestamp("unsubscribedAt"),
