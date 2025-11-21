@@ -424,4 +424,15 @@
 ## Checkpoint final Phase 42
 - [x] Infrastructure A/B testing complète (backend)
 - [x] Système de gestion de leads avancé opérationnel
+- [x] Créer le checkpoint final
+
+
+## Phase 45 : Interface frontend A/B testing
+- [x] Créer une page dédiée /admin/ab-testing pour gérer les tests
+- [x] Ajouter un formulaire de création de test (nom, variante A, variante B, contenu email)
+- [x] Afficher la liste des tests (draft, running, completed)
+- [x] Créer une vue détaillée des résultats par test
+- [x] Afficher les statistiques comparatives (taux ouverture, clics par variante)
+- [x] Ajouter un bouton "Déclarer gagnant" avec sélection A ou B
+- [x] Intégrer dans la navigation admin
 - [ ] Créer le checkpoint final
