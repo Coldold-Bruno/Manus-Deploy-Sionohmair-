@@ -381,4 +381,14 @@
 - [x] Afficher les statistiques de chaque segment
 - [x] Créer le formulaire de campagne email avec mode prévisualisation
 - [x] Implémenter l'envoi d'emails ciblés par segment
+- [x] Créer le checkpoint final
+
+
+## Phase 41 : Dashboard de tâches global
+- [x] Créer une procédure tRPC getAllTasks pour récupérer toutes les tâches
+- [x] Ajouter des filtres (échéance: aujourd'hui/cette semaine/en retard, statut, type)
+- [x] Créer la page /admin/tasks avec vue d'ensemble
+- [x] Afficher des statistiques (total, en retard, dues aujourd'hui, complétées)
+- [x] Implémenter le tri par date d'échéance
+- [x] Ajouter des actions rapides (marquer complétée, modifier, supprimer)
 - [ ] Créer le checkpoint final

@@ -29,6 +29,7 @@ import ImportSubscribers from "./pages/ImportSubscribers";
 import HotLeads from "./pages/admin/HotLeads";
 import LeadProfile from "./pages/admin/LeadProfile";
 import Segments from "./pages/admin/Segments";
+import Tasks from "./pages/admin/Tasks";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -53,6 +54,7 @@ function Router() {
       <Route path={"/admin/import-subscribers"} component={ImportSubscribers} />      <Route path={"/admin/hot-leads"} component={HotLeads} />
       <Route path={"/admin/lead-profile"} component={LeadProfile} />
       <Route path={"/admin/segments"} component={Segments} />
+      <Route path={"/admin/tasks"} component={Tasks} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />

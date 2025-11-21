@@ -245,4 +245,110 @@ export const leadTasksRouter = router({
 
       return { success: true };
     }),
+
+  /**
+   * Get all tasks with filters (admin only)
+   */
+  getAllTasks: protectedProcedure
+    .input(z.object({
+      filter: z.enum(["all", "today", "this_week", "overdue", "pending", "completed"]).optional(),
+      taskType: z.enum(["all", "call", "email", "meeting", "follow_up", "other"]).optional(),
+    }))
+    .query(async ({ input, ctx }) => {
+      if (ctx.user.role !== "admin") {
+        throw new TRPCError({ code: "FORBIDDEN", message: "Admin access required" });
+      }
+
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+      const conditions: any[] = [];
+
+      // Filter by status
+      if (input.filter === "pending") {
+        conditions.push(eq(leadTasks.status, "pending"));
+      } else if (input.filter === "completed") {
+        conditions.push(eq(leadTasks.status, "completed"));
+      } else if (input.filter === "today") {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const tomorrow = new Date(today);
+        tomorrow.setDate(tomorrow.getDate() + 1);
+        conditions.push(
+          and(
+            eq(leadTasks.status, "pending"),
+            gte(leadTasks.dueDate, today),
+            lte(leadTasks.dueDate, tomorrow)
+          )
+        );
+      } else if (input.filter === "this_week") {
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const nextWeek = new Date(today);
+        nextWeek.setDate(nextWeek.getDate() + 7);
+        conditions.push(
+          and(
+            eq(leadTasks.status, "pending"),
+            gte(leadTasks.dueDate, today),
+            lte(leadTasks.dueDate, nextWeek)
+          )
+        );
+      } else if (input.filter === "overdue") {
+        const now = new Date();
+        conditions.push(
+          and(
+            eq(leadTasks.status, "pending"),
+            lte(leadTasks.dueDate, now)
+          )
+        );
+      }
+
+      // Filter by task type
+      if (input.taskType && input.taskType !== "all") {
+        conditions.push(eq(leadTasks.taskType, input.taskType));
+      }
+
+      // Get tasks
+      const query = conditions.length > 0
+        ? db.select().from(leadTasks).where(and(...conditions)).orderBy(leadTasks.dueDate)
+        : db.select().from(leadTasks).orderBy(leadTasks.dueDate);
+
+      const tasks = await query;
+
+      return tasks;
+    }),
+
+  /**
+   * Get task statistics (admin only)
+   */
+  getTaskStats: protectedProcedure
+    .query(async ({ ctx }) => {
+      if (ctx.user.role !== "admin") {
+        throw new TRPCError({ code: "FORBIDDEN", message: "Admin access required" });
+      }
+
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+      const allTasks = await db.select().from(leadTasks);
+      const now = new Date();
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const tomorrow = new Date(today);
+      tomorrow.setDate(tomorrow.getDate() + 1);
+
+      const stats = {
+        total: allTasks.length,
+        pending: allTasks.filter(t => t.status === "pending").length,
+        completed: allTasks.filter(t => t.status === "completed").length,
+        overdue: allTasks.filter(t => t.status === "pending" && new Date(t.dueDate) < now).length,
+        dueToday: allTasks.filter(t => 
+          t.status === "pending" && 
+          new Date(t.dueDate) >= today && 
+          new Date(t.dueDate) < tomorrow
+        ).length,
+      };
+
+      return stats;
+    }),
 });
