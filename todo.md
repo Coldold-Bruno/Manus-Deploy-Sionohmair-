@@ -89,9 +89,20 @@
 - [x] Ajouter un CTA vers le Sprint de Clarté (490 €)
 
 ## Phase 10 : Formulaire de contact et réservation
-- [ ] Créer le formulaire de réservation Sprint de Clarté
-- [ ] Ajouter la validation des champs (nom, email, message, budget)
-- [ ] Implémenter l'envoi d'email de confirmation
-- [ ] Créer une page de confirmation après soumission
-- [ ] Ajouter un formulaire de contact général
+- [x] Créer le formulaire de réservation Sprint de Clarté
+- [x] Ajouter la validation des champs (nom, email, message, budget)
+- [x] Implémenter l'envoi d'email de confirmation (simulation)
+- [x] Créer une page de confirmation après soumission
+- [x] Ajouter un formulaire de contact général
 - [ ] Préparer l'intégration future avec Stripe (paiement en ligne)
+
+
+## Phase 11 : Finalisation du site
+- [x] Créer la page À Propos (Bruno Coldold, Mission, Vision)
+- [x] Ajouter le formulaire de contact général
+- [x] Créer le formulaire de réservation Sprint de Clarté
+- [x] Intégrer la validation des champs
+- [x] Ajouter une page de confirmation après soumission
+- [x] Mettre à jour tous les liens de navigation
+- [x] Vérifier la cohérence globale du site
+- [ ] Créer le checkpoint final

@@ -255,6 +255,8 @@ export default function Home() {
                 <li><Link href="/theoreme"><a className="text-muted-foreground hover:text-accent">Théorème de la Genèse</a></Link></li>
                 <li><Link href="/services"><a className="text-muted-foreground hover:text-accent">Services</a></Link></li>
                 <li><Link href="/ressources"><a className="text-muted-foreground hover:text-accent">Ressources</a></Link></li>
+                <li><Link href="/about"><a className="text-muted-foreground hover:text-accent">À Propos</a></Link></li>
+                <li><Link href="/contact"><a className="text-muted-foreground hover:text-accent">Contact</a></Link></li>
               </ul>
             </div>
             <div>

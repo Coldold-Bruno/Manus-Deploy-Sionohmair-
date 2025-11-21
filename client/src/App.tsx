@@ -14,6 +14,8 @@ import Niveau2 from "./pages/Niveau2";
 import Niveau3 from "./pages/Niveau3";
 import AutomatisationIA from "./pages/AutomatisationIA";
 import Calculateur from "./pages/Calculateur";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 function Router() {
   return (
@@ -28,6 +30,8 @@ function Router() {
       <Route path={"/niveau3"} component={Niveau3} />
       <Route path={"/automatisation-ia"} component={AutomatisationIA} />
       <Route path={"/calculateur"} component={Calculateur} />
+      <Route path={"/about"} component={About} />
+      <Route path={"/contact"} component={Contact} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
