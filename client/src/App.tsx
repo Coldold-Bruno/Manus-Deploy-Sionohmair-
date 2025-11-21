@@ -3,6 +3,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/NotFound";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
+import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 import SprintClarte from "./pages/SprintClarte";
@@ -22,6 +23,7 @@ import Dashboard from "./pages/Dashboard";
 import Admin from "./pages/Admin";
 import Blog from "./pages/Blog";
 import BlogPost from "./pages/BlogPost";
+import Testimonials from "./pages/Testimonials";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -45,6 +47,7 @@ function Router() {
       <Route path={"/admin"} component={Admin} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
+      <Route path={"/temoignages"} component={Testimonials} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />
@@ -66,6 +69,7 @@ function App() {
         <TooltipProvider>
           <Toaster />
           <Router />
+          <ScrollToTop />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

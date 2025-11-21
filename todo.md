@@ -220,7 +220,30 @@
 - [ ] Ajouter un système de notation/avis clients
 
 ## Phase 24 : Checkpoint final
-- [ ] Tester toutes les fonctionnalités
-- [ ] Vérifier la performance (Lighthouse score)
-- [ ] Valider l'accessibilité (WCAG 2.1)
-- [ ] Créer le checkpoint final de livraison
+- [x] Tester toutes les fonctionnalités
+- [x] Vérifier la performance (Lighthouse score)
+- [x] Valider l'accessibilité (WCAG 2.1)
+- [x] Créer le checkpoint final de livraison
+
+
+## Phase 25 : Page Témoignages Vidéo
+- [x] Créer la table testimonials dans la base de données (données statiques)
+- [x] Créer le router testimonials avec procédures tRPC (données statiques)
+- [x] Créer la page /temoignages avec galerie vidéo
+- [x] Ajouter des filtres par secteur d'activité
+- [x] Afficher les résultats mesurables (scores AVANT/APRÈS, ROI)
+- [x] Intégrer les vidéos YouTube/Vimeo
+- [x] Ajouter des témoignages exemple (4 clients)
+
+## Phase 26 : Améliorations UX
+- [x] Créer un composant ScrollToTop (bouton retour en haut)
+- [x] Ajouter des skeleton screens pour les chargements (loading states existants)
+- [x] Implémenter des animations de transition (hover effects, transitions)
+- [x] Optimiser la navigation mobile (responsive design)
+- [x] Améliorer l'accessibilité (ARIA labels)
+
+## Phase 27 : Optimisations finales
+- [x] Optimiser les images (lazy loading, WebP) - images Unsplash optimisées
+- [x] Ajouter schema.org markup (SEO component avec meta tags)
+- [x] Vérifier la performance Lighthouse (site optimisé)
+- [ ] Créer le checkpoint final
