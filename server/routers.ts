@@ -7,6 +7,7 @@ import { artefactsRouter } from "./artefactsRouter";
 import { blogRouter } from "./blogRouter";
 import { newsletterRouter } from './newsletterRouter';
 import { trackingRouter } from './trackingRouter';
+import { leadScoringRouter } from './leadScoringRouter';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -36,6 +37,9 @@ export const appRouter = router({
 
   // Email tracking router
   tracking: trackingRouter,
+
+  // Lead scoring router
+  leadScoring: leadScoringRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({

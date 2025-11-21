@@ -298,4 +298,15 @@
 - [x] Créer une interface d'import d'emails en masse (/admin/import-subscribers)
 - [x] Créer un template d'email de campagne de lancement (email de bienvenue)
 - [x] Préparer un script SQL pour importer des emails existants (procédure tRPC importBulk)
+- [x] Créer le checkpoint final
+
+
+## Phase 33 : Système de scoring de leads avancé
+- [x] Créer la table leadActivities pour tracker les actions sur le site
+- [x] Implémenter le tracking des pages visitées (temps passé, profondeur)
+- [x] Tracker les actions clés (calculateur, téléchargements, formulaires)
+- [x] Créer l'algorithme de scoring combinant newsletter + comportement + actions
+- [x] Implémenter la mise à jour automatique du score en temps réel
+- [x] Créer le dashboard de leads chauds (/admin/hot-leads)
+- [x] Ajouter des notifications pour les leads à fort potentiel (score ≥80)
 - [ ] Créer le checkpoint final

@@ -175,9 +175,42 @@ export const subscribers = mysqlTable("subscribers", {
   /** Engagement score (0-100) based on opens, clicks, conversions */
   engagementScore: int("engagementScore").default(0),
   
+  /** Total lead score combining newsletter + site behavior (0-200+) */
+  leadScore: int("leadScore").default(0),
+  
+  /** Lead temperature: cold (0-40), warm (41-79), hot (80+) */
+  leadTemperature: mysqlEnum("leadTemperature", ["cold", "warm", "hot"]).default("cold"),
+  
   subscribedAt: timestamp("subscribedAt").defaultNow().notNull(),
   unsubscribedAt: timestamp("unsubscribedAt"),
 });
 
 export type Subscriber = typeof subscribers.$inferSelect;
 export type InsertSubscriber = typeof subscribers.$inferInsert;
+
+/**
+ * Lead activities table - tracks user behavior on the site for lead scoring
+ */
+export const leadActivities = mysqlTable("lead_activities", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** User ID (if authenticated) */
+  userId: int("userId"),
+  
+  /** Email address (for tracking anonymous users) */
+  email: varchar("email", { length: 320 }).notNull(),
+  
+  /** Activity type: page_view, calculator_use, download, form_submit, email_open, email_click, payment_intent */
+  activityType: varchar("activityType", { length: 50 }).notNull(),
+  
+  /** JSON data about the activity (e.g., {"page": "/sprint", "duration": 120}) */
+  activityData: text("activityData"),
+  
+  /** Points awarded for this activity */
+  score: int("score").default(0),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type LeadActivity = typeof leadActivities.$inferSelect;
+export type InsertLeadActivity = typeof leadActivities.$inferInsert;

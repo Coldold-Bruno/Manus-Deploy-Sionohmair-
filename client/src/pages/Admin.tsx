@@ -150,6 +150,18 @@ export default function Admin() {
             </a>
           </Link>
           <div className="flex items-center space-x-6">
+            <Link href="/admin/newsletter">
+              <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
+                <FileText className="h-4 w-4" />
+                Newsletter
+              </a>
+            </Link>
+            <Link href="/admin/hot-leads">
+              <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
+                <Sparkles className="h-4 w-4" />
+                Leads Chauds
+              </a>
+            </Link>
             <Link href="/">
               <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
                 <ArrowLeft className="h-4 w-4" />
