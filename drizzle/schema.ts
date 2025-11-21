@@ -378,3 +378,86 @@ export const emailTemplates = mysqlTable("email_templates", {
 
 export type EmailTemplate = typeof emailTemplates.$inferSelect;
 export type InsertEmailTemplate = typeof emailTemplates.$inferInsert;
+
+/**
+ * Email Workflows (Automation Sequences)
+ * Automated email sequences for nurturing leads
+ */
+export const emailWorkflows = mysqlTable("email_workflows", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** Workflow name */
+  name: varchar("name", { length: 255 }).notNull(),
+  
+  /** Description */
+  description: text("description"),
+  
+  /** Trigger type: manual, new_subscriber, interest_sprint, interest_n3, interest_ia, inactive_30d */
+  trigger: mysqlEnum("trigger", ["manual", "new_subscriber", "interest_sprint", "interest_n3", "interest_ia", "inactive_30d"]).notNull(),
+  
+  /** Is this workflow active? */
+  active: boolean("active").default(true).notNull(),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type EmailWorkflow = typeof emailWorkflows.$inferSelect;
+export type InsertEmailWorkflow = typeof emailWorkflows.$inferInsert;
+
+/**
+ * Workflow Steps
+ * Individual email steps in a workflow
+ */
+export const workflowSteps = mysqlTable("workflow_steps", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** Which workflow does this step belong to */
+  workflowId: int("workflowId").notNull(),
+  
+  /** Step order (1, 2, 3...) */
+  stepOrder: int("stepOrder").notNull(),
+  
+  /** Delay in hours from previous step (0 for first step) */
+  delayHours: int("delayHours").notNull().default(0),
+  
+  /** Email template ID to send */
+  templateId: int("templateId").notNull(),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type WorkflowStep = typeof workflowSteps.$inferSelect;
+export type InsertWorkflowStep = typeof workflowSteps.$inferInsert;
+
+/**
+ * Workflow Subscriptions
+ * Track which subscribers are in which workflows
+ */
+export const workflowSubscriptions = mysqlTable("workflow_subscriptions", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** Which workflow */
+  workflowId: int("workflowId").notNull(),
+  
+  /** Subscriber email */
+  subscriberEmail: varchar("subscriberEmail", { length: 255 }).notNull(),
+  
+  /** Current step number (0 = not started, 1 = first step sent, etc.) */
+  currentStep: int("currentStep").default(0).notNull(),
+  
+  /** Status: active, paused, completed, cancelled */
+  status: mysqlEnum("status", ["active", "paused", "completed", "cancelled"]).default("active").notNull(),
+  
+  /** When was the workflow started */
+  startedAt: timestamp("startedAt").defaultNow().notNull(),
+  
+  /** When was the last email sent */
+  lastEmailSentAt: timestamp("lastEmailSentAt"),
+  
+  /** When was the workflow completed */
+  completedAt: timestamp("completedAt"),
+});
+
+export type WorkflowSubscription = typeof workflowSubscriptions.$inferSelect;
+export type InsertWorkflowSubscription = typeof workflowSubscriptions.$inferInsert;

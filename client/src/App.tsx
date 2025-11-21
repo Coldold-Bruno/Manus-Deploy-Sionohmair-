@@ -33,6 +33,7 @@ import Tasks from "./pages/admin/Tasks";
 import ABTesting from "./pages/admin/ABTesting";
 import SendCampaign from "./pages/admin/SendCampaign";
 import EmailTemplates from "./pages/admin/EmailTemplates";
+import EmailWorkflows from "./pages/admin/EmailWorkflows";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -60,7 +61,9 @@ function Router() {
       <Route path={"/admin/tasks"} component={Tasks} />
       <Route path={"/admin/ab-testing"} component={ABTesting} />
       <Route path={"/admin/send-campaign"} component={SendCampaign} />
-      <Route path={"/admin/email-templates"} component={EmailTemplates} />      <Route path={"/blog"} component={Blog} />
+      <Route path={"/admin/email-templates"} component={EmailTemplates} />
+      <Route path={"/admin/email-workflows"} component={EmailWorkflows} />
+      <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />
       <Route path={"/404"} component={NotFound} />

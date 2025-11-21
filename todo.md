@@ -472,4 +472,18 @@
 - [x] Prévisualisation en temps réel avec remplacement des variables
 - [x] Intégrer la sélection de template dans /admin/send-campaign
 - [ ] Créer 5 templates par défaut (un par catégorie) - Optionnel
+- [x] Créer le checkpoint final
+
+
+## Phase 49 : Séquences d'emails automatiques (Email Automation Workflows)
+- [x] Créer la table emailWorkflows dans le schéma de base de données
+- [x] Créer la table workflowSteps pour les étapes de chaque workflow
+- [x] Créer la table workflowSubscriptions pour tracker les abonnés dans les workflows
+- [x] Ajouter les champs : workflowId, subscriberEmail, currentStep, status, startedAt, completedAt
+- [x] Créer les procédures tRPC (createWorkflow, getWorkflows, subscribeToWorkflow, unsubscribe, toggle, stats, processWorkflows)
+- [x] Implémenter la logique d'envoi automatique avec processWorkflows (appelable manuellement ou via cron)
+- [x] Créer la page /admin/email-workflows pour gérer les workflows
+- [x] Interface de création de workflow avec éditeur d'étapes
+- [ ] Configurer 3 workflows par défaut (peut être fait via l'interface)
+- [ ] Ajouter le déclenchement automatique (peut être implémenté plus tard)
 - [ ] Créer le checkpoint final
