@@ -22,13 +22,18 @@ import {
   Edit,
   Trash2,
   Save,
-  X
+  X,
+  CheckCircle2,
+  Circle,
+  Clock,
+  AlertCircle
 } from "lucide-react";
 import { Link, useLocation } from "wouter";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
 import { format } from "date-fns";
 import { fr } from "date-fns/locale";
 import { useState } from "react";
@@ -92,6 +97,30 @@ const NOTE_TYPE_COLORS: Record<string, string> = {
   other: "bg-gray-100 text-gray-800",
 };
 
+const TASK_TYPE_LABELS: Record<string, string> = {
+  call: "Appel téléphonique",
+  email: "Envoyer un email",
+  meeting: "Rendez-vous",
+  follow_up: "Relance",
+  other: "Autre",
+};
+
+const TASK_TYPE_ICONS: Record<string, any> = {
+  call: Phone,
+  email: Mail,
+  meeting: Calendar,
+  follow_up: Clock,
+  other: Circle,
+};
+
+const TASK_TYPE_COLORS: Record<string, string> = {
+  call: "bg-green-100 text-green-800",
+  email: "bg-blue-100 text-blue-800",
+  meeting: "bg-purple-100 text-purple-800",
+  follow_up: "bg-orange-100 text-orange-800",
+  other: "bg-gray-100 text-gray-800",
+};
+
 export default function LeadProfile() {
   const { user, loading: authLoading } = useAuth();
   const [location] = useLocation();
@@ -111,6 +140,14 @@ export default function LeadProfile() {
   const [noteContent, setNoteContent] = useState("");
   const [editingNoteId, setEditingNoteId] = useState<number | null>(null);
 
+  // Tasks state
+  const [showTaskForm, setShowTaskForm] = useState(false);
+  const [taskType, setTaskType] = useState<"call" | "email" | "meeting" | "follow_up" | "other">("other");
+  const [taskTitle, setTaskTitle] = useState("");
+  const [taskDescription, setTaskDescription] = useState("");
+  const [taskDueDate, setTaskDueDate] = useState("");
+  const [editingTaskId, setEditingTaskId] = useState<number | null>(null);
+
   // Score history query
   const { data: scoreHistory } = trpc.leadScoring.getScoreHistory.useQuery(
     { email: email || '' },
@@ -125,6 +162,16 @@ export default function LeadProfile() {
   const addNoteMutation = trpc.leadNotes.addNote.useMutation();
   const updateNoteMutation = trpc.leadNotes.updateNote.useMutation();
   const deleteNoteMutation = trpc.leadNotes.deleteNote.useMutation();
+
+  // Tasks queries and mutations
+  const { data: tasks, refetch: refetchTasks } = trpc.leadTasks.getTasksForLead.useQuery(
+    { leadEmail: email || '' },
+    { enabled: !!email }
+  );
+  const addTaskMutation = trpc.leadTasks.addTask.useMutation();
+  const updateTaskMutation = trpc.leadTasks.updateTask.useMutation();
+  const completeTaskMutation = trpc.leadTasks.completeTask.useMutation();
+  const deleteTaskMutation = trpc.leadTasks.deleteTask.useMutation();
 
   const handleAddNote = async () => {
     if (!email || !noteContent.trim()) {
@@ -182,6 +229,84 @@ export default function LeadProfile() {
     setEditingNoteId(null);
     setNoteContent("");
     setNoteType("other");
+  };
+
+  const handleAddTask = async () => {
+    if (!email || !taskTitle.trim() || !taskDueDate) {
+      toast.error("Veuillez remplir tous les champs obligatoires");
+      return;
+    }
+
+    try {
+      if (editingTaskId) {
+        await updateTaskMutation.mutateAsync({
+          taskId: editingTaskId,
+          title: taskTitle,
+          description: taskDescription,
+          dueDate: taskDueDate,
+          taskType,
+        });
+        toast.success("Tâche mise à jour avec succès");
+        setEditingTaskId(null);
+      } else {
+        await addTaskMutation.mutateAsync({
+          leadEmail: email,
+          taskType,
+          title: taskTitle,
+          description: taskDescription,
+          dueDate: taskDueDate,
+        });
+        toast.success("Tâche ajoutée avec succès");
+      }
+      setTaskTitle("");
+      setTaskDescription("");
+      setTaskDueDate("");
+      setTaskType("other");
+      setShowTaskForm(false);
+      refetchTasks();
+    } catch (error: any) {
+      toast.error(error.message || "Erreur lors de l'enregistrement de la tâche");
+    }
+  };
+
+  const handleEditTask = (task: any) => {
+    setEditingTaskId(task.id);
+    setTaskTitle(task.title);
+    setTaskDescription(task.description || "");
+    setTaskDueDate(format(new Date(task.dueDate), "yyyy-MM-dd'T'HH:mm"));
+    setTaskType(task.taskType);
+    setShowTaskForm(true);
+  };
+
+  const handleCompleteTask = async (taskId: number) => {
+    try {
+      await completeTaskMutation.mutateAsync({ taskId });
+      toast.success("Tâche marquée comme complétée");
+      refetchTasks();
+    } catch (error: any) {
+      toast.error(error.message || "Erreur lors de la complétion de la tâche");
+    }
+  };
+
+  const handleDeleteTask = async (taskId: number) => {
+    if (!confirm("Voulez-vous vraiment supprimer cette tâche ?")) return;
+
+    try {
+      await deleteTaskMutation.mutateAsync({ taskId });
+      toast.success("Tâche supprimée avec succès");
+      refetchTasks();
+    } catch (error: any) {
+      toast.error(error.message || "Erreur lors de la suppression de la tâche");
+    }
+  };
+
+  const handleCancelTask = () => {
+    setShowTaskForm(false);
+    setEditingTaskId(null);
+    setTaskTitle("");
+    setTaskDescription("");
+    setTaskDueDate("");
+    setTaskType("other");
   };
 
   if (authLoading) {
@@ -447,8 +572,198 @@ export default function LeadProfile() {
           <ScoreEvolutionChart history={scoreHistory || []} />
         </div>
 
-        {/* Recommendations Card */}
-        <Card className="mb-8 border-accent/30 bg-accent/5">
+        {/* Tasks Card */}
+        <Card className="mb-8">
+          <CardHeader>
+            <div className="flex items-center justify-between">
+              <div>
+                <CardTitle className="flex items-center gap-2">
+                  <Clock className="h-5 w-5 text-accent" />
+                  Tâches à Venir ({tasks?.filter(t => t.status === 'pending').length || 0})
+                </CardTitle>
+                <CardDescription>
+                  Rappels et actions à effectuer pour ce lead
+                </CardDescription>
+              </div>
+              <Button onClick={() => setShowTaskForm(true)} size="sm">
+                <Plus className="h-4 w-4 mr-2" />
+                Nouvelle tâche
+              </Button>
+            </div>
+          </CardHeader>
+          <CardContent>
+            {/* Add Task Form */}
+            {showTaskForm && (
+              <div className="mb-6 p-4 border rounded-lg bg-secondary/20">
+                <h4 className="font-semibold mb-4">
+                  {editingTaskId ? "Modifier la tâche" : "Nouvelle tâche"}
+                </h4>
+                <div className="space-y-4">
+                  <div>
+                    <Label htmlFor="taskType">Type de tâche</Label>
+                    <Select value={taskType} onValueChange={(value: any) => setTaskType(value)}>
+                      <SelectTrigger id="taskType">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="call">Appel téléphonique</SelectItem>
+                        <SelectItem value="email">Envoyer un email</SelectItem>
+                        <SelectItem value="meeting">Rendez-vous</SelectItem>
+                        <SelectItem value="follow_up">Relance</SelectItem>
+                        <SelectItem value="other">Autre</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  <div>
+                    <Label htmlFor="taskTitle">Titre *</Label>
+                    <Input
+                      id="taskTitle"
+                      value={taskTitle}
+                      onChange={(e) => setTaskTitle(e.target.value)}
+                      placeholder="Ex: Rappeler pour proposer Sprint de Clarté"
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="taskDescription">Description (optionnel)</Label>
+                    <Textarea
+                      id="taskDescription"
+                      value={taskDescription}
+                      onChange={(e) => setTaskDescription(e.target.value)}
+                      placeholder="Détails supplémentaires..."
+                      rows={3}
+                    />
+                  </div>
+                  <div>
+                    <Label htmlFor="taskDueDate">Échéance *</Label>
+                    <Input
+                      id="taskDueDate"
+                      type="datetime-local"
+                      value={taskDueDate}
+                      onChange={(e) => setTaskDueDate(e.target.value)}
+                    />
+                  </div>
+                  <div className="flex gap-2">
+                    <Button onClick={handleAddTask} disabled={addTaskMutation.isPending || updateTaskMutation.isPending}>
+                      <Save className="h-4 w-4 mr-2" />
+                      {editingTaskId ? "Mettre à jour" : "Enregistrer"}
+                    </Button>
+                    <Button onClick={handleCancelTask} variant="outline">
+                      <X className="h-4 w-4 mr-2" />
+                      Annuler
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            )}
+
+            {/* Tasks List */}
+            {!tasks || tasks.length === 0 ? (
+              <div className="text-center py-8 text-muted-foreground">
+                <Clock className="h-12 w-12 mx-auto mb-3 opacity-20" />
+                <p>Aucune tâche programmée pour ce lead</p>
+                <p className="text-sm mt-2">Ajoutez des rappels pour ne rien oublier !</p>
+              </div>
+            ) : (
+              <div className="space-y-3">
+                {tasks.map((task: any) => {
+                  const TaskIcon = TASK_TYPE_ICONS[task.taskType] || Circle;
+                  const isOverdue = new Date(task.dueDate) < new Date() && task.status === 'pending';
+                  const isPending = task.status === 'pending';
+
+                  return (
+                    <div
+                      key={task.id}
+                      className={`p-4 border rounded-lg ${
+                        task.status === 'completed'
+                          ? 'bg-green-50 border-green-200 opacity-60'
+                          : isOverdue
+                          ? 'bg-red-50 border-red-200'
+                          : 'bg-background'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between">
+                        <div className="flex-1">
+                          <div className="flex items-center gap-2 mb-2">
+                            <TaskIcon className="h-4 w-4" />
+                            <Badge className={TASK_TYPE_COLORS[task.taskType]}>
+                              {TASK_TYPE_LABELS[task.taskType]}
+                            </Badge>
+                            {task.status === 'completed' && (
+                              <Badge className="bg-green-100 text-green-800">
+                                <CheckCircle2 className="h-3 w-3 mr-1" />
+                                Complétée
+                              </Badge>
+                            )}
+                            {isOverdue && (
+                              <Badge className="bg-red-100 text-red-800">
+                                <AlertCircle className="h-3 w-3 mr-1" />
+                                En retard
+                              </Badge>
+                            )}
+                          </div>
+                          <h4 className={`font-semibold mb-1 ${
+                            task.status === 'completed' ? 'line-through text-muted-foreground' : ''
+                          }`}>
+                            {task.title}
+                          </h4>
+                          {task.description && (
+                            <p className="text-sm text-muted-foreground mb-2">
+                              {task.description}
+                            </p>
+                          )}
+                          <div className="flex items-center gap-4 text-sm text-muted-foreground">
+                            <span className="flex items-center gap-1">
+                              <Calendar className="h-3 w-3" />
+                              {format(new Date(task.dueDate), "dd MMM yyyy 'à' HH:mm", { locale: fr })}
+                            </span>
+                            {task.completedAt && (
+                              <span className="flex items-center gap-1 text-green-600">
+                                <CheckCircle2 className="h-3 w-3" />
+                                Complétée le {format(new Date(task.completedAt), "dd MMM yyyy", { locale: fr })}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                        <div className="flex gap-2 ml-4">
+                          {isPending && (
+                            <>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={() => handleCompleteTask(task.id)}
+                                disabled={completeTaskMutation.isPending}
+                              >
+                                <CheckCircle2 className="h-4 w-4" />
+                              </Button>
+                              <Button
+                                size="sm"
+                                variant="outline"
+                                onClick={() => handleEditTask(task)}
+                              >
+                                <Edit className="h-4 w-4" />
+                              </Button>
+                            </>
+                          )}
+                          <Button
+                            size="sm"
+                            variant="outline"
+                            onClick={() => handleDeleteTask(task.id)}
+                            disabled={deleteTaskMutation.isPending}
+                          >
+                            <Trash2 className="h-4 w-4" />
+                          </Button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Notes Commerciales Card */}
+        <Card className="mb-8">
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <TrendingUp className="h-5 w-5 text-accent" />

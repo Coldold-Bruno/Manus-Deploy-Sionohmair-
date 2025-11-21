@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { trpc } from "@/lib/trpc";
-import { Sparkles, ArrowLeft, Package, Calendar, User, Mail, Upload, Loader2, CheckCircle, Clock, XCircle, FileText } from "lucide-react";
+import { Sparkles, ArrowLeft, Package, Calendar, User, Mail, Upload, Loader2, CheckCircle, Clock, XCircle, FileText, Users } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -160,6 +160,12 @@ export default function Admin() {
               <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
                 <Sparkles className="h-4 w-4" />
                 Leads Chauds
+              </a>
+            </Link>
+            <Link href="/admin/segments">
+              <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
+                <Users className="h-4 w-4" />
+                Segments
               </a>
             </Link>
             <Link href="/">

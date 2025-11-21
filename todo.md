@@ -352,4 +352,33 @@
 - [x] Afficher l'évolution de l'engagement newsletter
 - [x] Ajouter des tooltips avec détails (date, score, événement)
 - [x] Intégrer le graphique dans la page profil de lead
+- [x] Créer le checkpoint final
+
+
+## Phase 38 : Système de tâches/rappels pour leads
+- [x] Créer la table leadTasks dans le schéma de base de données
+- [x] Ajouter les champs : id, leadEmail, userId, taskType, title, description, dueDate, status, completedAt
+- [x] Créer les procédures tRPC (addTask, getTasks, updateTask, completeTask, deleteTask)
+- [x] Créer l'interface d'ajout de tâche dans le profil de lead
+- [x] Afficher les tâches dans le profil avec tri par date d'échéance
+- [x] Ajouter un indicateur visuel pour les tâches en retard
+- [x] Créer un dashboard des tâches à venir dans l'admin
+- [x] Implémenter les notifications pour les tâches dues aujourd'hui
+
+## Phase 39 : Export CSV/Excel des leads
+- [x] Installer papaparse pour la génération CSV
+- [x] Créer une procédure tRPC pour exporter les leads avec filtres
+- [x] Ajouter des filtres (température, score min/max, période, intérêts)
+- [x] Générer le fichier CSV avec toutes les colonnes pertinentes
+- [x] Ajouter un bouton d'export dans le dashboard Hot Leads
+- [x] Permettre le téléchargement direct du fichier
+
+## Phase 40 : Segments de leads personnalisés
+- [x] Créer le router leadSegments avec segments prédéfinis
+- [x] Implémenter les segments (hot, warm, sprint_interested, high_value, recent, inactive)
+- [x] Créer les procédures tRPC pour gérer les segments
+- [x] Créer la page /admin/segments avec interface de gestion
+- [x] Afficher les statistiques de chaque segment
+- [x] Créer le formulaire de campagne email avec mode prévisualisation
+- [x] Implémenter l'envoi d'emails ciblés par segment
 - [ ] Créer le checkpoint final

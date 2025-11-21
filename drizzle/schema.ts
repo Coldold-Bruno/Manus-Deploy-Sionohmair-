@@ -242,3 +242,40 @@ export const leadNotes = mysqlTable("lead_notes", {
 
 export type LeadNote = typeof leadNotes.$inferSelect;
 export type InsertLeadNote = typeof leadNotes.$inferInsert;
+
+/**
+ * Lead tasks table - stores tasks/reminders for leads
+ */
+export const leadTasks = mysqlTable("lead_tasks", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** Lead email address */
+  leadEmail: varchar("leadEmail", { length: 320 }).notNull(),
+  
+  /** Admin user who created the task */
+  userId: int("userId").notNull(),
+  
+  /** Type of task: call, email, meeting, follow_up, other */
+  taskType: mysqlEnum("taskType", ["call", "email", "meeting", "follow_up", "other"]).default("other").notNull(),
+  
+  /** Task title */
+  title: varchar("title", { length: 255 }).notNull(),
+  
+  /** Task description (optional) */
+  description: text("description"),
+  
+  /** Due date for the task */
+  dueDate: timestamp("dueDate").notNull(),
+  
+  /** Task status: pending, completed, cancelled */
+  status: mysqlEnum("status", ["pending", "completed", "cancelled"]).default("pending").notNull(),
+  
+  /** Completion date */
+  completedAt: timestamp("completedAt"),
+  
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type LeadTask = typeof leadTasks.$inferSelect;
+export type InsertLeadTask = typeof leadTasks.$inferInsert;

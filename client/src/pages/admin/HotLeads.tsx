@@ -2,11 +2,14 @@ import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { trpc } from "@/lib/trpc";
-import { Flame, TrendingUp, Users, Target, Mail, Phone, Calendar, Activity, RefreshCw } from "lucide-react";
+import { Flame, TrendingUp, Users, Target, Mail, Phone, Calendar, Activity, RefreshCw, Download } from "lucide-react";
 import { Link } from "wouter";
 import { Badge } from "@/components/ui/badge";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
+import Papa from "papaparse";
+import { format } from "date-fns";
+import { fr } from "date-fns/locale";
 
 export default function HotLeads() {
   const { user, loading: authLoading } = useAuth();
@@ -23,6 +26,42 @@ export default function HotLeads() {
       refetchWarm();
     } catch (error) {
       toast.error("Erreur lors du recalcul des scores");
+    }
+  };
+
+  const handleExport = async (temperature: "all" | "hot" | "warm" | "cold") => {
+    try {
+      const leads = await trpc.leadScoring.exportLeads.query({ temperature });
+      
+      // Format data for CSV
+      const csvData = leads.map(lead => ({
+        "Email": lead.email,
+        "Nom": lead.name || "",
+        "Score Total": lead.leadScore,
+        "Score Newsletter": lead.engagementScore,
+        "Température": lead.leadTemperature,
+        "Intérêts": lead.interests || "",
+        "Date d'inscription": lead.subscribedAt ? format(new Date(lead.subscribedAt), "dd/MM/yyyy", { locale: fr }) : "",
+        "Statut": lead.status,
+      }));
+
+      // Generate CSV
+      const csv = Papa.unparse(csvData);
+      
+      // Download file
+      const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a");
+      const url = URL.createObjectURL(blob);
+      link.setAttribute("href", url);
+      link.setAttribute("download", `leads_${temperature}_${format(new Date(), "yyyy-MM-dd")}.csv`);
+      link.style.visibility = "hidden";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      
+      toast.success(`Export réussi : ${leads.length} leads exportés`);
+    } catch (error) {
+      toast.error("Erreur lors de l'export");
     }
   };
 
@@ -81,6 +120,13 @@ export default function HotLeads() {
             >
               <RefreshCw className={`h-4 w-4 mr-2 ${recalculateMutation.isPending ? 'animate-spin' : ''}`} />
               Recalculer les scores
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => handleExport("all")}
+            >
+              <Download className="h-4 w-4 mr-2" />
+              Exporter en CSV
             </Button>
             <Button asChild variant="default">
               <Link href="/admin">

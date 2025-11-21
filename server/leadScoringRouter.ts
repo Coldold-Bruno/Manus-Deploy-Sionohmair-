@@ -451,4 +451,46 @@ export const leadScoringRouter = router({
         updated,
       };
     }),
+
+  /**
+   * Export leads to CSV (admin only)
+   */
+  exportLeads: protectedProcedure
+    .input(z.object({
+      temperature: z.enum(["all", "hot", "warm", "cold"]).optional(),
+      minScore: z.number().optional(),
+      maxScore: z.number().optional(),
+    }))
+    .query(async ({ input, ctx }) => {
+      if (ctx.user.role !== "admin") {
+        throw new TRPCError({ code: "FORBIDDEN", message: "Admin access required" });
+      }
+
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+      // Build query conditions
+      const conditions: any[] = [eq(subscribers.status, "active")];
+
+      if (input.temperature && input.temperature !== "all") {
+        conditions.push(eq(subscribers.leadTemperature, input.temperature));
+      }
+
+      if (input.minScore !== undefined) {
+        conditions.push(sql`${subscribers.leadScore} >= ${input.minScore}`);
+      }
+
+      if (input.maxScore !== undefined) {
+        conditions.push(sql`${subscribers.leadScore} <= ${input.maxScore}`);
+      }
+
+      // Get filtered leads
+      const leads = await db
+        .select()
+        .from(subscribers)
+        .where(and(...conditions))
+        .orderBy(desc(subscribers.leadScore));
+
+      return leads;
+    }),
 });
