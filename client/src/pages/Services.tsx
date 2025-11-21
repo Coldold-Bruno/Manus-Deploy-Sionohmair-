@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Check, Sparkles, ArrowLeft, Zap, Rocket, Crown, FileText, Target, TrendingUp, Award } from "lucide-react";
 import { Link } from "wouter";
+import { PaymentButton } from "@/components/PaymentButton";
 
 export default function Services() {
   return (
@@ -96,11 +97,11 @@ export default function Services() {
                   </ul>
                 </div>
 
-                <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                  <Link href="/sprint">
-                    <a>Réserver mon Sprint</a>
-                  </Link>
-                </Button>
+                <PaymentButton
+                  productId="SPRINT_CLARTE"
+                  label="Réserver mon Sprint (490 €)"
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                />
               </CardContent>
             </Card>
 
@@ -155,9 +156,11 @@ export default function Services() {
                   </ul>
                 </div>
 
-                <Button className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                  Candidater au Niveau 2
-                </Button>
+                <PaymentButton
+                  productId="ARCHITECTURE_INSIGHT"
+                  label="Candidater au Niveau 2 (10 000 €)"
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                />
               </CardContent>
             </Card>
 
@@ -212,9 +215,12 @@ export default function Services() {
                   </ul>
                 </div>
 
-                <Button variant="outline" className="w-full">
-                  Demander un Devis
-                </Button>
+                <PaymentButton
+                  productId="PARTENARIAT_STRATEGIQUE"
+                  label="Demander un Devis (50 000 €)"
+                  variant="outline"
+                  className="w-full"
+                />
               </CardContent>
             </Card>
           </div>
@@ -439,11 +445,12 @@ export default function Services() {
               Commencez par le Niveau 1 à 490 € (au lieu de 1 500 €)
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8">
-                <Link href="/sprint">
-                  <a>Réserver mon Sprint (490 €)</a>
-                </Link>
-              </Button>
+              <PaymentButton
+                productId="SPRINT_CLARTE"
+                label="Réserver mon Sprint (490 €)"
+                size="lg"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8"
+              />
               <Button asChild size="lg" variant="outline" className="text-lg px-8">
                 <Link href="/">
                   <a>Retour à l'accueil</a>

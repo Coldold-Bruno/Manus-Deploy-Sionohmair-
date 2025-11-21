@@ -16,6 +16,9 @@ import AutomatisationIA from "./pages/AutomatisationIA";
 import Calculateur from "./pages/Calculateur";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
+import PaymentSuccess from "./pages/PaymentSuccess";
+import PaymentCancel from "./pages/PaymentCancel";
+import Dashboard from "./pages/Dashboard";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -33,6 +36,9 @@ function Router() {
       <Route path={"/calculateur"} component={Calculateur} />
       <Route path={"/about"} component={About} />
       <Route path={"/contact"} component={Contact} />
+      <Route path={"/payment/success"} component={PaymentSuccess} />
+      <Route path={"/payment/cancel"} component={PaymentCancel} />
+      <Route path={"/dashboard"} component={Dashboard} />
       <Route path={"/404"} component={NotFound} />
       {/* Final fallback route */}
       <Route component={NotFound} />

@@ -3,6 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { Check, Sparkles, ArrowLeft, Calendar, FileText, Target, TrendingUp, Zap, Award } from "lucide-react";
 import { Link } from "wouter";
+import { PaymentButton } from "@/components/PaymentButton";
 
 export default function SprintClarte() {
   return (
@@ -248,9 +249,12 @@ export default function SprintClarte() {
               Places limitées : 5 Sprints de Clarté par mois pour garantir la qualité
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8">
-                Réserver mon Sprint (490 €)
-              </Button>
+              <PaymentButton
+                productId="SPRINT_CLARTE"
+                label="Réserver mon Sprint (490 €)"
+                size="lg"
+                className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8"
+              />
               <Button asChild size="lg" variant="outline" className="text-lg px-8">
                 <Link href="/">
                   <a>En savoir plus</a>

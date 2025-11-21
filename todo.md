@@ -142,3 +142,16 @@
 - [ ] Vérifier toutes les fonctionnalités
 - [ ] Tester le parcours complet utilisateur
 - [ ] Créer le checkpoint final
+
+
+## Phase 17 : Frontend Stripe et Dashboard
+- [x] Ajouter les boutons "Payer maintenant" sur la page Services
+- [x] Ajouter le bouton de paiement sur la page Sprint de Clarté
+- [ ] Ajouter les boutons de paiement sur Niveau2 et Niveau3
+- [x] Créer la page /payment/success (confirmation après paiement)
+- [x] Créer la page /payment/cancel (annulation de paiement)
+- [x] Créer la page /dashboard (historique des commandes)
+- [x] Afficher les détails de chaque commande dans le dashboard
+- [x] Tester le flux complet avec carte de test 4242 4242 4242 4242
+- [x] Vérifier que le webhook crée bien la commande
+- [ ] Créer le checkpoint final
