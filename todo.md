@@ -496,3 +496,20 @@
 - [x] Ajouter le déclencheur automatique : inactivité 30j → workflow "réactivation" (cron quotidien 9h)
 - [x] Tester le système complet (serveur redémarré, crons actifs)
 - [x] Créer le checkpoint final
+
+
+## Phase 51 : Dashboard analytics avec KPIs et graphiques
+- [x] Créer le router analyticsRouter avec toutes les procédures de stats
+- [x] Procédure getOverviewStats (leads totaux, conversions, taux conversion, ROI)
+- [x] Procédure getWorkflowStats (emails envoyés, taux ouverture/clics par workflow)
+- [x] Procédure getABTestStats (performance des tests A/B en cours et terminés)
+- [x] Procédure getLeadsBySegment (répartition des leads par température et segment)
+- [x] Procédure getNewsletterEngagement (évolution ouvertures/clics dans le temps)
+- [x] Créer la page /admin/analytics avec graphiques Recharts
+- [x] Afficher les KPIs principaux en cartes (conversions, ROI, leads actifs, taux engagement)
+- [x] Graphique répartition des leads par température (pie chart)
+- [x] Graphique répartition par intérêt (bar chart)
+- [x] Graphique engagement newsletter dans le temps (line chart)
+- [x] Tableau performance des workflows avec statistiques détaillées
+- [x] Tableau comparaison des tests A/B avec taux ouverture/clics
+- [x] Créer le checkpoint final

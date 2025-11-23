@@ -34,6 +34,7 @@ import ABTesting from "./pages/admin/ABTesting";
 import SendCampaign from "./pages/admin/SendCampaign";
 import EmailTemplates from "./pages/admin/EmailTemplates";
 import EmailWorkflows from "./pages/admin/EmailWorkflows";
+import Analytics from "./pages/admin/Analytics";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -63,6 +64,7 @@ function Router() {
       <Route path={"/admin/send-campaign"} component={SendCampaign} />
       <Route path={"/admin/email-templates"} component={EmailTemplates} />
       <Route path={"/admin/email-workflows"} component={EmailWorkflows} />
+      <Route path={"/admin/analytics"} component={Analytics} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />

@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { trpc } from "@/lib/trpc";
-import { Sparkles, ArrowLeft, Package, Calendar, User, Mail, Upload, Loader2, CheckCircle, Clock, XCircle, FileText, Users, ListTodo, FlaskConical, Send, Workflow } from "lucide-react";
+import { Sparkles, ArrowLeft, Package, Calendar, User, Mail, Upload, Loader2, CheckCircle, Clock, Users, ListTodo, FlaskConical, Send, Workflow, BarChart3 } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -196,6 +196,12 @@ export default function Admin() {
               <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
                 <Workflow className="h-4 w-4" />
                 Workflows Email
+              </a>
+            </Link>
+            <Link href="/admin/analytics">
+              <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
+                <BarChart3 className="h-4 w-4" />
+                Analytics
               </a>
             </Link>
             <Link href="/">
