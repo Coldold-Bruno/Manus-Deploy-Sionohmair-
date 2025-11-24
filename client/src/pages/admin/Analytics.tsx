@@ -1,7 +1,8 @@
 import { trpc } from "@/lib/trpc";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, TrendingUp, Users, Target, Activity, Zap, CheckCircle2, Clock } from "lucide-react";
+import { ArrowLeft, TrendingUp, Users, Target, Activity, Zap, CheckCircle2, Clock, FileDown } from "lucide-react";
+import { exportAnalyticsPDF } from "@/lib/exportAnalyticsPDF";
 import { Link } from "wouter";
 import { BarChart, Bar, LineChart, Line, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
@@ -56,6 +57,13 @@ export default function Analytics() {
               Tableau de bord complet des performances marketing et conversions
             </p>
           </div>
+          <Button 
+            onClick={() => exportAnalyticsPDF({ overviewStats, workflowStats: workflowStats || [], abTestStats: abTestStats || [], segmentStats })}
+            className="bg-primary hover:bg-primary/90"
+          >
+            <FileDown className="h-4 w-4 mr-2" />
+            Exporter en PDF
+          </Button>
         </div>
 
         {/* Overview KPIs */}
