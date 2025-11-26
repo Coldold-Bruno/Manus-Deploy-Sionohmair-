@@ -1,20 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Badge } from "@/components/ui/badge";
 import { Textarea } from "@/components/ui/textarea";
 import { Sparkles, ArrowLeft, Calculator, TrendingUp, AlertTriangle, CheckCircle2, Lightbulb } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 import { analyzeContent, type AnalysisResult } from "@shared/contentAnalyzer";
-import { rewriteContentAdaptive, generateRewriteSuggestionsAdaptive, generateDiff } from "@shared/contentAnalyzerRewrite";
 
 export default function Calculateur() {
   const [message, setMessage] = useState("");
   const [result, setResult] = useState<AnalysisResult | null>(null);
   const [isAnalyzing, setIsAnalyzing] = useState(false);
-  const [rewrittenText, setRewrittenText] = useState<string | null>(null);
-  const [showComparison, setShowComparison] = useState(false);
 
   const analyzeMessage = () => {
     if (!message.trim() || message.length < 50) {
@@ -135,7 +131,7 @@ export default function Calculateur() {
                         <div className={`text-6xl font-bold ${getScoreColor(result.clarityScore)}`}>
                           {result.clarityScore}/100
                         </div>
-                        <Badge className="mt-2">{getScoreLabel(result.clarityScore)}</Badge>
+                        <Badge className="mt-2">{getScoreLabel(result.clarityScore)}</Badge>clarityScore)}</Badge>
                       </div>
                     </div>
                   </CardHeader>
@@ -249,7 +245,7 @@ export default function Calculateur() {
                           TVA NI = 340% - 15% = <span className="text-accent text-2xl">325%</span>
                         </p>
                         <p className="text-center text-sm text-muted-foreground mt-2">
-                          C'est le <strong>potentiel caché</strong> qui était bloqué par les {result.frictions.attention.issues.length + result.frictions.cognitive.issues.length + result.frictions.emotionnelle.issues.length} friction(s) détectée(s).
+                          C'est le <strong>potentiel caché</strong> qui était bloqué par les {result.frictions.length} friction(s) détectée(s).
                         </p>
                       </div>
                     </div>
@@ -258,40 +254,6 @@ export default function Calculateur() {
                         <strong className="text-accent">🎯 La vérité :</strong> Votre idée était brillante dès le départ. Ce n'est pas un problème de qualité, mais de <strong>Dissipation Intellectuelle</strong>. Le Sprint de Clarté active le <strong className="text-accent">Facteur α = 22.67</strong> pour libérer vos 325% de TVA NI.
                       </p>
                     </div>
-                  </CardContent>
-                </Card>
-
-                {/* Réécriture Automatique */}
-                <Card className="border-2 border-accent">
-                  <CardHeader>
-                    <div className="flex items-center gap-3">
-                      <Sparkles className="h-8 w-8 text-accent" />
-                      <div>
-                        <CardTitle className="text-2xl">Générer la version corrigée</CardTitle>
-                        <CardDescription>Obtenez une version améliorée de votre texte selon le Code PFPMA</CardDescription>
-                      </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <Button 
-                      onClick={() => {
-                        const rewritten = rewriteContentAdaptive(message, result);
-                        setRewrittenText(rewritten);
-                        setShowComparison(true);
-                        // Scroll vers la comparaison
-                        setTimeout(() => {
-                          document.getElementById('comparison')?.scrollIntoView({ behavior: 'smooth' });
-                        }, 100);
-                      }}
-                      size="lg"
-                      className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
-                    >
-                      <Sparkles className="mr-2 h-5 w-5" />
-                      Générer la version corrigée
-                    </Button>
-                    <p className="text-sm text-muted-foreground mt-3 text-center">
-                      Notre IA va appliquer automatiquement les recommandations PFPMA à votre texte
-                    </p>
                   </CardContent>
                 </Card>
 
@@ -318,96 +280,6 @@ export default function Calculateur() {
                     </div>
                   </CardContent>
                 </Card>
-
-                {/* Comparaison AVANT/APRÈS */}
-                {showComparison && rewrittenText && (
-                  <Card id="comparison" className="border-2 border-accent">
-                    <CardHeader>
-                      <div className="flex items-center justify-between">
-                        <div>
-                          <CardTitle className="text-2xl flex items-center gap-3">
-                            <TrendingUp className="h-6 w-6 text-accent" />
-                            Comparaison AVANT / APRÈS
-                          </CardTitle>
-                          <CardDescription>
-                            Votre texte a été réorganisé selon la prévalence PFPMA détectée
-                          </CardDescription>
-                        </div>
-                        <Button
-                          variant="outline"
-                          onClick={() => {
-                            navigator.clipboard.writeText(rewrittenText);
-                            alert("Version corrigée copiée dans le presse-papier !");
-                          }}
-                        >
-                          Copier la version corrigée
-                        </Button>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="grid md:grid-cols-2 gap-6">
-                        {/* AVANT */}
-                        <div>
-                          <div className="flex items-center gap-2 mb-3">
-                            <Badge variant="destructive">AVANT</Badge>
-                            <span className="text-sm text-muted-foreground">
-                              {message.split(' ').length} mots
-                            </span>
-                          </div>
-                          <div className="p-4 bg-red-50 dark:bg-red-950/20 rounded-lg border border-red-200 dark:border-red-800">
-                            <pre className="whitespace-pre-wrap text-sm font-sans">{message}</pre>
-                          </div>
-                        </div>
-
-                        {/* APRÈS */}
-                        <div>
-                          <div className="flex items-center gap-2 mb-3">
-                            <Badge variant="default" className="bg-green-600">APRÈS</Badge>
-                            <span className="text-sm text-muted-foreground">
-                              {rewrittenText.split(' ').length} mots
-                            </span>
-                          </div>
-                          <div className="p-4 bg-green-50 dark:bg-green-950/20 rounded-lg border border-green-200 dark:border-green-800">
-                            <pre className="whitespace-pre-wrap text-sm font-sans">{rewrittenText}</pre>
-                          </div>
-                        </div>
-                      </div>
-
-                      {/* Suggestions détaillées */}
-                      <div className="mt-6 space-y-3">
-                        <h4 className="font-semibold flex items-center gap-2">
-                          <Lightbulb className="h-5 w-5 text-accent" />
-                          Modifications appliquées
-                        </h4>
-                        {generateRewriteSuggestionsAdaptive(message, result).map((suggestion, i) => (
-                          <Alert key={i} variant={suggestion.priority === 'high' ? 'default' : 'default'}>
-                            <CheckCircle2 className="h-4 w-4" />
-                            <AlertDescription>
-                              <div className="flex items-start gap-2">
-                                <Badge variant={suggestion.priority === 'high' ? 'default' : 'secondary'}>
-                                  {suggestion.section}
-                                </Badge>
-                                <div className="flex-1">
-                                  <p className="font-semibold text-sm">{suggestion.reason}</p>
-                                  <div className="mt-2 grid grid-cols-2 gap-2 text-xs">
-                                    <div>
-                                      <span className="text-muted-foreground">Avant :</span>
-                                      <p className="text-red-600 dark:text-red-400">{suggestion.before.substring(0, 80)}...</p>
-                                    </div>
-                                    <div>
-                                      <span className="text-muted-foreground">Après :</span>
-                                      <p className="text-green-600 dark:text-green-400">{suggestion.after.substring(0, 80)}...</p>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </AlertDescription>
-                          </Alert>
-                        ))}
-                      </div>
-                    </CardContent>
-                  </Card>
-                )}
               </div>
             )}
           </div>

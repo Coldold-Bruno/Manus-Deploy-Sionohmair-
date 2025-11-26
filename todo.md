@@ -810,3 +810,17 @@
 - [x] Améliorer la validation des exercices (feedback plus intelligent)
 - [x] Ajouter le manuel PDF téléchargeable après achat
 - [ ] Créer le checkpoint final et documenter le parcours utilisateur
+
+
+## Phase 67 : Calculateur de Contenu Automatique - EN COURS 🧮
+- [x] Créer la logique d'analyse PFPMA (détection des 5 parties)
+- [x] Créer le calcul des 3 Frictions (Attention, Cognitive, Émotionnelle)
+- [x] Créer le calcul du Facteur Alpha (α = 22.67)
+- [x] Créer le calcul du Score de Clarté global (0-100)
+- [x] Créer la génération de suggestions d'amélioration
+- [x] Créer la réécriture adaptative selon la prévalence PFPMA
+- [x] Créer l'interface utilisateur du calculateur (/calculateur)
+- [x] Ajouter la comparaison AVANT/APRÈS côte à côte
+- [ ] Ajouter la visualisation graphique (radar chart)
+- [ ] Ajouter l'export PDF du rapport
+- [ ] Tester le calculateur et créer le checkpoint final
