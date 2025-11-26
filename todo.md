@@ -824,3 +824,24 @@
 - [ ] Ajouter la visualisation graphique (radar chart)
 - [ ] Ajouter l'export PDF du rapport
 - [ ] Tester le calculateur et créer le checkpoint final
+
+
+## Phase 68 : Système de Coaching Zoom + Devis Visual Graphic - EN COURS 📹
+- [x] Créer le schéma de base de données pour les devis (quotes table)
+- [x] Créer le router tRPC pour la gestion des devis (création, validation, suivi)
+- [ ] Créer le générateur de PDF pour les devis (avec logo, prix, livrables)
+- [ ] Créer la page /visual-graphic avec portfolio (30+ designs/logos)
+- [ ] Créer le formulaire de demande de devis unifié (tous services)
+- [ ] Créer le dashboard de suivi des devis (/dashboard/quotes)
+- [ ] Intégrer le paiement Stripe après validation du devis
+- [ ] Ajouter les notifications email (confirmation, rappels, factures)
+- [ ] Intégrer les logos dans les sections appropriées du site
+- [ ] Tester le parcours complet et créer le checkpoint final
+
+### Coaching Zoom (Sprint de Clarté)
+- [x] Créer le schéma de base de données pour les sessions Zoom (avec contacts + avant/après RDV)
+- [x] Créer le router tRPC pour la gestion des RDV Zoom
+- [ ] Intégrer l'API Zoom pour générer les liens automatiquement
+- [ ] Créer l'interface de réservation de créneaux (calendrier)
+- [ ] Créer le dashboard de gestion des sessions (client + admin)
+- [ ] Ajouter les notifications email (confirmation + rappel 24h avant)

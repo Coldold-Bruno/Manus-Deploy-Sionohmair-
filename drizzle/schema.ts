@@ -551,3 +551,15 @@ export const badges = mysqlTable("badges", {
 
 export type Badge = typeof badges.$inferSelect;
 export type InsertBadge = typeof badges.$inferInsert;
+
+// ============================================================================
+// SYSTÈME DE DEVIS
+// ============================================================================
+
+export * from "./schema_quotes";
+
+// ============================================================================
+// SYSTÈME DE COACHING ZOOM
+// ============================================================================
+
+export * from "./schema_coaching";

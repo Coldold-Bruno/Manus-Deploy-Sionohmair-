@@ -40,6 +40,7 @@ import LoiClarte from "./pages/LoiClarte";
 import Formation from "./pages/Formation";
 import FormationModule from "./pages/FormationModule";
 import CGVFormation from "./pages/CGVFormation";
+import VisualGraphic from "./pages/VisualGraphic";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -52,6 +53,7 @@ function Router() {
       <Route path={"/formation"} component={Formation} />
       <Route path={"/formation/module/:moduleNumber"} component={FormationModule} />
       <Route path={"/cgv-formation"} component={CGVFormation} />
+      <Route path={"/visual-graphic"} component={VisualGraphic} />
       <Route path={"/services"} component={Services} />
       <Route path={"/portfolio"} component={Portfolio} />
       <Route path={"/ressources"} component={Ressources} />
