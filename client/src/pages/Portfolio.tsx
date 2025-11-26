@@ -120,6 +120,113 @@ const portfolioItems: PortfolioItem[] = [
     image: "/parfum-manchon.png",
     description: "Design de manchon pour flacon de parfum",
   },
+  // Nouvelles créations - Lot 2
+  {
+    id: "design-abstract-1",
+    title: "Design Abstrait Moderne",
+    category: "other",
+    image: "/design-abstract-1.png",
+    description: "Composition graphique abstraite et contemporaine",
+  },
+  {
+    id: "design-modern-1",
+    title: "Visuel Moderne",
+    category: "other",
+    image: "/design-modern-1.webp",
+    description: "Design épuré et minimaliste",
+  },
+  {
+    id: "design-creative-1",
+    title: "Création Artistique",
+    category: "other",
+    image: "/design-creative-1.webp",
+    description: "Composition créative originale",
+  },
+  {
+    id: "design-visual-1",
+    title: "Composition Visuelle",
+    category: "other",
+    image: "/design-visual-1.webp",
+    description: "Design visuel impactant",
+  },
+  {
+    id: "design-graphic-1",
+    title: "Création Graphique",
+    category: "other",
+    image: "/design-graphic-1.webp",
+    description: "Design graphique professionnel",
+  },
+  {
+    id: "design-pro-1",
+    title: "Design Professionnel",
+    category: "other",
+    image: "/design-pro-1.png",
+    description: "Création professionnelle haut de gamme",
+  },
+  {
+    id: "design-marketing-1",
+    title: "Visuel Marketing",
+    category: "social",
+    image: "/design-marketing-1.png",
+    description: "Support marketing visuel percutant",
+  },
+  {
+    id: "design-creative-2",
+    title: "Composition Créative",
+    category: "other",
+    image: "/design-creative-2.png",
+    description: "Design créatif innovant",
+  },
+  {
+    id: "design-modern-2",
+    title: "Design Moderne Avancé",
+    category: "other",
+    image: "/design-modern-2.webp",
+    description: "Création moderne et sophistiquée",
+  },
+  {
+    id: "design-visual-2",
+    title: "Création Visuelle Premium",
+    category: "other",
+    image: "/design-visual-2.webp",
+    description: "Design visuel premium",
+  },
+  {
+    id: "design-graphic-2",
+    title: "Design Graphique Avancé",
+    category: "other",
+    image: "/design-graphic-2.webp",
+    description: "Composition graphique élaborée",
+  },
+  // Nouvelles créations - Lot 3
+  {
+    id: "logo-coach-premium",
+    title: "Logo Coach Premium Vectum",
+    category: "logo",
+    image: "/logo-coach-premium.jpg",
+    description: "Logo premium avec spirale dorée et effet 3D",
+  },
+  {
+    id: "logo-coach-highres",
+    title: "Logo Coach High-Resolution",
+    category: "logo",
+    image: "/logo-coach-highres.jpg",
+    description: "Logo vectoriel haute résolution avec mains et lumière",
+  },
+  {
+    id: "tarifs-digitale",
+    title: "Grille Tarifaire - Digitale Active Revolution",
+    category: "branding",
+    image: "/tarifs-digitale-active.jpg",
+    description: "Offres logos : Starter (25€), Intervelle (45€), Avancé (95€)",
+  },
+  {
+    id: "citation-identite",
+    title: "Citation - Un logo, c'est votre identité",
+    category: "branding",
+    image: "/citation-logo-identite.jpg",
+    description: "Visuel inspirant sur l'importance de l'identité de marque",
+  },
 ];
 
 const categories = [
@@ -128,6 +235,7 @@ const categories = [
   { id: "branding", label: "Branding" },
   { id: "social", label: "Réseaux Sociaux" },
   { id: "packaging", label: "Packaging" },
+  { id: "other", label: "Autres Créations" },
 ];
 
 export default function Portfolio() {

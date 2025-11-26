@@ -46,6 +46,9 @@ export default function Home() {
             <Link href="/calculateur">
               <a className="text-sm font-medium hover:text-accent transition-colors">Calculateur</a>
             </Link>
+            <Link href="/portfolio">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Portfolio</a>
+            </Link>
             <Link href="/blog">
               <a className="text-sm font-medium hover:text-accent transition-colors">Blog</a>
             </Link>
@@ -114,6 +117,24 @@ export default function Home() {
                   <CardDescription>De méthodologie documentée</CardDescription>
                 </CardHeader>
               </Card>
+            </div>
+
+            {/* Visuels Promotionnels */}
+            <div className="grid md:grid-cols-2 gap-8 pt-12">
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-accent/20 transition-shadow duration-300">
+                <img 
+                  src="/sprint-clarte-promo.png" 
+                  alt="Sprint de Clarté - Offre de lancement 490€" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
+              <div className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-accent/20 transition-shadow duration-300">
+                <img 
+                  src="/sionohmair-academy-3d.png" 
+                  alt="Sionohmair Insight Academy - Analyse, Stratégisation, Amplification" 
+                  className="w-full h-auto object-cover"
+                />
+              </div>
             </div>
 
             {/* M - Méthode */}
