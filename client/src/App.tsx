@@ -35,6 +35,7 @@ import SendCampaign from "./pages/admin/SendCampaign";
 import EmailTemplates from "./pages/admin/EmailTemplates";
 import EmailWorkflows from "./pages/admin/EmailWorkflows";
 import Analytics from "./pages/admin/Analytics";
+import Portfolio from "./pages/Portfolio";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -44,6 +45,7 @@ function Router() {
       <Route path={"/sprint"} component={SprintClarte} />
       <Route path={"/theoreme"} component={Theoreme} />
       <Route path={"/services"} component={Services} />
+      <Route path={"/portfolio"} component={Portfolio} />
       <Route path={"/ressources"} component={Ressources} />
       <Route path={"/niveau1"} component={Niveau1} />
       <Route path={"/niveau2"} component={Niveau2} />
