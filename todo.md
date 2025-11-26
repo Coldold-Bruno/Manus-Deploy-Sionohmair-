@@ -676,3 +676,18 @@
 - [x] Créer la documentation GTM_CONFIGURATION.md
 - [ ] Configurer Google Analytics 4 dans GTM (à faire par l'utilisateur)
 - [ ] Configurer les événements de conversion (à faire par l'utilisateur)
+
+
+## Phase 57 : Configuration Google Analytics 4 - TERMINÉ ✅
+- [x] Récupérer le Measurement ID (G-9R1BZN4B9E)
+- [x] Intégrer GA4 dans client/index.html
+- [x] Tester le tracking des événements
+
+## Phase 58 : Remplacement du logo et assets visuels - TERMINÉ ✅
+- [x] Copier le logo principal (logo-sionohmair.png)
+- [x] Copier le logo simple (logo-sionohmair-simple.png)
+- [x] Copier l'image Sprint de Clarté promo (sprint-clarte-promo.png)
+- [x] Copier l'image 3D Sionohmair Academy (sionohmair-academy-3d.png)
+- [x] Configurer le logo simple dans client/src/const.ts
+- [ ] Intégrer les images dans les pages du site
+- [ ] Créer une galerie de créations graphiques
