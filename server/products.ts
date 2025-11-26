@@ -55,6 +55,23 @@ export const PRODUCTS = {
       'KPIs de Clarté personnalisés',
       'Support illimité pendant 12 mois'
     ]
+  },
+  FORMATION_SPRINT_CLARTE: {
+    id: 'formation_sprint_clarte',
+    name: 'Formation Sprint de Clarté',
+    description: 'Formation interactive en 9 modules (11h15) pour maîtriser le Code PFPMA et transformer vos messages en machines à conversion',
+    price: 79000, // 790 € en centimes
+    currency: 'eur',
+    features: [
+      '9 modules interactifs (11h15 de contenu)',
+      '27 exercices pratiques avec validation automatique',
+      'Déblocage progressif (1 module par jour minimum)',
+      'Badges de gamification (8 badges disponibles)',
+      'Accès pendant 90 jours (3 mois)',
+      'Certificat "Architecte de la Clarté" à la fin',
+      'Manuel PFPMA (PDF téléchargeable)',
+      'Templates de rédaction (Word/Excel)'
+    ]
   }
 } as const;
 

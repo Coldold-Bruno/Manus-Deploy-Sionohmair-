@@ -42,12 +42,82 @@ export default function Services() {
         </div>
       </section>
 
+      {/* Formation Sprint de Clarté */}
+      <section className="py-12 bg-accent/5 border-y">
+        <div className="container">
+          <div className="max-w-5xl mx-auto">
+            <Card className="border-accent/30 shadow-lg">
+              <CardHeader className="text-center pb-6">
+                <Badge className="mb-3 bg-accent text-accent-foreground mx-auto">🎓 Formation Interactive</Badge>
+                <CardTitle className="text-3xl mb-2">Formation Sprint de Clarté</CardTitle>
+                <CardDescription className="text-lg">
+                  Maîtrise le Code PFPMA toi-même en 9 modules interactifs
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="grid md:grid-cols-2 gap-6">
+                  <div className="space-y-3">
+                    <p className="font-semibold">Ce que tu reçois :</p>
+                    <ul className="space-y-2 text-sm">
+                      {[
+                        "9 modules interactifs (11h15 de contenu)",
+                        "27 exercices pratiques avec validation automatique",
+                        "Déblocage progressif (1 module par jour minimum)",
+                        "Badges de gamification (8 badges disponibles)",
+                        "Certificat 'Architecte de la Clarté'",
+                        "Manuel PFPMA (PDF téléchargeable)",
+                        "Templates de rédaction (Word/Excel)"
+                      ].map((item, index) => (
+                        <li key={index} className="flex items-start gap-2">
+                          <Check className="h-4 w-4 text-accent shrink-0 mt-0.5" />
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="space-y-4">
+                    <div className="bg-muted/50 p-6 rounded-lg text-center">
+                      <div className="text-5xl font-bold text-accent mb-2">790 €</div>
+                      <div className="text-sm text-muted-foreground">Accès pendant 90 jours</div>
+                    </div>
+                    <div className="space-y-2 text-sm">
+                      <p className="font-semibold">⚠️ Important :</p>
+                      <ul className="space-y-1 text-muted-foreground">
+                        <li>• Accès limité à 90 jours (3 mois)</li>
+                        <li>• Aucun remboursement possible</li>
+                        <li>• Support technique inclus (48h)</li>
+                        <li>• Pas de support pédagogique</li>
+                      </ul>
+                    </div>
+                    <PaymentButton
+                      productId="FORMATION_SPRINT_CLARTE"
+                      label="Acheter la formation (790 €)"
+                      className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                    />
+                    <Button asChild variant="outline" className="w-full">
+                      <Link href="/cgv-formation">
+                        <a className="text-xs">Lire les CGV</a>
+                      </Link>
+                    </Button>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
       {/* Les 3 Niveaux */}
       <section className="py-20 bg-background">
         <div className="container">
-          <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-            {/* Niveau 1 : Diagnostic de Clarté */}
-            <Card className="border-accent/20 relative">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold mb-4">Services de Consulting</h2>
+              <p className="text-muted-foreground">Nous rédigeons tes messages pour toi</p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Niveau 1 : Diagnostic de Clarté */}
+              <Card className="border-accent/20 relative">
               <div className="absolute top-4 right-4">
                 <Badge className="bg-accent/10 text-accent hover:bg-accent/20">
                   Offre de Lancement -67%
@@ -223,6 +293,7 @@ export default function Services() {
                 />
               </CardContent>
             </Card>
+            </div>
           </div>
         </div>
       </section>

@@ -18,7 +18,7 @@ export const stripeRouter = router({
   createCheckoutSession: protectedProcedure
     .input(
       z.object({
-        productId: z.enum(['SPRINT_CLARTE', 'ARCHITECTURE_INSIGHT', 'PARTENARIAT_STRATEGIQUE']),
+        productId: z.enum(['SPRINT_CLARTE', 'ARCHITECTURE_INSIGHT', 'PARTENARIAT_STRATEGIQUE', 'FORMATION_SPRINT_CLARTE']),
       })
     )
     .mutation(async ({ ctx, input }) => {

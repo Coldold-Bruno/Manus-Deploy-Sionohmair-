@@ -37,6 +37,9 @@ import EmailWorkflows from "./pages/admin/EmailWorkflows";
 import Analytics from "./pages/admin/Analytics";
 import Portfolio from "./pages/Portfolio";
 import LoiClarte from "./pages/LoiClarte";
+import Formation from "./pages/Formation";
+import FormationModule from "./pages/FormationModule";
+import CGVFormation from "./pages/CGVFormation";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -46,6 +49,9 @@ function Router() {
       <Route path={"/sprint"} component={SprintClarte} />
       <Route path={"/theoreme"} component={Theoreme} />
       <Route path={"/loi-clarte"} component={LoiClarte} />
+      <Route path={"/formation"} component={Formation} />
+      <Route path={"/formation/module/:moduleNumber"} component={FormationModule} />
+      <Route path={"/cgv-formation"} component={CGVFormation} />
       <Route path={"/services"} component={Services} />
       <Route path={"/portfolio"} component={Portfolio} />
       <Route path={"/ressources"} component={Ressources} />

@@ -4,7 +4,7 @@ import { CreditCard, Loader2 } from "lucide-react";
 import { toast } from "sonner";
 
 interface PaymentButtonProps {
-  productId: "SPRINT_CLARTE" | "ARCHITECTURE_INSIGHT" | "PARTENARIAT_STRATEGIQUE";
+  productId: "SPRINT_CLARTE" | "ARCHITECTURE_INSIGHT" | "PARTENARIAT_STRATEGIQUE" | "FORMATION_SPRINT_CLARTE";
   label?: string;
   variant?: "default" | "outline";
   size?: "default" | "lg" | "sm";

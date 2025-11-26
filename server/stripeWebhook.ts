@@ -2,7 +2,7 @@ import express, { Express, Request, Response } from 'express';
 import Stripe from 'stripe';
 import { ENV } from './_core/env';
 import { getDb } from './db';
-import { orders, users } from '../drizzle/schema';
+import { orders, users, formationAccess, moduleProgress } from '../drizzle/schema';
 import { eq } from 'drizzle-orm';
 import { sendOrderConfirmationEmail } from './emailService';
 
@@ -168,13 +168,21 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
           SPRINT_CLARTE: 'Sprint de Clarté',
           ARCHITECTURE_INSIGHT: 'Architecture de l\'Insight',
           PARTENARIAT_STRATEGIQUE: 'Partenariat Stratégique',
+          FORMATION_SPRINT_CLARTE: 'Formation Sprint de Clarté',
         };
 
         const productPrices: Record<string, string> = {
           SPRINT_CLARTE: '490 €',
           ARCHITECTURE_INSIGHT: '10 000 €',
           PARTENARIAT_STRATEGIQUE: '50 000 €',
+          FORMATION_SPRINT_CLARTE: '790 €',
         };
+
+        // Si c'est la formation, créer l'accès automatiquement
+        if (productId === 'FORMATION_SPRINT_CLARTE') {
+          await createFormationAccess(db, parseInt(userId), order.id);
+          console.log('[Stripe Webhook] Formation access created for user:', userId);
+        }
 
         await sendOrderConfirmationEmail({
           to: user.email,
@@ -190,5 +198,63 @@ async function handleCheckoutSessionCompleted(session: Stripe.Checkout.Session) 
     } catch (error: any) {
       console.error('[Stripe Webhook] Error updating customer ID:', error);
     }
+  }
+}
+
+/**
+ * Créer un accès à la formation (90 jours) après achat
+ */
+async function createFormationAccess(db: any, userId: number, orderId: number) {
+  try {
+    // Calculer la date de fin d'accès (90 jours)
+    const startDate = new Date();
+    const endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + 90);
+
+    // Créer l'accès
+    const [newAccess] = await db.insert(formationAccess).values({
+      userId,
+      orderId,
+      accessStartDate: startDate,
+      accessEndDate: endDate,
+      isActive: true,
+      isCompleted: false,
+      completedModules: 0,
+      totalExercisesCompleted: 0,
+      overallScore: 0,
+      lastAccessDate: startDate,
+    });
+
+    // Créer les 9 modules (seul le module 1 est débloqué)
+    const modules = [
+      { number: 1, name: "Le Code PFPMA (Fondations)", unlocked: true },
+      { number: 2, name: "Les 3 Frictions (Diagnostic)", unlocked: false },
+      { number: 3, name: "Le Facteur Alpha (α = 22.67)", unlocked: false },
+      { number: 4, name: "Le Problème (P)", unlocked: false },
+      { number: 5, name: "La Formule (F)", unlocked: false },
+      { number: 6, name: "La Preuve (P)", unlocked: false },
+      { number: 7, name: "La Méthode (M)", unlocked: false },
+      { number: 8, name: "L'Appel (A)", unlocked: false },
+      { number: 9, name: "Certification Finale", unlocked: false },
+    ];
+
+    for (const module of modules) {
+      await db.insert(moduleProgress).values({
+        userId,
+        formationAccessId: newAccess.insertId,
+        moduleNumber: module.number,
+        moduleName: module.name,
+        isUnlocked: module.unlocked,
+        isStarted: false,
+        isCompleted: false,
+        completedExercises: 0,
+        moduleScore: 0,
+      });
+    }
+
+    console.log('[Formation] Access created successfully for user:', userId, 'until:', endDate);
+  } catch (error: any) {
+    console.error('[Formation] Error creating access:', error);
+    throw error;
   }
 }
