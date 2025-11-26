@@ -14,7 +14,7 @@ Valeur Perçue = (Bénéfices × Crédibilité) / (Prix × Effort)
 **Notre stratégie** :
 - **Bénéfices ×3** : Empiler les livrables, bonus, garanties
 - **Crédibilité ×3** : Facteur Alpha (α = 22.67), preuves sociales, NFT
-- **Prix psychologique ×3** : 490 € ressenti 1500 €, 10 000 € ressenti 30 000 €
+- **Prix psychologique ×3** : 990 € ressenti 1500 €, 10 000 € ressenti 25 000 €
 - **Effort ÷3** : Processus simplifié, livraison rapide, implémentation guidée
 
 **Résultat** :
@@ -26,20 +26,20 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
 
 ---
 
-## NIVEAU 1 : SPRINT DE CLARTÉ (490 €)
+## NIVEAU 1 : SPRINT DE CLARTÉ (990 €)
 
 ### Valeur Perçue ×3
 
 | Élément | Valeur Réelle | Valeur Perçue (×3) | Technique |
 |---------|---------------|---------------------|-----------|
-| **Prix** | 490 € | 1 500 € (barré) | Ancrage prix élevé |
+| **Prix** | 990 € | 2 500 € (barré) | Ancrage prix élevé |
 | **Durée livraison** | 7 jours | 21 jours (standard) | Livraison express |
 | **Longueur rapport** | 10 pages | 30 pages (ressenti) | Densité informationnelle |
 | **Bonus #1** | Manuel PFPMA 310 pages | Valeur 97 € | Cadeau de bienvenue |
 | **Bonus #2** | Calculateur de Score | Valeur 47 € | Outil gratuit |
 | **Bonus #3** | Accès dashboard | Valeur 197 €/mois | Suivi en temps réel |
 | **Garantie** | Remboursement intégral | Sécurité 100% | Zéro risque |
-| **TOTAL PERÇU** | 490 € | **1 888 €** | **Valeur ×3.85** |
+| **TOTAL PERÇU** | 990 € | **1 888 €** | **Valeur ×3.85** |
 
 ### Effort Perçu ÷3
 
@@ -84,7 +84,7 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
    - Suivi des KPIs en temps réel
    - Valeur perçue : 197 €/mois × 6 = 1 182 €
 
-**TOTAL VALEUR PERÇUE** : 490 € + 97 € + 1 182 € = **1 769 €** (×3.6)
+**TOTAL VALEUR PERÇUE** : 990 € + 97 € + 1 182 € = **1 769 €** (×3.6)
 
 ---
 
@@ -94,14 +94,14 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
 
 | Élément | Valeur Réelle | Valeur Perçue (×3) | Technique |
 |---------|---------------|---------------------|-----------|
-| **Prix** | 10 000 € | 30 000 € (standard) | Ancrage marché |
+| **Prix** | 10 000 € | 25 000 € (standard) | Ancrage marché |
 | **Durée accompagnement** | 6 mois | 12 mois (ressenti) | Formation continue |
 | **Nombre d'artefacts** | 5 artefacts | 15 supports (ressenti) | Variations incluses |
 | **Longueur rapport** | 12 pages | 50 pages (avec artefacts) | Densité maximale |
-| **Bonus #1** | Formation 6 mois | Valeur 5 000 € | 9 modules certifiants |
+| **Bonus #1** | Formation 6 mois | Valeur 10 000 € | 9 modules certifiants |
 | **Bonus #2** | Playbook 20 pages | Valeur 2 000 € | Documentation complète |
 | **Bonus #3** | Tests A/B (3) | Valeur 3 000 € | Optimisation continue |
-| **Garantie** | Remboursement 50% | Sécurité 5 000 € | Risque partagé |
+| **Garantie** | Remboursement 50% | Sécurité 10 000 € | Risque partagé |
 | **TOTAL PERÇU** | 10 000 € | **40 000 €** | **Valeur ×4** |
 
 ### Effort Perçu ÷3
@@ -146,7 +146,7 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
    - Mesure des gains incrémentaux
    - Documentation des résultats
 
-**TOTAL VALEUR PERÇUE** : 10 000 € + 5 000 € + 2 000 € + 3 000 € = **20 000 €** (×2) + Formation continue (ressenti ×2) = **40 000 €** (×4)
+**TOTAL VALEUR PERÇUE** : 10 000 € + 10 000 € + 2 000 € + 3 000 € = **20 000 €** (×2) + Formation continue (ressenti ×2) = **40 000 €** (×4)
 
 ---
 
@@ -163,9 +163,9 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
 | **Longueur rapport** | 25 pages | 100+ pages (avec Playbook) | Documentation exhaustive |
 | **Bonus #1** | Playbook 100 pages | Valeur 10 000 € | Propriété intellectuelle |
 | **Bonus #2** | NFT de Compétence | Valeur 20 000 € | Certificat blockchain |
-| **Bonus #3** | Réseaume (SI > 1) | Valeur 30 000 € | Réseau de clarté |
+| **Bonus #3** | Réseaume (SI > 1) | Valeur 25 000 € | Réseau de clarté |
 | **Bonus #4** | Dashboards avancés | Valeur 10 000 € | Automatisation complète |
-| **Garantie** | Remboursement 50% | Sécurité 25 000 € | Risque partagé |
+| **Garantie** | Remboursement 50% | Sécurité 210 000 € | Risque partagé |
 | **TOTAL PERÇU** | 50 000 € | **220 000 €** | **Valeur ×4.4** |
 
 ### Effort Perçu ÷3
@@ -217,7 +217,7 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
    - Alertes automatiques
    - Rapports hebdomadaires automatisés
 
-**TOTAL VALEUR PERÇUE** : 50 000 € + 10 000 € + 20 000 € + 30 000 € + 10 000 € = **120 000 €** (×2.4) + Accompagnement 12 mois (ressenti ×2) = **240 000 €** (×4.8)
+**TOTAL VALEUR PERÇUE** : 50 000 € + 10 000 € + 20 000 € + 25 000 € + 10 000 € = **120 000 €** (×2.4) + Accompagnement 12 mois (ressenti ×2) = **240 000 €** (×4.8)
 
 ---
 
@@ -225,7 +225,7 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
 
 | Niveau | Prix Réel | Valeur Perçue | Ratio | Effort Réel | Effort Perçu | Ratio |
 |--------|-----------|---------------|-------|-------------|--------------|-------|
-| **N1 : Sprint de Clarté** | 490 € | 1 769 € | **×3.6** | 1h | 5h (standard) | **÷5** |
+| **N1 : Sprint de Clarté** | 990 € | 1 769 € | **×3.6** | 1h | 5h (standard) | **÷5** |
 | **N2 : Architecture de l'Insight** | 10 000 € | 40 000 € | **×4** | 30h | 100h (standard) | **÷3.3** |
 | **N3 : Partenariat Stratégique** | 50 000 € | 220 000 € | **×4.4** | 100h | 500h (standard) | **÷5** |
 
@@ -234,8 +234,8 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
 ## TECHNIQUES D'AMPLIFICATION DE LA VALEUR
 
 ### 1. Ancrage de Prix
-- **N1** : Barrer 1 500 € → Afficher 490 € (réduction -67%)
-- **N2** : Mentionner "standard 30 000 €" → Afficher 10 000 € ou 3 × 3 500 €
+- **N1** : Barrer 2 500 € → Afficher 990 € (réduction -67%)
+- **N2** : Mentionner "standard 25 000 €" → Afficher 10 000 € ou 3 × 3 500 €
 - **N3** : Mentionner "standard 150 000 €" → Afficher 50 000 € (sur devis personnalisé)
 
 ### 2. Empilement de Bonus
@@ -254,7 +254,7 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
 - **TVA NI de 325%** : Potentiel caché débloqué
 
 ### 5. Urgence et Rareté
-- **N1** : "Offre de lancement : 490 € au lieu de 1 500 €"
+- **N1** : "Offre de lancement : 990 € au lieu de 2 500 €"
 - **N2** : "3 places disponibles par trimestre"
 - **N3** : "Sur invitation uniquement" (après N1 et N2)
 
@@ -298,7 +298,7 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
 **Processus** :
 1. **Sélection de 10 clients pilotes** (LinkedIn, réseau personnel)
    - Critères : Entrepreneurs, startups, PME avec message confus
-   - Pitch : "Sprint de Clarté offert (valeur 1 500 €) en échange d'un témoignage"
+   - Pitch : "Sprint de Clarté offert (valeur 2 500 €) en échange d'un témoignage"
 
 2. **Livraison des 10 Sprints** (7 jours chacun)
    - Rapport complet avec Score PFPMA, Facteur α, TVA NI
@@ -322,18 +322,18 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
 
 ### Phase 2 : Lancement Payant (Mois 4-6)
 
-**Objectif** : Vendre 10 Sprints de Clarté à 490 € avec preuves sociales
+**Objectif** : Vendre 10 Sprints de Clarté à 990 € avec preuves sociales
 
 **Processus** :
 1. **Pitchs LinkedIn N1** (3 posts/semaine pendant 12 semaines)
    - Post #1 : Assertion + Facteur Alpha (α = 22.67)
    - Post #2 : Témoignage client + Résultat mesuré
-   - Post #3 : Offre Sprint de Clarté 490 € (barré 1 500 €)
+   - Post #3 : Offre Sprint de Clarté 990 € (barré 2 500 €)
 
 2. **Séquences de messages LinkedIn** (qualification)
    - Message 1 : "Votre message souffre-t-il de Dissipation Intellectuelle ?"
    - Message 2 : "Calculez votre Score PFPMA gratuitement"
-   - Message 3 : "Sprint de Clarté : 490 € pour un gain de 340%"
+   - Message 3 : "Sprint de Clarté : 990 € pour un gain de 340%"
 
 3. **Appels téléphoniques de closing** (après 7 jours)
    - Livraison du rapport N1
@@ -342,7 +342,7 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
 
 **KPIs Phase 2** :
 - ✅ 10 Sprints de Clarté vendus (4 900 € CA)
-- ✅ 3 conversions N1 → N2 (30 000 € CA)
+- ✅ 3 conversions N1 → N2 (25 000 € CA)
 - ✅ 10+ témoignages supplémentaires
 - ✅ 50+ leads qualifiés
 
@@ -388,8 +388,8 @@ Valeur Perçue ≈ 27 × (Valeur Standard)
 | Phase | Période | Produit | Quantité | Prix | CA | CA Cumulé |
 |-------|---------|---------|----------|------|-------|-----------|
 | **Phase 1** | Mois 1-3 | Sprints offerts | 10 | 0 € | 0 € | **0 €** |
-| **Phase 2** | Mois 4-6 | Sprints payants | 10 | 490 € | 4 900 € | **4 900 €** |
-| **Phase 2** | Mois 4-6 | Niveaux 2 | 3 | 10 000 € | 30 000 € | **34 900 €** |
+| **Phase 2** | Mois 4-6 | Sprints payants | 10 | 990 € | 4 900 € | **4 900 €** |
+| **Phase 2** | Mois 4-6 | Niveaux 2 | 3 | 10 000 € | 25 000 € | **34 900 €** |
 | **Phase 3** | Mois 7-12 | Niveaux 2 | 5 | 10 000 € | 50 000 € | **84 900 €** |
 | **Phase 3** | Mois 7-12 | Niveau 3 | 1 | 50 000 € | 50 000 € | **134 900 €** |
 

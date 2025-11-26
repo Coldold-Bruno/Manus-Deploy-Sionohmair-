@@ -184,7 +184,7 @@ export default function Calculateur() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <Textarea
-                  placeholder="Exemple : Votre idée est brillante. Pourquoi personne ne la comprend ? 90% des idées meurent dans la confusion. Transformez votre communication en science de la performance avec le Sprint de Clarté : 7 jours pour un message clair. +250% de conversion moyenne. Réserver mon Sprint de Clarté (490 €)."
+                  placeholder="Exemple : Votre idée est brillante. Pourquoi personne ne la comprend ? 90% des idées meurent dans la confusion. Transformez votre communication en science de la performance avec le Sprint de Clarté : 7 jours pour un message clair. +250% de conversion moyenne. Réserver mon Sprint de Clarté (990 €)."
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
                   className="min-h-[200px] text-base"
@@ -346,7 +346,7 @@ export default function Calculateur() {
                       <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                         <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
                           <Link href="/sprint">
-                            <a>Réserver mon Sprint de Clarté (490 €)</a>
+                            <a>Réserver mon Sprint de Clarté (990 €)</a>
                           </Link>
                         </Button>
                         <Button asChild size="lg" variant="outline">

@@ -63,8 +63,8 @@ export default function Services() {
                   Sprint de Clarté en 7 jours
                 </CardDescription>
                 <div className="space-y-2">
-                  <div className="text-4xl font-bold text-accent">490 €</div>
-                  <div className="text-sm text-muted-foreground line-through">1 500 €</div>
+                  <div className="text-4xl font-bold text-accent">990 €</div>
+                  <div className="text-sm text-muted-foreground line-through">2 500 €</div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
@@ -99,7 +99,7 @@ export default function Services() {
 
                 <PaymentButton
                   productId="SPRINT_CLARTE"
-                  label="Réserver mon Sprint (490 €)"
+                  label="Réserver mon Sprint (990 €)"
                   className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
                 />
               </CardContent>
@@ -396,7 +396,7 @@ export default function Services() {
                   <p>• Lancement d'un nouveau produit</p>
                   <p>• Optimisation d'une landing page</p>
                   <p>• Besoin d'un diagnostic rapide</p>
-                  <p>• Budget limité (490 €)</p>
+                  <p>• Budget limité (990 €)</p>
                 </CardContent>
               </Card>
 
@@ -442,12 +442,12 @@ export default function Services() {
               Prêt à transformer votre communication ?
             </h2>
             <p className="text-xl text-muted-foreground">
-              Commencez par le Niveau 1 à 490 € (au lieu de 1 500 €)
+              Commencez par le Niveau 1 à 990 € (au lieu de 2 500 €)
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <PaymentButton
                 productId="SPRINT_CLARTE"
-                label="Réserver mon Sprint (490 €)"
+                label="Réserver mon Sprint (990 €)"
                 size="lg"
                 className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8"
               />

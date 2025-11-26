@@ -235,7 +235,7 @@ export const getNewsletterWelcomeEmail = (data: {
       </div>
       
       <p style="color: #6b7280; font-size: 14px; margin-top: 40px;">
-        <strong>Envie d'aller plus loin ?</strong> Découvrez le Sprint de Clarté à 490 € : diagnostic complet en 7 jours avec activation du <strong style="color: #F59E0B;">Facteur α = 22.67</strong> pour un gain de <strong style="color: #F59E0B;">340%</strong>.
+        <strong>Envie d'aller plus loin ?</strong> Découvrez le Sprint de Clarté à 990 € : diagnostic complet en 7 jours avec activation du <strong style="color: #F59E0B;">Facteur α = 22.67</strong> pour un gain de <strong style="color: #F59E0B;">340%</strong>.
       </p>
       
       <div style="text-align: center; margin: 30px 0;">

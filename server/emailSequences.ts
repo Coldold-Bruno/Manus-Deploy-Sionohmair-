@@ -234,7 +234,7 @@ export const onboardingSequence = [
           
           <h3 style="color: #0A1929;">Diagnostic gratuit : Découvrez vos frictions en 7 jours</h3>
           
-          <p>J'ai créé le <strong>Sprint de Clarté</strong> : un diagnostic complet de votre message en 7 jours pour seulement 490 €.</p>
+          <p>J'ai créé le <strong>Sprint de Clarté</strong> : un diagnostic complet de votre message en 7 jours pour seulement 990 €.</p>
           
           <p><strong>Ce que vous recevez :</strong></p>
           
@@ -248,7 +248,7 @@ export const onboardingSequence = [
           
           <div style="text-align: center; margin: 40px 0;">
             <a href="https://sionohmair-insight-academy.manus.space/sprint-clarte" class="button">
-              Réserver mon Sprint de Clarté (490 €)
+              Réserver mon Sprint de Clarté (990 €)
             </a>
           </div>
           
@@ -325,7 +325,7 @@ export const onboardingSequence = [
           
           <div style="text-align: center; margin: 40px 0;">
             <a href="https://sionohmair-insight-academy.manus.space/sprint-clarte" class="button">
-              Réserver mon Sprint de Clarté (490 €)
+              Réserver mon Sprint de Clarté (990 €)
             </a>
           </div>
           
@@ -398,7 +398,7 @@ export const onboardingSequence = [
           
           <div style="text-align: center; margin: 40px 0;">
             <a href="https://sionohmair-insight-academy.manus.space/sprint-clarte" class="button">
-              Réserver mon Sprint de Clarté (490 €)
+              Réserver mon Sprint de Clarté (990 €)
             </a>
           </div>
           
@@ -461,7 +461,7 @@ export const onboardingSequence = [
           <div class="highlight">
             <h3 style="margin-top: 0; color: #0A1929;">Étape 5 : Appel (3 min)</h3>
             <p>Proposez une action spécifique et à friction zéro.</p>
-            <p><strong>Exemple :</strong> "Réservez votre Sprint (490 €) ou remboursé"</p>
+            <p><strong>Exemple :</strong> "Réservez votre Sprint (990 €) ou remboursé"</p>
           </div>
           
           <h3 style="color: #0A1929;">Testez votre message maintenant</h3>
@@ -480,7 +480,7 @@ export const onboardingSequence = [
           
           <div style="text-align: center; margin: 30px 0;">
             <a href="https://sionohmair-insight-academy.manus.space/sprint-clarte" class="button">
-              Réserver mon Sprint de Clarté (490 €)
+              Réserver mon Sprint de Clarté (990 €)
             </a>
           </div>
           

@@ -241,7 +241,7 @@ export default function Testimonials() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/sprint-clarte">
                 <Button size="lg" variant="secondary" className="group">
-                  Démarrer le Sprint de Clarté (490 €)
+                  Démarrer le Sprint de Clarté (990 €)
                   <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>

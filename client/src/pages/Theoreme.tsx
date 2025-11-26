@@ -359,7 +359,7 @@ export default function Theoreme() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8">
                 <Link href="/sprint">
-                  <a>Réserver mon Sprint (490 €)</a>
+                  <a>Réserver mon Sprint (990 €)</a>
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg px-8">

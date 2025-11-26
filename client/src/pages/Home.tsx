@@ -192,8 +192,8 @@ export default function Home() {
                 Offre de Lancement
               </div>
               <h3 className="text-3xl font-bold">
-                Sprint de Clarté : <span className="line-through text-muted-foreground">1 500 €</span>{" "}
-                <span className="text-accent">490 €</span>
+                Sprint de Clarté : <span className="line-through text-muted-foreground">2 500 €</span>{" "}
+                <span className="text-accent">990 €</span>
               </h3>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Diagnostic complet en 7 jours. Rapport de 10 pages avec Score de Clarté, analyse des frictions,

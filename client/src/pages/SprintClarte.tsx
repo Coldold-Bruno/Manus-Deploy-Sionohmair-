@@ -42,8 +42,8 @@ export default function SprintClarte() {
               Transformez votre message en machine à conversion en 7 jours
             </p>
             <div className="flex items-center justify-center gap-4 pt-4">
-              <span className="text-3xl line-through text-muted-foreground">1 500 €</span>
-              <span className="text-5xl font-bold text-accent">490 €</span>
+              <span className="text-3xl line-through text-muted-foreground">2 500 €</span>
+              <span className="text-5xl font-bold text-accent">990 €</span>
             </div>
             <p className="text-sm text-muted-foreground">
               Garantie satisfait ou remboursé à 100% • Paiement sécurisé
@@ -251,7 +251,7 @@ export default function SprintClarte() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <PaymentButton
                 productId="SPRINT_CLARTE"
-                label="Réserver mon Sprint (490 €)"
+                label="Réserver mon Sprint (990 €)"
                 size="lg"
                 className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8"
               />

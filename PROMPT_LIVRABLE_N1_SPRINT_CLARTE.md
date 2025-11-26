@@ -1,6 +1,6 @@
 # PROMPT DÉFINITIF : LIVRABLE CLIENT N1 - RAPPORT SPRINT DE CLARTÉ
 
-**Objectif** : Produire un rapport de diagnostic complet en 1-3 pages pour un client ayant acheté le Sprint de Clarté (490 €).
+**Objectif** : Produire un rapport de diagnostic complet en 1-3 pages pour un client ayant acheté le Sprint de Clarté (990 €).
 
 ---
 
@@ -117,7 +117,7 @@ TVA NI = 340% - 15% = 325%
 
 **Exemple** :
 - **AVANT** : "Nous sommes une entreprise innovante qui propose des solutions digitales..."
-- **APRÈS** : "Votre landing page génère 1000 visites mais seulement 10 conversions. Le Sprint de Clarté élimine les 3 frictions en 7 jours. +340% de conversion mesurée sur 50+ clients. Diagnostic → Élimination → Amplification. Réservez maintenant à 490 €."
+- **APRÈS** : "Votre landing page génère 1000 visites mais seulement 10 conversions. Le Sprint de Clarté élimine les 3 frictions en 7 jours. +340% de conversion mesurée sur 50+ clients. Diagnostic → Élimination → Amplification. Réservez maintenant à 990 €."
 - **Point de bascule** : Passer de "Nous sommes..." à "Votre problème est..."
 
 ---
@@ -213,7 +213,7 @@ TVA NI = 340% - 15% = 325%
 ### 11. GARANTIE DE RÉSULTATS
 
 **Engagement Sionohmair** :
-> Si vous implémentez le plan d'action sur 30 jours et que vous ne constatez pas d'amélioration mesurable de vos KPIs (CTR, conversion, engagement), nous vous remboursons intégralement les 490 € du Sprint de Clarté.
+> Si vous implémentez le plan d'action sur 30 jours et que vous ne constatez pas d'amélioration mesurable de vos KPIs (CTR, conversion, engagement), nous vous remboursons intégralement les 990 € du Sprint de Clarté.
 
 **Conditions** :
 - Implémentation complète des 3 actions prioritaires

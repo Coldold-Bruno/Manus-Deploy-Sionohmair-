@@ -565,7 +565,7 @@ export default function AutomatisationIA() {
                       <li>• <strong>Formulation :</strong> "Transformez votre idée brillante en message clair en 7 jours"</li>
                       <li>• <strong>Structure :</strong> Problème → Formule → Preuve → Méthode → Appel (PFPMA)</li>
                       <li>• <strong>Preuve :</strong> "+250% de conversion moyenne après optimisation"</li>
-                      <li>• <strong>CTA :</strong> "Réserver mon Sprint de Clarté (490 €)"</li>
+                      <li>• <strong>CTA :</strong> "Réserver mon Sprint de Clarté (990 €)"</li>
                     </ul>
                   </div>
                 </div>
@@ -641,7 +641,7 @@ export default function AutomatisationIA() {
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8">
                 <Link href="/sprint">
-                  <a>Tester avec le Sprint de Clarté (490 €)</a>
+                  <a>Tester avec le Sprint de Clarté (990 €)</a>
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg px-8">

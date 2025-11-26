@@ -273,7 +273,7 @@ Pour chaque artefact, utilisez ce template :
 ### 9. GARANTIE DE RÉSULTATS
 
 **Engagement Sionohmair** :
-> Si vous implémentez les 5 artefacts de clarté et que vous ne constatez pas un gain de conversion d'au moins **+200%** après 6 mois, nous vous remboursons 50% du Niveau 2 (5 000 €).
+> Si vous implémentez les 5 artefacts de clarté et que vous ne constatez pas un gain de conversion d'au moins **+200%** après 6 mois, nous vous remboursons 50% du Niveau 2 (10 000 €).
 
 **Conditions** :
 - Implémentation complète des 5 artefacts

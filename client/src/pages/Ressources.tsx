@@ -320,7 +320,7 @@ export default function Ressources() {
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg px-8">
                 <Link href="/sprint">
-                  <a>Réserver mon Sprint (490 €)</a>
+                  <a>Réserver mon Sprint (990 €)</a>
                 </Link>
               </Button>
             </div>

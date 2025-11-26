@@ -50,8 +50,8 @@ export default function Niveau1() {
               </p>
             </div>
             <div className="flex items-center justify-center gap-4 pt-4">
-              <span className="text-3xl line-through text-muted-foreground">1 500 €</span>
-              <span className="text-5xl font-bold text-accent">490 €</span>
+              <span className="text-3xl line-through text-muted-foreground">2 500 €</span>
+              <span className="text-5xl font-bold text-accent">990 €</span>
             </div>
           </div>
         </div>
@@ -351,12 +351,12 @@ export default function Niveau1() {
               Prêt à transformer votre message ?
             </h2>
             <p className="text-xl text-muted-foreground">
-              Réservez votre Sprint de Clarté maintenant : 490 € au lieu de 1 500 €
+              Réservez votre Sprint de Clarté maintenant : 990 € au lieu de 2 500 €
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
               <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8">
                 <Link href="/sprint">
-                  <a>Réserver mon Sprint (490 €)</a>
+                  <a>Réserver mon Sprint (990 €)</a>
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline" className="text-lg px-8">

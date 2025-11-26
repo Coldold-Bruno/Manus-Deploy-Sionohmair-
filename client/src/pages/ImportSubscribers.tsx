@@ -97,7 +97,7 @@ export default function ImportSubscribers() {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="general">Général</SelectItem>
-                  <SelectItem value="diagnostic">Diagnostic (Sprint 490 €)</SelectItem>
+                  <SelectItem value="diagnostic">Diagnostic (Sprint 990 €)</SelectItem>
                   <SelectItem value="formation">Formation (Architecture 10 000 €)</SelectItem>
                   <SelectItem value="transformation">Transformation (Partenariat 50 000 €)</SelectItem>
                 </SelectContent>

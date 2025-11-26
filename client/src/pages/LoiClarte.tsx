@@ -325,8 +325,8 @@ export default function LoiClarte() {
             
             <div className="p-8 bg-accent/10 border-2 border-accent/30 rounded-2xl space-y-4">
               <p className="text-2xl font-bold">
-                Sprint de Clarté : <span className="line-through text-muted-foreground">1 500 €</span>{" "}
-                <span className="text-accent">490 €</span>
+                Sprint de Clarté : <span className="line-through text-muted-foreground">2 500 €</span>{" "}
+                <span className="text-accent">990 €</span>
               </p>
               <p className="text-base text-muted-foreground">
                 Diagnostic complet en 7 jours. Rapport avec Score PFPMA, calcul du Joule Informatique perdu, 
