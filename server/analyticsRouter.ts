@@ -22,7 +22,7 @@ export const analyticsRouter = router({
       const [totalLeadsResult] = await db
         .select({ count: sql<number>`count(*)` })
         .from(subscribers)
-        .where(eq(subscribers.subscribed, true));
+        .where(eq(subscribers.status, "active"));
       
       const totalLeads = Number(totalLeadsResult?.count || 0);
 
@@ -31,7 +31,7 @@ export const analyticsRouter = router({
         .select({ count: sql<number>`count(*)` })
         .from(subscribers)
         .where(and(
-          eq(subscribers.subscribed, true),
+          eq(subscribers.status, "active"),
           eq(subscribers.leadTemperature, "hot")
         ));
       
@@ -41,7 +41,7 @@ export const analyticsRouter = router({
         .select({ count: sql<number>`count(*)` })
         .from(subscribers)
         .where(and(
-          eq(subscribers.subscribed, true),
+          eq(subscribers.status, "active"),
           eq(subscribers.leadTemperature, "warm")
         ));
       
@@ -52,9 +52,9 @@ export const analyticsRouter = router({
 
       // Average score
       const [avgScoreResult] = await db
-        .select({ avg: sql<number>`avg(${subscribers.score})` })
+        .select({ avg: sql<number>`avg(${subscribers.leadScore})` })
         .from(subscribers)
-        .where(eq(subscribers.subscribed, true));
+        .where(eq(subscribers.status, "active"));
       
       const avgScore = Number(avgScoreResult?.avg || 0);
 
@@ -65,7 +65,7 @@ export const analyticsRouter = router({
       const [activitiesResult] = await db
         .select({ count: sql<number>`count(*)` })
         .from(leadActivities)
-        .where(gte(leadActivities.timestamp, thirtyDaysAgo));
+        .where(gte(leadActivities.createdAt, thirtyDaysAgo));
       
       const totalActivities = Number(activitiesResult?.count || 0);
 
@@ -242,7 +242,7 @@ export const analyticsRouter = router({
       const allLeads = await db
         .select()
         .from(subscribers)
-        .where(eq(subscribers.subscribed, true));
+        .where(eq(subscribers.status, "active"));
 
       // Segment by temperature
       const byTemperature = {
@@ -288,16 +288,16 @@ export const analyticsRouter = router({
         .select()
         .from(leadActivities)
         .where(and(
-          gte(leadActivities.timestamp, startDate),
+          gte(leadActivities.createdAt, startDate),
           sql`${leadActivities.activityType} IN ('email_open', 'email_click')`
         ))
-        .orderBy(leadActivities.timestamp);
+        .orderBy(leadActivities.createdAt);
 
       // Group by date
       const byDate: Record<string, { opens: number; clicks: number }> = {};
 
       activities.forEach(activity => {
-        const date = activity.timestamp.toISOString().split('T')[0];
+        const date = activity.createdAt.toISOString().split('T')[0];
         if (!byDate[date]) {
           byDate[date] = { opens: 0, clicks: 0 };
         }

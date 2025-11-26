@@ -5,7 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { trpc } from "@/lib/trpc";
-import { Sparkles, ArrowLeft, Package, Calendar, User, Mail, Upload, Loader2, CheckCircle, Clock, Users, ListTodo, FlaskConical, Send, Workflow, BarChart3 } from "lucide-react";
+import { Sparkles, ArrowLeft, Package, Calendar, User, Mail, Upload, Loader2, CheckCircle, Clock, Users, ListTodo, FlaskConical, Send, Workflow, BarChart3, FileText, XCircle } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 import { toast } from "sonner";
@@ -139,9 +139,9 @@ export default function Admin() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+    <div className="min-h-screen bg-gradient-to-br from-background via-secondary/5 to-accent/5">
       {/* Navigation */}
-      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <nav className="glass border-b border-border/50 sticky top-0 z-50 shadow-premium">
         <div className="container flex h-16 items-center justify-between">
           <Link href="/">
             <a className="flex items-center space-x-2">
@@ -215,11 +215,16 @@ export default function Admin() {
       </nav>
 
       {/* Header */}
-      <section className="py-12 md:py-16">
-        <div className="container">
+      <section className="py-12 md:py-16 relative overflow-hidden">
+        <div className="absolute inset-0 gradient-premium opacity-5"></div>
+        <div className="container relative">
           <div className="max-w-6xl mx-auto">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Interface Admin</h1>
-            <p className="text-xl text-muted-foreground">
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 mb-6">
+              <Sparkles className="h-4 w-4 text-accent" />
+              <span className="text-sm font-medium text-accent">Administration</span>
+            </div>
+            <h1 className="text-4xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent">Interface Admin</h1>
+            <p className="text-xl text-muted-foreground max-w-2xl">
               Gérez les commandes et uploadez les artefacts pour vos clients
             </p>
           </div>
@@ -262,7 +267,7 @@ export default function Admin() {
                   const StatusIcon = statusConfig.icon;
 
                   return (
-                    <Card key={order.id} className="hover:shadow-lg transition-shadow">
+                    <Card key={order.id} className="gradient-card border-border/50 hover-lift transition-smooth shadow-premium">
                       <CardHeader>
                         <div className="flex items-start justify-between">
                           <div className="space-y-2">

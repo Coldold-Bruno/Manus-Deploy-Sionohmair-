@@ -399,7 +399,7 @@ export async function sendHotLeadNotification(leadEmail: string) {
       type: a.activityType,
       label,
       timestamp,
-      score: a.score,
+      score: a.score || 0,
     };
   });
 
@@ -407,20 +407,20 @@ export async function sendHotLeadNotification(leadEmail: string) {
   const adminEmail = process.env.OWNER_NAME || 'admin@sionohmair.com';
 
   // Get profile URL
-  const baseUrl = ENV.VITE_APP_URL || 'https://sionohmair-insight-academy.manus.space';
+  const baseUrl = process.env.VITE_APP_URL || 'https://sionohmair-insight-academy.manus.space';
   const profileUrl = `${baseUrl}/admin/lead-profile?email=${encodeURIComponent(leadEmail)}`;
 
   const htmlContent = getHotLeadNotificationEmail({
     email: lead.email,
     name: lead.name || undefined,
-    leadScore: lead.leadScore,
-    engagementScore: lead.engagementScore,
+    leadScore: lead.leadScore || 0,
+    engagementScore: lead.engagementScore || 0,
     interests: lead.interests,
     recentActivities,
     profileUrl,
   });
 
-  const subject = getHotLeadNotificationSubject(lead.email, lead.leadScore);
+  const subject = getHotLeadNotificationSubject(lead.email, lead.leadScore || 0);
 
   try {
     const info = await transporter.sendMail({

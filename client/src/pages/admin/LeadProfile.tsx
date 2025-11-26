@@ -469,7 +469,7 @@ export default function LeadProfile() {
                 <p className="text-sm text-muted-foreground mb-2">points</p>
                 <Badge className={`${temperatureBg} text-white`}>
                   <Flame className="h-3 w-3 mr-1" />
-                  {subscriber.leadTemperature.toUpperCase()}
+                  {(subscriber.leadTemperature || 'cold').toUpperCase()}
                 </Badge>
               </div>
             </div>

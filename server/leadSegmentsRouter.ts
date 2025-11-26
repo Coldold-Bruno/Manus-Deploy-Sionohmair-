@@ -111,7 +111,7 @@ export const leadSegmentsRouter = router({
       content: z.string().min(1),
       previewMode: z.boolean().optional(), // If true, only send to admin
     }))
-    .mutation(async ({ input, ctx }) => {
+    .mutation(async ({ input, ctx }): Promise<{ success: boolean; sent: number; failed: number; total: number; previewMode?: boolean }> => {
       if (ctx.user.role !== "admin") {
         throw new TRPCError({ code: "FORBIDDEN", message: "Admin access required" });
       }
@@ -127,9 +127,9 @@ export const leadSegmentsRouter = router({
       }
 
       // In preview mode, only send to admin
-      const recipients = input.previewMode 
+      const recipients: Array<{ email: string; name: string }> = input.previewMode 
         ? [{ email: ctx.user.email || process.env.OWNER_EMAIL || "admin@example.com", name: ctx.user.name || "Admin" }]
-        : leads.map(lead => ({ email: lead.email, name: lead.name || lead.email }));
+        : leads.map((lead: { email: string; name: string | null }) => ({ email: lead.email, name: lead.name || lead.email }));
 
       let sent = 0;
       let failed = 0;

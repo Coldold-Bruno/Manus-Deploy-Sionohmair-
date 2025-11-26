@@ -123,7 +123,7 @@ export const emailTemplatesRouter = router({
     .input(z.object({
       subject: z.string(),
       content: z.string(),
-      variables: z.record(z.string()).optional(),
+      variables: z.record(z.string(), z.string()).optional(),
     }))
     .query(({ input }) => {
       let previewSubject = input.subject;
@@ -132,8 +132,9 @@ export const emailTemplatesRouter = router({
       if (input.variables) {
         Object.entries(input.variables).forEach(([key, value]) => {
           const regex = new RegExp(`{{${key}}}`, 'g');
-          previewSubject = previewSubject.replace(regex, value);
-          previewContent = previewContent.replace(regex, value);
+          const stringValue = String(value);
+          previewSubject = previewSubject.replace(regex, stringValue);
+          previewContent = previewContent.replace(regex, stringValue);
         });
       }
 

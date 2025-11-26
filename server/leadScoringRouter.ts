@@ -107,7 +107,7 @@ export const leadScoringRouter = router({
         "payment_intent",
         "payment_completed",
       ]),
-      activityData: z.record(z.any()).optional(),
+      activityData: z.record(z.string(), z.any()).optional(),
       userId: z.number().optional(),
     }))
     .mutation(async ({ input }) => {
@@ -407,7 +407,7 @@ export const leadScoringRouter = router({
 
       // Add points for each activity
       for (const activity of activities) {
-        cumulativeActivityScore += activity.score;
+        cumulativeActivityScore += activity.score || 0;
         const totalScore = cumulativeActivityScore + engagementScore;
 
         history.push({

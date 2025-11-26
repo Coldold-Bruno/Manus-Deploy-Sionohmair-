@@ -60,7 +60,7 @@ export function usePageTracking() {
       const duration = Math.floor((Date.now() - startTimeRef.current) / 1000);
 
       // Use sendBeacon for reliable tracking on page unload
-      if (navigator.sendBeacon) {
+      if (typeof navigator.sendBeacon === 'function') {
         const data = JSON.stringify({
           email,
           activityType: "page_view",

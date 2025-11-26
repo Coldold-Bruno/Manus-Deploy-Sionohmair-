@@ -31,10 +31,10 @@ export default function HotLeads() {
 
   const handleExport = async (temperature: "all" | "hot" | "warm" | "cold") => {
     try {
-      const leads = await trpc.leadScoring.exportLeads.query({ temperature });
+      const { data: leads } = await trpc.leadScoring.exportLeads.useQuery({ temperature });
       
       // Format data for CSV
-      const csvData = leads.map(lead => ({
+      const csvData = (leads || []).map((lead: any) => ({
         "Email": lead.email,
         "Nom": lead.name || "",
         "Score Total": lead.leadScore,
@@ -59,7 +59,7 @@ export default function HotLeads() {
       link.click();
       document.body.removeChild(link);
       
-      toast.success(`Export réussi : ${leads.length} leads exportés`);
+      toast.success(`Export réussi : ${leads?.length || 0} leads exportés`);
     } catch (error) {
       toast.error("Erreur lors de l'export");
     }
@@ -258,7 +258,7 @@ export default function HotLeads() {
                             <span className="text-muted-foreground">Température:</span>
                             <Badge className="bg-orange-500 text-white">
                               <Flame className="h-3 w-3 mr-1" />
-                              {lead.leadTemperature.toUpperCase()}
+                              {(lead.leadTemperature || 'cold').toUpperCase()}
                             </Badge>
                           </div>
                           <div className="flex items-center justify-between text-sm">
@@ -350,7 +350,7 @@ export default function HotLeads() {
                             <span className="text-muted-foreground">Température:</span>
                             <Badge className="bg-yellow-500 text-white">
                               <TrendingUp className="h-3 w-3 mr-1" />
-                              {lead.leadTemperature.toUpperCase()}
+                              {(lead.leadTemperature || 'cold').toUpperCase()}
                             </Badge>
                           </div>
                           <div className="flex items-center justify-between text-sm">

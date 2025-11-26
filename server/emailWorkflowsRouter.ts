@@ -298,8 +298,8 @@ export const emailWorkflowsRouter = router({
             html: template.content
               .replace(/{{nom}}/g, subscriber.name || 'Cher(e) abonné(e)')
               .replace(/{{email}}/g, subscriber.email)
-              .replace(/{{score}}/g, (subscriber.score || 0).toString())
-              .replace(/{{interets}}/g, subscriber.interests?.join(', ') || 'Non spécifié'),
+              .replace(/{{score}}/g, ((subscriber as any).score || 0).toString())
+              .replace(/{{interets}}/g, typeof subscriber.interests === 'string' ? subscriber.interests : 'Non spécifié'),
           });
 
           // Update subscription
