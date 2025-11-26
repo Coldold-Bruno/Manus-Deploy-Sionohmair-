@@ -767,3 +767,38 @@
 - [x] Tester le tunnel complet de conversion
 - [x] Corriger les erreurs TypeScript (Niveau3.tsx)
 - [x] Créer le checkpoint final avec tout le système
+
+
+## Phase 64 : Analyse Copy Mastery et Restructuration Complète - EN COURS 🚀
+- [ ] Analyser les 8 vidéos Copy Mastery (ton, style, techniques)
+- [ ] Extraire les principes copywriting clés
+- [ ] Créer le plan d'architecture complet du site
+- [ ] Supprimer les pages N1, N2, N3
+- [ ] Créer la page Copywriting (à la carte avec barème)
+- [ ] Créer la page Formation Sprint de Clarté (790 € HT, 9 jours)
+- [ ] Intégrer le leitmotiv "Avatar (Client Idéal)" partout
+- [ ] Restructurer la page d'accueil avec copywriting Copy Mastery
+- [ ] Mettre à jour tous les emails et templates
+- [ ] Créer les CGV avec garantie "Satisfait ou Refait"
+- [ ] Créer le document PLAN_SITE_COMPLET.md
+- [ ] Tester le site complet
+- [ ] Créer le checkpoint final avant déploiement
+
+
+## Phase 65 : Restructuration Complète avec Copy Mastery + Formation Interactive - EN COURS 🚀
+- [ ] Mettre à jour le PLAN_COMPLET_SITE avec accès 3 mois (90 jours)
+- [ ] Supprimer les niveaux N1, N2, N3 du site
+- [ ] Créer 2 offres distinctes : Copywriting (à la carte) + Formation (790€)
+- [ ] Créer la page /copywriting avec barème complet (70€/h)
+- [ ] Intégrer le leitmotiv "Avatar (Client Idéal)" partout
+- [ ] Créer la plateforme de formation interactive (9 modules)
+- [ ] Créer la base de données progression_formation (accès 90 jours)
+- [ ] Implémenter la logique de déblocage progressif
+- [ ] Implémenter la logique d'expiration (90 jours, pas de remboursement)
+- [ ] Créer les 9 modules avec exercices pratiques interactifs (3 par module)
+- [ ] Créer le système de validation automatique des réponses
+- [ ] Créer la barre de progression + badges gamifiés
+- [ ] Créer les CGV avec clause "Accès 3 mois, Pas de Remboursement"
+- [ ] Mettre à jour tous les emails avec nouveau positionnement
+- [ ] Tester le parcours complet de formation interactive
+- [ ] Créer le checkpoint final

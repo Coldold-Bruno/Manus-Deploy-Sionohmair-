@@ -15,6 +15,7 @@ import { abTestingRouter } from './abTestingRouter';
 import { emailTemplatesRouter } from './emailTemplatesRouter';
 import { emailWorkflowsRouter } from './emailWorkflowsRouter';
 import { analyticsRouter } from './analyticsRouter';
+import { formationRouter } from './formationRouter';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -68,6 +69,9 @@ export const appRouter = router({
 
   // Analytics router
   analytics: analyticsRouter,
+
+  // Formation interactive router
+  formation: formationRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({

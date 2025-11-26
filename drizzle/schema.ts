@@ -461,3 +461,93 @@ export const workflowSubscriptions = mysqlTable("workflow_subscriptions", {
 
 export type WorkflowSubscription = typeof workflowSubscriptions.$inferSelect;
 export type InsertWorkflowSubscription = typeof workflowSubscriptions.$inferInsert;
+
+// ============================================================================
+// FORMATION INTERACTIVE (9 MODULES + 27 EXERCICES)
+// ============================================================================
+
+/**
+ * Formation Access - Gestion des accès à la formation (90 jours)
+ */
+export const formationAccess = mysqlTable("formation_access", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  orderId: int("orderId").notNull(),
+  purchaseDate: timestamp("purchaseDate").defaultNow().notNull(),
+  accessStartDate: timestamp("accessStartDate").defaultNow().notNull(),
+  accessEndDate: timestamp("accessEndDate").notNull(),
+  isActive: boolean("isActive").default(true).notNull(),
+  isCompleted: boolean("isCompleted").default(false).notNull(),
+  completedModules: int("completedModules").default(0).notNull(),
+  totalExercisesCompleted: int("totalExercisesCompleted").default(0).notNull(),
+  overallScore: int("overallScore").default(0).notNull(),
+  lastAccessDate: timestamp("lastAccessDate").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type FormationAccess = typeof formationAccess.$inferSelect;
+export type InsertFormationAccess = typeof formationAccess.$inferInsert;
+
+/**
+ * Module Progress - Progression par module (9 modules)
+ */
+export const moduleProgress = mysqlTable("module_progress", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  formationAccessId: int("formationAccessId").notNull(),
+  moduleNumber: int("moduleNumber").notNull(),
+  moduleName: varchar("moduleName", { length: 255 }).notNull(),
+  isUnlocked: boolean("isUnlocked").default(false).notNull(),
+  isStarted: boolean("isStarted").default(false).notNull(),
+  isCompleted: boolean("isCompleted").default(false).notNull(),
+  completedExercises: int("completedExercises").default(0).notNull(),
+  moduleScore: int("moduleScore").default(0).notNull(),
+  startedAt: timestamp("startedAt"),
+  completedAt: timestamp("completedAt"),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type ModuleProgress = typeof moduleProgress.$inferSelect;
+export type InsertModuleProgress = typeof moduleProgress.$inferInsert;
+
+/**
+ * Exercise Attempts - Tentatives d'exercices (validation automatique)
+ */
+export const exerciseAttempts = mysqlTable("exercise_attempts", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  moduleProgressId: int("moduleProgressId").notNull(),
+  moduleNumber: int("moduleNumber").notNull(),
+  exerciseNumber: int("exerciseNumber").notNull(),
+  exerciseTitle: varchar("exerciseTitle", { length: 255 }).notNull(),
+  userAnswer: text("userAnswer").notNull(),
+  isCorrect: boolean("isCorrect").notNull(),
+  score: int("score").notNull(),
+  feedback: text("feedback").notNull(),
+  attemptNumber: int("attemptNumber").default(1).notNull(),
+  submittedAt: timestamp("submittedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type ExerciseAttempt = typeof exerciseAttempts.$inferSelect;
+export type InsertExerciseAttempt = typeof exerciseAttempts.$inferInsert;
+
+/**
+ * Badges - Badges gagnés (gamification)
+ */
+export const badges = mysqlTable("badges", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull(),
+  formationAccessId: int("formationAccessId").notNull(),
+  badgeType: varchar("badgeType", { length: 50 }).notNull(),
+  badgeName: varchar("badgeName", { length: 255 }).notNull(),
+  badgeDescription: text("badgeDescription").notNull(),
+  badgeIcon: varchar("badgeIcon", { length: 50 }).notNull(),
+  earnedAt: timestamp("earnedAt").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+});
+
+export type Badge = typeof badges.$inferSelect;
+export type InsertBadge = typeof badges.$inferInsert;
