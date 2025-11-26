@@ -77,7 +77,10 @@ export default function Home() {
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
                 90% des idées meurent dans la confusion. Pas par manque de valeur, mais par manque de clarté. 
-                La Dissipation Intellectuelle détruit vos conversions, vos ventes, et votre impact.
+                La <strong>Dissipation Intellectuelle</strong> détruit vos conversions, vos ventes, et votre impact.
+              </p>
+              <p className="text-lg text-accent font-semibold mt-4">
+                🎯 La vérité : vous n'êtes pas le problème. C'est la friction invisible qui bloque votre génie.
               </p>
             </div>
 
@@ -95,14 +98,23 @@ export default function Home() {
                 La méthodologie Sionohmair Insight élimine les 3 frictions qui tuent vos messages : 
                 Friction d'Attention, Friction Cognitive, et Friction Émotionnelle.
               </p>
+              <div className="mt-6 p-6 bg-accent/10 border border-accent/20 rounded-xl">
+                <p className="text-2xl font-bold text-accent mb-2">Le Facteur Alpha (α = 22.67)</p>
+                <p className="text-lg">
+                  Chaque point de friction corrigé ne produit pas un gain linéaire de 15%, mais un <strong className="text-accent">gain exponentiel de 340%</strong> grâce au Facteur d'Amplification α = 22.67.
+                </p>
+                <p className="text-sm text-muted-foreground mt-2">
+                  C'est la <strong>Loi de la Clarté</strong> : 340% = 15% × 22.67
+                </p>
+              </div>
             </div>
 
             {/* P - Preuve */}
             <div className="grid md:grid-cols-3 gap-6 pt-8">
-              <Card className="border-accent/20">
+              <Card className="border-accent/20 bg-accent/5">
                 <CardHeader>
-                  <CardTitle className="text-4xl font-bold text-accent">+250%</CardTitle>
-                  <CardDescription>Augmentation de conversion moyenne</CardDescription>
+                  <CardTitle className="text-4xl font-bold text-accent">+340%</CardTitle>
+                  <CardDescription>Gain réel grâce au Facteur α = 22.67</CardDescription>
                 </CardHeader>
               </Card>
               <Card className="border-accent/20">
@@ -185,7 +197,10 @@ export default function Home() {
               </h3>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
                 Diagnostic complet en 7 jours. Rapport de 10 pages avec Score de Clarté, analyse des frictions,
-                et plan d'action. Garantie de résultats mesurables ou remboursement intégral.
+                et plan d'action activant le <strong className="text-accent">Facteur α = 22.67</strong> pour un gain de <strong className="text-accent">340%</strong>.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Garantie de résultats mesurables ou remboursement intégral.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8">
@@ -236,7 +251,7 @@ export default function Home() {
                   letter: "P",
                   title: "Preuve",
                   description: "Apportez une preuve crédible (chiffre, témoignage, autorité). Éliminez le scepticisme.",
-                  example: '"+250% de conversion en moyenne sur 50 clients."'
+                  example: '"+340% de conversion grâce au Facteur α = 22.67 (mesure sur 50+ clients)."'
                 },
                 {
                   letter: "M",

@@ -40,6 +40,15 @@ export default function Niveau2() {
             <p className="text-2xl text-muted-foreground">
               Transformez votre communication complète avec 5 artefacts optimisés et une formation de 6 mois
             </p>
+            <div className="mt-6 p-6 bg-accent/10 border border-accent/20 rounded-xl max-w-2xl mx-auto">
+              <p className="text-xl font-bold text-accent mb-2">🛡️ Protéger le Facteur Alpha (α = 22.67)</p>
+              <p className="text-base">
+                Le Niveau 1 vous a donné la preuve : <strong className="text-accent">gain de 340%</strong>. Le Niveau 2 construit l'<strong>Architecture APTEA</strong> qui rend ce α = 22.67 <strong className="text-accent">inimitable</strong>.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                Voulez-vous un gain copiable, ou une <strong>Loi de Marque</strong> qui défend votre avantage à vie ?
+              </p>
+            </div>
             <div className="flex items-center justify-center gap-4 pt-4">
               <span className="text-5xl font-bold text-accent">10 000 €</span>
               <span className="text-xl text-muted-foreground">ou 3 × 3 500 €</span>
@@ -73,6 +82,7 @@ export default function Niveau2() {
                     <li>• <strong>Message AVANT :</strong> Analyse de la situation actuelle (frictions)</li>
                     <li>• <strong>Point de bascule :</strong> L'insight clé qui change tout</li>
                     <li>• <strong>Message APRÈS :</strong> Version optimisée (clarté maximale)</li>
+                    <li>• <strong>Architecture APTEA :</strong> Profondeur (Pn) + Tension (Tn) qui protègent le <strong className="text-accent">α = 22.67</strong></li>
                     <li>• <strong>Impact estimé :</strong> Projections KPI (CTR, conversion, engagement)</li>
                   </ul>
                   <p className="text-xs italic pt-2">Le message APRÈS est lisible en moins de 5 secondes et orienté résultat immédiat.</p>

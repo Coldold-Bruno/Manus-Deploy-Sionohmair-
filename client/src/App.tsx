@@ -36,6 +36,7 @@ import EmailTemplates from "./pages/admin/EmailTemplates";
 import EmailWorkflows from "./pages/admin/EmailWorkflows";
 import Analytics from "./pages/admin/Analytics";
 import Portfolio from "./pages/Portfolio";
+import LoiClarte from "./pages/LoiClarte";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -44,6 +45,7 @@ function Router() {
       <Route path={"/"} component={Home} />
       <Route path={"/sprint"} component={SprintClarte} />
       <Route path={"/theoreme"} component={Theoreme} />
+      <Route path={"/loi-clarte"} component={LoiClarte} />
       <Route path={"/services"} component={Services} />
       <Route path={"/portfolio"} component={Portfolio} />
       <Route path={"/ressources"} component={Ressources} />

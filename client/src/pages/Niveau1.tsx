@@ -40,6 +40,15 @@ export default function Niveau1() {
             <p className="text-2xl text-muted-foreground">
               Transformez votre message en 7 jours avec un diagnostic complet et un plan d'action prioritaire
             </p>
+            <div className="mt-6 p-6 bg-accent/10 border border-accent/20 rounded-xl max-w-2xl mx-auto">
+              <p className="text-xl font-bold text-accent mb-2">🎯 Le Facteur Alpha (α = 22.67)</p>
+              <p className="text-base">
+                Vous ne corrigez pas 15% de friction. Vous activez un <strong className="text-accent">gain de 340%</strong> grâce au Facteur d'Amplification Sionohmair.
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                C'est votre <strong>TVA NI</strong> (Taux de Valeur Ajoutée Non-Intuitive) : la preuve que votre génie était simplement enfermé.
+              </p>
+            </div>
             <div className="flex items-center justify-center gap-4 pt-4">
               <span className="text-3xl line-through text-muted-foreground">1 500 €</span>
               <span className="text-5xl font-bold text-accent">490 €</span>
@@ -73,6 +82,8 @@ export default function Niveau1() {
                     <li>• Analyse du message actuel</li>
                     <li>• Identification des 3 frictions</li>
                     <li>• Score de Clarté /20 justifié</li>
+                    <li>• Calcul du <strong className="text-accent">Joule Informatique</strong> perdu</li>
+                    <li>• Projection du <strong className="text-accent">gain de 340%</strong> (α = 22.67)</li>
                     <li>• Recommandations détaillées</li>
                   </ul>
                 </CardContent>
@@ -91,6 +102,7 @@ export default function Niveau1() {
                     <li>• Problème central en 2-3 phrases</li>
                     <li>• Score de Clarté /20</li>
                     <li>• Axe de Clarté (nouveau pitch)</li>
+                    <li>• <strong className="text-accent">TVA NI</strong> : Gain théorique de 340%</li>
                     <li>• Action prioritaire unique</li>
                   </ul>
                 </CardContent>
@@ -107,9 +119,10 @@ export default function Niveau1() {
                   <p className="font-semibold">Contenu :</p>
                   <ul className="space-y-1 text-muted-foreground">
                     <li>• Action spécifique et mesurable</li>
-                    <li>• Impact estimé (CTR, conversion)</li>
+                    <li>• Impact estimé : <strong className="text-accent">340%</strong> (α = 22.67)</li>
                     <li>• Effort requis (temps, ressources)</li>
                     <li>• Ordre de priorité justifié</li>
+                    <li>• Activation du <strong className="text-accent">Facteur Alpha</strong></li>
                   </ul>
                 </CardContent>
               </Card>

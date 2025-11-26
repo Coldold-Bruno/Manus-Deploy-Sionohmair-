@@ -40,6 +40,15 @@ export default function Niveau3() {
             <p className="text-2xl text-muted-foreground">
               Transformation complète de votre organisation avec accompagnement stratégique 12 mois
             </p>
+            <div className="mt-6 p-6 bg-accent/10 border border-accent/20 rounded-xl max-w-2xl mx-auto">
+              <p className="text-xl font-bold text-accent mb-2">🏛️ Devenez Législateur de la Clarté</p>
+              <p className="text-base">
+                Votre entreprise opère avec un avantage de <strong className="text-accent">340%</strong> (α = 22.67). Le Niveau 3 <strong>sanctuarise</strong> ce gain avec le <strong className="text-accent">NFT de Compétence</strong> et le <strong>Réseaume</strong> (SI &gt; 1).
+              </p>
+              <p className="text-sm text-muted-foreground mt-2">
+                C'est votre <strong>Souveraineté Cognitive</strong> : le Facteur α devient votre propriété intellectuelle protégée à vie.
+              </p>
+            </div>
             <div className="flex items-center justify-center gap-4 pt-4">
               <span className="text-5xl font-bold text-accent">50 000 €</span>
               <span className="text-xl text-muted-foreground">Sur devis personnalisé</span>
@@ -73,7 +82,7 @@ export default function Niveau3() {
                     <li>• <strong>T1 (mois 1-3) :</strong> Diagnostic complet + Formation équipe (20 personnes) + KPIs</li>
                     <li>• <strong>T2 (mois 4-6) :</strong> Refonte supports + Code PFPMA + Optimisation tunnels</li>
                     <li>• <strong>T3 (mois 7-9) :</strong> Analyse fractale + A/B testing + Dashboards temps réel</li>
-                    <li>• <strong>T4 (mois 10-12) :</strong> Ancrage culture + Certification + Éligibilité NFT</li>
+                    <li>• <strong>T4 (mois 10-12) :</strong> Ancrage culture + <strong className="text-accent">NFT de Compétence</strong> + Propagation α (SI &gt; 1)</li>
                   </ul>
                   <p className="text-xs italic pt-2">La roadmap suit une logique inductive : fondations → diffusion → optimisation → pérennisation.</p>
                 </CardContent>
