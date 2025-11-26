@@ -727,10 +727,12 @@
 - [x] Mettre à jour la page Partenariat Stratégique (N3) avec Législateur de la Clarté
 - [x] Mettre à jour la page d'accueil avec le Facteur α = 22.67
 - [ ] Mettre à jour la page Théorème avec la formule α
-- [ ] Intégrer le calculateur de TVA NI dans le Calculateur de Score
-- [ ] Mettre à jour tous les emails automatiques (confirmation, bienvenue, séquences)
-- [ ] Mettre à jour tous les templates d'emails avec α
-- [ ] Mettre à jour la séquence newsletter (7 emails) avec le Facteur α
+- [x] Intégrer le calculateur de TVA NI dans le Calculateur de Score
+- [x] Mettre à jour tous les emails automatiques (confirmation, bienvenue, séquences)
+- [x] Mettre à jour tous les templates d'emails avec α
+- [x] Mettre à jour la séquence newsletter (7 emails) avec le Facteur α
+- [x] Produire les 3 prompts définitifs pour les livrables clients N1, N2, N3
+- [x] Créer la stratégie Valeur×3 et Effort÷3 pour le lancement
 - [ ] Créer des visuels pour la formule α = 22.67
 - [ ] Ajouter des témoignages mentionnant le gain de 340%
 - [ ] Créer un article de blog "Pourquoi votre gain n'est pas 15% mais 340%"

@@ -288,13 +288,60 @@ export default function Calculateur() {
                   </Card>
                 )}
 
+                {/* Calculateur TVA NI */}
+                <Card className="border-accent/20 bg-accent/10">
+                  <CardHeader>
+                    <div className="flex items-center gap-3">
+                      <TrendingUp className="h-8 w-8 text-accent" />
+                      <div>
+                        <CardTitle className="text-2xl">Votre TVA NI (Taux de Valeur Ajoutée Non-Intuitive)</CardTitle>
+                        <CardDescription>Le potentiel caché qui était bloqué par les frictions</CardDescription>
+                      </div>
+                    </div>
+                  </CardHeader>
+                  <CardContent className="space-y-4">
+                    <div className="p-6 bg-background rounded-xl border-2 border-accent/30">
+                      <div className="grid md:grid-cols-3 gap-6 text-center">
+                        <div>
+                          <p className="text-sm text-muted-foreground mb-2">Gain Attendu (Linéaire)</p>
+                          <p className="text-3xl font-bold text-muted-foreground">15%</p>
+                          <p className="text-xs text-muted-foreground mt-1">Correction standard</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-accent mb-2">Facteur Alpha</p>
+                          <p className="text-4xl font-bold text-accent">× 22.67</p>
+                          <p className="text-xs text-muted-foreground mt-1">Multiplicateur Sionohmair</p>
+                        </div>
+                        <div>
+                          <p className="text-sm text-accent mb-2">Gain Réel (Exponentiel)</p>
+                          <p className="text-4xl font-bold text-accent">340%</p>
+                          <p className="text-xs text-muted-foreground mt-1">Impact mesuré</p>
+                        </div>
+                      </div>
+                      <div className="mt-6 p-4 bg-accent/10 rounded-lg">
+                        <p className="text-center text-lg font-semibold">
+                          TVA NI = 340% - 15% = <span className="text-accent text-2xl">325%</span>
+                        </p>
+                        <p className="text-center text-sm text-muted-foreground mt-2">
+                          C'est le <strong>potentiel caché</strong> qui était bloqué par les {result.frictions.length} friction(s) détectée(s).
+                        </p>
+                      </div>
+                    </div>
+                    <div className="p-4 bg-background rounded-lg border border-accent/20">
+                      <p className="text-sm">
+                        <strong className="text-accent">🎯 La vérité :</strong> Votre idée était brillante dès le départ. Ce n'est pas un problème de qualité, mais de <strong>Dissipation Intellectuelle</strong>. Le Sprint de Clarté active le <strong className="text-accent">Facteur α = 22.67</strong> pour libérer vos 325% de TVA NI.
+                      </p>
+                    </div>
+                  </CardContent>
+                </Card>
+
                 {/* CTA */}
                 <Card className="border-accent/20 bg-gradient-to-br from-accent/5 to-accent/10">
                   <CardContent className="pt-6">
                     <div className="text-center space-y-4">
-                      <h3 className="text-2xl font-bold">Besoin d'aide pour optimiser votre message ?</h3>
+                      <h3 className="text-2xl font-bold">Activez votre Facteur Alpha (α = 22.67)</h3>
                       <p className="text-muted-foreground">
-                        Le Sprint de Clarté vous accompagne pendant 7 jours pour transformer votre communication
+                        Le Sprint de Clarté vous accompagne pendant 7 jours pour transformer votre communication et débloquer vos 325% de TVA NI
                       </p>
                       <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                         <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">

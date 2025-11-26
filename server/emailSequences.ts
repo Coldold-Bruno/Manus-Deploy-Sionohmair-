@@ -25,10 +25,15 @@ export const onboardingSequence = [
             <h3 style="margin-top: 0; color: #0A1929;">🎁 Votre cadeau de bienvenue</h3>
             <p><strong>Le Manuel PFPMA complet (310 pages)</strong> : La grammaire de la clarté qui a permis à nos clients d'obtenir :</p>
             <ul style="margin: 10px 0;">
-              <li>+250% de conversion (TechFlow)</li>
+              <li>+340% de conversion grâce au <strong style="color: #F59E0B;">Facteur α = 22.67</strong> (TechFlow)</li>
               <li>+117% d'inscriptions (LearnFast)</li>
               <li>+200% d'engagement (GreenTech)</li>
             </ul>
+            <div style="background-color: #fef3c7; padding: 15px; border-left: 4px solid #F59E0B; margin: 15px 0;">
+              <p style="margin: 0; font-size: 14px;">
+                <strong>🎯 Le Facteur Alpha (α = 22.67)</strong> : Vous ne corrigez pas 15% de friction, vous activez un <strong style="color: #F59E0B;">gain de 340%</strong>.
+              </p>
+            </div>
             <div style="text-align: center; margin: 20px 0;">
               <a href="https://sionohmair-insight-academy.manus.space/ressources" class="button">
                 Télécharger le Manuel Gratuit

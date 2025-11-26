@@ -209,10 +209,20 @@ export const getNewsletterWelcomeEmail = (data: {
       💡 <strong>Insights exclusifs</strong> : Les coulisses de la méthodologie Sionohmair<br>
       🎯 <strong>Offres prioritaires</strong> : Accès anticipé aux nouveaux services</p>
       
+      <div class="highlight" style="background-color: #fef3c7; border-left: 4px solid #F59E0B; padding: 20px; margin: 20px 0;">
+        <h3 style="margin-top: 0; color: #0A1929;">🎯 Le Facteur Alpha (α = 22.67)</h3>
+        <p style="font-size: 16px; margin: 10px 0;">
+          Vous ne corrigez pas 15% de friction. Vous activez un <strong style="color: #F59E0B;">gain de 340%</strong> grâce au Facteur d'Amplification Sionohmair.
+        </p>
+        <p style="font-size: 14px; color: #6b7280; margin: 10px 0 0 0;">
+          C'est la <strong>Loi de la Clarté</strong> : 340% = 15% × 22.67
+        </p>
+      </div>
+      
       <div class="stats">
         <div class="stat-item">
-          <div class="stat-value">+250%</div>
-          <div class="stat-label">Conversion moyenne</div>
+          <div class="stat-value">+340%</div>
+          <div class="stat-label">Gain réel (α = 22.67)</div>
         </div>
         <div class="stat-item">
           <div class="stat-value">7 jours</div>
@@ -225,7 +235,7 @@ export const getNewsletterWelcomeEmail = (data: {
       </div>
       
       <p style="color: #6b7280; font-size: 14px; margin-top: 40px;">
-        <strong>Envie d'aller plus loin ?</strong> Découvrez le Sprint de Clarté à 490 € : diagnostic complet en 7 jours avec plan d'action personnalisé.
+        <strong>Envie d'aller plus loin ?</strong> Découvrez le Sprint de Clarté à 490 € : diagnostic complet en 7 jours avec activation du <strong style="color: #F59E0B;">Facteur α = 22.67</strong> pour un gain de <strong style="color: #F59E0B;">340%</strong>.
       </p>
       
       <div style="text-align: center; margin: 30px 0;">
@@ -257,9 +267,11 @@ export const getArtefactDeliveryEmail = (data: {
       <p>Excellente nouvelle ! Vos artefacts de clarté pour le <strong>${data.serviceName}</strong> sont maintenant disponibles dans votre dashboard.</p>
       
       <div class="highlight">
-        <h3 style="margin-top: 0; color: #0A1929;">📊 Ce que vous allez trouver</h3>
+        <h3 style="margin-top: 0; color: #0A1929;">📋 Ce que vous allez trouver</h3>
         <p>✅ <strong>${data.artefactCount} artefacts</strong> prêts à télécharger<br>
         ✅ Rapport de diagnostic complet (PDF)<br>
+        ✅ Calcul du <strong style="color: #F59E0B;">Joule Informatique</strong> perdu<br>
+        ✅ Projection du <strong style="color: #F59E0B;">gain de 340%</strong> (α = 22.67)<br>
         ✅ Plan d'action personnalisé<br>
         ✅ Recommandations IA actionnables</p>
       </div>
