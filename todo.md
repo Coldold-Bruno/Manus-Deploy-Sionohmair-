@@ -532,3 +532,147 @@
 - [ ] Finaliser les améliorations graphiques des autres dashboards
 - [ ] Tester l'accès à l'application et corriger les problèmes
 - [ ] Créer le checkpoint final
+
+
+## Phase 54 : Configuration Resend pour envoi d'emails professionnels
+- [ ] Configurer les secrets Resend (RESEND_API_KEY, SMTP_FROM_EMAIL, SMTP_FROM_NAME)
+- [ ] Mettre à jour emailService.ts pour utiliser Resend au lieu de SMTP classique
+- [ ] Tester l'envoi d'emails via Resend
+- [ ] Créer un guide de vérification DNS pour l'utilisateur
+
+## Phase 55 : Fonctionnalités Marketing Avancées
+- [ ] Implémenter A/B testing des emails (2 versions, tracking des performances)
+- [ ] Créer un système de segmentation avancée des leads (comportemental, démographique)
+- [ ] Ajouter des séquences d'emails automatiques personnalisées par segment
+- [ ] Créer des tableaux de bord analytics personnalisés (conversion, engagement, ROI)
+- [ ] Implémenter le lead scoring prédictif avec ML
+- [ ] Ajouter des campagnes de re-engagement automatiques
+- [ ] Créer des rapports d'attribution marketing multi-touch
+
+## Phase 56 : Nouveaux Produits et Services
+- [ ] Ajouter un 4ème niveau de service (Consulting à la carte)
+- [ ] Créer un système de packages personnalisables
+- [ ] Implémenter un programme d'affiliation avec tracking
+- [ ] Ajouter un système de parrainage avec récompenses
+- [ ] Créer un espace membre premium avec contenu exclusif
+- [ ] Ajouter des webinaires enregistrés payants
+- [ ] Implémenter un système de coaching 1-to-1 avec réservation
+
+## Phase 57 : Intégrations CRM et Marketing
+- [ ] Intégrer HubSpot CRM (sync bidirectionnel des contacts)
+- [ ] Ajouter l'intégration Salesforce
+- [ ] Connecter Zapier pour automatisations personnalisées
+- [ ] Intégrer Make.com (Integromat) pour workflows complexes
+- [ ] Ajouter l'intégration ActiveCampaign
+- [ ] Connecter Mailchimp pour newsletters
+- [ ] Intégrer Google Analytics 4 avec tracking avancé
+
+## Phase 58 : Intégrations Webinaire et Calendrier
+- [ ] Intégrer Zoom pour webinaires automatiques
+- [ ] Ajouter WebinarJam pour événements live
+- [ ] Connecter Calendly pour réservation de rendez-vous
+- [ ] Intégrer Google Calendar sync
+- [ ] Ajouter un système de rappels automatiques (email + SMS)
+- [ ] Créer une page de réservation personnalisée
+- [ ] Implémenter des séquences pré/post webinaire
+
+## Phase 59 : Chat et Support Client
+- [ ] Réactiver et configurer Crisp Chat avec le vrai Website ID
+- [ ] Ajouter Intercom pour support client avancé
+- [ ] Implémenter un chatbot IA avec réponses automatiques
+- [ ] Créer une base de connaissances (FAQ dynamique)
+- [ ] Ajouter un système de tickets de support
+- [ ] Implémenter le chat en direct avec routage intelligent
+- [ ] Créer des réponses pré-enregistrées pour questions fréquentes
+
+## Phase 60 : Améliorations Design et UX
+- [ ] Créer une nouvelle page de vente optimisée pour conversion
+- [ ] Ajouter des animations Lottie pour micro-interactions
+- [ ] Implémenter un mode sombre (dark mode) complet
+- [ ] Créer des landing pages A/B testables
+- [ ] Ajouter une section témoignages vidéo en grille
+- [ ] Optimiser toutes les images (WebP, lazy loading)
+- [ ] Créer des templates d'emails responsive et modernes
+- [ ] Ajouter des progress bars pour parcours utilisateur
+- [ ] Implémenter des tooltips contextuels
+- [ ] Créer une page 404 personnalisée avec suggestions
+
+## Phase 61 : Blog et Contenu
+- [ ] Créer un éditeur de blog WYSIWYG dans l'admin
+- [ ] Ajouter des catégories et tags pour articles
+- [ ] Implémenter la recherche full-text dans le blog
+- [ ] Créer un système de commentaires modérés
+- [ ] Ajouter des articles recommandés (related posts)
+- [ ] Implémenter le partage social avec compteurs
+- [ ] Créer une newsletter automatique avec résumé hebdomadaire
+- [ ] Ajouter des call-to-actions contextuels dans les articles
+
+## Phase 62 : Analytics et Reporting
+- [ ] Créer un dashboard analytics complet (trafic, conversions, revenus)
+- [ ] Implémenter le tracking des événements personnalisés
+- [ ] Ajouter des rapports de cohorte
+- [ ] Créer des funnel de conversion visualisés
+- [ ] Implémenter le tracking des sources de trafic
+- [ ] Ajouter des rapports d'attribution multi-canal
+- [ ] Créer des alertes automatiques (baisse de conversion, pic de trafic)
+- [ ] Implémenter des exports de données (CSV, Excel)
+
+## Phase 63 : Optimisation Mobile
+- [ ] Optimiser toutes les pages pour mobile-first
+- [ ] Créer une PWA (Progressive Web App)
+- [ ] Ajouter le support offline avec Service Workers
+- [ ] Optimiser les performances mobile (score Lighthouse 90+)
+- [ ] Implémenter le lazy loading pour toutes les images
+- [ ] Créer des menus mobiles optimisés
+- [ ] Ajouter le support des gestes tactiles
+
+## Phase 64 : Sécurité et Performance
+- [ ] Implémenter le rate limiting sur toutes les API
+- [ ] Ajouter la protection CSRF
+- [ ] Configurer les headers de sécurité (CSP, HSTS)
+- [ ] Implémenter la validation stricte des inputs
+- [ ] Ajouter le logging des actions sensibles
+- [ ] Configurer les backups automatiques de la base de données
+- [ ] Optimiser les requêtes SQL (indexes, caching)
+- [ ] Implémenter le CDN pour les assets statiques
+
+## Phase 65 : Tests et Documentation
+- [ ] Écrire des tests unitaires pour tous les routers tRPC
+- [ ] Créer des tests d'intégration pour les flux critiques
+- [ ] Ajouter des tests E2E avec Playwright
+- [ ] Documenter toutes les API avec Swagger
+- [ ] Créer un guide utilisateur complet
+- [ ] Documenter le code avec JSDoc
+- [ ] Créer un changelog automatique
+
+## Phase 66 : Checkpoint Final Complet
+- [ ] Tester toutes les nouvelles fonctionnalités
+- [ ] Vérifier la performance globale
+- [ ] Valider l'accessibilité (WCAG 2.1 AA)
+- [ ] Tester sur tous les navigateurs (Chrome, Firefox, Safari, Edge)
+- [ ] Vérifier la compatibilité mobile (iOS, Android)
+- [ ] Créer le checkpoint final avec toutes les améliorations
+
+
+## Phase 54 : Configuration Resend - TERMINÉ ✅
+- [x] Créer le service emailServiceResend.ts avec Resend SDK
+- [x] Installer le package resend
+- [x] Documenter la configuration dans RESEND_CONFIGURATION.md
+- [x] Créer les tests de vérification (resend.test.ts)
+- [x] Créer le fichier .env.local.example avec les variables
+- [ ] Ajouter les secrets dans Settings → Secrets (à faire par l'utilisateur)
+- [ ] Vérifier le domaine academy.com dans Resend (en cours - attente DNS)
+- [ ] Tester l'envoi d'emails après vérification DNS
+
+
+## Phase 55 : Configuration Crisp Chat - TERMINÉ ✅
+- [x] Récupérer le Website ID Crisp (80b93e73-342f-4bd6-bde9-7b70586d1225)
+- [x] Activer Crisp Chat dans client/index.html
+- [x] Tester le widget de chat sur le site
+
+## Phase 56 : Configuration Google Tag Manager - TERMINÉ ✅
+- [x] Récupérer le GTM Container ID (GTM-KQSFV73X)
+- [x] Intégrer GTM dans client/index.html (head + body)
+- [x] Créer la documentation GTM_CONFIGURATION.md
+- [ ] Configurer Google Analytics 4 dans GTM (à faire par l'utilisateur)
+- [ ] Configurer les événements de conversion (à faire par l'utilisateur)

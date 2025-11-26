@@ -20,6 +20,11 @@
   </head>
 
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KQSFV73X"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script
@@ -27,22 +32,18 @@
       src="%VITE_ANALYTICS_ENDPOINT%/umami"
       data-website-id="%VITE_ANALYTICS_WEBSITE_ID%"></script>
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID_PLACEHOLDER"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'GA_MEASUREMENT_ID_PLACEHOLDER');
-    </script>
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KQSFV73X');</script>
+    <!-- End Google Tag Manager -->
     
-    <!-- Crisp Chat Widget - Désactivé temporairement -->
-    <!-- Pour activer Crisp Chat, remplacez CRISP_WEBSITE_ID_PLACEHOLDER par votre vrai Website ID -->
-    <!-- Voir CRISP_SETUP.md pour les instructions complètes -->
-    <!--
+    <!-- Crisp Chat Widget - Support client en direct -->
     <script type="text/javascript">
       window.$crisp=[];
-      window.CRISP_WEBSITE_ID="CRISP_WEBSITE_ID_PLACEHOLDER";
+      window.CRISP_WEBSITE_ID="80b93e73-342f-4bd6-bde9-7b70586d1225";
       (function(){
         d=document;
         s=d.createElement("script");
@@ -51,7 +52,6 @@
         d.getElementsByTagName("head")[0].appendChild(s);
       })();
     </script>
-    -->
   </body>
 
 </html>
