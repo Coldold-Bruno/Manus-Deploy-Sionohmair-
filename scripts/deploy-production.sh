@@ -41,26 +41,41 @@ if [[ ! $CONFIRM =~ ^[oOyY]$ ]]; then
 fi
 
 # ========================================
-# VÉRIFICATIONS PRÉALABLES
+# VÉRIFICATIONS PRÉALABLES AUTOMATIQUES
 # ========================================
 echo -e "\n${BLUE}"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-echo "  Vérifications Préalables"
+echo "  Vérifications Préalables Automatiques"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo -e "${NC}"
 
-# Vérifier que le script verify-final.sh existe
-if [ ! -f "./scripts/verify-final.sh" ]; then
-    echo -e "${RED}❌ Script verify-final.sh introuvable${NC}"
+# Vérifier que le script de pré-vérification existe
+if [ ! -f "./scripts/pre-deploy-check.sh" ]; then
+    echo -e "${RED}❌ Script pre-deploy-check.sh introuvable${NC}"
+    echo -e "${YELLOW}Ce script est essentiel pour valider le système avant déploiement${NC}"
     exit 1
 fi
 
-# Exécuter la vérification
-echo -e "${CYAN}Vérification du système...${NC}\n"
-./scripts/verify-final.sh
+# Exécuter la pré-vérification automatique
+echo -e "${CYAN}Exécution de la pré-vérification complète...${NC}\n"
+if ./scripts/pre-deploy-check.sh; then
+    echo -e "\n${GREEN}✅ Toutes les vérifications automatiques ont réussi !${NC}"
+else
+    echo -e "\n${RED}❌ Certaines vérifications ont échoué${NC}"
+    echo -e "${YELLOW}Consultez le rapport généré pour plus de détails${NC}"
+    echo -e "${CYAN}Corrigez les erreurs et exécutez à nouveau ce script${NC}\n"
+    exit 1
+fi
 
-echo -e "\n${YELLOW}⚠️  Vérifiez que la progression est à 100%${NC}"
-read -p "Continuer ? (o/n) : " VERIFY_OK
+# Générer le rapport de validation détaillé
+echo -e "\n${CYAN}Génération du rapport de validation détaillé...${NC}\n"
+if [ -f "./scripts/generate-validation-report.sh" ]; then
+    ./scripts/generate-validation-report.sh
+    echo -e "\n${GREEN}✅ Rapport de validation généré${NC}"
+fi
+
+echo -e "\n${YELLOW}⚠️  Vérifiez le rapport de validation avant de continuer${NC}"
+read -p "Score ≥ 90% et prêt à déployer ? (o/n) : " VERIFY_OK
 
 if [[ ! $VERIFY_OK =~ ^[oOyY]$ ]]; then
     echo -e "${RED}❌ Déploiement annulé${NC}"

@@ -407,6 +407,13 @@
       "when": 1764271495907,
       "tag": "0057_colossal_riptide",
       "breakpoints": true
+    },
+    {
+      "idx": 58,
+      "version": "5",
+      "when": 1764272122985,
+      "tag": "0058_hot_grim_reaper",
+      "breakpoints": true
     }
   ]
 }
