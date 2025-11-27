@@ -1076,3 +1076,26 @@
 - [x] Affichage NFT de licence
 - [x] Tester le système complet
 - [x] Créer le checkpoint final
+
+
+## Phase 87 : Modèle Simplifié - 1 Mois Gratuit + Paiement Unique - TERMINÉ ✅
+- [x] Modifier le schéma de base de données pour le modèle paiement unique
+- [x] Simplifier nftSubscriptions (plan: trial/paid, oneTimePaymentAmount: 99€)
+- [x] Simplifier les statuts (trial, active, trial_expired, cancelled)
+- [x] Ajouter champs paymentDate, activatedAt (supprimer nextPaymentDate)
+- [x] Modifier la page Pricing (/pricing)
+- [x] Supprimer les plans mensuels NFT + Redevance
+- [x] Afficher : "30 jours gratuit, puis 99€ pour accès permanent"
+- [x] FAQ complète (essai, paiement, annulation, remboursement)
+- [x] Garanties (satisfait ou remboursé 14j, mises à jour gratuites)
+- [x] Modifier le SubscriptionDashboard (/subscription)
+- [x] Afficher le statut d'essai gratuit avec barre de progression
+- [x] Afficher les jours restants (X/30 jours)
+- [x] Alerte si moins de 7 jours restants
+- [x] Afficher le statut "Accès permanent" après paiement
+- [x] CTA "Payer maintenant" avec prix 99€
+- [x] Supprimer toutes les références aux renouvellements mensuels
+- [x] Système de relance (logique documentée dans le schéma)
+- [x] Modal PaymentModal adapté au paiement unique
+- [x] Tester le système complet
+- [x] Créer le checkpoint final
