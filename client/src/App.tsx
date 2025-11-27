@@ -48,6 +48,7 @@ import MonitoringDashboard from "./pages/admin/MonitoringDashboard";
 import ContentAnalyzer from "./pages/ContentAnalyzer";
 import CopyGenerator from "./pages/CopyGenerator";
 import AvatarBuilder from "./pages/AvatarBuilder";
+import ConfigDashboard from "./pages/ConfigDashboard";
 import ScriptAnalyzer from "./pages/ScriptAnalyzer";
 import FrameworksLibrary from "./pages/FrameworksLibrary";
 import ChatIA from "./pages/ChatIA";
@@ -110,6 +111,7 @@ function Router() {
       <Route path={"/guide"} component={Guide} />
       <Route path={"/pricing"} component={Pricing} />
       <Route path={"/subscription"} component={Subscription} />
+      <Route path={"/config"} component={ConfigDashboard} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />
