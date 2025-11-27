@@ -365,6 +365,13 @@
       "when": 1764268953668,
       "tag": "0051_hot_centennial",
       "breakpoints": true
+    },
+    {
+      "idx": 52,
+      "version": "5",
+      "when": 1764269620720,
+      "tag": "0052_yummy_santa_claus",
+      "breakpoints": true
     }
   ]
 }
