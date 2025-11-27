@@ -442,6 +442,13 @@
       "when": 1764276031892,
       "tag": "0062_famous_wind_dancer",
       "breakpoints": true
+    },
+    {
+      "idx": 63,
+      "version": "5",
+      "when": 1764284372771,
+      "tag": "0063_normal_terrax",
+      "breakpoints": true
     }
   ]
 }

@@ -34,8 +34,10 @@ jobs:
             exit 1
           fi
           
-          # Appeler l'endpoint tRPC
-          RESPONSE=$(curl -s -w "\n%{http_code}" "$APP_URL/api/trpc/cron.checkTrialExpirations?secret=$CRON_SECRET")
+          # Appeler l'endpoint REST
+          RESPONSE=$(curl -s -w "\n%{http_code}" -X POST "$APP_URL/api/cron/check-trial-expirations" \
+            -H "Content-Type: application/json" \
+            -d "{\"secret\":\"$CRON_SECRET\"}")
           
           # Extraire le code HTTP (dernière ligne)
           HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
@@ -52,7 +54,7 @@ jobs:
             
             # Afficher les statistiques si disponibles
             if command -v jq &> /dev/null; then
-              echo "$BODY" | jq -r '.result.data.json | "📧 Emails envoyés : \(.emailsSent)\n⏰ Essais vérifiés : \(.trialsChecked)\n🔄 Statuts mis à jour : \(.statusUpdated)"' 2>/dev/null || echo "$BODY"
+              echo "$BODY" | jq -r '"📧 Emails J-7 : \(.results.j7.sent) envoyés, \(.results.j7.failed) échoués\n📧 Emails J-3 : \(.results.j3.sent) envoyés, \(.results.j3.failed) échoués\n📧 Emails J-1 : \(.results.j1.sent) envoyés, \(.results.j1.failed) échoués\n📧 Emails J-0 : \(.results.j0.sent) envoyés, \(.results.j0.failed) échoués"' 2>/dev/null || echo "$BODY"
             else
               echo "$BODY"
             fi
@@ -69,4 +71,4 @@ jobs:
           echo "🔧 Actions recommandées :"
           echo "  1. Vérifiez que APP_URL est correct dans les secrets GitHub"
           echo "  2. Vérifiez que CRON_SECRET correspond à celui configuré dans Manus"
-          echo "  3. Vérifiez que l'endpoint /api/trpc/cron.checkTrialExpirations est accessible"
+          echo "  3. Vérifiez que l'endpoint /api/cron/check-trial-expirations est accessible"

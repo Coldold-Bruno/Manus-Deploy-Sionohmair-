@@ -1,4 +1,6 @@
-import "dotenv/config";
+import dotenv from "dotenv";
+dotenv.config({ path: ".env.local" });
+dotenv.config(); // Charger aussi .env si présent
 import express from "express";
 import { createServer } from "http";
 import net from "net";
@@ -43,6 +45,35 @@ async function startServer() {
   // Configure body parser with larger size limit for file uploads
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+  
+  // Cron job endpoint for GitHub Actions
+  app.post("/api/cron/check-trial-expirations", async (req, res) => {
+    try {
+      const { secret } = req.body;
+      const CRON_SECRET = process.env.CRON_SECRET || "dev-secret-change-in-production";
+      
+      if (secret !== CRON_SECRET) {
+        return res.status(401).json({ success: false, error: "Unauthorized: Invalid cron secret" });
+      }
+      
+      // Import dynamiquement pour éviter les problèmes de dépendances circulaires
+      const { checkAndSendTrialNotifications } = await import("../services/trialEmailService");
+      const result = await checkAndSendTrialNotifications();
+      
+      if (!result.success) {
+        return res.status(500).json({ success: false, error: result.error || "Unknown error" });
+      }
+      
+      return res.json({
+        success: true,
+        timestamp: new Date().toISOString(),
+        results: result.results,
+      });
+    } catch (error: any) {
+      console.error("Error in cron job:", error);
+      return res.status(500).json({ success: false, error: error.message });
+    }
+  });
   // OAuth callback under /api/oauth/callback
   registerOAuthRoutes(app);
   // tRPC API
