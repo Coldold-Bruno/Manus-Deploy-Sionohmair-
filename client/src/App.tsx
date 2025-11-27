@@ -57,7 +57,7 @@ import Exemples from "./pages/Exemples";
 import CopyEditor from "./pages/CopyEditor";
 import Guide from "./pages/Guide";
 import Pricing from "./pages/Pricing";
-import SubscriptionDashboard from "./pages/SubscriptionDashboard";
+import Subscription from "./pages/Subscription";
 import Chatbot from "./components/Chatbot";
 import Onboarding from "./components/Onboarding";
 
@@ -109,7 +109,7 @@ function Router() {
       <Route path={"/editor"} component={CopyEditor} />
       <Route path={"/guide"} component={Guide} />
       <Route path={"/pricing"} component={Pricing} />
-      <Route path={"/subscription"} component={SubscriptionDashboard} />
+      <Route path={"/subscription"} component={Subscription} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />

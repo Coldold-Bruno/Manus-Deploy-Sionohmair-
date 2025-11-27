@@ -3,6 +3,7 @@ import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { publicProcedure, router } from "./_core/trpc";
 import { stripeRouter } from "./stripeRouter";
+import { subscriptionRouter } from "./subscriptionRouter";
 import { artefactsRouter } from "./artefactsRouter";
 import { blogRouter } from "./blogRouter";
 import { newsletterRouter } from './newsletterRouter';
@@ -41,6 +42,9 @@ export const appRouter = router({
 
   // Stripe payment router
   stripe: stripeRouter,
+
+  // Subscription management router
+  subscription: subscriptionRouter,
 
   // Artefacts management router
   artefacts: artefactsRouter,

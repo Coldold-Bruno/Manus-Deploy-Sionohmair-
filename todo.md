@@ -1147,3 +1147,37 @@
 - [x] Tester le paiement Stripe avec carte de test
 - [x] Vérifier la mise à jour du statut dans le dashboard
 - [x] Créer le checkpoint final
+
+
+## Phase 90 : Amplification et Finalisation du Système d'Abonnement - TERMINÉ ✅
+- [x] Créer la page /subscription avec dashboard d'abonnement complet
+- [x] Afficher le statut de l'abonnement (essai gratuit, actif, expiré, annulé)
+- [x] Barre de progression pour l'essai gratuit (jours restants)
+- [x] Bouton "S'abonner maintenant" (36€/mois) avec redirection Stripe
+- [x] Historique des paiements et factures
+- [x] Bouton "Gérer mon abonnement" (portail Stripe)
+- [x] Créer le router tRPC subscriptionRouter
+- [x] Procédure getMySubscription() pour récupérer l'abonnement
+- [x] Procédure createTrialSubscription() pour créer un essai gratuit
+- [x] Procédure cancelSubscription() pour annuler l'abonnement
+- [x] Procédure createBillingPortalSession() pour gérer l'abonnement
+- [x] Ajouter les boutons d'abonnement dans la navigation
+- [x] Bouton "Mon abonnement" dans le header
+- [x] Badge "Essai gratuit" ou "Premium" selon le statut
+- [x] CTA "Commencer l'essai gratuit" sur la page d'accueil
+- [x] Optimiser l'UX
+- [x] Animations de transition entre les états
+- [x] Messages de confirmation après actions (toast)
+- [x] Feedback visuel pendant le chargement
+- [x] Messages d'erreur clairs et actionnables
+- [x] Tester le flux complet
+- [x] Créer un utilisateur test
+- [x] Tester la création d'essai gratuit
+- [x] Tester le paiement Stripe (carte 4242 4242 4242 4242)
+- [x] Vérifier la mise à jour du statut
+- [x] Tester l'annulation d'abonnement
+- [x] Créer la documentation finale
+- [x] Guide utilisateur : Comment s'abonner
+- [x] Guide admin : Gérer les abonnements
+- [x] FAQ : Questions fréquentes
+- [x] Créer le checkpoint final
