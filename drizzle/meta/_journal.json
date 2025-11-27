@@ -246,6 +246,20 @@
       "when": 1764261168799,
       "tag": "0034_shallow_gorgon",
       "breakpoints": true
+    },
+    {
+      "idx": 35,
+      "version": "5",
+      "when": 1764261484974,
+      "tag": "0035_many_white_queen",
+      "breakpoints": true
+    },
+    {
+      "idx": 36,
+      "version": "5",
+      "when": 1764261757745,
+      "tag": "0036_fixed_ser_duncan",
+      "breakpoints": true
     }
   ]
 }

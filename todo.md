@@ -1054,3 +1054,25 @@
 - [x] Ajouter des hints et tips dans les formulaires (ContentAnalyzer)
 - [x] Tester le système complet
 - [x] Créer le checkpoint final
+
+
+## Phase 86 : Système de Gestion Temporelle des Abonnements NFT - TERMINÉ ✅
+- [x] Créer le schéma de base de données pour les abonnements NFT
+- [x] Table nftSubscriptions (userId, nftId, plan, status, trialEndDate, nextPaymentDate, etc.)
+- [x] Table paymentHistory (subscriptionId, amount, date, status)
+- [x] Table paymentReminders (subscriptionId, reminderType, sent, sentAt)
+- [x] Créer le système de relances automatiques (logique documentée)
+- [x] Configuration des 5 types de relances (7j, 3j, 1j, jour J, après expiration)
+- [x] Créer l'interface de paiement et autorisation d'accès
+- [x] Modal PaymentModal avec statut d'urgence
+- [x] Bouton "Autoriser le paiement" (intégration Stripe à finaliser)
+- [x] Bouton "Suspendre mon accès"
+- [x] Créer le dashboard de gestion d'abonnement (/subscription)
+- [x] Afficher l'état actuel (Actif, En attente, Suspendu, Expiré, Essai, Annulé)
+- [x] Afficher la date de prochain paiement et compte à rebours
+- [x] Historique complet des paiements avec statuts
+- [x] Statistiques (paiements réussis, total dépensé, ancienneté)
+- [x] Bouton "Réactiver" si suspendu
+- [x] Affichage NFT de licence
+- [x] Tester le système complet
+- [x] Créer le checkpoint final
