@@ -43,19 +43,37 @@ export default function ApiKeysManagement() {
   const [apiKey, setApiKey] = useState("");
   const [apiSecret, setApiSecret] = useState("");
   const [skipValidation, setSkipValidation] = useState(false);
+  const [isValidating, setIsValidating] = useState(false);
+  const [validationStatus, setValidationStatus] = useState<'idle' | 'validating' | 'success' | 'error'>('idle');
+  const [validationMessage, setValidationMessage] = useState('');
   
   // Récupérer les intégrations existantes
   const { data: integrations, refetch } = trpc.honofication.getApiIntegrations.useQuery();
   
   // Mutations
   const createIntegration = trpc.honofication.createApiIntegration.useMutation({
+    onMutate: () => {
+      setIsValidating(true);
+      setValidationStatus('validating');
+      setValidationMessage('Validation de la clé API en cours...');
+    },
     onSuccess: () => {
+      setIsValidating(false);
+      setValidationStatus('success');
+      setValidationMessage('✅ Clé API validée avec succès !');
       toast.success("Intégration créée avec succès !");
-      setIsDialogOpen(false);
-      resetForm();
+      setTimeout(() => {
+        setIsDialogOpen(false);
+        resetForm();
+        setValidationStatus('idle');
+        setValidationMessage('');
+      }, 1500);
       refetch();
     },
     onError: (error) => {
+      setIsValidating(false);
+      setValidationStatus('error');
+      setValidationMessage(`❌ ${error.message}`);
       toast.error(`Erreur : ${error.message}`);
     },
   });
@@ -317,12 +335,41 @@ export default function ApiKeysManagement() {
               </div>
             </div>
             
+            {/* Feedback de validation */}
+            {validationStatus !== 'idle' && (
+              <div className={`p-3 rounded-lg border ${
+                validationStatus === 'validating' ? 'bg-blue-50 border-blue-200' :
+                validationStatus === 'success' ? 'bg-green-50 border-green-200' :
+                'bg-red-50 border-red-200'
+              }`}>
+                <div className="flex items-center gap-2">
+                  {validationStatus === 'validating' && (
+                    <RefreshCw className="w-4 h-4 animate-spin text-blue-600" />
+                  )}
+                  <p className={`text-sm font-medium ${
+                    validationStatus === 'validating' ? 'text-blue-900' :
+                    validationStatus === 'success' ? 'text-green-900' :
+                    'text-red-900'
+                  }`}>
+                    {validationMessage}
+                  </p>
+                </div>
+              </div>
+            )}
+            
             <DialogFooter>
-              <Button variant="outline" onClick={() => setIsDialogOpen(false)}>
+              <Button variant="outline" onClick={() => setIsDialogOpen(false)} disabled={isValidating}>
                 Annuler
               </Button>
-              <Button onClick={handleCreate} disabled={createIntegration.isPending}>
-                {createIntegration.isPending ? "Création..." : "Créer"}
+              <Button onClick={handleCreate} disabled={isValidating}>
+                {isValidating ? (
+                  <>
+                    <RefreshCw className="w-4 h-4 animate-spin mr-2" />
+                    Validation...
+                  </>
+                ) : (
+                  "Créer"
+                )}
               </Button>
             </DialogFooter>
           </DialogContent>

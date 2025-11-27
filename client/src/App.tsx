@@ -52,6 +52,7 @@ import ApiKeysManagement from "./pages/admin/ApiKeysManagement";
 import HonoficationAdminDashboard from "./pages/admin/HonoficationAdminDashboard";
 import SeedNftSources from "./pages/admin/SeedNftSources";
 import NftGratitudePresentation from "./pages/NftGratitudePresentation";
+import MonitoringDashboard from "./pages/admin/MonitoringDashboard";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -98,6 +99,7 @@ function Router() {
       <Route path={"/admin/api-keys"} component={ApiKeysManagement} />
       <Route path={"/admin/honofication"} component={HonoficationAdminDashboard} />
       <Route path={"/admin/seed-nft"} component={SeedNftSources} />
+      <Route path={"/admin/monitoring"} component={MonitoringDashboard} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />
