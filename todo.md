@@ -842,6 +842,16 @@
 - [x] Créer le schéma de base de données pour les sessions Zoom (avec contacts + avant/après RDV)
 - [x] Créer le router tRPC pour la gestion des RDV Zoom
 - [ ] Intégrer l'API Zoom pour générer les liens automatiquement
-- [ ] Créer l'interface de réservation de créneaux (calendrier)
-- [ ] Créer le dashboard de gestion des sessions (client + admin)
+- [x] Créer l'interface de réservation de créneaux (calendrier)
+- [x] Créer le dashboard client de gestion des sessions
 - [ ] Ajouter les notifications email (confirmation + rappel 24h avant)
+
+
+## Phase 69 : Système NFT de Gratitude Économique - TERMINÉ ✅
+- [x] Créer le schéma de base de données (nft_sources, nft_beneficiaries, nft_contributions, nft_inquiries)
+- [x] Rédiger le contrat légal de NFT de Gratitude Économique (principes, pourcentages, mécanismes)
+- [x] Créer le router tRPC pour gérer les NFT et contributions
+- [x] Créer l'interface admin de gestion des NFT et enquêtes de recouvrement
+- [x] Créer le dashboard bénéficiaire pour visualiser son NFT et contributions
+- [x] Intégrer le système dans le parcours utilisateur existant
+- [ ] Créer le checkpoint final

@@ -18,6 +18,7 @@ import { analyticsRouter } from './analyticsRouter';
 import { formationRouter } from './formationRouter';
 import { quotesRouter } from './quotesRouter';
 import { coachingRouter } from './coachingRouter';
+import { nftGratitudeRouter } from './nftGratitudeRouter';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -80,6 +81,9 @@ export const appRouter = router({
 
   // Coaching Zoom router
   coaching: coachingRouter,
+
+  // NFT de Gratitude Économique router
+  nftGratitude: nftGratitudeRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({

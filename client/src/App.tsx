@@ -41,6 +41,10 @@ import Formation from "./pages/Formation";
 import FormationModule from "./pages/FormationModule";
 import CGVFormation from "./pages/CGVFormation";
 import VisualGraphic from "./pages/VisualGraphic";
+import ReservationCoaching from "./pages/ReservationCoaching";
+import DashboardCoaching from "./pages/DashboardCoaching";
+import NftGratitudeDashboard from "./pages/NftGratitudeDashboard";
+import NftGratitudeAdmin from "./pages/admin/NftGratitudeAdmin";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -54,6 +58,9 @@ function Router() {
       <Route path={"/formation/module/:moduleNumber"} component={FormationModule} />
       <Route path={"/cgv-formation"} component={CGVFormation} />
       <Route path={"/visual-graphic"} component={VisualGraphic} />
+      <Route path={"/reservation-coaching"} component={ReservationCoaching} />
+      <Route path={"/dashboard/coaching"} component={DashboardCoaching} />
+      <Route path={"/dashboard/nft-gratitude"} component={NftGratitudeDashboard} />
       <Route path={"/services"} component={Services} />
       <Route path={"/portfolio"} component={Portfolio} />
       <Route path={"/ressources"} component={Ressources} />
@@ -77,6 +84,7 @@ function Router() {
       <Route path={"/admin/email-templates"} component={EmailTemplates} />
       <Route path={"/admin/email-workflows"} component={EmailWorkflows} />
       <Route path={"/admin/analytics"} component={Analytics} />
+      <Route path={"/admin/nft-gratitude"} component={NftGratitudeAdmin} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />
