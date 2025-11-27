@@ -21,6 +21,7 @@ import { coachingRouter } from './coachingRouter';
 import { nftGratitudeRouter } from './nftGratitudeRouter';
 import { correcteurRouter } from './correcteurRouter';
 import { nftRoyaltyRouter } from './nftRoyaltyRouter';
+import { honoficationRouter } from './honoficationRouter';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -92,6 +93,9 @@ export const appRouter = router({
 
   // NFT Royalty Tracking router
   nftRoyalty: nftRoyaltyRouter,
+
+  // Honofication (Détection automatique + Recouvrement + Arbitrage)
+  honofication: honoficationRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({

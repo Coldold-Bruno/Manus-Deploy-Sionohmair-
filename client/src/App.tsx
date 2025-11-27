@@ -47,6 +47,7 @@ import NftGratitudeDashboard from "./pages/NftGratitudeDashboard";
 import NftGratitudeAdmin from "./pages/admin/NftGratitudeAdmin";
 import CorrecteurUniversel from "./pages/CorrecteurUniversel";
 import NftRoyaltiesDashboard from "./pages/NftRoyaltiesDashboard";
+import HonoficationDashboard from "./pages/HonoficationDashboard";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -65,6 +66,7 @@ function Router() {
       <Route path={"/dashboard/nft-gratitude"} component={NftGratitudeDashboard} />
       <Route path={"/correcteur"} component={CorrecteurUniversel} />
       <Route path={"/dashboard/nft-royalties"} component={NftRoyaltiesDashboard} />
+      <Route path={"/dashboard/honofication"} component={HonoficationDashboard} />
       <Route path={"/services"} component={Services} />
       <Route path={"/portfolio"} component={Portfolio} />
       <Route path={"/ressources"} component={Ressources} />
