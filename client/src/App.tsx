@@ -54,6 +54,8 @@ import ChatIA from "./pages/ChatIA";
 import Templates from "./pages/Templates";
 import UserDashboard from "./pages/UserDashboard";
 import Exemples from "./pages/Exemples";
+import CopyEditor from "./pages/CopyEditor";
+import Chatbot from "./components/Chatbot";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -100,6 +102,7 @@ function Router() {
       <Route path={"/templates"} component={Templates} />
       <Route path={"/dashboard-user"} component={UserDashboard} />
       <Route path={"/exemples"} component={Exemples} />
+      <Route path={"/editor"} component={CopyEditor} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />
@@ -120,11 +123,12 @@ function App() {
     <ErrorBoundary>
       <ThemeProvider
         defaultTheme="light"
+        // switchable
       >
         <TooltipProvider>
           <Toaster />
           <Router />
-          <ScrollToTop />
+          <Chatbot />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

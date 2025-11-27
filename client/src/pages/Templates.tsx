@@ -3,8 +3,9 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Copy, Check, Download, Sparkles, FileText } from 'lucide-react';
+import { Copy, Check, Download, Sparkles, FileText, Star } from 'lucide-react';
 import { toast } from 'sonner';
+import { toggleTemplateFavorite, isTemplateFavorite, getFavorites } from '@/lib/favorites';
 
 interface Template {
   id: string;
@@ -262,6 +263,15 @@ Si vous vivez la même situation que moi "avant", je vous recommande vivement d'
 
 export default function Templates() {
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [favorites, setFavorites] = useState<string[]>([]);
+
+  // Charger les favoris au montage
+  useState(() => {
+    if (typeof window !== 'undefined') {
+      const { templates } = getFavorites();
+      setFavorites(templates);
+    }
+  });
 
   const handleCopy = (content: string, id: string) => {
     navigator.clipboard.writeText(content);
@@ -363,6 +373,21 @@ export default function Templates() {
                       >
                         <Download className="h-4 w-4" />
                       </Button>
+                      <Button
+                        onClick={() => {
+                          const isFavorite = toggleTemplateFavorite(template.id);
+                          setFavorites(prev => 
+                            isFavorite 
+                              ? [...prev, template.id] 
+                              : prev.filter(id => id !== template.id)
+                          );
+                          toast.success(isFavorite ? 'Ajouté aux favoris' : 'Retiré des favoris');
+                        }}
+                        variant={favorites.includes(template.id) ? 'default' : 'outline'}
+                        size="icon"
+                      >
+                        <Star className={`h-4 w-4 ${favorites.includes(template.id) ? 'fill-current' : ''}`} />
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -426,6 +451,21 @@ export default function Templates() {
                         variant="outline"
                       >
                         <Download className="h-4 w-4" />
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          const isFavorite = toggleTemplateFavorite(template.id);
+                          setFavorites(prev => 
+                            isFavorite 
+                              ? [...prev, template.id] 
+                              : prev.filter(id => id !== template.id)
+                          );
+                          toast.success(isFavorite ? 'Ajouté aux favoris' : 'Retiré des favoris');
+                        }}
+                        variant={favorites.includes(template.id) ? 'default' : 'outline'}
+                        size="icon"
+                      >
+                        <Star className={`h-4 w-4 ${favorites.includes(template.id) ? 'fill-current' : ''}`} />
                       </Button>
                     </div>
                   </CardContent>

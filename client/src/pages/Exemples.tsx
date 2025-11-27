@@ -3,7 +3,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { ArrowRight, TrendingUp, CheckCircle, XCircle, Sparkles } from 'lucide-react';
+import { ArrowRight, TrendingUp, CheckCircle, XCircle, Sparkles, Star } from 'lucide-react';
 
 interface Example {
   id: string;
@@ -253,8 +253,20 @@ PS : L'audit identifiera exactement combien vous perdez chaque mois.`,
   }
 ];
 
+import { toggleExampleFavorite, getFavorites } from '@/lib/favorites';
+import { toast } from 'sonner';
+
 export default function Exemples() {
   const [selectedExample, setSelectedExample] = useState<Example | null>(null);
+  const [favorites, setFavorites] = useState<string[]>([]);
+
+  // Charger les favoris au montage
+  useState(() => {
+    if (typeof window !== 'undefined') {
+      const { examples } = getFavorites();
+      setFavorites(examples);
+    }
+  });
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 py-12">
@@ -284,8 +296,26 @@ export default function Exemples() {
               <Card key={example.id} className="border-accent/20">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <Badge className="bg-accent/10 text-accent">{example.framework}</Badge>
-                    <Badge variant="outline">{example.type}</Badge>
+                    <div className="flex items-center gap-2">
+                      <Badge className="bg-accent/10 text-accent">{example.framework}</Badge>
+                      <Badge variant="outline">{example.type}</Badge>
+                    </div>
+                    <Button
+                      onClick={() => {
+                        const isFavorite = toggleExampleFavorite(example.id);
+                        setFavorites(prev => 
+                          isFavorite 
+                            ? [...prev, example.id] 
+                            : prev.filter(id => id !== example.id)
+                        );
+                        toast.success(isFavorite ? 'Ajouté aux favoris' : 'Retiré des favoris');
+                      }}
+                      variant={favorites.includes(example.id) ? 'default' : 'outline'}
+                      size="icon"
+                      className="h-8 w-8"
+                    >
+                      <Star className={`h-4 w-4 ${favorites.includes(example.id) ? 'fill-current' : ''}`} />
+                    </Button>
                   </div>
                   <CardTitle className="text-3xl">{example.title}</CardTitle>
                   <CardDescription>

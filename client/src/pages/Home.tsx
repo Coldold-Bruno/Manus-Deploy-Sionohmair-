@@ -52,6 +52,9 @@ export default function Home() {
             <Link href="/exemples">
               <a className="text-sm font-medium hover:text-accent transition-colors">Exemples</a>
             </Link>
+            <Link href="/editor">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Éditeur</a>
+            </Link>
             <Link href="/blog">
               <a className="text-sm font-medium hover:text-accent transition-colors">Blog</a>
             </Link>

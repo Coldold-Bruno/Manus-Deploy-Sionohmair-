@@ -13,6 +13,7 @@ import {
   Search
 } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
+import { exportAnalysisToPDF, exportCopyToPDF } from '@/lib/pdfExport';
 
 export default function UserDashboard() {
   // Récupérer les données utilisateur
@@ -180,6 +181,14 @@ export default function UserDashboard() {
                       <Button variant="outline" size="sm" asChild>
                         <a href="/content-analyzer">Voir détails</a>
                       </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => exportAnalysisToPDF(analysis)}
+                      >
+                        <FileText className="mr-2 h-4 w-4" />
+                        Export PDF
+                      </Button>
                     </div>
                   </CardContent>
                 </Card>
@@ -240,6 +249,14 @@ export default function UserDashboard() {
                       </Button>
                       <Button variant="outline" size="sm" asChild>
                         <a href="/copy-generator">Voir détails</a>
+                      </Button>
+                      <Button
+                        variant="outline"
+                        size="sm"
+                        onClick={() => exportCopyToPDF(copy)}
+                      >
+                        <FileText className="mr-2 h-4 w-4" />
+                        Export PDF
                       </Button>
                     </div>
                   </CardContent>
