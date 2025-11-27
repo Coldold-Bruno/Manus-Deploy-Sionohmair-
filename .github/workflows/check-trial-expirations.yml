@@ -1,4 +1,4 @@
-name: Check Trial Expirations Daily
+name: Check Trial Expirations
 
 # Exécuter tous les jours à 9h00 (UTC+1 = 8h00 UTC)
 on:
@@ -13,30 +13,60 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
       - name: Check Trial Expirations
+        env:
+          APP_URL: ${{ secrets.APP_URL }}
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
         run: |
-          echo "🔍 Checking trial expirations at $(date)"
+          echo "🔍 Vérification des essais gratuits qui expirent..."
           
-          # Appeler l'endpoint tRPC via HTTP POST
-          RESPONSE=$(curl -s -X POST \
-            -H "Content-Type: application/json" \
-            -d "{\"secret\":\"${{ secrets.CRON_SECRET }}\"}" \
-            "${{ secrets.APP_URL }}/api/trpc/cron.checkTrialExpirations")
+          # Vérifier que les variables sont configurées
+          if [ -z "$APP_URL" ]; then
+            echo "❌ Erreur : APP_URL n'est pas configuré dans les secrets GitHub"
+            exit 1
+          fi
           
-          echo "📧 Response: $RESPONSE"
+          if [ -z "$CRON_SECRET" ]; then
+            echo "❌ Erreur : CRON_SECRET n'est pas configuré dans les secrets GitHub"
+            exit 1
+          fi
           
-          # Vérifier si la réponse contient "success":true
-          if echo "$RESPONSE" | grep -q '"success":true'; then
-            echo "✅ Trial expirations checked successfully"
-            exit 0
+          # Appeler l'endpoint tRPC
+          RESPONSE=$(curl -s -w "\n%{http_code}" "$APP_URL/api/trpc/cron.checkTrialExpirations?secret=$CRON_SECRET")
+          
+          # Extraire le code HTTP (dernière ligne)
+          HTTP_CODE=$(echo "$RESPONSE" | tail -n1)
+          
+          # Extraire le corps de la réponse (tout sauf la dernière ligne)
+          BODY=$(echo "$RESPONSE" | head -n-1)
+          
+          echo "📊 Code HTTP : $HTTP_CODE"
+          echo "📄 Réponse : $BODY"
+          
+          # Vérifier le code de statut
+          if [ "$HTTP_CODE" -eq 200 ]; then
+            echo "✅ Tâche CRON exécutée avec succès"
+            
+            # Afficher les statistiques si disponibles
+            if command -v jq &> /dev/null; then
+              echo "$BODY" | jq -r '.result.data.json | "📧 Emails envoyés : \(.emailsSent)\n⏰ Essais vérifiés : \(.trialsChecked)\n🔄 Statuts mis à jour : \(.statusUpdated)"' 2>/dev/null || echo "$BODY"
+            else
+              echo "$BODY"
+            fi
           else
-            echo "❌ Failed to check trial expirations"
-            echo "Response: $RESPONSE"
+            echo "❌ Erreur lors de l'exécution de la tâche CRON"
+            echo "Réponse complète : $BODY"
             exit 1
           fi
       
-      - name: Send notification on failure
+      - name: Notify on failure
         if: failure()
         run: |
-          echo "⚠️ Trial expiration check failed at $(date)"
-          # Vous pouvez ajouter ici une notification (Slack, Discord, email, etc.)
+          echo "❌ La tâche CRON a échoué. Vérifiez les logs ci-dessus."
+          echo "🔧 Actions recommandées :"
+          echo "  1. Vérifiez que APP_URL est correct dans les secrets GitHub"
+          echo "  2. Vérifiez que CRON_SECRET correspond à celui configuré dans Manus"
+          echo "  3. Vérifiez que l'endpoint /api/trpc/cron.checkTrialExpirations est accessible"
