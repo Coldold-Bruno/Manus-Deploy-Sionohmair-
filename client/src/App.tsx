@@ -45,6 +45,9 @@ import HonoficationAdminDashboard from "./pages/admin/HonoficationAdminDashboard
 import SeedNftSources from "./pages/admin/SeedNftSources";
 import NftGratitudePresentation from "./pages/NftGratitudePresentation";
 import MonitoringDashboard from "./pages/admin/MonitoringDashboard";
+import ContentAnalyzer from "./pages/ContentAnalyzer";
+import CopyGenerator from "./pages/CopyGenerator";
+import AvatarBuilder from "./pages/AvatarBuilder";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -80,6 +83,11 @@ function Router() {
       <Route path={"/admin/honofication"} component={HonoficationAdminDashboard} />
       <Route path={"/admin/seed-nft"} component={SeedNftSources} />
       <Route path={"/admin/monitoring"} component={MonitoringDashboard} />
+      
+      {/* Content Marketing & Copywriting */}
+      <Route path={"/content-analyzer"} component={ContentAnalyzer} />
+      <Route path={"/copy-generator"} component={CopyGenerator} />
+      <Route path={"/avatar-builder"} component={AvatarBuilder} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />

@@ -28,75 +28,60 @@ export default function Home() {
             </a>
           </Link>
           <div className="flex items-center space-x-6">
-            <Link href="/sprint">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Sprint de Clarté</a>
+            <Link href="/content-analyzer">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Analyseur</a>
             </Link>
-            <Link href="/theoreme">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Théorème</a>
+            <Link href="/copy-generator">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Générateur</a>
             </Link>
-            <Link href="/services">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Services</a>
-            </Link>
-            <Link href="/ressources">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Ressources</a>
-            </Link>
-            <Link href="/automatisation-ia">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Automatisation IA</a>
-            </Link>
-            <Link href="/calculateur">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Calculateur</a>
-            </Link>
-            <Link href="/correcteur">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Correcteur</a>
-            </Link>
-            <Link href="/nft-gratitude">
-              <a className="text-sm font-medium hover:text-accent transition-colors">NFT Gratitude</a>
-            </Link>
-            <Link href="/portfolio">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Portfolio</a>
+            <Link href="/avatar-builder">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Avatar Client</a>
             </Link>
             <Link href="/blog">
               <a className="text-sm font-medium hover:text-accent transition-colors">Blog</a>
             </Link>
+            <Link href="/about">
+              <a className="text-sm font-medium hover:text-accent transition-colors">À Propos</a>
+            </Link>
             <Button asChild variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link href="/sprint">
-                <a>Commencer →</a>
+              <Link href="/content-analyzer">
+                <a>Analyser mon contenu →</a>
               </Link>
             </Button>
           </div>
         </div>
       </nav>
 
-      {/* Hero Section - PFPMA Structure */}
+      {/* Hero Section - Content Marketing & Copywriting */}
       <section className="py-20 md:py-32 bg-gradient-to-b from-background to-secondary/20">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center space-y-8">
-            {/* P - Problème */}
+            {/* Problème */}
             <div className="space-y-4">
               <div className="inline-block px-4 py-2 bg-destructive/10 text-destructive rounded-full text-sm font-medium mb-4">
-                Le Problème : La Dissipation Intellectuelle
+                Le Problème : Votre Message Se Perd
               </div>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-                Votre idée est <span className="text-accent">brillante</span>.
+                Votre contenu est <span className="text-accent">invisible</span>.
                 <br />
-                Pourquoi personne ne la comprend ?
+                Vos conversions stagnent.
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                90% des idées meurent dans la confusion. Pas par manque de valeur, mais par manque de clarté. 
-                La <strong>Dissipation Intellectuelle</strong> détruit vos conversions, vos ventes, et votre impact.
+                90% des contenus marketing échouent. Pas par manque de qualité, mais par manque de <strong>méthodologie</strong>. 
+                Les 3 frictions invisibles (Attention, Cognitive, Émotionnelle) tuent vos conversions.
               </p>
               <p className="text-lg text-accent font-semibold mt-4">
-                🎯 La vérité : vous n'êtes pas le problème. C'est la friction invisible qui bloque votre génie.
+                🎯 La vérité : vous avez besoin d'une science, pas d'un art.
               </p>
             </div>
 
-            {/* F - Formule */}
+            {/* Formule */}
             <div className="space-y-4 pt-8">
               <div className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">
-                La Solution : L'Ingénierie du Génie
+                La Solution : Frameworks de Copywriting Scientifiques
               </div>
               <h2 className="text-3xl md:text-4xl font-bold">
-                Transformez la communication d'un art subjectif
+                PFPMA & APTEA : Les frameworks qui multiplient vos conversions
                 <br />
                 en une <span className="text-accent">science de la performance</span>
               </h2>
@@ -155,71 +140,70 @@ export default function Home() {
               </div>
             </div>
 
-            {/* M - Méthode */}
+            {/* 3 Outils Content Marketing */}
             <div className="space-y-6 pt-12">
-              <h3 className="text-2xl font-bold">La Méthode en 3 Étapes</h3>
+              <h3 className="text-2xl font-bold">3 Outils Puissants pour Maximiser Vos Conversions</h3>
               <div className="grid md:grid-cols-3 gap-6">
-                <Card>
+                <Card className="hover:border-accent/50 transition-colors cursor-pointer" onClick={() => window.location.href = '/content-analyzer'}>
                   <CardHeader>
                     <Target className="h-10 w-10 text-accent mb-2" />
-                    <CardTitle>1. Diagnostiquer</CardTitle>
+                    <CardTitle>Analyseur de Contenu</CardTitle>
                     <CardDescription>
-                      Analyse PFPMA complète de votre message. Identification des 3 types de frictions.
-                      Score de Clarté sur 20 points.
+                      Analysez votre contenu en 5 dimensions : SEO, Conversion, Engagement, Lisibilité, Psychologie.
+                      Score global + recommandations actionnables.
                     </CardDescription>
                   </CardHeader>
                 </Card>
-                <Card>
+                <Card className="hover:border-accent/50 transition-colors cursor-pointer" onClick={() => window.location.href = '/copy-generator'}>
                   <CardHeader>
                     <Zap className="h-10 w-10 text-accent mb-2" />
-                    <CardTitle>2. Éliminer</CardTitle>
+                    <CardTitle>Générateur de Copy</CardTitle>
                     <CardDescription>
-                      Correction des frictions selon le Théorème de la Genèse de l'Insight (Hi = An × Pn × Tn × En).
-                      Refonte du message central.
+                      Créez du copy haute conversion avec PFPMA, APTEA, AIDA, PAS, PASTOR, BAB.
+                      IA optimisée pour la méthodologie Sionohmair.
                     </CardDescription>
                   </CardHeader>
                 </Card>
-                <Card>
+                <Card className="hover:border-accent/50 transition-colors cursor-pointer" onClick={() => window.location.href = '/avatar-builder'}>
                   <CardHeader>
                     <TrendingUp className="h-10 w-10 text-accent mb-2" />
-                    <CardTitle>3. Amplifier</CardTitle>
+                    <CardTitle>Persona Builder</CardTitle>
                     <CardDescription>
-                      Plan d'action sur 30 jours. Recommandations mesurables.
-                      Projection en KPI (CTR, conversion, engagement).
+                      Définissez votre avatar client idéal : démographiques, psychographiques, comportement.
+                      Messages ultra-personnalisés garantis.
                     </CardDescription>
                   </CardHeader>
                 </Card>
               </div>
             </div>
 
-            {/* A - Appel */}
+            {/* Appel à l'action */}
             <div className="space-y-6 pt-12">
               <div className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">
-                Offre de Lancement
+                Commencez Maintenant
               </div>
               <h3 className="text-3xl font-bold">
-                Sprint de Clarté : <span className="line-through text-muted-foreground">2 500 €</span>{" "}
-                <span className="text-accent">990 €</span>
+                Analysez Votre Contenu en <span className="text-accent">5 Dimensions</span>
               </h3>
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Diagnostic complet en 7 jours. Rapport de 10 pages avec Score de Clarté, analyse des frictions,
-                et plan d'action activant le <strong className="text-accent">Facteur α = 22.67</strong> pour un gain de <strong className="text-accent">340%</strong>.
+                Obtenez un score global, des recommandations actionnables, et générez du copy haute conversion
+                avec les frameworks <strong className="text-accent">PFPMA & APTEA</strong> (Facteur α = 22.67).
               </p>
               <p className="text-sm text-muted-foreground mt-2">
-                Garantie de résultats mesurables ou remboursement intégral.
+                Gratuit pour les 100 premiers utilisateurs. Aucune carte bancaire requise.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8">
-                  <Link href="/sprint">
+                  <Link href="/content-analyzer">
                     <a className="flex items-center gap-2">
-                      Accéder au Sprint de Clarté
+                      Analyser Mon Contenu Maintenant
                       <ArrowRight className="h-5 w-5" />
                     </a>
                   </Link>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="text-lg px-8">
-                  <Link href="/ressources">
-                    <a>Télécharger le Manuel Gratuit</a>
+                  <Link href="/copy-generator">
+                    <a>Générer du Copy</a>
                   </Link>
                 </Button>
               </div>
