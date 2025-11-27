@@ -50,6 +50,10 @@ import CopyGenerator from "./pages/CopyGenerator";
 import AvatarBuilder from "./pages/AvatarBuilder";
 import ScriptAnalyzer from "./pages/ScriptAnalyzer";
 import FrameworksLibrary from "./pages/FrameworksLibrary";
+import ChatIA from "./pages/ChatIA";
+import Templates from "./pages/Templates";
+import UserDashboard from "./pages/UserDashboard";
+import Exemples from "./pages/Exemples";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -92,6 +96,10 @@ function Router() {
       <Route path={"/avatar-builder"} component={AvatarBuilder} />
       <Route path={"/script-analyzer"} component={ScriptAnalyzer} />
       <Route path={"/frameworks"} component={FrameworksLibrary} />
+      <Route path={"/chat-ia"} component={ChatIA} />
+      <Route path={"/templates"} component={Templates} />
+      <Route path={"/dashboard-user"} component={UserDashboard} />
+      <Route path={"/exemples"} component={Exemples} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />

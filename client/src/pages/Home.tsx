@@ -43,6 +43,15 @@ export default function Home() {
             <Link href="/frameworks">
               <a className="text-sm font-medium hover:text-accent transition-colors">Frameworks</a>
             </Link>
+            <Link href="/chat-ia">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Chat IA</a>
+            </Link>
+            <Link href="/templates">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Templates</a>
+            </Link>
+            <Link href="/exemples">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Exemples</a>
+            </Link>
             <Link href="/blog">
               <a className="text-sm font-medium hover:text-accent transition-colors">Blog</a>
             </Link>

@@ -1,10 +1,48 @@
-import { Button } from "@/components/ui/button";
+import { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { Sparkles, ArrowLeft, Bot, Zap, CheckCircle, XCircle, Workflow, Shield, FileCode, Lightbulb } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Sparkles, ArrowLeft, Bot, Zap, CheckCircle, XCircle, Workflow, Shield, FileCode, Lightbulb, Loader2, Wand2 } from "lucide-react";
 import { Link } from "wouter";
+import { trpc } from '@/lib/trpc';
+import { toast } from 'sonner';
 
 export default function AutomatisationIA() {
+  const [brief, setBrief] = useState('');
+  const [selectedAvatarId, setSelectedAvatarId] = useState<number | undefined>(undefined);
+  const [generatedContent, setGeneratedContent] = useState('');
+  
+  // Récupérer les avatars clients
+  const { data: avatars = [] } = trpc.contentMarketing.getMyAvatars.useQuery();
+  
+  const generateMutation = trpc.contentMarketing.generateCopy.useMutation({
+    onSuccess: (data) => {
+      setGeneratedContent(data.generatedContent);
+      toast.success('Contenu généré avec succès !');
+    },
+    onError: (error) => {
+      toast.error(`Erreur : ${error.message}`);
+    }
+  });
+  
+  const handleGenerate = () => {
+    if (!brief.trim()) {
+      toast.error('Veuillez entrer un brief');
+      return;
+    }
+    
+    generateMutation.mutate({
+      contentType: 'landing_page',
+      brief,
+      avatarId: selectedAvatarId,
+      tone: 'professionnel',
+      length: 'medium'
+    });
+  };
+  
   return (
     <div className="min-h-screen">
       {/* Navigation */}
@@ -623,6 +661,109 @@ export default function AutomatisationIA() {
                   <p>• A/B testing automatisé avec IA</p>
                 </CardContent>
               </Card>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Interactive : Générateur IA */}
+      <section className="py-20 bg-secondary/10">
+        <div className="container">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="text-center space-y-4">
+              <Badge className="bg-accent/10 text-accent">Essayez Maintenant</Badge>
+              <h2 className="text-4xl font-bold">Générateur IA Sionohmair</h2>
+              <p className="text-xl text-muted-foreground">
+                Générez du contenu optimisé avec l'IA, personnalisé selon votre avatar client
+              </p>
+            </div>
+
+            <Card className="border-accent/20">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Wand2 className="h-6 w-6 text-accent" />
+                  Générez votre contenu
+                </CardTitle>
+                <CardDescription>
+                  Entrez votre brief et sélectionnez votre avatar client pour une génération personnalisée
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-4">
+                <div className="space-y-2">
+                  <Label htmlFor="brief">Brief de contenu *</Label>
+                  <Textarea
+                    id="brief"
+                    placeholder="Ex: Créer une landing page pour un SaaS d'automatisation marketing. Cible : entrepreneurs solo. Problème : perte de temps sur les tâches répétitives. Solution : automatisation IA."
+                    value={brief}
+                    onChange={(e) => setBrief(e.target.value)}
+                    rows={6}
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="avatar">Avatar Client (optionnel)</Label>
+                  <Select value={selectedAvatarId?.toString()} onValueChange={(value) => setSelectedAvatarId(value === 'none' ? undefined : parseInt(value))}>
+                    <SelectTrigger>
+                      <SelectValue placeholder="Sélectionnez un avatar" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="none">Aucun avatar</SelectItem>
+                      {avatars.map((avatar: any) => (
+                        <SelectItem key={avatar.id} value={avatar.id.toString()}>
+                          {avatar.name} ({avatar.age} ans - {avatar.occupation})
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                  <p className="text-xs text-muted-foreground">
+                    Personnalisez le contenu selon votre audience cible
+                  </p>
+                </div>
+
+                <Button
+                  onClick={handleGenerate}
+                  disabled={generateMutation.isPending}
+                  size="lg"
+                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
+                >
+                  {generateMutation.isPending ? (
+                    <>
+                      <Loader2 className="mr-2 h-5 w-5 animate-spin" />
+                      Génération en cours...
+                    </>
+                  ) : (
+                    <>
+                      <Wand2 className="mr-2 h-5 w-5" />
+                      Générer le contenu
+                    </>
+                  )}
+                </Button>
+
+                {generatedContent && (
+                  <div className="mt-6 space-y-2">
+                    <Label>Contenu généré</Label>
+                    <div className="bg-secondary/20 p-4 rounded-lg border">
+                      <p className="whitespace-pre-wrap text-sm">{generatedContent}</p>
+                    </div>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => {
+                        navigator.clipboard.writeText(generatedContent);
+                        toast.success('Contenu copié dans le presse-papiers !');
+                      }}
+                    >
+                      Copier le contenu
+                    </Button>
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            <div className="text-center text-sm text-muted-foreground">
+              <p>
+                🔒 Vos données sont privées et sécurisées. L'IA utilise la méthodologie PFPMA pour garantir la clarté et la conversion.
+              </p>
             </div>
           </div>
         </div>
