@@ -49,6 +49,9 @@ export default function Home() {
             <Link href="/correcteur">
               <a className="text-sm font-medium hover:text-accent transition-colors">Correcteur</a>
             </Link>
+            <Link href="/nft-gratitude">
+              <a className="text-sm font-medium hover:text-accent transition-colors">NFT Gratitude</a>
+            </Link>
             <Link href="/portfolio">
               <a className="text-sm font-medium hover:text-accent transition-colors">Portfolio</a>
             </Link>

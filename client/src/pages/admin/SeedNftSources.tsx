@@ -17,6 +17,10 @@ import { Loader2, CheckCircle, AlertCircle, Sparkles } from "lucide-react";
 export default function SeedNftSources() {
   const [isSeeding, setIsSeeding] = useState(false);
   const [result, setResult] = useState<any>(null);
+  const [autoChecked, setAutoChecked] = useState(false);
+
+  // Vérifier automatiquement si les NFT Sources existent déjà
+  const { data: existingSources, isLoading: checkingExisting } = trpc.nftGratitude.getAllNftSources.useQuery();
 
   const seedMutation = trpc.nftGratitude.seedNftSources.useMutation({
     onSuccess: (data) => {
@@ -37,6 +41,12 @@ export default function SeedNftSources() {
     setResult(null);
     seedMutation.mutate();
   };
+
+  // Auto-exécution si aucun NFT Source n'existe
+  if (!autoChecked && !checkingExisting && existingSources && existingSources.length === 0) {
+    setAutoChecked(true);
+    handleSeed();
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50 p-6">
