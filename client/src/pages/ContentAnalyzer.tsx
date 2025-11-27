@@ -11,6 +11,7 @@ import { Progress } from '@/components/ui/progress';
 import { Loader2, Search, TrendingUp, Eye, BookOpen, Brain, Sparkles } from 'lucide-react';
 import { trpc } from '@/lib/trpc';
 import { toast } from 'sonner';
+import TooltipHelper from '@/components/TooltipHelper';
 
 export default function ContentAnalyzer() {
   const [content, setContent] = useState('');
@@ -108,7 +109,10 @@ export default function ContentAnalyzer() {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="space-y-2">
-                <Label htmlFor="contentType">Type de contenu</Label>
+                <Label htmlFor="contentType" className="flex items-center gap-2">
+                  Type de contenu
+                  <TooltipHelper content="Le type influence les critères d'analyse. Une landing page sera analysée différemment d'un email." />
+                </Label>
                 <Select value={contentType} onValueChange={(value: any) => setContentType(value)}>
                   <SelectTrigger>
                     <SelectValue />
@@ -124,7 +128,10 @@ export default function ContentAnalyzer() {
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="avatar">Avatar Client (optionnel)</Label>
+                <Label htmlFor="avatar" className="flex items-center gap-2">
+                  Avatar Client (optionnel)
+                  <TooltipHelper content="Sélectionnez un avatar pour personnaliser l'analyse selon votre audience cible." />
+                </Label>
                 <Select value={selectedAvatarId?.toString()} onValueChange={(value) => setSelectedAvatarId(value ? parseInt(value) : undefined)}>
                   <SelectTrigger>
                     <SelectValue placeholder="Sélectionnez un avatar" />
@@ -145,7 +152,10 @@ export default function ContentAnalyzer() {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="content">Contenu *</Label>
+              <Label htmlFor="content" className="flex items-center gap-2">
+                Contenu *
+                <TooltipHelper content="Collez le texte complet (minimum 100 mots). Incluez titres, sous-titres, et CTA pour une analyse complète." />
+              </Label>
               <Textarea
                 id="content"
                 placeholder="Collez votre contenu ici..."

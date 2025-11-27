@@ -55,7 +55,10 @@ import Templates from "./pages/Templates";
 import UserDashboard from "./pages/UserDashboard";
 import Exemples from "./pages/Exemples";
 import CopyEditor from "./pages/CopyEditor";
+import Guide from "./pages/Guide";
+import Pricing from "./pages/Pricing";
 import Chatbot from "./components/Chatbot";
+import Onboarding from "./components/Onboarding";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -103,6 +106,8 @@ function Router() {
       <Route path={"/dashboard-user"} component={UserDashboard} />
       <Route path={"/exemples"} component={Exemples} />
       <Route path={"/editor"} component={CopyEditor} />
+      <Route path={"/guide"} component={Guide} />
+      <Route path={"/pricing"} component={Pricing} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />
@@ -129,6 +134,7 @@ function App() {
           <Toaster />
           <Router />
           <Chatbot />
+          <Onboarding />
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

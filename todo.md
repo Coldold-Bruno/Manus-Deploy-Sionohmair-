@@ -1034,3 +1034,23 @@
 - [x] Score de qualité en temps réel
 - [x] Tester le système complet
 - [x] Créer le checkpoint final
+
+
+## Phase 85 : Monétisation Redevance NFT + Guide d'Utilisation Interactif - TERMINÉ ✅
+- [x] Créer la page Guide d'Utilisation (/guide)
+- [x] Tutoriels détaillés pour chaque outil (6 tutoriels complets)
+- [x] Exemples concrets d'utilisation optimale
+- [x] FAQ par outil
+- [x] Créer le système d'onboarding pour nouveaux utilisateurs
+- [x] Parcours de découverte interactif (5 étapes)
+- [x] Tooltips contextuels dans l'interface (TooltipHelper)
+- [x] Configurer les plans de redevance NFT
+- [x] Plan Gratuit (0€ - fonctionnalités de base)
+- [x] Plan Starter (NFT 99€ + 29€/mois)
+- [x] Plan Pro (NFT 299€ + 79€/mois)
+- [x] Plan Enterprise (NFT 999€ + 199€/mois)
+- [x] Créer la page Pricing (/pricing) avec explication du modèle NFT
+- [x] Documenter le modèle NFT-as-a-Subscription
+- [x] Ajouter des hints et tips dans les formulaires (ContentAnalyzer)
+- [x] Tester le système complet
+- [x] Créer le checkpoint final
