@@ -48,6 +48,8 @@ import NftGratitudeAdmin from "./pages/admin/NftGratitudeAdmin";
 import CorrecteurUniversel from "./pages/CorrecteurUniversel";
 import NftRoyaltiesDashboard from "./pages/NftRoyaltiesDashboard";
 import HonoficationDashboard from "./pages/HonoficationDashboard";
+import ApiKeysManagement from "./pages/admin/ApiKeysManagement";
+import HonoficationAdminDashboard from "./pages/admin/HonoficationAdminDashboard";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -91,6 +93,8 @@ function Router() {
       <Route path={"/admin/email-workflows"} component={EmailWorkflows} />
       <Route path={"/admin/analytics"} component={Analytics} />
       <Route path={"/admin/nft-gratitude"} component={NftGratitudeAdmin} />
+      <Route path={"/admin/api-keys"} component={ApiKeysManagement} />
+      <Route path={"/admin/honofication"} component={HonoficationAdminDashboard} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />

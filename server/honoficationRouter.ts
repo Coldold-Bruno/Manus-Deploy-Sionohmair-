@@ -829,4 +829,116 @@ export const honoficationRouter = router({
         activeContestations: contestationsData.filter(c => c.status === "submitted" || c.status === "under_review").length,
       };
     }),
+
+  // ============================================================================
+  // GESTION DES API KEYS
+  // ============================================================================
+
+  /**
+   * Récupérer toutes les intégrations API de l'utilisateur
+   */
+  getApiIntegrations: protectedProcedure
+    .query(async ({ ctx }) => {
+      const db = await getDb();
+      if (!db) return [];
+
+      const integrations = await db.select()
+        .from(apiIntegrations)
+        .where(eq(apiIntegrations.userId, ctx.user.id))
+        .orderBy(desc(apiIntegrations.createdAt));
+
+      return integrations;
+    }),
+
+  /**
+   * Créer une nouvelle intégration API
+   */
+  createApiIntegration: protectedProcedure
+    .input(z.object({
+      platform: z.string(),
+      integrationName: z.string(),
+      apiKey: z.string(),
+      apiSecret: z.string().nullable(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+      const [integration] = await db.insert(apiIntegrations).values({
+        userId: ctx.user.id,
+        platform: input.platform,
+        integrationName: input.integrationName,
+        apiKey: input.apiKey,
+        apiSecret: input.apiSecret,
+        status: "active",
+        consentGiven: true,
+        consentDate: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      });
+
+      return { success: true, integrationId: integration.insertId };
+    }),
+
+  /**
+   * Supprimer une intégration API
+   */
+  deleteApiIntegration: protectedProcedure
+    .input(z.object({
+      integrationId: z.number(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+      await db.delete(apiIntegrations)
+        .where(and(
+          eq(apiIntegrations.id, input.integrationId),
+          eq(apiIntegrations.userId, ctx.user.id)
+        ));
+
+      return { success: true };
+    }),
+
+  /**
+   * Activer/Désactiver une intégration API
+   */
+  toggleApiIntegration: protectedProcedure
+    .input(z.object({
+      integrationId: z.number(),
+      status: z.enum(["active", "paused"]),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+      await db.update(apiIntegrations)
+        .set({ status: input.status, updatedAt: new Date() })
+        .where(and(
+          eq(apiIntegrations.id, input.integrationId),
+          eq(apiIntegrations.userId, ctx.user.id)
+        ));
+
+      return { success: true };
+    }),
+
+  /**
+   * Récupérer les logs de détection récents
+   */
+  getDetectionLogs: protectedProcedure
+    .input(z.object({
+      limit: z.number().optional().default(10),
+    }))
+    .query(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) return [];
+
+      const logs = await db.select()
+        .from(detectionLogs)
+        .where(eq(detectionLogs.userId, ctx.user.id))
+        .orderBy(desc(detectionLogs.detectedAt))
+        .limit(input.limit);
+
+      return logs;
+    }),
 });
