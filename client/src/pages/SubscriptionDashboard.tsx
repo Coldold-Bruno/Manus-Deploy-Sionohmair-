@@ -30,17 +30,17 @@ const DEMO_SUBSCRIPTION_TRIAL: Subscription = {
   status: 'trial',
   trialStartDate: new Date('2025-10-28'),
   trialEndDate: new Date('2025-11-27'),
-  oneTimePaymentAmount: 9900 // 99€
+  oneTimePaymentAmount: 3600 // 36€/mois (abonnement mensuel)
 };
 
-// Données de démo - Accès permanent
+// Données de démo - Abonnement actif
 const DEMO_SUBSCRIPTION_PAID: Subscription = {
   id: 1,
   status: 'active',
   trialStartDate: new Date('2025-09-27'),
   trialEndDate: new Date('2025-10-27'),
   paymentDate: new Date('2025-10-25'),
-  oneTimePaymentAmount: 9900 // 99€
+  oneTimePaymentAmount: 3600 // 36€/mois (abonnement mensuel)
 };
 
 export default function SubscriptionDashboard() {
@@ -56,10 +56,10 @@ export default function SubscriptionDashboard() {
         description: 'Profitez de tous les outils gratuitement pendant 30 jours'
       },
       active: {
-        label: 'Accès permanent',
+        label: 'Abonnement actif',
         color: 'bg-green-100 text-green-800',
         icon: CheckCircle,
-        description: 'Vous avez un accès illimité à la plateforme'
+        description: 'Votre abonnement mensuel est actif'
       },
       trial_expired: {
         label: 'Essai expiré',
@@ -208,11 +208,11 @@ export default function SubscriptionDashboard() {
                       <div className="bg-accent/5 border border-accent/20 rounded-lg p-4 mb-4">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="font-semibold">Paiement unique</p>
-                            <p className="text-sm text-muted-foreground">Accès permanent à tous les outils</p>
+                            <p className="font-semibold">Abonnement mensuel</p>
+                            <p className="text-sm text-muted-foreground">Accès à tous les outils • Annulez quand vous voulez</p>
                           </div>
                           <div className="text-2xl font-bold text-accent">
-                            {formatPrice(subscription.oneTimePaymentAmount)}
+                            {formatPrice(subscription.oneTimePaymentAmount)}/mois
                           </div>
                         </div>
                       </div>
@@ -222,10 +222,10 @@ export default function SubscriptionDashboard() {
                         className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
                       >
                         <CreditCard className="mr-2 h-5 w-5" />
-                        Payer maintenant et obtenir l'accès permanent
+                        S'abonner maintenant (36€/mois)
                       </Button>
                       <p className="text-center text-sm text-muted-foreground mt-3">
-                        Garantie satisfait ou remboursé 14 jours
+                        Pas d'engagement • Annulez à tout moment
                       </p>
                     </div>
                   </>
@@ -237,24 +237,24 @@ export default function SubscriptionDashboard() {
                     <div className="bg-gradient-to-r from-green-50 to-accent/5 border border-green-200 rounded-lg p-6">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="h-12 w-12 rounded-full bg-green-100 flex items-center justify-center">
-                          <Infinity className="h-6 w-6 text-green-600" />
+                          <CheckCircle className="h-6 w-6 text-green-600" />
                         </div>
                         <div>
-                          <h3 className="font-semibold text-lg">Accès permanent activé</h3>
+                          <h3 className="font-semibold text-lg">Abonnement actif</h3>
                           <p className="text-sm text-muted-foreground">
-                            Vous avez un accès illimité à tous les outils
+                            Vous avez accès à tous les outils
                           </p>
                         </div>
                       </div>
 
                       <div className="grid grid-cols-2 gap-4 mt-4">
                         <div>
-                          <p className="text-sm text-muted-foreground mb-1">Date de paiement</p>
+                          <p className="text-sm text-muted-foreground mb-1">Dernier paiement</p>
                           <p className="font-semibold">{subscription.paymentDate ? formatDate(subscription.paymentDate) : '-'}</p>
                         </div>
                         <div>
-                          <p className="text-sm text-muted-foreground mb-1">Montant payé</p>
-                          <p className="font-semibold">{formatPrice(subscription.oneTimePaymentAmount)}</p>
+                          <p className="text-sm text-muted-foreground mb-1">Montant mensuel</p>
+                          <p className="font-semibold">{formatPrice(subscription.oneTimePaymentAmount)}/mois</p>
                         </div>
                       </div>
                     </div>
@@ -263,9 +263,9 @@ export default function SubscriptionDashboard() {
                       <div className="flex items-start gap-3">
                         <CheckCircle className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                         <div>
-                          <h4 className="font-semibold text-blue-900">Aucun paiement récurrent</h4>
+                          <h4 className="font-semibold text-blue-900">Abonnement mensuel</h4>
                           <p className="text-sm text-blue-800 mt-1">
-                            Vous avez payé une seule fois et gardez l'accès pour toujours. Toutes les mises à jour futures sont incluses gratuitement.
+                            Votre abonnement de 36€/mois est actif. Toutes les mises à jour futures sont incluses. Annulez à tout moment sans frais.
                           </p>
                         </div>
                       </div>
@@ -299,11 +299,11 @@ export default function SubscriptionDashboard() {
                       <div className="bg-accent/5 border border-accent/20 rounded-lg p-4 mb-4">
                         <div className="flex items-center justify-between">
                           <div>
-                            <p className="font-semibold">Paiement unique</p>
-                            <p className="text-sm text-muted-foreground">Accès permanent à tous les outils</p>
+                            <p className="font-semibold">Abonnement mensuel</p>
+                            <p className="text-sm text-muted-foreground">Accès à tous les outils</p>
                           </div>
                           <div className="text-2xl font-bold text-accent">
-                            {formatPrice(subscription.oneTimePaymentAmount)}
+                            {formatPrice(subscription.oneTimePaymentAmount)}/mois
                           </div>
                         </div>
                       </div>
@@ -313,7 +313,7 @@ export default function SubscriptionDashboard() {
                         className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
                       >
                         <CreditCard className="mr-2 h-5 w-5" />
-                        Payer et réactiver l'accès
+                        S'abonner et réactiver l'accès
                       </Button>
                     </div>
                   </>

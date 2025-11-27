@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Check, Zap, Shield, TrendingUp, Gift, Infinity } from 'lucide-react';
+import { Check, Zap, Shield, TrendingUp, Gift, Calendar } from 'lucide-react';
 
 export default function Pricing() {
   const features = [
@@ -17,7 +17,7 @@ export default function Pricing() {
     'Dashboard utilisateur complet',
     'Chatbot d\'assistance 24/7',
     'Guide d\'utilisation détaillé',
-    'Mises à jour gratuites à vie',
+    'Mises à jour continues',
     'Support prioritaire'
   ];
 
@@ -28,14 +28,14 @@ export default function Pricing() {
         <div className="text-center mb-16">
           <div className="inline-flex items-center gap-2 bg-accent/10 text-accent px-4 py-2 rounded-full mb-6">
             <Gift className="h-5 w-5" />
-            <span className="font-semibold">Offre de lancement</span>
+            <span className="font-semibold">Essayez gratuitement pendant 30 jours</span>
           </div>
           <h1 className="text-5xl md:text-6xl font-bold mb-6">
             Tarification Simple et Transparente
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            Essayez gratuitement pendant 30 jours, puis un paiement unique pour un accès permanent. 
-            Pas d'abonnement, pas de redevance mensuelle, pas d'engagement.
+            30 jours gratuits sans engagement, puis 36€/mois pour continuer. 
+            Annulez à tout moment, aucune carte bancaire requise pour l'essai.
           </p>
         </div>
 
@@ -53,31 +53,32 @@ export default function Pricing() {
                 <CardTitle className="text-3xl">Accès Complet</CardTitle>
               </div>
               <CardDescription className="text-lg">
-                Tous les outils, toutes les fonctionnalités, pour toujours
+                Tous les outils, toutes les fonctionnalités
               </CardDescription>
             </CardHeader>
 
             <CardContent className="space-y-8">
               {/* Prix */}
               <div className="text-center space-y-4">
-                <div className="flex items-center justify-center gap-4">
-                  <div className="bg-green-100 text-green-800 px-4 py-2 rounded-lg">
-                    <div className="flex items-center gap-2">
-                      <Gift className="h-5 w-5" />
-                      <span className="font-semibold">30 jours gratuits</span>
+                <div className="flex items-center justify-center gap-4 flex-wrap">
+                  <div className="bg-green-100 text-green-800 px-6 py-4 rounded-lg">
+                    <div className="flex items-center gap-2 mb-1">
+                      <Gift className="h-6 w-6" />
+                      <span className="text-2xl font-bold">30 jours</span>
                     </div>
+                    <p className="text-sm">Gratuits</p>
                     <p className="text-xs mt-1">Sans carte bancaire</p>
                   </div>
-                  <div className="text-2xl font-bold text-muted-foreground">puis</div>
-                  <div className="bg-accent/10 text-accent px-6 py-3 rounded-lg">
-                    <div className="text-4xl font-bold">99€</div>
-                    <p className="text-sm mt-1">Paiement unique</p>
+                  <div className="text-3xl font-bold text-muted-foreground">puis</div>
+                  <div className="bg-accent/10 text-accent px-8 py-4 rounded-lg">
+                    <div className="text-5xl font-bold">36€</div>
+                    <p className="text-lg mt-1">par mois</p>
                   </div>
                 </div>
 
                 <div className="flex items-center justify-center gap-2 text-muted-foreground">
-                  <Infinity className="h-5 w-5" />
-                  <span>Accès permanent • Pas d'abonnement • Pas de redevance</span>
+                  <Calendar className="h-5 w-5" />
+                  <span>Abonnement mensuel • Annulez quand vous voulez</span>
                 </div>
               </div>
 
@@ -121,18 +122,18 @@ export default function Pricing() {
                 <div className="flex items-start gap-3">
                   <Shield className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold text-blue-900">Garantie satisfait ou remboursé 14 jours</h4>
+                    <h4 className="font-semibold text-blue-900">Annulez à tout moment</h4>
                     <p className="text-sm text-blue-800 mt-1">
-                      Si vous n'êtes pas satisfait après votre paiement, nous vous remboursons intégralement sous 14 jours.
+                      Pas d'engagement, pas de frais cachés. Annulez votre abonnement en un clic depuis votre dashboard.
                     </p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
                   <TrendingUp className="h-5 w-5 text-blue-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <h4 className="font-semibold text-blue-900">Mises à jour gratuites à vie</h4>
+                    <h4 className="font-semibold text-blue-900">Mises à jour continues</h4>
                     <p className="text-sm text-blue-800 mt-1">
-                      Toutes les nouvelles fonctionnalités, outils, et améliorations sont inclus sans frais supplémentaires.
+                      Toutes les nouvelles fonctionnalités, outils, et améliorations sont inclus dans votre abonnement.
                     </p>
                   </div>
                 </div>
@@ -152,31 +153,31 @@ export default function Pricing() {
               <CardContent>
                 <p className="text-muted-foreground">
                   Vous avez accès à tous les outils pendant 30 jours sans aucun paiement et sans fournir de carte bancaire. 
-                  Après 30 jours, vous recevrez une notification pour effectuer le paiement unique de 99€ si vous souhaitez continuer.
+                  Après 30 jours, vous recevrez une notification pour souscrire à l'abonnement mensuel de 36€ si vous souhaitez continuer.
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Que se passe-t-il après le paiement unique ?</CardTitle>
+                <CardTitle className="text-lg">Que se passe-t-il après les 30 jours gratuits ?</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Vous obtenez un accès permanent et illimité à la plateforme. Aucun abonnement mensuel, aucune redevance. 
-                  Vous payez une seule fois et gardez l'accès pour toujours, avec toutes les mises à jour futures incluses.
+                  Vous pouvez souscrire à l'abonnement mensuel de 36€ pour continuer à utiliser la plateforme. 
+                  Si vous ne souscrivez pas, votre accès sera simplement suspendu (vos données sont conservées pendant 6 mois).
                 </p>
               </CardContent>
             </Card>
 
             <Card>
               <CardHeader>
-                <CardTitle className="text-lg">Puis-je annuler pendant l'essai gratuit ?</CardTitle>
+                <CardTitle className="text-lg">Puis-je annuler mon abonnement ?</CardTitle>
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Oui, absolument ! L'essai gratuit est sans engagement. Si vous décidez de ne pas continuer, 
-                  vous n'avez rien à faire et aucun paiement ne sera demandé.
+                  Oui, absolument ! Vous pouvez annuler votre abonnement à tout moment depuis votre dashboard. 
+                  Aucun engagement, aucune pénalité. Votre accès restera actif jusqu'à la fin de la période payée.
                 </p>
               </CardContent>
             </Card>
@@ -187,8 +188,8 @@ export default function Pricing() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Non, aucun frais caché. Le prix affiché (99€) est le seul et unique paiement que vous effectuerez. 
-                  Toutes les fonctionnalités actuelles et futures sont incluses sans coût supplémentaire.
+                  Non, aucun frais caché. Le prix affiché (36€/mois) est le seul paiement que vous effectuerez. 
+                  Pas de frais d'inscription, pas de frais de résiliation, pas de surprise.
                 </p>
               </CardContent>
             </Card>
@@ -199,8 +200,20 @@ export default function Pricing() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Oui ! Nous offrons une garantie satisfait ou remboursé de 14 jours après votre paiement. 
-                  Si vous n'êtes pas satisfait, contactez-nous et nous vous rembourserons intégralement.
+                  Oui ! Si vous n'êtes pas satisfait pendant votre premier mois d'abonnement (après l'essai gratuit), 
+                  contactez-nous et nous vous rembourserons intégralement.
+                </p>
+              </CardContent>
+            </Card>
+
+            <Card>
+              <CardHeader>
+                <CardTitle className="text-lg">Comment sont traités les paiements ?</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-muted-foreground">
+                  Les paiements sont sécurisés par Stripe, le leader mondial du paiement en ligne. 
+                  Vos informations bancaires sont cryptées et jamais stockées sur nos serveurs.
                 </p>
               </CardContent>
             </Card>
@@ -219,6 +232,9 @@ export default function Pricing() {
               Commencer mon essai gratuit de 30 jours
             </a>
           </Button>
+          <p className="text-sm text-muted-foreground mt-4">
+            Aucune carte bancaire requise • Annulez quand vous voulez
+          </p>
         </div>
       </div>
     </div>

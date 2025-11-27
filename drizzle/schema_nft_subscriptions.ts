@@ -14,30 +14,32 @@ export const nftSubscriptions = pgTable('nft_subscriptions', {
   nftContractAddress: varchar('nft_contract_address', { length: 255 }), // Adresse du smart contract
   nftTokenId: varchar('nft_token_id', { length: 255 }), // Token ID du NFT
   
-  // Plan et tarification (paiement unique)
-  plan: varchar('plan', { length: 50 }).notNull().default('trial'), // 'trial', 'paid'
-  oneTimePaymentAmount: integer('one_time_payment_amount').notNull().default(9900), // Prix unique en centimes (99€)
+  // Plan et tarification (inscription gratuite + abonnement)
+  plan: varchar('plan', { length: 50 }).notNull().default('trial'), // 'trial', 'subscribed'
+  monthlySubscriptionFee: integer('monthly_subscription_fee').notNull().default(3600), // Abonnement mensuel en centimes (36€/mois)
   
   // État de l'abonnement
   status: varchar('status', { length: 50 }).notNull().default('trial'), 
   // 'trial' = Essai gratuit (30 jours)
-  // 'active' = Accès permanent (après paiement unique)
-  // 'trial_expired' = Essai expiré (en attente de paiement)
+  // 'active' = Abonnement actif (paiement mensuel à jour)
+  // 'pending_payment' = Abonnement en attente de paiement mensuel
+  // 'suspended' = Abonnement suspendu (non paiement)
   // 'cancelled' = Annulé définitivement
   
   // Dates importantes
   trialStartDate: timestamp('trial_start_date').notNull().defaultNow(), // Début de l'essai gratuit
   trialEndDate: timestamp('trial_end_date'), // Fin de l'essai gratuit (30 jours)
-  paymentDate: timestamp('payment_date'), // Date du paiement unique
-  activatedAt: timestamp('activated_at'), // Date d'activation de l'accès permanent
+  subscriptionStartDate: timestamp('subscription_start_date'), // Début de l'abonnement mensuel (après l'essai)
+  nextPaymentDate: timestamp('next_payment_date'), // Date du prochain paiement mensuel
+  lastPaymentDate: timestamp('last_payment_date'), // Date du dernier paiement mensuel réussi
   cancelledAt: timestamp('cancelled_at'), // Date d'annulation
   
   // Relances et notifications
   lastReminderSent: timestamp('last_reminder_sent'), // Dernière relance envoyée
   reminderCount: integer('reminder_count').notNull().default(0), // Nombre de relances envoyées
   
-  // Stripe (paiement unique)
-  stripePaymentIntentId: varchar('stripe_payment_intent_id', { length: 255 }), // ID du paiement unique Stripe
+  // Stripe (abonnement uniquement)
+  stripeSubscriptionId: varchar('stripe_subscription_id', { length: 255 }), // ID de l'abonnement Stripe
   stripeCustomerId: varchar('stripe_customer_id', { length: 255 }), // ID client Stripe
   
   // Métadonnées

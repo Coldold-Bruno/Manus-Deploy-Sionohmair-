@@ -1099,3 +1099,28 @@
 - [x] Modal PaymentModal adapté au paiement unique
 - [x] Tester le système complet
 - [x] Créer le checkpoint final
+
+
+### Phase 88 : Modèle Final - 30 Jours Gratuits → Abonnement 36€/mois - TERMINÉ ✅
+- [x] Modifier le schéma de base de données pour le modèle abonnement simple
+- [x] Supprimer registrationFee (pas de frais d'inscription)
+- [x] monthlySubscriptionFee : 3600 centimes (36€/mois)
+- [x] Statuts simplifiés : trial, active, pending_payment, suspended, cancelled
+- [x] Dates : trialStartDate, trialEndDate, subscriptionStartDate, nextPaymentDate, lastPaymentDate
+- [x] Modifier la page Pricing (/pricing)
+- [x] Modèle ultra-simple : 30 jours gratuits → 36€/mois
+- [x] Pas d'inscription, pas de frais unique
+- [x] FAQ adaptée (essai, abonnement, annulation)
+- [x] Modifier le SubscriptionDashboard (/subscription)
+- [x] Afficher l'état d'essai gratuit (jours restants avec barre de progression)
+- [x] Afficher le statut d'abonnement (actif, en attente, suspendu)
+- [x] Afficher la date du prochain paiement mensuel
+- [x] CTA "S'abonner maintenant" après l'essai (36€/mois)
+- [x] Créer les templates d'emails de notification
+- [x] Email J-7 : "Il vous reste 7 jours d'essai gratuit"
+- [x] Email J-3 : "Il vous reste 3 jours d'essai gratuit"
+- [x] Email J-1 : "Dernier jour d'essai gratuit"
+- [x] Email J-0 : "Votre essai se termine aujourd'hui - Abonnez-vous"
+- [x] Email de bienvenue après inscription : Guide complet d'utilisation
+- [x] Tester le système complet
+- [x] Créer le checkpoint final

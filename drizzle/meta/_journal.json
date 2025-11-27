@@ -274,6 +274,34 @@
       "when": 1764262052273,
       "tag": "0038_tough_betty_ross",
       "breakpoints": true
+    },
+    {
+      "idx": 39,
+      "version": "5",
+      "when": 1764262147523,
+      "tag": "0039_shocking_raza",
+      "breakpoints": true
+    },
+    {
+      "idx": 40,
+      "version": "5",
+      "when": 1764262182543,
+      "tag": "0040_public_killer_shrike",
+      "breakpoints": true
+    },
+    {
+      "idx": 41,
+      "version": "5",
+      "when": 1764262252243,
+      "tag": "0041_curvy_silverclaw",
+      "breakpoints": true
+    },
+    {
+      "idx": 42,
+      "version": "5",
+      "when": 1764262699906,
+      "tag": "0042_useful_imperial_guard",
+      "breakpoints": true
     }
   ]
 }
