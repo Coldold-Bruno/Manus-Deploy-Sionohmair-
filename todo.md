@@ -943,3 +943,17 @@
 - [x] Créer la documentation de déploiement en production (DEPLOYMENT.md)
 - [x] Créer les tests automatiques end-to-end avec vitest (33 tests passés)
 - [x] Créer le checkpoint final
+
+
+## Phase 80 : Transformation en Plateforme Content Marketing & Copywriting - EN COURS 🎨
+- [x] Supprimer toutes les fonctionnalités de formation (Théories, Services, Ressources)
+- [x] Supprimer l'intégration Zoom et visioconférence
+- [x] Créer le schéma de base de données (5 tables)
+- [x] Créer le router tRPC pour l'analyseur de contenu marketing
+- [ ] Créer l'interface utilisateur de l'analyseur
+- [ ] Créer l'interface du générateur de copy
+- [ ] Créer l'outil de recherche d'avatar client
+- [ ] Créer la bibliothèque de frameworks de copywriting
+- [ ] Seed data : frameworks AIDA, PAS, PASTOR, etc.
+- [ ] Mettre à jour la navigation et la page d'accueil
+- [ ] Créer le checkpoint final
