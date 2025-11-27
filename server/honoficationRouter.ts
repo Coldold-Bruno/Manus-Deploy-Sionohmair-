@@ -18,6 +18,7 @@ import {
   nftRoyaltyAlerts,
 } from "../drizzle/schema";
 import { TRPCError } from "@trpc/server";
+import { validateApiKey } from "./services/apiKeyValidator";
 
 /**
  * Router tRPC pour le Système d'Honofication des Redevances
@@ -859,10 +860,23 @@ export const honoficationRouter = router({
       integrationName: z.string(),
       apiKey: z.string(),
       apiSecret: z.string().nullable(),
+      skipValidation: z.boolean().optional().default(false),
     }))
     .mutation(async ({ ctx, input }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+      // Valider la clé API avant de l'enregistrer (sauf si skipValidation = true)
+      if (!input.skipValidation) {
+        const validation = await validateApiKey(input.platform, input.apiKey, input.apiSecret);
+        
+        if (!validation.valid) {
+          throw new TRPCError({ 
+            code: "BAD_REQUEST", 
+            message: `Validation échouée: ${validation.error}` 
+          });
+        }
+      }
 
       const [integration] = await db.insert(apiIntegrations).values({
         userId: ctx.user.id,

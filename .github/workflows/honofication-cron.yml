@@ -1,0 +1,88 @@
+name: Honofication Cron Jobs
+
+on:
+  schedule:
+    # Détections quotidiennes (tous les jours à 2h du matin UTC)
+    - cron: '0 2 * * *'
+    
+    # Détections hebdomadaires (tous les lundis à 3h du matin UTC)
+    - cron: '0 3 * * 1'
+    
+    # Rappels quotidiens (tous les jours à 10h du matin UTC)
+    - cron: '0 10 * * *'
+  
+  # Permettre le déclenchement manuel
+  workflow_dispatch:
+    inputs:
+      job_type:
+        description: 'Type de job à exécuter'
+        required: true
+        type: choice
+        options:
+          - daily_detection
+          - weekly_detection
+          - daily_reminders
+          - all
+
+jobs:
+  run-honofication-cron:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'pnpm'
+      
+      - name: Install pnpm
+        run: npm install -g pnpm
+      
+      - name: Install dependencies
+        run: pnpm install
+      
+      - name: Run Daily Detection
+        if: github.event.schedule == '0 2 * * *' || github.event.inputs.job_type == 'daily_detection' || github.event.inputs.job_type == 'all'
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          STRIPE_SECRET_KEY: ${{ secrets.STRIPE_SECRET_KEY }}
+          PAYPAL_CLIENT_ID: ${{ secrets.PAYPAL_CLIENT_ID }}
+          PAYPAL_CLIENT_SECRET: ${{ secrets.PAYPAL_CLIENT_SECRET }}
+          GOOGLE_ANALYTICS_API_KEY: ${{ secrets.GOOGLE_ANALYTICS_API_KEY }}
+        run: |
+          echo "🔍 Exécution de la détection quotidienne..."
+          curl -X POST "${{ secrets.APP_URL }}/api/trpc/cron.runDailyDetection" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}"
+      
+      - name: Run Weekly Detection
+        if: github.event.schedule == '0 3 * * 1' || github.event.inputs.job_type == 'weekly_detection' || github.event.inputs.job_type == 'all'
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          GOOGLE_SEARCH_API_KEY: ${{ secrets.GOOGLE_SEARCH_API_KEY }}
+          GOOGLE_SEARCH_CX: ${{ secrets.GOOGLE_SEARCH_CX }}
+        run: |
+          echo "🔎 Exécution de la détection hebdomadaire (OSINT)..."
+          curl -X POST "${{ secrets.APP_URL }}/api/trpc/cron.runWeeklyDetection" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}"
+      
+      - name: Run Daily Reminders
+        if: github.event.schedule == '0 10 * * *' || github.event.inputs.job_type == 'daily_reminders' || github.event.inputs.job_type == 'all'
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+          SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+        run: |
+          echo "📧 Exécution des rappels quotidiens..."
+          curl -X POST "${{ secrets.APP_URL }}/api/trpc/cron.runDailyReminders" \
+            -H "Content-Type: application/json" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}"
+      
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "❌ Le cron job a échoué!"
+          # Ici vous pouvez ajouter une notification (email, Slack, etc.)

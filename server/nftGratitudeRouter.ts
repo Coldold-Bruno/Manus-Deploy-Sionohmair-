@@ -508,6 +508,75 @@ export const nftGratitudeRouter = router({
         contributions: contributionsStats,
       };
     }),
+
+  /**
+   * Initialiser les NFT Sources (seed data)
+   * ⚠️ À exécuter une seule fois au démarrage
+   */
+  seedNftSources: protectedProcedure
+    .mutation(async ({ ctx }) => {
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR", message: "Database not available" });
+
+      // Vérifier si les NFT Sources existent déjà
+      const existingSources = await db.select()
+        .from(nftSources)
+        .where(eq(nftSources.name, "Correcteur Universel de Contenu"));
+
+      if (existingSources.length > 0) {
+        return {
+          success: true,
+          message: "NFT Sources déjà initialisés",
+          sources: existingSources,
+        };
+      }
+
+      // Créer les 3 NFT Sources
+      const sources = [
+        {
+          name: "Correcteur Universel de Contenu",
+          description: "Service de correction automatique de tout type de contenu (texte, bilan prévisionnel, site web) avec analyse PFPMA, détection des frictions, et génération de version corrigée. Gratuit au départ, redevabilité proportionnelle aux bénéfices générés (3-10%).",
+          category: "other" as const, // "service" n'existe pas dans l'enum
+          initialValue: "0.00",
+          currentValue: "0.00",
+          totalContributions: "0.00",
+          beneficiariesCount: 0,
+        },
+        {
+          name: "Formation Sprint de Clarté",
+          description: "Formation interactive en 3 étapes pour transformer la communication d'un art subjectif en une science de la performance. Diagnostic PFPMA + Méthode en 3 étapes + 310 pages de méthodologie. Gratuite au départ, redevabilité selon gains réalisés.",
+          category: "formation" as const,
+          initialValue: "0.00",
+          currentValue: "0.00",
+          totalContributions: "0.00",
+          beneficiariesCount: 0,
+        },
+        {
+          name: "Coaching Zoom Personnalisé",
+          description: "Séances de coaching individuel via Zoom pour appliquer la méthodologie Sionohmair Insight à votre projet spécifique. Diagnostic personnalisé + Plan d'action + Suivi. Gratuit au départ, redevabilité selon résultats obtenus.",
+          category: "coaching" as const,
+          initialValue: "0.00",
+          currentValue: "0.00",
+          totalContributions: "0.00",
+          beneficiariesCount: 0,
+        },
+      ];
+
+      const createdSources = [];
+      for (const source of sources) {
+        const [result] = await db.insert(nftSources).values(source);
+        createdSources.push({
+          id: result.insertId,
+          ...source,
+        });
+      }
+
+      return {
+        success: true,
+        message: "3 NFT Sources créés avec succès",
+        sources: createdSources,
+      };
+    }),
 });
 
 /**

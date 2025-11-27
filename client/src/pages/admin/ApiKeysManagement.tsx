@@ -42,6 +42,7 @@ export default function ApiKeysManagement() {
   const [integrationName, setIntegrationName] = useState("");
   const [apiKey, setApiKey] = useState("");
   const [apiSecret, setApiSecret] = useState("");
+  const [skipValidation, setSkipValidation] = useState(false);
   
   // Récupérer les intégrations existantes
   const { data: integrations, refetch } = trpc.honofication.getApiIntegrations.useQuery();
@@ -94,6 +95,7 @@ export default function ApiKeysManagement() {
       integrationName,
       apiKey,
       apiSecret: apiSecret || null,
+      skipValidation,
     });
   };
   
