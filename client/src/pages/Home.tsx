@@ -322,6 +322,50 @@ export default function Home() {
         </div>
       </section>
 
+      {/* CTA Essai Gratuit */}
+      <section className="py-20 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center space-y-8 text-white">
+            <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur rounded-full text-sm font-medium mb-4">
+              🎉 Offre de lancement
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold">
+              Testez GRATUITEMENT pendant 30 jours
+            </h2>
+            <p className="text-xl md:text-2xl font-semibold">
+              ✅ Sans engagement &nbsp;•&nbsp; ✅ Sans carte bancaire &nbsp;•&nbsp; ✅ Accès complet
+            </p>
+            <p className="text-lg max-w-2xl mx-auto">
+              Découvrez tous les outils de Content Marketing & Copywriting : Analyseur de Contenu, Générateur de Copy (8 frameworks), Persona Builder, Chat IA, et Éditeur en temps réel.
+            </p>
+            <div className="bg-white/10 backdrop-blur border border-white/30 rounded-xl p-6 max-w-2xl mx-auto">
+              <p className="text-sm mb-4">
+                <strong className="text-lg">🔒 Aucune carte bancaire requise</strong><br />
+                Commencez votre essai gratuit en 1 clic. Après 30 jours, continuez pour seulement <strong>36€/mois</strong> (sans engagement, annulez quand vous voulez).
+              </p>
+              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Button asChild size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-bold text-lg px-8 py-6">
+                  <Link href="/subscription">
+                    <a className="flex items-center gap-2">
+                      <Sparkles className="w-5 h-5" />
+                      Commencer l'essai gratuit (30 jours)
+                    </a>
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 font-semibold text-lg px-8 py-6">
+                  <Link href="/pricing">
+                    <a>Voir les tarifs</a>
+                  </Link>
+                </Button>
+              </div>
+            </div>
+            <p className="text-sm opacity-90">
+              📧 Vous recevrez des rappels par email à J-7, J-3, J-1 et J-0 avant la fin de votre essai.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Footer */}
       <footer className="border-t py-12 bg-secondary/20">
         <div className="container">

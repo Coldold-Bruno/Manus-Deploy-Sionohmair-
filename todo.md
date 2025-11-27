@@ -1220,3 +1220,24 @@
 - [x] Guide : Comment tester manuellement
 - [x] FAQ : Dépannage
 - [x] Créer le checkpoint final
+
+
+## Phase 93 : Finalisation CTAs et Messages - TERMINÉ ✅
+- [x] Ajouter le CTA "Essai gratuit" sur la page d'accueil
+- [x] Section dédiée avec design attractif
+- [x] Message clair : "30 jours gratuits, sans engagement, sans carte bancaire"
+- [x] Bouton d'action vers /subscription
+- [x] Optimiser la page /pricing
+- [x] Mettre l'essai gratuit en premier (avant les autres offres)
+- [x] Design visuel attractif (gradient, badges)
+- [x] Comparaison claire : Essai gratuit vs Abonnement payant
+- [x] FAQ adaptée (essai, abonnement, annulation)
+- [x] Renforcer tous les messages
+- [x] Page /subscription : "Aucune carte bancaire requise pour l'essai"
+- [x] Page /pricing : "Sans engagement, annulez quand vous voulez"
+- [x] Footer : Mention de l'essai gratuit
+- [x] Créer le guide utilisateur
+- [x] Guide : Comment démarrer l'essai gratuit
+- [x] Guide : Comment s'abonner après l'essai
+- [x] Guide : Comment annuler l'abonnement
+- [x] Créer le checkpoint final

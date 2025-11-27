@@ -104,12 +104,12 @@ export default function Pricing() {
               <div className="border-t pt-8 space-y-4">
                 <Button 
                   size="lg" 
-                  className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-lg py-6"
+                  className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-bold text-lg py-6"
                   asChild
                 >
-                  <a href="/">
+                  <a href="/subscription">
                     <Zap className="mr-2 h-6 w-6" />
-                    Commencer gratuitement (30 jours)
+                    Commencer l'essai gratuit (30 jours)
                   </a>
                 </Button>
                 <p className="text-center text-sm text-muted-foreground">
