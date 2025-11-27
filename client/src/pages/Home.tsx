@@ -46,6 +46,9 @@ export default function Home() {
             <Link href="/calculateur">
               <a className="text-sm font-medium hover:text-accent transition-colors">Calculateur</a>
             </Link>
+            <Link href="/correcteur">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Correcteur</a>
+            </Link>
             <Link href="/portfolio">
               <a className="text-sm font-medium hover:text-accent transition-colors">Portfolio</a>
             </Link>

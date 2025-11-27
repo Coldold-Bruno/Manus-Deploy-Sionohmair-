@@ -914,3 +914,11 @@
 - [x] Documenter le processus de configuration pour la production
 - [x] Tester le système complet end-to-end avec vraies données
 - [x] Créer le checkpoint final
+
+
+## Phase 76 : Finalisation du Système NFT de Gratitude - TERMINÉ ✅
+- [x] Ajouter le lien "Correcteur" dans la navigation principale (Home.tsx)
+- [x] Générer les badges NFT visuels pour chaque niveau de gratitude (Bronze, Argent, Or, Platine, Diamant)
+- [x] Créer une page de présentation du système NFT de Gratitude (/nft-gratitude)
+- [x] Tester le flux complet : correction → utilisation → redevabilité → paiement
+- [x] Créer le checkpoint final
