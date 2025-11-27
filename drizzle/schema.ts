@@ -553,6 +553,51 @@ export type Badge = typeof badges.$inferSelect;
 export type InsertBadge = typeof badges.$inferInsert;
 
 // ============================================================================
+// SYSTÈME D'ABONNEMENTS PAYANTS (30 jours gratuits → 36€/mois)
+// ============================================================================
+
+export const subscriptions = mysqlTable("subscriptions", {
+  id: int("id").autoincrement().primaryKey(),
+  userId: int("userId").notNull().unique(),
+  
+  /** Plan: trial ou paid */
+  plan: mysqlEnum("plan", ["trial", "paid"]).default("trial").notNull(),
+  
+  /** Statut: trial (essai en cours), active (abonné actif), trial_expired (essai expiré), cancelled (annulé) */
+  status: mysqlEnum("status", ["trial", "active", "trial_expired", "cancelled"]).default("trial").notNull(),
+  
+  /** Date de début de l'essai gratuit */
+  trialStartDate: timestamp("trialStartDate").defaultNow().notNull(),
+  
+  /** Date de fin de l'essai gratuit (30 jours après trialStartDate) */
+  trialEndDate: timestamp("trialEndDate").notNull(),
+  
+  /** Date du paiement unique (quand l'utilisateur s'abonne) */
+  paymentDate: timestamp("paymentDate"),
+  
+  /** Date d'activation de l'abonnement (après paiement) */
+  activatedAt: timestamp("activatedAt"),
+  
+  /** Montant de l'abonnement mensuel (3600 centimes = 36€) */
+  oneTimePaymentAmount: int("oneTimePaymentAmount").default(3600).notNull(),
+  
+  /** Stripe Customer ID */
+  stripeCustomerId: varchar("stripeCustomerId", { length: 255 }),
+  
+  /** Stripe Subscription ID */
+  stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 255 }),
+  
+  /** Date de création */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  
+  /** Date de mise à jour */
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type Subscription = typeof subscriptions.$inferSelect;
+export type InsertSubscription = typeof subscriptions.$inferInsert;
+
+// ============================================================================
 // SYSTÈME DE DEVIS
 // ============================================================================
 

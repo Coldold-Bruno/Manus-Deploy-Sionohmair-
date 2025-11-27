@@ -4,7 +4,7 @@ import { protectedProcedure, publicProcedure, router } from './_core/trpc';
 import { ProductId, getProduct } from './products';
 import { ENV } from './_core/env';
 import { getDb } from './db';
-import { orders, users } from '../drizzle/schema';
+import { orders, users, subscriptions } from '../drizzle/schema';
 import { eq, desc } from 'drizzle-orm';
 
 const stripe = new Stripe(ENV.stripeSecretKey, {
@@ -75,6 +75,87 @@ export const stripeRouter = router({
         metadata: {
           user_id: ctx.user.id.toString(),
           product_id: input.productId,
+          customer_email: ctx.user.email || '',
+          customer_name: ctx.user.name || '',
+        },
+      });
+
+      return {
+        checkoutUrl: session.url,
+        sessionId: session.id,
+      };
+    }),
+
+  /**
+   * Créer une session de paiement pour l'abonnement mensuel (36€/mois)
+   */
+  createSubscriptionCheckout: protectedProcedure
+    .mutation(async ({ ctx }) => {
+      const db = await getDb();
+
+      if (!db) {
+        throw new Error('Database not available');
+      }
+
+      // Vérifier si l'utilisateur a déjà un abonnement
+      const existingSubscription = await db
+        .select()
+        .from(subscriptions)
+        .where(eq(subscriptions.userId, ctx.user.id))
+        .limit(1);
+
+      if (existingSubscription.length > 0 && existingSubscription[0].status === 'active') {
+        throw new Error('Vous avez déjà un abonnement actif');
+      }
+
+      // Récupérer ou créer le Stripe Customer ID
+      let stripeCustomerId = ctx.user.stripeCustomerId;
+
+      if (!stripeCustomerId) {
+        // Créer un nouveau client Stripe
+        const customer = await stripe.customers.create({
+          email: ctx.user.email || undefined,
+          name: ctx.user.name || undefined,
+          metadata: {
+            user_id: ctx.user.id.toString(),
+          },
+        });
+
+        stripeCustomerId = customer.id;
+
+        // Sauvegarder le Stripe Customer ID dans la base de données
+        await db
+          .update(users)
+          .set({ stripeCustomerId })
+          .where(eq(users.id, ctx.user.id));
+      }
+
+      // Créer la session Checkout pour l'abonnement
+      const session = await stripe.checkout.sessions.create({
+        customer: stripeCustomerId,
+        line_items: [
+          {
+            price_data: {
+              currency: 'eur',
+              product_data: {
+                name: 'Abonnement Sionohmair Insight Academy',
+                description: 'Accès complet à tous les outils de Content Marketing & Copywriting',
+              },
+              unit_amount: 3600, // 36€ en centimes
+              recurring: {
+                interval: 'month',
+              },
+            },
+            quantity: 1,
+          },
+        ],
+        mode: 'subscription',
+        success_url: `${ctx.req.headers.origin}/subscription?success=true`,
+        cancel_url: `${ctx.req.headers.origin}/subscription?cancelled=true`,
+        allow_promotion_codes: true,
+        client_reference_id: ctx.user.id.toString(),
+        metadata: {
+          user_id: ctx.user.id.toString(),
           customer_email: ctx.user.email || '',
           customer_name: ctx.user.name || '',
         },

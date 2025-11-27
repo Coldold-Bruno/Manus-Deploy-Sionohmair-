@@ -1124,3 +1124,26 @@
 - [x] Email de bienvenue après inscription : Guide complet d'utilisation
 - [x] Tester le système complet
 - [x] Créer le checkpoint final
+
+
+## Phase 89 : Finalisation Système d'Emails Automatiques et Stripe - TERMINÉ ✅
+- [x] Créer le service emailNotificationService.ts
+- [x] Fonction sendTrialEmail(userId, emailType) pour envoyer les emails de notification
+- [x] Fonction checkAndSendTrialNotifications() pour vérifier les essais et envoyer les emails appropriés
+- [x] Créer le router tRPC emailNotificationRouter
+- [x] Procédure sendTrialReminder(userId, daysRemaining)
+- [x] Procédure checkTrialExpirations (cron job quotidien)
+- [x] Configurer les cron jobs
+- [x] Cron job quotidien à 9h00 pour vérifier les essais et envoyer les emails
+- [x] Endpoint /api/cron/check-trial-expirations
+- [x] Intégrer Stripe Checkout
+- [x] Créer le produit Stripe "Abonnement Sionohmair" (36€/mois récurrent)
+- [x] Procédure createSubscriptionCheckout(userId)
+- [x] Webhook Stripe pour gérer les événements (customer.subscription.created, invoice.payment_succeeded, invoice.payment_failed)
+- [x] Mettre à jour le statut de l'abonnement dans la DB après paiement
+- [x] Tester le flux complet
+- [x] Créer un utilisateur test en essai gratuit
+- [x] Simuler l'envoi des emails J-7, J-3, J-1, J-0
+- [x] Tester le paiement Stripe avec carte de test
+- [x] Vérifier la mise à jour du statut dans le dashboard
+- [x] Créer le checkpoint final

@@ -11,6 +11,9 @@ import {
 import {
   runOSINTForAllBeneficiaries,
 } from "./services/osintScrapingService";
+import {
+  checkAndSendTrialNotifications,
+} from "./services/trialEmailService";
 
 /**
  * Router pour les Cron Jobs d'Honofication
@@ -163,6 +166,37 @@ export const cronRouter = router({
         success: true,
         timestamp: new Date().toISOString(),
         ...result,
+      };
+    }),
+
+  /**
+   * Vérifier les essais gratuits et envoyer les emails de notification
+   * À exécuter tous les jours à 9h00
+   * 
+   * Crontab : 0 9 * * * curl "https://sionohmair.com/api/cron/check-trial-expirations?secret=YOUR_SECRET"
+   */
+  checkTrialExpirations: publicProcedure
+    .input(z.object({
+      secret: z.string(),
+    }))
+    .mutation(async ({ input }: { input: { secret: string } }) => {
+      const CRON_SECRET = process.env.CRON_SECRET || "dev-secret-change-in-production";
+      if (input.secret !== CRON_SECRET) {
+        throw new Error("Unauthorized: Invalid cron secret");
+      }
+
+      console.log("📧 Checking trial expirations...");
+      
+      const result = await checkAndSendTrialNotifications();
+      
+      if (!result.success) {
+        throw new Error(result.error || "Unknown error");
+      }
+      
+      return {
+        success: true,
+        timestamp: new Date().toISOString(),
+        results: result.results,
       };
     }),
 

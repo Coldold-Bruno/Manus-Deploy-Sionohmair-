@@ -27,7 +27,7 @@ import {
  * Envoyer un email (fonction générique)
  * En production, utiliser un service d'emailing (SendGrid, Mailgun, etc.)
  */
-async function sendEmail(
+export async function sendEmail(
   to: string,
   subject: string,
   html: string,
