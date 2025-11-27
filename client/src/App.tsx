@@ -45,6 +45,7 @@ import ReservationCoaching from "./pages/ReservationCoaching";
 import DashboardCoaching from "./pages/DashboardCoaching";
 import NftGratitudeDashboard from "./pages/NftGratitudeDashboard";
 import NftGratitudeAdmin from "./pages/admin/NftGratitudeAdmin";
+import CorrecteurUniversel from "./pages/CorrecteurUniversel";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -61,6 +62,7 @@ function Router() {
       <Route path={"/reservation-coaching"} component={ReservationCoaching} />
       <Route path={"/dashboard/coaching"} component={DashboardCoaching} />
       <Route path={"/dashboard/nft-gratitude"} component={NftGratitudeDashboard} />
+      <Route path={"/correcteur"} component={CorrecteurUniversel} />
       <Route path={"/services"} component={Services} />
       <Route path={"/portfolio"} component={Portfolio} />
       <Route path={"/ressources"} component={Ressources} />

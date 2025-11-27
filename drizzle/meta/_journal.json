@@ -120,6 +120,13 @@
       "when": 1764249058157,
       "tag": "0016_cultured_klaw",
       "breakpoints": true
+    },
+    {
+      "idx": 17,
+      "version": "5",
+      "when": 1764249791569,
+      "tag": "0017_far_archangel",
+      "breakpoints": true
     }
   ]
 }

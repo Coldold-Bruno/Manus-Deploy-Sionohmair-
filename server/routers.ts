@@ -19,6 +19,7 @@ import { formationRouter } from './formationRouter';
 import { quotesRouter } from './quotesRouter';
 import { coachingRouter } from './coachingRouter';
 import { nftGratitudeRouter } from './nftGratitudeRouter';
+import { correcteurRouter } from './correcteurRouter';
 
 export const appRouter = router({
     // if you need to use socket.io, read and register route in server/_core/index.ts, all api should start with '/api/' so that the gateway can route correctly
@@ -84,6 +85,9 @@ export const appRouter = router({
 
   // NFT de Gratitude Économique router
   nftGratitude: nftGratitudeRouter,
+
+  // Correcteur Universel de Contenu router
+  correcteur: correcteurRouter,
 
   // TODO: add feature routers here, e.g.
   // todo: router({
