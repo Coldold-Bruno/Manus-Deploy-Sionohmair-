@@ -67,11 +67,33 @@ export default function Home() {
             <Link href="/about">
               <a className="text-sm font-medium hover:text-accent transition-colors">À Propos</a>
             </Link>
-            <Button asChild variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
-              <Link href="/content-analyzer">
-                <a>Analyser mon contenu →</a>
+            {isAuthenticated && (
+              <Link href="/subscription">
+                <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
+                  Mon abonnement
+                  <span className="px-2 py-0.5 bg-amber-500 text-white text-xs font-semibold rounded-full">
+                    Essai gratuit
+                  </span>
+                </a>
               </Link>
-            </Button>
+            )}
+            {!isAuthenticated && (
+              <Button asChild variant="default" className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold">
+                <Link href="/subscription">
+                  <a className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4" />
+                    Essai gratuit (30j)
+                  </a>
+                </Link>
+              </Button>
+            )}
+            {isAuthenticated && (
+              <Button asChild variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
+                <Link href="/content-analyzer">
+                  <a>Analyser mon contenu →</a>
+                </Link>
+              </Button>
+            )}
           </div>
         </div>
       </nav>

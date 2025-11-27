@@ -1,0 +1,42 @@
+name: Check Trial Expirations Daily
+
+# Exécuter tous les jours à 9h00 (UTC+1 = 8h00 UTC)
+on:
+  schedule:
+    - cron: '0 8 * * *'  # 8h00 UTC = 9h00 UTC+1 (Paris)
+  
+  # Permettre l'exécution manuelle pour les tests
+  workflow_dispatch:
+
+jobs:
+  check-trials:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check Trial Expirations
+        run: |
+          echo "🔍 Checking trial expirations at $(date)"
+          
+          # Appeler l'endpoint tRPC via HTTP POST
+          RESPONSE=$(curl -s -X POST \
+            -H "Content-Type: application/json" \
+            -d "{\"secret\":\"${{ secrets.CRON_SECRET }}\"}" \
+            "${{ secrets.APP_URL }}/api/trpc/cron.checkTrialExpirations")
+          
+          echo "📧 Response: $RESPONSE"
+          
+          # Vérifier si la réponse contient "success":true
+          if echo "$RESPONSE" | grep -q '"success":true'; then
+            echo "✅ Trial expirations checked successfully"
+            exit 0
+          else
+            echo "❌ Failed to check trial expirations"
+            echo "Response: $RESPONSE"
+            exit 1
+          fi
+      
+      - name: Send notification on failure
+        if: failure()
+        run: |
+          echo "⚠️ Trial expiration check failed at $(date)"
+          # Vous pouvez ajouter ici une notification (Slack, Discord, email, etc.)

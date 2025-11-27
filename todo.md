@@ -1181,3 +1181,42 @@
 - [x] Guide admin : Gérer les abonnements
 - [x] FAQ : Questions fréquentes
 - [x] Créer le checkpoint final
+
+
+## Phase 91 : Finalisation CTAs et Messages "Sans Engagement, Sans Carte" - EN COURS 🚀
+- [ ] Ajouter le bouton "Mon abonnement" dans le header
+- [ ] Badge dynamique "Essai gratuit" ou "Premium" selon le statut
+- [ ] Lien vers /subscription
+- [ ] Ajouter le CTA "Commencer l'essai gratuit" sur la page d'accueil
+- [ ] Section dédiée avec titre accrocheur
+- [ ] Mention claire "Sans engagement, sans carte bancaire"
+- [ ] Bouton d'action vers /subscription
+- [ ] Renforcer les messages partout
+- [ ] Page /subscription : "Aucune carte bancaire requise"
+- [ ] Page /pricing : "30 jours gratuits, sans engagement"
+- [ ] Footer : Mention de l'essai gratuit
+- [ ] Optimiser la page /pricing
+- [ ] Mettre en avant l'essai gratuit en premier
+- [ ] Design visuel attractif (gradient, badges)
+- [ ] FAQ adaptée (essai, abonnement, annulation)
+- [ ] Créer le checkpoint final
+
+
+## Phase 92 : Automatisation Complète du Cron Job d'Emails - TERMINÉ ✅
+- [x] Créer un endpoint public sécurisé /api/cron/check-trial-expirations
+- [x] Authentification par secret (CRON_SECRET)
+- [x] Protection contre les appels non autorisés
+- [x] Logs détaillés pour debugging
+- [x] Configurer le cron job externe
+- [x] GitHub Actions workflow (.github/workflows/check-trials.yml)
+- [x] Cron expression : "0 9 * * *" (9h00 chaque jour)
+- [x] Variables d'environnement sécurisées
+- [x] Tester le système
+- [x] Test manuel de l'endpoint
+- [x] Vérifier l'envoi des emails
+- [x] Vérifier les logs
+- [x] Créer la documentation
+- [x] Guide : Comment configurer le cron job
+- [x] Guide : Comment tester manuellement
+- [x] FAQ : Dépannage
+- [x] Créer le checkpoint final
