@@ -2,7 +2,7 @@ import { z } from "zod";
 import { eq, desc } from "drizzle-orm";
 import { publicProcedure, protectedProcedure, router } from "./_core/trpc";
 import { getDb } from "./db";
-import { correctionsHistory, correctionTemplates, nftBeneficiaries } from "../drizzle/schema";
+import { correctionsHistory, correctionTemplates, nftBeneficiaries, nftRoyaltyTracking, nftRoyaltyAlerts } from "../drizzle/schema";
 import { TRPCError } from "@trpc/server";
 import { invokeLLM } from "./_core/llm";
 
@@ -396,36 +396,6 @@ Réponds UNIQUEMENT au format JSON suivant :
     }),
 
   /**
-   * Marquer une correction comme utilisée
-   */
-  markAsUsed: protectedProcedure
-    .input(z.object({
-      correctionId: z.number(),
-      declaredBenefit: z.string().optional(),
-    }))
-    .mutation(async ({ ctx, input }) => {
-      const db = await getDb();
-      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
-
-      const [correction] = await db.select()
-        .from(correctionsHistory)
-        .where(eq(correctionsHistory.id, input.correctionId));
-
-      if (!correction || correction.userId !== ctx.user.id) {
-        throw new TRPCError({ code: "FORBIDDEN" });
-      }
-
-      await db.update(correctionsHistory)
-        .set({
-          wasUsed: true,
-          declaredBenefit: input.declaredBenefit,
-        })
-        .where(eq(correctionsHistory.id, input.correctionId));
-
-      return { success: true };
-    }),
-
-  /**
    * Supprimer une correction
    */
   deleteCorrection: protectedProcedure
@@ -448,12 +418,101 @@ Réponds UNIQUEMENT au format JSON suivant :
       return { success: true };
     }),
 
+  /**
+   * Marquer une correction comme utilisée (déclenche redevabilité)
+   */
+  markAsUsed: protectedProcedure
+    .input(z.object({
+      correctionId: z.number(),
+      benefitAmount: z.number().positive(),
+      metadata: z.record(z.string(), z.any()).optional(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const db = await getDb();
+      if (!db) throw new TRPCError({ code: "INTERNAL_SERVER_ERROR" });
+
+      // Vérifier que la correction appartient à l'utilisateur
+      const [correction] = await db.select()
+        .from(correctionsHistory)
+        .where(eq(correctionsHistory.id, input.correctionId));
+
+      if (!correction || correction.userId !== ctx.user.id) {
+        throw new TRPCError({ code: "FORBIDDEN" });
+      }
+
+      if (!correction.nftBeneficiaryId) {
+        throw new TRPCError({ code: "BAD_REQUEST", message: "Correction non liée à un NFT" });
+      }
+
+      // Récupérer le bénéficiaire
+      const [beneficiary] = await db.select()
+        .from(nftBeneficiaries)
+        .where(eq(nftBeneficiaries.id, correction.nftBeneficiaryId));
+
+      if (!beneficiary) {
+        throw new TRPCError({ code: "NOT_FOUND", message: "Bénéficiaire introuvable" });
+      }
+
+      // Calculer la redevance (taux par défaut : 5% pour correction)
+      const royaltyPercentage = 5.00;
+      const royaltyAmount = (input.benefitAmount * royaltyPercentage) / 100;
+
+      // Date limite : 30 jours
+      const dueDate = new Date();
+      dueDate.setDate(dueDate.getDate() + 30);
+
+      // Créer le tracking
+      const [tracking] = await db.insert(nftRoyaltyTracking).values({
+        beneficiaryId: correction.nftBeneficiaryId,
+        sourceId: beneficiary.nftSourceId,
+        userId: ctx.user.id,
+        eventType: "correction_used",
+        benefitAmount: input.benefitAmount.toFixed(2),
+        royaltyPercentage: royaltyPercentage.toFixed(2),
+        royaltyAmount: royaltyAmount.toFixed(2),
+        status: "pending",
+        dueDate,
+        eventDetails: JSON.stringify({
+          correctionId: input.correctionId,
+          correctionTitle: correction.title,
+          ...input.metadata,
+        }),
+      });
+
+      // Créer une alerte
+      await db.insert(nftRoyaltyAlerts).values({
+        userId: ctx.user.id,
+        alertType: "royalty_due",
+        trackingId: tracking.insertId,
+        title: "Nouvelle redevance due",
+        message: `Vous avez utilisé la correction "${correction.title}" et généré ${input.benefitAmount.toFixed(2)} € de bénéfices. Redevance due : ${royaltyAmount.toFixed(2)} € (${royaltyPercentage}%)`,
+        amount: royaltyAmount.toFixed(2),
+        actionRequired: true,
+        actionUrl: "/dashboard/nft-royalties",
+      });
+
+      // Mettre à jour la correction
+      await db.update(correctionsHistory)
+        .set({ 
+          wasUsed: true,
+          declaredBenefit: input.benefitAmount.toFixed(2),
+        })
+        .where(eq(correctionsHistory.id, input.correctionId));
+
+      return {
+        trackingId: tracking.insertId,
+        royaltyAmount,
+        royaltyPercentage,
+        dueDate,
+      };
+    }),
+
   // ============================================================================
   // STATISTIQUES
   // ============================================================================
 
   /**
-   * Récupérer les statistiques de mes corrections
+   * Récupérer mes statistiques
    */
   getMyStats: protectedProcedure
     .query(async ({ ctx }) => {

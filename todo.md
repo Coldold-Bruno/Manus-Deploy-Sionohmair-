@@ -867,3 +867,14 @@
 - [x] Ajouter la correction de contenus de site web (SEO, UX, clarté)
 - [x] Tester le correcteur avec différents types de contenus
 - [x] Créer le checkpoint final
+
+
+## Phase 71 : Identification Temps Réel des Redevances NFT Source - TERMINÉ ✅
+- [x] Créer le schéma de base de données pour le tracking temps réel (nft_royalty_tracking)
+- [x] Créer le router tRPC pour tracker et calculer automatiquement les redevances
+- [x] Créer le dashboard temps réel des redevances NFT (/dashboard/nft-royalties)
+- [x] Ajouter les notifications automatiques de redevances dues
+- [x] Intégrer le système de tracking dans le correcteur (markAsUsed)
+- [x] Créer le système d'alertes pour redevances en retard
+- [x] Tester le système avec des données réelles
+- [x] Créer le checkpoint final
