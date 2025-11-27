@@ -61,10 +61,14 @@ export default function CopyGenerator() {
   const [tone, setTone] = useState('professionnel');
   const [length, setLength] = useState<'short' | 'medium' | 'long'>('medium');
   const [keywords, setKeywords] = useState('');
+  const [selectedAvatarId, setSelectedAvatarId] = useState<number | undefined>(undefined);
   const [generatedCopy, setGeneratedCopy] = useState('');
   const [copied, setCopied] = useState(false);
 
   const framework = FRAMEWORKS.find(f => f.id === selectedFramework);
+  
+  // Récupérer les avatars clients
+  const { data: avatars = [] } = trpc.contentMarketing.getMyAvatars.useQuery();
 
   const generateCopyMutation = trpc.contentMarketing.generateCopy.useMutation({
     onSuccess: (data) => {
@@ -87,7 +91,8 @@ export default function CopyGenerator() {
       brief,
       tone,
       length,
-      keywords: keywords.split(',').map(k => k.trim()).filter(Boolean)
+      keywords: keywords.split(',').map(k => k.trim()).filter(Boolean),
+      avatarId: selectedAvatarId
     });
   };
 
@@ -217,10 +222,30 @@ export default function CopyGenerator() {
                   </div>
 
                   <div className="space-y-2">
-                    <Label htmlFor="keywords">Mots-clés</Label>
+                    <Label htmlFor="avatar">Avatar Client (optionnel)</Label>
+                    <Select value={selectedAvatarId?.toString()} onValueChange={(value) => setSelectedAvatarId(value === 'none' ? undefined : parseInt(value))}>
+                      <SelectTrigger>
+                        <SelectValue placeholder="Sélectionnez un avatar" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="none">Aucun avatar</SelectItem>
+                        {avatars.map((avatar: any) => (
+                          <SelectItem key={avatar.id} value={avatar.id.toString()}>
+                            {avatar.name} ({avatar.age} ans - {avatar.occupation})
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <p className="text-xs text-muted-foreground">
+                      Personnalisez le copy selon votre audience cible
+                    </p>
+                  </div>
+                  
+                  <div className="space-y-2">
+                    <Label htmlFor="keywords">Mots-clés (optionnel)</Label>
                     <Input
                       id="keywords"
-                      placeholder="Ex: automation, IA, productivité"
+                      placeholder="Ex: automation, IA, productivité (séparés par des virgules)"
                       value={keywords}
                       onChange={(e) => setKeywords(e.target.value)}
                     />

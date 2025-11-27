@@ -17,7 +17,11 @@ export default function ContentAnalyzer() {
   const [title, setTitle] = useState('');
   const [url, setUrl] = useState('');
   const [contentType, setContentType] = useState<'landing_page' | 'email' | 'ad' | 'blog_post' | 'social_post'>('landing_page');
+  const [selectedAvatarId, setSelectedAvatarId] = useState<number | undefined>(undefined);
   const [analysisResult, setAnalysisResult] = useState<any>(null);
+  
+  // Récupérer les avatars clients
+  const { data: avatars = [] } = trpc.contentMarketing.getMyAvatars.useQuery();
 
   const analyzeContentMutation = trpc.contentMarketing.analyzeContent.useMutation({
     onSuccess: (data) => {
@@ -39,7 +43,8 @@ export default function ContentAnalyzer() {
       content,
       title: title || undefined,
       url: url || undefined,
-      contentType
+      contentType,
+      avatarId: selectedAvatarId
     });
   };
 
@@ -101,20 +106,42 @@ export default function ContentAnalyzer() {
               </div>
             </div>
 
-            <div className="space-y-2">
-              <Label htmlFor="contentType">Type de contenu</Label>
-              <Select value={contentType} onValueChange={(value: any) => setContentType(value)}>
-                <SelectTrigger>
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="landing_page">Landing Page</SelectItem>
-                  <SelectItem value="email">Email</SelectItem>
-                  <SelectItem value="ad">Publicité</SelectItem>
-                  <SelectItem value="blog_post">Article de Blog</SelectItem>
-                  <SelectItem value="social_post">Post Social</SelectItem>
-                </SelectContent>
-              </Select>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="contentType">Type de contenu</Label>
+                <Select value={contentType} onValueChange={(value: any) => setContentType(value)}>
+                  <SelectTrigger>
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="landing_page">Landing Page</SelectItem>
+                    <SelectItem value="email">Email</SelectItem>
+                    <SelectItem value="ad">Publicité</SelectItem>
+                    <SelectItem value="blog_post">Article de Blog</SelectItem>
+                    <SelectItem value="social_post">Post Social</SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+              
+              <div className="space-y-2">
+                <Label htmlFor="avatar">Avatar Client (optionnel)</Label>
+                <Select value={selectedAvatarId?.toString()} onValueChange={(value) => setSelectedAvatarId(value ? parseInt(value) : undefined)}>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Sélectionnez un avatar" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="none">Aucun avatar</SelectItem>
+                    {avatars.map((avatar: any) => (
+                      <SelectItem key={avatar.id} value={avatar.id.toString()}>
+                        {avatar.name} ({avatar.age} ans - {avatar.occupation})
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+                <p className="text-xs text-muted-foreground">
+                  Personnalisez l'analyse selon votre audience cible
+                </p>
+              </div>
             </div>
 
             <div className="space-y-2">

@@ -37,6 +37,12 @@ export default function Home() {
             <Link href="/avatar-builder">
               <a className="text-sm font-medium hover:text-accent transition-colors">Avatar Client</a>
             </Link>
+            <Link href="/script-analyzer">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Scripts</a>
+            </Link>
+            <Link href="/frameworks">
+              <a className="text-sm font-medium hover:text-accent transition-colors">Frameworks</a>
+            </Link>
             <Link href="/blog">
               <a className="text-sm font-medium hover:text-accent transition-colors">Blog</a>
             </Link>

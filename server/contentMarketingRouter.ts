@@ -25,6 +25,7 @@ export const contentMarketingRouter = router({
       content: z.string(),
       contentType: z.enum(['landing_page', 'email', 'ad', 'blog_post', 'social_post']),
       url: z.string().optional(),
+      avatarId: z.number().optional(),
     }))
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.user.id;
@@ -483,6 +484,68 @@ Réponds en JSON avec :
         id: avatar.insertId,
         ...avatarData,
       };
+    }),
+  
+  // ============================================================================
+  // ANALYSEUR DE SCRIPTS
+  // ============================================================================
+  
+  /**
+   * Analyser un script pour identifier les méthodes structurelles utilisées
+   */
+  analyzeScript: protectedProcedure
+    .input(z.object({
+      title: z.string().optional(),
+      content: z.string(),
+    }))
+    .mutation(async ({ ctx, input }) => {
+      const userId = ctx.user.id;
+      
+      // Appeler l'IA pour analyser le script
+      const analysisPrompt = `Tu es un expert en Copywriting et en analyse de scripts de vente. Analyse le script suivant pour identifier les frameworks de copywriting utilisés.
+
+**Titre** : ${input.title || 'Non fourni'}
+**Script** :
+${input.content}
+
+Frameworks à détecter :
+1. **PFPMA** (Problème - Formule - Preuve - Méthode - Appel) - Sionohmair
+2. **APTEA** (Attention - Problème - Transformation - Évidence - Action) - Sionohmair
+3. **AIDA** (Attention - Intérêt - Désir - Action)
+4. **PAS** (Problème - Agitation - Solution)
+5. **PASTOR** (Problème - Amplifier - Solution - Transformation - Offre - Réponse)
+6. **BAB** (Before - After - Bridge)
+7. **4P** (Picture - Promise - Prove - Push)
+8. **QUEST** (Qualify - Understand - Educate - Stimulate - Transition)
+
+Pour chaque framework détecté, fournis :
+- **confidence** : score de confiance 0-100 (100 = toutes les étapes présentes et bien appliquées)
+- **stepsFound** : liste des étapes avec {name, present: boolean, quality: 0-100}
+- **strengths** : liste des points forts
+- **improvements** : liste des points à améliorer
+- **recommendations** : liste de recommandations spécifiques
+
+Fournis aussi :
+- **overallScore** : score global 0-100 (qualité globale du script)
+- **detectedFrameworks** : liste des frameworks détectés triés par confidence (du plus élevé au plus faible)
+- **globalRecommendations** : liste de recommandations globales pour améliorer le script
+
+Réponds UNIQUEMENT avec un objet JSON valide, sans markdown ni texte supplémentaire.`;
+
+      const response = await invokeLLM({
+        messages: [
+          { role: 'system', content: 'Tu es un expert en Copywriting et en analyse de scripts de vente. Tu identifies les frameworks utilisés et évalues leur qualité d\'application. Tu réponds UNIQUEMENT en JSON valide.' },
+          { role: 'user', content: analysisPrompt }
+        ],
+        responseFormat: { type: 'json_object' },
+      });
+
+      const content = typeof response.choices[0].message.content === 'string' 
+        ? response.choices[0].message.content 
+        : JSON.stringify(response.choices[0].message.content);
+      const scriptAnalysis = JSON.parse(content);
+      
+      return scriptAnalysis;
     }),
   
   // ============================================================================

@@ -48,6 +48,8 @@ import MonitoringDashboard from "./pages/admin/MonitoringDashboard";
 import ContentAnalyzer from "./pages/ContentAnalyzer";
 import CopyGenerator from "./pages/CopyGenerator";
 import AvatarBuilder from "./pages/AvatarBuilder";
+import ScriptAnalyzer from "./pages/ScriptAnalyzer";
+import FrameworksLibrary from "./pages/FrameworksLibrary";
 
 function Router() {
   // make sure to consider if you need authentication for certain routes
@@ -88,6 +90,8 @@ function Router() {
       <Route path={"/content-analyzer"} component={ContentAnalyzer} />
       <Route path={"/copy-generator"} component={CopyGenerator} />
       <Route path={"/avatar-builder"} component={AvatarBuilder} />
+      <Route path={"/script-analyzer"} component={ScriptAnalyzer} />
+      <Route path={"/frameworks"} component={FrameworksLibrary} />
       <Route path={"/blog"} component={Blog} />
       <Route path={"/blog/:slug"} component={BlogPost} />
       <Route path={"/temoignages"} component={Testimonials} />
