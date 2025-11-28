@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { ArrowRight, Sparkles, Target, TrendingUp, Zap } from "lucide-react";
 import { Link } from "wouter";
 import { APP_LOGO } from "@/const";
+import LanguageSelector from "@/components/LanguageSelector";
 
 export default function Home() {
   // The userAuth hooks provides authentication state
@@ -28,7 +29,8 @@ export default function Home() {
               <span className="font-bold text-xl hidden md:inline">Sionohmair Insight Academy</span>
             </a>
           </Link>
-          <div className="flex items-center space-x-6">
+          <div className="flex items-center space-x-4">
+            <LanguageSelector />
             <Link href="/content-analyzer">
               <a className="text-sm font-medium hover:text-accent transition-colors">Analyseur</a>
             </Link>

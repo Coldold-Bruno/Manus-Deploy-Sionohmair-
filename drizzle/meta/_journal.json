@@ -547,6 +547,13 @@
       "when": 1764300502952,
       "tag": "0077_panoramic_chronomancer",
       "breakpoints": true
+    },
+    {
+      "idx": 78,
+      "version": "5",
+      "when": 1764300855209,
+      "tag": "0078_plain_mentor",
+      "breakpoints": true
     }
   ]
 }

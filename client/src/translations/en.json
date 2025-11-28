@@ -1,0 +1,127 @@
+{
+  "common": {
+    "home": "Home",
+    "services": "Services",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "login": "Login",
+    "logout": "Logout",
+    "dashboard": "Dashboard",
+    "getStarted": "Get Started",
+    "learnMore": "Learn More",
+    "readMore": "Read More",
+    "subscribe": "Subscribe",
+    "tryFree": "Try Free",
+    "pricing": "Pricing",
+    "testimonials": "Testimonials",
+    "resources": "Resources",
+    "tools": "Tools"
+  },
+  "hero": {
+    "title": "Transform Your Messages into Powerful Insights",
+    "subtitle": "Engineering Genius - Content Marketing & Copywriting",
+    "description": "Discover the PFPMA methodology to create messages that captivate, convince, and convert. Move from intuition to the science of clarity.",
+    "cta": "Start 30-Day Free Trial",
+    "secondaryCta": "Discover the Method"
+  },
+  "services": {
+    "title": "Our Services",
+    "subtitle": "3 Levels of Excellence",
+    "sprint": {
+      "name": "Clarity Sprint",
+      "price": "€490",
+      "description": "The diagnostic that reveals what's blocking your conversions",
+      "features": [
+        "Complete PFPMA analysis",
+        "Clarity Score /20",
+        "Actionable recommendations",
+        "7-day delivery"
+      ]
+    },
+    "level2": {
+      "name": "Insight Architecture",
+      "price": "€10,000",
+      "description": "Complete training to master strategic copywriting",
+      "features": [
+        "5 Clarity Artifacts",
+        "Personalized PFPMA Map",
+        "Transformation Roadmap",
+        "3-month support"
+      ]
+    },
+    "level3": {
+      "name": "Strategic Partnership",
+      "price": "€50,000",
+      "description": "Complete transformation of your communication",
+      "features": [
+        "12-month Roadmap",
+        "Personalized Playbook",
+        "Certification NFT",
+        "Priority support"
+      ]
+    }
+  },
+  "blog": {
+    "title": "Blog & Resources",
+    "subtitle": "Master the art of strategic copywriting",
+    "categories": {
+      "all": "All",
+      "aptea": "APTEA Method",
+      "pfpma": "PFPMA Code",
+      "copywriting": "Copy Mastery"
+    },
+    "readTime": "min read",
+    "publishedOn": "Published on"
+  },
+  "tools": {
+    "title": "AI Copywriting Tools",
+    "subtitle": "Analyze and optimize your messages with artificial intelligence",
+    "analyzer": {
+      "name": "Content Analyzer",
+      "description": "Analyze your messages using the PFPMA methodology and get a clarity score"
+    },
+    "generator": {
+      "name": "Copy Generator",
+      "description": "Generate powerful messages optimized for conversion"
+    },
+    "persona": {
+      "name": "Persona Builder",
+      "description": "Create detailed personas to better target your messages"
+    }
+  },
+  "footer": {
+    "description": "Engineering Genius - Transform your messages into powerful insights with the PFPMA methodology.",
+    "quickLinks": "Quick Links",
+    "legal": "Legal",
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Receive our best copywriting tips every week",
+    "emailPlaceholder": "Your email",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfService": "Terms of Service",
+    "copyright": "© 2025 Bruno Coldold | Sionohmair Insight Academy. All rights reserved."
+  },
+  "auth": {
+    "signIn": "Sign In",
+    "signUp": "Sign Up",
+    "signOut": "Sign Out",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "hasAccount": "Already have an account?"
+  },
+  "subscription": {
+    "title": "Premium Subscription",
+    "price": "€36/month",
+    "trial": "30-day free trial",
+    "features": [
+      "Unlimited access to 3 AI tools",
+      "20 premium blog articles",
+      "New content every week",
+      "Priority support"
+    ],
+    "cta": "Start Free Trial",
+    "cancel": "Cancel anytime"
+  }
+}

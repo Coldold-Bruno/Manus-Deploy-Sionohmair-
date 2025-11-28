@@ -1,0 +1,127 @@
+{
+  "common": {
+    "home": "Startseite",
+    "services": "Dienstleistungen",
+    "blog": "Blog",
+    "about": "Über uns",
+    "contact": "Kontakt",
+    "login": "Anmelden",
+    "logout": "Abmelden",
+    "dashboard": "Dashboard",
+    "getStarted": "Loslegen",
+    "learnMore": "Mehr erfahren",
+    "readMore": "Weiterlesen",
+    "subscribe": "Abonnieren",
+    "tryFree": "Kostenlos testen",
+    "pricing": "Preise",
+    "testimonials": "Referenzen",
+    "resources": "Ressourcen",
+    "tools": "Werkzeuge"
+  },
+  "hero": {
+    "title": "Verwandeln Sie Ihre Botschaften in Kraftvolle Insights",
+    "subtitle": "Ingenieurwesen des Genies - Content Marketing & Copywriting",
+    "description": "Entdecken Sie die PFPMA-Methodik, um Botschaften zu erstellen, die fesseln, überzeugen und konvertieren. Vom Bauchgefühl zur Wissenschaft der Klarheit.",
+    "cta": "30-tägige kostenlose Testversion starten",
+    "secondaryCta": "Methode entdecken"
+  },
+  "services": {
+    "title": "Unsere Dienstleistungen",
+    "subtitle": "3 Stufen der Exzellenz",
+    "sprint": {
+      "name": "Klarheits-Sprint",
+      "price": "490€",
+      "description": "Die Diagnose, die zeigt, was Ihre Conversions blockiert",
+      "features": [
+        "Vollständige PFPMA-Analyse",
+        "Klarheitswert /20",
+        "Umsetzbare Empfehlungen",
+        "Lieferung in 7 Tagen"
+      ]
+    },
+    "level2": {
+      "name": "Insight-Architektur",
+      "price": "10.000€",
+      "description": "Vollständige Schulung zur Beherrschung des strategischen Copywritings",
+      "features": [
+        "5 Klarheits-Artefakte",
+        "Personalisierte PFPMA-Karte",
+        "Transformations-Roadmap",
+        "3-monatige Begleitung"
+      ]
+    },
+    "level3": {
+      "name": "Strategische Partnerschaft",
+      "price": "50.000€",
+      "description": "Vollständige Transformation Ihrer Kommunikation",
+      "features": [
+        "12-Monats-Roadmap",
+        "Personalisiertes Playbook",
+        "Zertifizierungs-NFT",
+        "Prioritäts-Support"
+      ]
+    }
+  },
+  "blog": {
+    "title": "Blog & Ressourcen",
+    "subtitle": "Meistern Sie die Kunst des strategischen Copywritings",
+    "categories": {
+      "all": "Alle",
+      "aptea": "APTEA-Methode",
+      "pfpma": "PFPMA-Code",
+      "copywriting": "Copy Mastery"
+    },
+    "readTime": "Min. Lesezeit",
+    "publishedOn": "Veröffentlicht am"
+  },
+  "tools": {
+    "title": "KI-Copywriting-Tools",
+    "subtitle": "Analysieren und optimieren Sie Ihre Botschaften mit künstlicher Intelligenz",
+    "analyzer": {
+      "name": "Inhalts-Analysator",
+      "description": "Analysieren Sie Ihre Botschaften nach der PFPMA-Methodik und erhalten Sie einen Klarheitswert"
+    },
+    "generator": {
+      "name": "Copy-Generator",
+      "description": "Generieren Sie kraftvolle, für Conversions optimierte Botschaften"
+    },
+    "persona": {
+      "name": "Persona-Builder",
+      "description": "Erstellen Sie detaillierte Personas, um Ihre Botschaften besser zu zielen"
+    }
+  },
+  "footer": {
+    "description": "Ingenieurwesen des Genies - Verwandeln Sie Ihre Botschaften in kraftvolle Insights mit der PFPMA-Methodik.",
+    "quickLinks": "Schnelllinks",
+    "legal": "Rechtliches",
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Erhalten Sie jede Woche unsere besten Copywriting-Tipps",
+    "emailPlaceholder": "Ihre E-Mail",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "termsOfService": "Nutzungsbedingungen",
+    "copyright": "© 2025 Bruno Coldold | Sionohmair Insight Academy. Alle Rechte vorbehalten."
+  },
+  "auth": {
+    "signIn": "Anmelden",
+    "signUp": "Konto erstellen",
+    "signOut": "Abmelden",
+    "email": "E-Mail",
+    "password": "Passwort",
+    "forgotPassword": "Passwort vergessen?",
+    "noAccount": "Noch kein Konto?",
+    "hasAccount": "Bereits ein Konto?"
+  },
+  "subscription": {
+    "title": "Premium-Abonnement",
+    "price": "36€/Monat",
+    "trial": "30-tägige kostenlose Testversion",
+    "features": [
+      "Unbegrenzter Zugang zu 3 KI-Tools",
+      "20 Premium-Blog-Artikel",
+      "Neue Inhalte jede Woche",
+      "Prioritäts-Support"
+    ],
+    "cta": "Kostenlose Testversion starten",
+    "cancel": "Jederzeit kündbar"
+  }
+}
