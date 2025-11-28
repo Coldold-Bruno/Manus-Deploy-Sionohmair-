@@ -8,6 +8,7 @@ import { Sparkles, ArrowLeft, Mail, Send, CheckCircle2 } from "lucide-react";
 import { Link } from "wouter";
 import { useState } from "react";
 import { toast } from "sonner";
+import { APP_LOGO } from "@/const";
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -53,11 +54,11 @@ export default function Contact() {
         <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
           <div className="container flex h-16 items-center justify-between">
             <Link href="/">
-              <a className="flex items-center space-x-2">
-                <Sparkles className="h-6 w-6 text-accent" />
-                <span className="font-bold text-xl">Sionohmair Insight Academy</span>
-              </a>
-            </Link>
+            <a className="flex items-center space-x-3">
+              <img src={APP_LOGO} alt="Sionohmair Insight Academy" className="h-12 w-auto" />
+              <span className="font-bold text-xl hidden md:inline">Sionohmair Insight Academy</span>
+            </a>
+          </Link>
             <div className="flex items-center space-x-6">
               <Link href="/">
                 <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
@@ -107,9 +108,9 @@ export default function Contact() {
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
           <Link href="/">
-            <a className="flex items-center space-x-2">
-              <Sparkles className="h-6 w-6 text-accent" />
-              <span className="font-bold text-xl">Sionohmair Insight Academy</span>
+            <a className="flex items-center space-x-3">
+              <img src={APP_LOGO} alt="Sionohmair Insight Academy" className="h-12 w-auto" />
+              <span className="font-bold text-xl hidden md:inline">Sionohmair Insight Academy</span>
             </a>
           </Link>
           <div className="flex items-center space-x-6">

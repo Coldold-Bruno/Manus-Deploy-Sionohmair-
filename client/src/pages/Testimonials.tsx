@@ -5,6 +5,7 @@ import { SEO } from '@/components/SEO';
 import { Sparkles, Quote, TrendingUp, Users, ArrowRight, Play } from 'lucide-react';
 import { Link } from 'wouter';
 import { useState } from 'react';
+import { APP_LOGO } from "@/const";
 
 interface Testimonial {
   id: number;

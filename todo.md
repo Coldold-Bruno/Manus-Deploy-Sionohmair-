@@ -1493,3 +1493,12 @@
 - [x] Tester le script de vérification complète
 - [x] Vérifier le statut final du système
 - [x] Créer le checkpoint final de production
+
+
+## Phase 41 : Intégration du Logo Sionohmair Insight Academy
+- [x] Copier le logo dans client/public/logo-sionohmair-academy.png
+- [x] Mettre à jour la constante APP_LOGO dans client/src/const.ts
+- [x] Afficher le logo dans l'en-tête de toutes les pages (18 pages)
+- [x] Optimiser l'affichage responsive (logo seul sur mobile)
+- [x] Tester l'affichage sur le site
+- [x] Créer le checkpoint final

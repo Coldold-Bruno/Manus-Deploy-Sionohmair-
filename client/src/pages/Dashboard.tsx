@@ -5,6 +5,7 @@ import { trpc } from "@/lib/trpc";
 import { Sparkles, ArrowLeft, Package, Loader2 } from "lucide-react";
 import { OrderCard } from "@/components/OrderCard";
 import { Link } from "wouter";
+import { APP_LOGO } from "@/const";
 
 
 
@@ -40,9 +41,9 @@ export default function Dashboard() {
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
           <Link href="/">
-            <a className="flex items-center space-x-2">
-              <Sparkles className="h-6 w-6 text-accent" />
-              <span className="font-bold text-xl">Sionohmair Insight Academy</span>
+            <a className="flex items-center space-x-3">
+              <img src={APP_LOGO} alt="Sionohmair Insight Academy" className="h-12 w-auto" />
+              <span className="font-bold text-xl hidden md:inline">Sionohmair Insight Academy</span>
             </a>
           </Link>
           <div className="flex items-center space-x-6">

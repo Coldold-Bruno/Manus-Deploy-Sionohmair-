@@ -526,6 +526,13 @@
       "when": 1764298929823,
       "tag": "0074_yellow_silver_sable",
       "breakpoints": true
+    },
+    {
+      "idx": 75,
+      "version": "5",
+      "when": 1764299737072,
+      "tag": "0075_perfect_leo",
+      "breakpoints": true
     }
   ]
 }

@@ -9,6 +9,7 @@ import { Sparkles, ArrowLeft, Package, Calendar, User, Mail, Upload, Loader2, Ch
 import { Link } from "wouter";
 import { useState } from "react";
 import { toast } from "sonner";
+import { APP_LOGO } from "@/const";
 
 const PRODUCT_NAMES: Record<string, string> = {
   SPRINT_CLARTE: "Sprint de Clarté",
