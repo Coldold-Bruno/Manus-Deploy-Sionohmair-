@@ -533,6 +533,13 @@
       "when": 1764299737072,
       "tag": "0075_perfect_leo",
       "breakpoints": true
+    },
+    {
+      "idx": 76,
+      "version": "5",
+      "when": 1764300225650,
+      "tag": "0076_fancy_mandrill",
+      "breakpoints": true
     }
   ]
 }
