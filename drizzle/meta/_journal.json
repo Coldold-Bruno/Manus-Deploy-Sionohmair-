@@ -505,6 +505,13 @@
       "when": 1764294892264,
       "tag": "0071_cool_argent",
       "breakpoints": true
+    },
+    {
+      "idx": 72,
+      "version": "5",
+      "when": 1764297016579,
+      "tag": "0072_curvy_shen",
+      "breakpoints": true
     }
   ]
 }
