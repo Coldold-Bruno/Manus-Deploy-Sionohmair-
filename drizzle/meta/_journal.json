@@ -540,6 +540,13 @@
       "when": 1764300225650,
       "tag": "0076_fancy_mandrill",
       "breakpoints": true
+    },
+    {
+      "idx": 77,
+      "version": "5",
+      "when": 1764300502952,
+      "tag": "0077_panoramic_chronomancer",
+      "breakpoints": true
     }
   ]
 }
