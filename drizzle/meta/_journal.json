@@ -463,6 +463,13 @@
       "when": 1764285340623,
       "tag": "0065_gifted_vargas",
       "breakpoints": true
+    },
+    {
+      "idx": 66,
+      "version": "5",
+      "when": 1764290535578,
+      "tag": "0066_volatile_queen_noir",
+      "breakpoints": true
     }
   ]
 }
