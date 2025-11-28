@@ -519,6 +519,13 @@
       "when": 1764298444816,
       "tag": "0073_loud_skin",
       "breakpoints": true
+    },
+    {
+      "idx": 74,
+      "version": "5",
+      "when": 1764298929823,
+      "tag": "0074_yellow_silver_sable",
+      "breakpoints": true
     }
   ]
 }
