@@ -498,6 +498,13 @@
       "when": 1764293817836,
       "tag": "0070_steady_khan",
       "breakpoints": true
+    },
+    {
+      "idx": 71,
+      "version": "5",
+      "when": 1764294892264,
+      "tag": "0071_cool_argent",
+      "breakpoints": true
     }
   ]
 }
