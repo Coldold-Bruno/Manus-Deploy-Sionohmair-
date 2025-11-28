@@ -1,0 +1,410 @@
+========================================
+CHECKLIST SEO COMPLÈTE
+========================================
+
+Utilisez cette checklist pour optimiser le référencement de votre site.
+Cochez [✅] les éléments complétés.
+
+----------------------------------------
+1. FICHIERS TECHNIQUES
+----------------------------------------
+
+[ ] sitemap.xml créé et accessible
+    URL : https://[VOTRE-DOMAINE]/sitemap.xml
+    
+[ ] robots.txt créé et accessible
+    URL : https://[VOTRE-DOMAINE]/robots.txt
+    
+[ ] favicon.ico ajouté
+    Chemin : client/public/favicon.ico
+    
+[ ] 404.html personnalisé
+    Chemin : client/public/404.html
+
+----------------------------------------
+2. META TAGS
+----------------------------------------
+
+[ ] Title tag optimisé (50-60 caractères)
+    Exemple : "Sionohmair Insight Academy - L'Ingénierie du Génie"
+    
+[ ] Meta description optimisée (150-160 caractères)
+    Exemple : "Transformez votre contenu marketing en machine de conversion avec PFPMA & APTEA. Essai gratuit 30 jours."
+    
+[ ] Meta keywords (optionnel)
+    Exemple : "copywriting, content marketing, PFPMA, APTEA, conversion"
+    
+[ ] Meta viewport (responsive)
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+[ ] Meta charset (UTF-8)
+    <meta charset="UTF-8">
+
+----------------------------------------
+3. OPEN GRAPH (RÉSEAUX SOCIAUX)
+----------------------------------------
+
+[ ] og:title
+    <meta property="og:title" content="Sionohmair Insight Academy">
+    
+[ ] og:description
+    <meta property="og:description" content="Transformez votre contenu marketing...">
+    
+[ ] og:image (1200x630px)
+    <meta property="og:image" content="https://[DOMAINE]/og-image.jpg">
+    
+[ ] og:url
+    <meta property="og:url" content="https://[DOMAINE]">
+    
+[ ] og:type
+    <meta property="og:type" content="website">
+    
+[ ] og:site_name
+    <meta property="og:site_name" content="Sionohmair Insight Academy">
+
+----------------------------------------
+4. TWITTER CARD
+----------------------------------------
+
+[ ] twitter:card
+    <meta name="twitter:card" content="summary_large_image">
+    
+[ ] twitter:title
+    <meta name="twitter:title" content="Sionohmair Insight Academy">
+    
+[ ] twitter:description
+    <meta name="twitter:description" content="Transformez votre contenu...">
+    
+[ ] twitter:image (1200x600px)
+    <meta name="twitter:image" content="https://[DOMAINE]/twitter-card.jpg">
+
+----------------------------------------
+5. IMAGES SEO
+----------------------------------------
+
+[ ] og-image.jpg créé (1200x630px)
+    Chemin : client/public/og-image.jpg
+    
+[ ] twitter-card.jpg créé (1200x600px)
+    Chemin : client/public/twitter-card.jpg
+    
+[ ] Toutes les images ont un attribut alt
+    Exemple : <img src="..." alt="Description de l'image">
+    
+[ ] Images optimisées (WebP, compression)
+    Outil : https://squoosh.app
+    
+[ ] Images lazy-loaded
+    Exemple : <img loading="lazy" src="...">
+
+----------------------------------------
+6. STRUCTURE DU CONTENU
+----------------------------------------
+
+[ ] Balises H1 uniques par page
+    Une seule balise <h1> par page
+    
+[ ] Hiérarchie H1 → H2 → H3 respectée
+    H1 : Titre principal
+    H2 : Sections
+    H3 : Sous-sections
+    
+[ ] Paragraphes courts (3-4 lignes max)
+    
+[ ] Listes à puces utilisées
+    
+[ ] Liens internes ajoutés
+    Exemple : <a href="/frameworks">Découvrez nos frameworks</a>
+    
+[ ] Liens externes avec rel="noopener"
+    Exemple : <a href="https://..." target="_blank" rel="noopener">
+
+----------------------------------------
+7. GOOGLE SEARCH CONSOLE
+----------------------------------------
+
+[ ] Propriété ajoutée
+    URL : https://search.google.com/search-console
+    
+[ ] Domaine vérifié
+    Méthode : Balise HTML ou DNS
+    
+[ ] Sitemap soumis
+    URL du sitemap : https://[DOMAINE]/sitemap.xml
+    
+[ ] Demandes d'indexation envoyées
+    Pages principales indexées
+    
+[ ] Propriétaires ajoutés (si équipe)
+    Settings → Users and permissions
+
+----------------------------------------
+8. GOOGLE ANALYTICS
+----------------------------------------
+
+[ ] Compte créé
+    URL : https://analytics.google.com
+    
+[ ] Propriété configurée
+    Type : GA4 (Google Analytics 4)
+    
+[ ] Code de suivi ajouté
+    Chemin : client/index.html (dans <head>)
+    
+[ ] Objectifs configurés
+    Exemples : Inscription, Abonnement, Téléchargement
+    
+[ ] Événements personnalisés
+    Exemples : Clic sur CTA, Utilisation d'outil
+
+----------------------------------------
+9. PERFORMANCE
+----------------------------------------
+
+[ ] Temps de chargement < 2s
+    Outil : https://pagespeed.web.dev
+    
+[ ] Score PageSpeed > 90
+    Mobile et Desktop
+    
+[ ] Compression gzip activée
+    Vérifier : https://checkgzipcompression.com
+    
+[ ] Minification CSS/JS
+    Build de production optimisé
+    
+[ ] CDN configuré (optionnel)
+    Exemples : Cloudflare, Fastly
+    
+[ ] Cache navigateur configuré
+    Headers : Cache-Control, Expires
+
+----------------------------------------
+10. CONTENU SEO
+----------------------------------------
+
+[ ] 10 articles de blog publiés
+    Minimum 1500 mots par article
+    
+[ ] FAQ ajoutée sur chaque page outil
+    Minimum 5 questions par page
+    
+[ ] Guides détaillés créés
+    Minimum 3000 mots par guide
+    
+[ ] Mots-clés ciblés intégrés
+    Densité : 1-2% (naturel)
+    
+[ ] Call-to-action clairs
+    Exemples : "Essayer gratuitement", "S'abonner"
+
+----------------------------------------
+11. SCHEMA.ORG (DONNÉES STRUCTURÉES)
+----------------------------------------
+
+[ ] Schema SoftwareApplication
+    Type : WebApplication
+    
+[ ] Schema Organization
+    Nom, logo, réseaux sociaux
+    
+[ ] Schema AggregateRating (si avis)
+    Note moyenne, nombre d'avis
+    
+[ ] Schema FAQPage
+    Questions fréquentes
+    
+[ ] Schema Article (pour le blog)
+    Titre, auteur, date, image
+    
+[ ] Validation schema.org
+    Outil : https://validator.schema.org
+
+----------------------------------------
+12. ACCESSIBILITÉ (A11Y)
+----------------------------------------
+
+[ ] Contraste de couleurs suffisant
+    Ratio minimum : 4.5:1
+    
+[ ] Navigation au clavier possible
+    Testez avec Tab, Enter, Esc
+    
+[ ] Attributs ARIA ajoutés
+    Exemples : aria-label, aria-describedby
+    
+[ ] Formulaires accessibles
+    Labels associés aux inputs
+    
+[ ] Skip links ajoutés
+    <a href="#main-content">Aller au contenu</a>
+
+----------------------------------------
+13. SÉCURITÉ
+----------------------------------------
+
+[ ] HTTPS activé
+    Let's Encrypt configuré
+    
+[ ] Certificat SSL valide
+    Vérifier : https://www.ssllabs.com/ssltest/
+    
+[ ] Headers de sécurité configurés
+    X-Frame-Options, X-Content-Type-Options, etc.
+    
+[ ] CSP (Content Security Policy)
+    Protection contre XSS
+    
+[ ] CORS configuré
+    Autoriser uniquement les domaines de confiance
+
+----------------------------------------
+14. BACKLINKS
+----------------------------------------
+
+[ ] Partenariats avec blogs marketing
+    Minimum 5 partenariats
+    
+[ ] Guest posts publiés
+    Minimum 3 articles invités
+    
+[ ] Mentions dans communautés
+    Reddit, Product Hunt, Hacker News
+    
+[ ] Annuaires spécialisés
+    Capterra, G2, Product Hunt
+    
+[ ] Réseaux sociaux actifs
+    LinkedIn, Twitter, Facebook
+
+----------------------------------------
+15. LOCAL SEO (SI APPLICABLE)
+----------------------------------------
+
+[ ] Google My Business créé
+    URL : https://business.google.com
+    
+[ ] Adresse et horaires ajoutés
+    
+[ ] Photos ajoutées
+    Minimum 10 photos
+    
+[ ] Avis clients collectés
+    Minimum 10 avis
+    
+[ ] Schema LocalBusiness
+    Adresse, téléphone, horaires
+
+----------------------------------------
+16. SUIVI ET ANALYSE
+----------------------------------------
+
+[ ] Positions suivies
+    Outil : Google Search Console
+    
+[ ] Trafic organique analysé
+    Outil : Google Analytics
+    
+[ ] Backlinks suivis
+    Outil : Ahrefs, SEMrush
+    
+[ ] Concurrence analysée
+    Outil : SEMrush, Moz
+    
+[ ] Rapports mensuels créés
+    Métriques : Trafic, positions, conversions
+
+----------------------------------------
+17. OPTIMISATIONS AVANCÉES
+----------------------------------------
+
+[ ] AMP (Accelerated Mobile Pages)
+    Pour le blog (optionnel)
+    
+[ ] PWA (Progressive Web App)
+    Service worker, manifest.json
+    
+[ ] Lazy loading images
+    Attribut loading="lazy"
+    
+[ ] Preload ressources critiques
+    <link rel="preload" href="...">
+    
+[ ] Prefetch pages suivantes
+    <link rel="prefetch" href="...">
+
+----------------------------------------
+18. MOTS-CLÉS CIBLÉS
+----------------------------------------
+
+Principaux :
+[ ] content marketing
+[ ] copywriting
+[ ] PFPMA
+[ ] APTEA
+[ ] analyseur de contenu
+[ ] générateur de copy
+[ ] framework copywriting
+[ ] conversion marketing
+
+Longue traîne :
+[ ] comment améliorer son copywriting
+[ ] outil d'analyse de contenu marketing
+[ ] générateur de copy IA
+[ ] framework PFPMA
+[ ] méthode APTEA
+[ ] optimiser conversion landing page
+
+----------------------------------------
+19. VÉRIFICATIONS POST-LANCEMENT
+----------------------------------------
+
+[ ] Site indexé dans Google
+    Recherche : site:[VOTRE-DOMAINE]
+    
+[ ] Pages principales indexées
+    Vérifier dans Google Search Console
+    
+[ ] Sitemap traité sans erreurs
+    Vérifier dans Google Search Console
+    
+[ ] Aucune erreur 404
+    Vérifier dans Google Search Console
+    
+[ ] Vitesse de chargement optimale
+    PageSpeed > 90
+
+----------------------------------------
+20. MAINTENANCE SEO
+----------------------------------------
+
+[ ] Audit SEO mensuel
+    Outil : Ahrefs, SEMrush
+    
+[ ] Contenu mis à jour régulièrement
+    Minimum 1 article par semaine
+    
+[ ] Backlinks vérifiés
+    Désavouer les liens toxiques
+    
+[ ] Positions suivies
+    Ajuster la stratégie si baisse
+    
+[ ] Nouvelles opportunités identifiées
+    Nouveaux mots-clés, nouvelles pages
+
+========================================
+SCORE SEO
+========================================
+
+Total d'éléments cochés : [__] / 100
+
+Score :
+  0-30   : ❌ SEO insuffisant
+  31-60  : ⚠️  SEO moyen
+  61-80  : ✅ SEO bon
+  81-100 : 🏆 SEO excellent
+
+========================================
+FIN DE LA CHECKLIST
+========================================

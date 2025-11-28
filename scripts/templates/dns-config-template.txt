@@ -1,0 +1,115 @@
+========================================
+TEMPLATE DE CONFIGURATION DNS
+========================================
+
+Ce fichier est un template pour configurer votre domaine personnalisé.
+Remplacez les valeurs entre [CROCHETS] par vos propres informations.
+
+----------------------------------------
+INFORMATIONS DE BASE
+----------------------------------------
+
+Domaine : [VOTRE-DOMAINE.COM]
+Registrar : [NAMECHEAP / OVH / GOOGLE DOMAINS / AUTRE]
+Sous-domaine Manus : [VOTRE-SOUS-DOMAINE.manus.space]
+
+----------------------------------------
+ENREGISTREMENTS DNS À AJOUTER
+----------------------------------------
+
+1. ENREGISTREMENT CNAME (pour www)
+   Type      : CNAME
+   Host/Name : www
+   Value     : [VOTRE-SOUS-DOMAINE.manus.space]
+   TTL       : 3600 (ou Auto)
+
+2. ENREGISTREMENT CNAME (pour le domaine racine)
+   Type      : CNAME
+   Host/Name : @
+   Value     : [VOTRE-SOUS-DOMAINE.manus.space]
+   TTL       : 3600 (ou Auto)
+
+   ⚠️ NOTE : Si votre registrar ne supporte pas CNAME pour @,
+   utilisez un enregistrement A avec l'IP fournie par Manus.
+
+----------------------------------------
+INSTRUCTIONS DÉTAILLÉES
+----------------------------------------
+
+NAMECHEAP :
+1. Connectez-vous sur https://www.namecheap.com/myaccount/login/
+2. Dashboard → Domain List → Manage
+3. Advanced DNS → Add New Record
+4. Ajoutez les 2 enregistrements CNAME ci-dessus
+5. Sauvegardez
+
+OVH :
+1. Connectez-vous sur https://www.ovh.com/auth/
+2. Web Cloud → Noms de domaine → [VOTRE-DOMAINE]
+3. Zone DNS → Ajouter une entrée
+4. Ajoutez les 2 enregistrements CNAME ci-dessus
+5. Sauvegardez
+
+GOOGLE DOMAINS :
+1. Connectez-vous sur https://domains.google.com
+2. My domains → [VOTRE-DOMAINE] → DNS
+3. Custom records → Manage custom records
+4. Ajoutez les 2 enregistrements CNAME ci-dessus
+5. Sauvegardez
+
+AUTRE REGISTRAR :
+1. Connectez-vous à votre compte registrar
+2. Trouvez la section "DNS Management" ou "Zone DNS"
+3. Ajoutez les 2 enregistrements CNAME ci-dessus
+4. Sauvegardez
+
+----------------------------------------
+VÉRIFICATION DE LA PROPAGATION
+----------------------------------------
+
+Commande pour vérifier :
+  dig [VOTRE-DOMAINE.COM]
+  dig www.[VOTRE-DOMAINE.COM]
+
+Ou utilisez : https://dnschecker.org
+
+Délai de propagation : 5-30 minutes (parfois jusqu'à 48h)
+
+----------------------------------------
+CONFIGURATION DANS MANUS
+----------------------------------------
+
+1. Allez sur : https://manus.im
+2. Projets → sionohmair-insight-academy
+3. Settings → Domains
+4. Cliquez sur "Add Custom Domain"
+5. Entrez : [VOTRE-DOMAINE.COM]
+6. Cliquez sur "Verify"
+7. Attendez la vérification (quelques minutes)
+
+----------------------------------------
+ACTIVATION HTTPS
+----------------------------------------
+
+Manus active automatiquement HTTPS avec Let's Encrypt.
+Vérifiez que https://[VOTRE-DOMAINE.COM] fonctionne.
+
+----------------------------------------
+DÉPANNAGE
+----------------------------------------
+
+Problème : "DNS not found"
+Solution : Attendez la propagation DNS (5-30 min)
+
+Problème : "CNAME not allowed for @"
+Solution : Utilisez un enregistrement A avec l'IP Manus
+
+Problème : "Certificate error"
+Solution : Attendez quelques minutes, Let's Encrypt génère le certificat
+
+Problème : "Domain not verified"
+Solution : Vérifiez que les enregistrements DNS sont corrects
+
+========================================
+FIN DU TEMPLATE
+========================================
