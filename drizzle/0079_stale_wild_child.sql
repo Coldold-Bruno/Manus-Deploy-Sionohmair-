@@ -1,0 +1,20 @@
+ALTER TABLE `api_integrations` MODIFY COLUMN `created_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.306';--> statement-breakpoint
+ALTER TABLE `api_integrations` MODIFY COLUMN `updated_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.306';--> statement-breakpoint
+ALTER TABLE `arbitration_cases` MODIFY COLUMN `filed_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.307';--> statement-breakpoint
+ALTER TABLE `arbitration_cases` MODIFY COLUMN `created_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.307';--> statement-breakpoint
+ALTER TABLE `arbitration_cases` MODIFY COLUMN `updated_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.307';--> statement-breakpoint
+ALTER TABLE `arbitrators` MODIFY COLUMN `created_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.307';--> statement-breakpoint
+ALTER TABLE `arbitrators` MODIFY COLUMN `updated_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.307';--> statement-breakpoint
+ALTER TABLE `benefit_indices` MODIFY COLUMN `detected_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.306';--> statement-breakpoint
+ALTER TABLE `benefit_indices` MODIFY COLUMN `created_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.306';--> statement-breakpoint
+ALTER TABLE `benefit_indices` MODIFY COLUMN `updated_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.306';--> statement-breakpoint
+ALTER TABLE `detection_logs` MODIFY COLUMN `detected_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.306';--> statement-breakpoint
+ALTER TABLE `presumed_royalties` MODIFY COLUMN `notified_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.306';--> statement-breakpoint
+ALTER TABLE `presumed_royalties` MODIFY COLUMN `created_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.306';--> statement-breakpoint
+ALTER TABLE `presumed_royalties` MODIFY COLUMN `updated_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.306';--> statement-breakpoint
+ALTER TABLE `recovery_actions` MODIFY COLUMN `performed_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.307';--> statement-breakpoint
+ALTER TABLE `royalty_contestations` MODIFY COLUMN `submitted_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.307';--> statement-breakpoint
+ALTER TABLE `royalty_contestations` MODIFY COLUMN `updated_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.307';--> statement-breakpoint
+ALTER TABLE `voluntary_declarations` MODIFY COLUMN `declared_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.307';--> statement-breakpoint
+ALTER TABLE `voluntary_declarations` MODIFY COLUMN `created_at` datetime NOT NULL DEFAULT '2025-11-29 04:10:16.307';--> statement-breakpoint
+ALTER TABLE `blog_posts` ADD `language` varchar(10) DEFAULT 'fr' NOT NULL;

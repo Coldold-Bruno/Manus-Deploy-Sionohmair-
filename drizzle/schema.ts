@@ -129,6 +129,9 @@ export const blogPosts = mysqlTable("blog_posts", {
   /** Publication date */
   publishedAt: timestamp("publishedAt"),
   
+  /** Language code: fr, en, es, de */
+  language: varchar("language", { length: 10 }).default("fr").notNull(),
+  
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
   

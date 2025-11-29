@@ -1,4 +1,5 @@
 import { useLanguage, Language } from '@/contexts/LanguageContext';
+import { useLocation } from 'wouter';
 import { Button } from '@/components/ui/button';
 import {
   DropdownMenu,
@@ -17,8 +18,19 @@ const languages: { code: Language; name: string; flag: string }[] = [
 
 export default function LanguageSelector() {
   const { language, setLanguage } = useLanguage();
+  const [location, setLocation] = useLocation();
   
   const currentLanguage = languages.find(lang => lang.code === language);
+  
+  // Helper pour changer de langue en conservant le chemin actuel
+  const switchLanguage = (newLang: Language) => {
+    // Retirer le préfixe de langue actuel
+    const pathWithoutLang = location.replace(/^\/(fr|en|es|de)(\/|$)/, '/');
+    // Ajouter le nouveau préfixe de langue
+    const newPath = `/${newLang}${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
+    setLanguage(newLang);
+    setLocation(newPath);
+  };
 
   return (
     <DropdownMenu>
@@ -33,7 +45,7 @@ export default function LanguageSelector() {
         {languages.map((lang) => (
           <DropdownMenuItem
             key={lang.code}
-            onClick={() => setLanguage(lang.code)}
+            onClick={() => switchLanguage(lang.code)}
             className={language === lang.code ? 'bg-accent' : ''}
           >
             <span className="mr-2">{lang.flag}</span>

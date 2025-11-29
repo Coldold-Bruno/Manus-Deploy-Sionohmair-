@@ -554,6 +554,20 @@
       "when": 1764300855209,
       "tag": "0078_plain_mentor",
       "breakpoints": true
+    },
+    {
+      "idx": 79,
+      "version": "5",
+      "when": 1764389416374,
+      "tag": "0079_stale_wild_child",
+      "breakpoints": true
+    },
+    {
+      "idx": 80,
+      "version": "5",
+      "when": 1764390004437,
+      "tag": "0080_late_blindfold",
+      "breakpoints": true
     }
   ]
 }

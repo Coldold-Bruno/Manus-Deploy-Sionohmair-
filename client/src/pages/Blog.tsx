@@ -6,6 +6,7 @@ import { Sparkles, ArrowLeft, TrendingUp, BookOpen, Lightbulb, Calendar, ArrowRi
 import { Link } from "wouter";
 import { useState } from "react";
 import { APP_LOGO } from "@/const";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const CATEGORY_CONFIG: Record<string, { label: string; color: string; icon: any }> = {
   "case-study": {
@@ -27,9 +28,11 @@ const CATEGORY_CONFIG: Record<string, { label: string; color: string; icon: any 
 
 export default function Blog() {
   const [selectedCategory, setSelectedCategory] = useState<string | undefined>(undefined);
+  const { language } = useLanguage();
   
   const { data: posts, isLoading } = trpc.blog.getPublishedPosts.useQuery({
     category: selectedCategory,
+    language: language,
     limit: 20,
   });
 

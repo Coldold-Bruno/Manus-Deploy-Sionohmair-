@@ -13,6 +13,7 @@ export const blogRouter = router({
       z
         .object({
           category: z.string().optional(),
+          language: z.enum(['fr', 'en', 'es', 'de']).default('fr'),
           limit: z.number().min(1).max(100).default(10),
         })
         .optional()
@@ -23,7 +24,10 @@ export const blogRouter = router({
         throw new Error('Database not available');
       }
 
-      const conditions = [eq(blogPosts.published, 'published')];
+      const conditions = [
+        eq(blogPosts.published, 'published'),
+        eq(blogPosts.language, input?.language || 'fr')
+      ];
       
       if (input?.category) {
         conditions.push(eq(blogPosts.category, input.category));

@@ -1,127 +1,12 @@
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
-import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageProvider } from "./contexts/LanguageContext";
-import Home from "./pages/Home";
-import SprintClarte from "./pages/SprintClarte";
-
-import AutomatisationIA from "./pages/AutomatisationIA";
-import Calculateur from "./pages/Calculateur";
-import About from "./pages/About";
-import Contact from "./pages/Contact";
-import PaymentSuccess from "./pages/PaymentSuccess";
-import PaymentCancel from "./pages/PaymentCancel";
-import Dashboard from "./pages/Dashboard";
-import Admin from "./pages/Admin";
-import Blog from "./pages/Blog";
-import BlogPost from "./pages/BlogPost";
-import Testimonials from "./pages/Testimonials";
-import NewsletterAnalytics from "./pages/NewsletterAnalytics";
-import ImportSubscribers from "./pages/ImportSubscribers";
-import HotLeads from "./pages/admin/HotLeads";
-import LeadProfile from "./pages/admin/LeadProfile";
-import Segments from "./pages/admin/Segments";
-import Tasks from "./pages/admin/Tasks";
-import ABTesting from "./pages/admin/ABTesting";
-import SendCampaign from "./pages/admin/SendCampaign";
-import EmailTemplates from "./pages/admin/EmailTemplates";
-import EmailWorkflows from "./pages/admin/EmailWorkflows";
-import Analytics from "./pages/admin/Analytics";
-import Portfolio from "./pages/Portfolio";
-import LoiClarte from "./pages/LoiClarte";
-
-import VisualGraphic from "./pages/VisualGraphic";
-
-import NftGratitudeDashboard from "./pages/NftGratitudeDashboard";
-import NftGratitudeAdmin from "./pages/admin/NftGratitudeAdmin";
-import CorrecteurUniversel from "./pages/CorrecteurUniversel";
-import NftRoyaltiesDashboard from "./pages/NftRoyaltiesDashboard";
-import HonoficationDashboard from "./pages/HonoficationDashboard";
-import ApiKeysManagement from "./pages/admin/ApiKeysManagement";
-import HonoficationAdminDashboard from "./pages/admin/HonoficationAdminDashboard";
-import SeedNftSources from "./pages/admin/SeedNftSources";
-import NftGratitudePresentation from "./pages/NftGratitudePresentation";
-import MonitoringDashboard from "./pages/admin/MonitoringDashboard";
-import ContentAnalyzer from "./pages/ContentAnalyzer";
-import CopyGenerator from "./pages/CopyGenerator";
-import AvatarBuilder from "./pages/AvatarBuilder";
-import ConfigDashboard from "./pages/ConfigDashboard";
-import ScriptAnalyzer from "./pages/ScriptAnalyzer";
-import FrameworksLibrary from "./pages/FrameworksLibrary";
-import ChatIA from "./pages/ChatIA";
-import Templates from "./pages/Templates";
-import UserDashboard from "./pages/UserDashboard";
-import Exemples from "./pages/Exemples";
-import CopyEditor from "./pages/CopyEditor";
-import Guide from "./pages/Guide";
-import Pricing from "./pages/Pricing";
-import Subscription from "./pages/Subscription";
+import { LanguageRouter } from "./components/LanguageRouter";
 import Chatbot from "./components/Chatbot";
 import Onboarding from "./components/Onboarding";
-
-function Router() {
-  // make sure to consider if you need authentication for certain routes
-  return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/sprint"} component={SprintClarte} />
-
-      <Route path={"/dashboard/nft-gratitude"} component={NftGratitudeDashboard} />
-      <Route path={"/nft-gratitude"} component={NftGratitudePresentation} />      <Route path={"/correcteur"} component={CorrecteurUniversel} />
-      <Route path={"/dashboard/nft-royalties"} component={NftRoyaltiesDashboard} />
-      <Route path={"/dashboard/honofication"} component={HonoficationDashboard} />
-      <Route path={"/portfolio"} component={Portfolio} />
-      <Route path={"/automatisation-ia"} component={AutomatisationIA} />
-      <Route path={"/calculateur"} component={Calculateur} />
-      <Route path={"/about"} component={About} />
-      <Route path={"/contact"} component={Contact} />
-      <Route path={"/payment/success"} component={PaymentSuccess} />
-      <Route path={"/payment/cancel"} component={PaymentCancel} />
-      <Route path={"/dashboard"} component={Dashboard} />      <Route path={"/admin"} component={Admin} />
-      <Route path={"/admin/newsletter"} component={NewsletterAnalytics} />
-      <Route path={"/admin/import-subscribers"} component={ImportSubscribers} />      <Route path={"/admin/hot-leads"} component={HotLeads} />
-      <Route path={"/admin/lead-profile"} component={LeadProfile} />
-      <Route path={"/admin/segments"} component={Segments} />
-      <Route path={"/admin/tasks"} component={Tasks} />
-      <Route path={"/admin/ab-testing"} component={ABTesting} />
-      <Route path={"/admin/send-campaign"} component={SendCampaign} />
-      <Route path={"/admin/email-templates"} component={EmailTemplates} />
-      <Route path={"/admin/email-workflows"} component={EmailWorkflows} />
-      <Route path={"/admin/analytics"} component={Analytics} />
-      <Route path={"/admin/nft-gratitude"} component={NftGratitudeAdmin} />
-      <Route path={"/admin/api-keys"} component={ApiKeysManagement} />
-      <Route path={"/admin/honofication"} component={HonoficationAdminDashboard} />
-      <Route path={"/admin/seed-nft"} component={SeedNftSources} />
-      <Route path={"/admin/monitoring"} component={MonitoringDashboard} />
-      
-      {/* Content Marketing & Copywriting */}
-      <Route path={"/content-analyzer"} component={ContentAnalyzer} />
-      <Route path={"/copy-generator"} component={CopyGenerator} />
-      <Route path={"/avatar-builder"} component={AvatarBuilder} />
-      <Route path={"/script-analyzer"} component={ScriptAnalyzer} />
-      <Route path={"/frameworks"} component={FrameworksLibrary} />
-      <Route path={"/chat-ia"} component={ChatIA} />
-      <Route path={"/templates"} component={Templates} />
-      <Route path={"/dashboard-user"} component={UserDashboard} />
-      <Route path={"/exemples"} component={Exemples} />
-      <Route path={"/editor"} component={CopyEditor} />
-      <Route path={"/guide"} component={Guide} />
-      <Route path={"/pricing"} component={Pricing} />
-      <Route path={"/subscription"} component={Subscription} />
-      <Route path={"/config"} component={ConfigDashboard} />
-      <Route path={"/blog"} component={Blog} />
-      <Route path={"/blog/:slug"} component={BlogPost} />
-      <Route path={"/temoignages"} component={Testimonials} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
-  );
-}
 
 // NOTE: About Theme
 // - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
@@ -138,7 +23,7 @@ function App() {
         >
           <TooltipProvider>
             <Toaster />
-            <Router />
+            <LanguageRouter />
             <Chatbot />
             <Onboarding />
             <ScrollToTop />
