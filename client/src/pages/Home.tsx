@@ -7,11 +7,14 @@ import { ArrowRight, Sparkles, Target, TrendingUp, Zap } from "lucide-react";
 import { Link } from "wouter";
 import { APP_LOGO } from "@/const";
 import LanguageSelector from "@/components/LanguageSelector";
+import { NavLink } from "@/components/NavLink";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
   // The userAuth hooks provides authentication state
   // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
   let { user, loading, error, isAuthenticated, logout } = useAuth();
+  const { language } = useLanguage();
 
   return (
     <div className="min-h-screen">
@@ -23,78 +26,46 @@ export default function Home() {
       {/* Navigation */}
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
-          <Link href="/">
-            <a className="flex items-center space-x-3">
+          <NavLink href="/">
+            <div className="flex items-center space-x-3">
               <img src={APP_LOGO} alt="Sionohmair Insight Academy" className="h-12 w-auto" />
               <span className="font-bold text-xl hidden md:inline">Sionohmair Insight Academy</span>
-            </a>
-          </Link>
+            </div>
+          </NavLink>
           <div className="flex items-center space-x-4">
             <LanguageSelector />
-            <Link href="/content-analyzer">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Analyseur</a>
-            </Link>
-            <Link href="/copy-generator">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Générateur</a>
-            </Link>
-            <Link href="/avatar-builder">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Avatar Client</a>
-            </Link>
-            <Link href="/script-analyzer">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Scripts</a>
-            </Link>
-            <Link href="/frameworks">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Frameworks</a>
-            </Link>
-            <Link href="/chat-ia">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Chat IA</a>
-            </Link>
-            <Link href="/templates">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Templates</a>
-            </Link>
-            <Link href="/exemples">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Exemples</a>
-            </Link>
-            <Link href="/editor">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Éditeur</a>
-            </Link>
-            <Link href="/guide">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Guide</a>
-            </Link>
-            <Link href="/pricing">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Tarifs</a>
-            </Link>
-            <Link href="/blog">
-              <a className="text-sm font-medium hover:text-accent transition-colors">Blog</a>
-            </Link>
-            <Link href="/about">
-              <a className="text-sm font-medium hover:text-accent transition-colors">À Propos</a>
-            </Link>
+            <NavLink href="/content-analyzer" className="text-sm font-medium hover:text-accent transition-colors">Analyseur</NavLink>
+            <NavLink href="/copy-generator" className="text-sm font-medium hover:text-accent transition-colors">Générateur</NavLink>
+            <NavLink href="/avatar-builder" className="text-sm font-medium hover:text-accent transition-colors">Avatar Client</NavLink>
+            <NavLink href="/script-analyzer" className="text-sm font-medium hover:text-accent transition-colors">Scripts</NavLink>
+            <NavLink href="/frameworks" className="text-sm font-medium hover:text-accent transition-colors">Frameworks</NavLink>
+            <NavLink href="/chat-ia" className="text-sm font-medium hover:text-accent transition-colors">Chat IA</NavLink>
+            <NavLink href="/templates" className="text-sm font-medium hover:text-accent transition-colors">Templates</NavLink>
+            <NavLink href="/exemples" className="text-sm font-medium hover:text-accent transition-colors">Exemples</NavLink>
+            <NavLink href="/editor" className="text-sm font-medium hover:text-accent transition-colors">Éditeur</NavLink>
+            <NavLink href="/guide" className="text-sm font-medium hover:text-accent transition-colors">Guide</NavLink>
+            <NavLink href="/pricing" className="text-sm font-medium hover:text-accent transition-colors">Tarifs</NavLink>
+            <NavLink href="/blog" className="text-sm font-medium hover:text-accent transition-colors">Blog</NavLink>
+            <NavLink href="/about" className="text-sm font-medium hover:text-accent transition-colors">À Propos</NavLink>
             {isAuthenticated && (
-              <Link href="/subscription">
-                <a className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
-                  Mon abonnement
-                  <span className="px-2 py-0.5 bg-amber-500 text-white text-xs font-semibold rounded-full">
-                    Essai gratuit
-                  </span>
-                </a>
-              </Link>
+              <NavLink href="/subscription" className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
+                Mon abonnement
+                <span className="px-2 py-0.5 bg-amber-500 text-white text-xs font-semibold rounded-full">
+                  Essai gratuit
+                </span>
+              </NavLink>
             )}
             {!isAuthenticated && (
               <Button asChild variant="default" className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold">
-                <Link href="/subscription">
-                  <a className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4" />
-                    Essai gratuit (30j)
-                  </a>
-                </Link>
+                <a href={`/${language}/subscription`} className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4" />
+                  Essai gratuit (30j)
+                </a>
               </Button>
             )}
             {isAuthenticated && (
               <Button asChild variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                <Link href="/content-analyzer">
-                  <a>Analyser mon contenu →</a>
-                </Link>
+                <a href={`/${language}/content-analyzer`}>Analyser mon contenu →</a>
               </Button>
             )}
           </div>
@@ -243,17 +214,13 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
                 <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8">
-                  <Link href="/content-analyzer">
-                    <a className="flex items-center gap-2">
-                      Analyser Mon Contenu Maintenant
-                      <ArrowRight className="h-5 w-5" />
-                    </a>
-                  </Link>
+                  <a href={`/${language}/content-analyzer`} className="flex items-center gap-2">
+                    Analyser Mon Contenu Maintenant
+                    <ArrowRight className="h-5 w-5" />
+                  </a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="text-lg px-8">
-                  <Link href="/copy-generator">
-                    <a>Générer du Copy</a>
-                  </Link>
+                  <a href={`/${language}/copy-generator`}>Générer du Copy</a>
                 </Button>
               </div>
             </div>
@@ -348,17 +315,13 @@ export default function Home() {
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-bold text-lg px-8 py-6">
-                  <Link href="/subscription">
-                    <a className="flex items-center gap-2">
-                      <Sparkles className="w-5 h-5" />
-                      Commencer l'essai gratuit (30 jours)
-                    </a>
-                  </Link>
+                  <a href={`/${language}/subscription`} className="flex items-center gap-2">
+                    <Sparkles className="w-5 h-5" />
+                    Commencer l'essai gratuit (30 jours)
+                  </a>
                 </Button>
                 <Button asChild size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 font-semibold text-lg px-8 py-6">
-                  <Link href="/pricing">
-                    <a>Voir les tarifs</a>
-                  </Link>
+                  <a href={`/${language}/pricing`}>Voir les tarifs</a>
                 </Button>
               </div>
             </div>
@@ -385,12 +348,12 @@ export default function Home() {
             <div>
               <h4 className="font-semibold mb-4">Navigation</h4>
               <ul className="space-y-2 text-sm">
-                <li><Link href="/sprint"><a className="text-muted-foreground hover:text-accent">Sprint de Clarté</a></Link></li>
-                <li><Link href="/theoreme"><a className="text-muted-foreground hover:text-accent">Théorème de la Genèse</a></Link></li>
-                <li><Link href="/services"><a className="text-muted-foreground hover:text-accent">Services</a></Link></li>
-                <li><Link href="/ressources"><a className="text-muted-foreground hover:text-accent">Ressources</a></Link></li>
-                <li><Link href="/about"><a className="text-muted-foreground hover:text-accent">À Propos</a></Link></li>
-                <li><Link href="/contact"><a className="text-muted-foreground hover:text-accent">Contact</a></Link></li>
+                <li><NavLink href="/sprint" className="text-muted-foreground hover:text-accent">Sprint de Clarté</NavLink></li>
+                <li><NavLink href="/theoreme" className="text-muted-foreground hover:text-accent">Théorème de la Genèse</NavLink></li>
+                <li><NavLink href="/services" className="text-muted-foreground hover:text-accent">Services</NavLink></li>
+                <li><NavLink href="/ressources" className="text-muted-foreground hover:text-accent">Ressources</NavLink></li>
+                <li><NavLink href="/about" className="text-muted-foreground hover:text-accent">À Propos</NavLink></li>
+                <li><NavLink href="/contact" className="text-muted-foreground hover:text-accent">Contact</NavLink></li>
               </ul>
             </div>
             <div>

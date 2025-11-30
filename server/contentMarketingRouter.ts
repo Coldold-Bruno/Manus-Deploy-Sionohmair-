@@ -30,71 +30,46 @@ export const contentMarketingRouter = router({
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.user.id;
       
-      // Appeler l'IA pour analyser le contenu
-      const analysisPrompt = `Tu es un expert en Content Marketing et Copywriting. Analyse le contenu suivant selon 5 dimensions :
+      // Appeler l'IA pour analyser le contenu avec un prompt simplifié
+      const analysisPrompt = `Analyse ce contenu marketing en JSON :
 
-**Type de contenu** : ${input.contentType}
-**Titre** : ${input.title || 'Non fourni'}
-**Contenu** :
-${input.content}
+Type: ${input.contentType}
+Titre: ${input.title || 'Non fourni'}
+Contenu: ${input.content}
 
-Fournis une analyse JSON complète avec :
-
-1. **SEO** (score /100) :
-   - keywords: liste des mots-clés détectés avec densité et position
-   - metaTitle: présent, longueur, optimisé
-   - metaDescription: présent, longueur, optimisé
-   - headings: structure H1/H2/H3
-   - links: internes et externes
-   - imageAltTags: total et manquants
-   - recommendations: liste de suggestions
-
-2. **Conversion** (score /100) :
-   - cta: présent, count, strength, suggestions
-   - valueProposition: présent, clarity, uniqueness
-   - urgency: présent, type, effectiveness
-   - socialProof: présent, types, credibility
-   - riskReversal: présent, guarantees
-   - frictionPoints: liste
-   - recommendations: liste
-
-3. **Engagement** (score /100) :
-   - hook: présent, strength, emotionalImpact
-   - storytelling: présent, structure, coherence
-   - emotionalTriggers: liste
-   - personalisation: level, pronouns (you/we/i counts)
-   - questions: count, engagement
-   - visualElements: images/videos/infographics counts
-   - recommendations: liste
-
-4. **Lisibilité** (score /100) :
-   - fleschScore: nombre
-   - fleschLevel: texte
-   - avgSentenceLength: nombre
-   - avgWordLength: nombre
-   - complexWords: nombre
-   - passiveVoice: nombre
-   - adverbs: nombre
-   - paragraphCount: nombre
-   - avgParagraphLength: nombre
-   - recommendations: liste
-
-5. **Psychologie** (score /100) :
-   - persuasionPrinciples: liste avec principle, present, strength
-   - emotionalTone: primary, secondary, intensity
-   - cognitiveLoad: level, complexity
-   - biases: liste avec bias, usage
-   - painPoints: liste
-   - desires: liste
-   - objections: liste
-   - recommendations: liste
-
-6. **Suggestions d'amélioration** :
-   - critical: liste
-   - important: liste
-   - minor: liste
-
-Réponds UNIQUEMENT avec un objet JSON valide, sans markdown ni texte supplémentaire.`;
+Réponds en JSON avec cette structure exacte:
+{
+  "seoScore": number (0-100),
+  "conversionScore": number (0-100),
+  "engagementScore": number (0-100),
+  "readabilityScore": number (0-100),
+  "psychologyScore": number (0-100),
+  "seoAnalysis": {
+    "keywords": ["mot1", "mot2"],
+    "recommendations": ["suggestion1", "suggestion2"]
+  },
+  "conversionAnalysis": {
+    "cta": {"present": boolean, "count": number},
+    "recommendations": ["suggestion1"]
+  },
+  "engagementAnalysis": {
+    "hook": {"present": boolean, "strength": "low/medium/high"},
+    "recommendations": ["suggestion1"]
+  },
+  "readabilityAnalysis": {
+    "fleschScore": number,
+    "recommendations": ["suggestion1"]
+  },
+  "psychologyAnalysis": {
+    "emotionalTone": "positive/negative/neutral",
+    "recommendations": ["suggestion1"]
+  },
+  "suggestions": {
+    "critical": ["suggestion1"],
+    "important": ["suggestion2"],
+    "minor": ["suggestion3"]
+  }
+}`;
 
       const response = await invokeLLM({
         messages: [
