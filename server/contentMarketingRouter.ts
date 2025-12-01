@@ -179,6 +179,8 @@ Réponds en JSON avec cette structure exacte:
   generateCopy: protectedProcedure
     .input(z.object({
       frameworkId: z.number().optional(),
+      frameworkName: z.string().optional(),
+      frameworkDescription: z.string().optional(),
       avatarId: z.number().optional(),
       contentType: z.enum(['landing_page', 'email', 'ad', 'blog_post', 'social_post', 'sales_page', 'video_script']),
       brief: z.string(),
@@ -193,15 +195,11 @@ Réponds en JSON avec cette structure exacte:
       const db = await getDb();
       if (!db) throw new Error('Database not available');
       
-      // Récupérer le framework si spécifié
-      let framework = null;
-      if (input.frameworkId) {
-        [framework] = await db
-          .select()
-          .from(copywritingFrameworks)
-          .where(eq(copywritingFrameworks.id, input.frameworkId))
-          .limit(1);
-      }
+      // Utiliser le framework fourni directement (pas besoin de DB)
+      const frameworkInfo = input.frameworkName ? {
+        name: input.frameworkName,
+        description: input.frameworkDescription || ''
+      } : null;
       
       // Récupérer l'avatar si spécifié
       let avatar = null;
@@ -227,11 +225,8 @@ Réponds en JSON avec cette structure exacte:
 **Longueur** : ${input.length || 'medium'}
 ${input.keywords ? `**Mots-clés** : ${input.keywords.join(', ')}` : ''}
 
-${framework ? `**Framework à utiliser** : ${framework.name} (${framework.acronym})
-${framework.description}
-
-${framework.structure ? `Structure :
-${framework.structure.map((s: any) => `- ${s.step}: ${s.description}`).join('\n')}` : ''}` : ''}
+${frameworkInfo ? `**Framework à utiliser** : ${frameworkInfo.name}
+${frameworkInfo.description}` : ''}
 
 ${avatar ? `**Avatar client** :
 - Nom : ${avatar.name}
@@ -283,16 +278,11 @@ Réponds en JSON avec :
         createdAt: new Date(),
       });
       
-      // Incrémenter le compteur d'utilisation du framework
-      if (input.frameworkId) {
-        await db
-          .update(copywritingFrameworks)
-          .set({ usageCount: (framework?.usageCount || 0) + 1 })
-          .where(eq(copywritingFrameworks.id, input.frameworkId));
-      }
+      // Note: On ne track plus l'utilisation des frameworks en DB pour l'instant
       
       return {
         id: generatedCopy.insertId,
+        generatedContent: copyData.mainCopy,
         ...copyData,
       };
     }),

@@ -575,6 +575,13 @@
       "when": 1764464398488,
       "tag": "0081_silky_liz_osborn",
       "breakpoints": true
+    },
+    {
+      "idx": 82,
+      "version": "5",
+      "when": 1764555574821,
+      "tag": "0082_complex_crusher_hogan",
+      "breakpoints": true
     }
   ]
 }

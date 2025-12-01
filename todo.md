@@ -1636,3 +1636,10 @@
 - [ ] Vérifier le système d'authentification
 - [ ] Tester le flux complet de paiement Stripe
 - [x] Créer le checkpoint final après les corrections principales
+
+
+## Phase 72 : Correction bug Générateur de Copy
+- [x] Corriger le bug : frameworkId non envoyé à l'API generateCopy
+- [x] Mapper les IDs de frameworks frontend (string) vers les IDs en base de données (number)
+- [x] Tester la génération de copy avec chaque framework
+- [x] Vérifier que le timeout de 60s est suffisant pour la génération

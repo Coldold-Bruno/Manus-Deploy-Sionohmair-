@@ -92,7 +92,9 @@ export default function CopyGenerator() {
       tone,
       length,
       keywords: keywords.split(',').map(k => k.trim()).filter(Boolean),
-      avatarId: selectedAvatarId
+      avatarId: selectedAvatarId,
+      frameworkName: framework?.name || 'PFPMA',
+      frameworkDescription: framework?.description || ''
     });
   };
 
