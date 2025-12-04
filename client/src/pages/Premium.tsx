@@ -18,6 +18,13 @@ export default function Premium() {
   // Récupérer le statut Premium
   const { data: premiumStatus, isLoading: statusLoading, refetch } = trpc.premium.getMyPremiumStatus.useQuery();
 
+  // Calculer le pourcentage et la couleur de la barre de progression
+  const getProgressColor = (percentage: number) => {
+    if (percentage >= 90) return 'bg-red-500';
+    if (percentage >= 70) return 'bg-orange-500';
+    return 'bg-green-500';
+  };
+
   // Mutation pour créer une session de paiement
   const createCheckout = trpc.premium.createCheckoutSession.useMutation({
     onSuccess: (data) => {
@@ -97,7 +104,7 @@ export default function Premium() {
         </div>
 
         {/* Statut actuel */}
-        <Card className="mb-8 border-2">
+        <Card className="mb-8 border-2 hover:shadow-lg transition-shadow">
           <CardHeader>
             <div className="flex items-center justify-between">
               <div>
@@ -138,7 +145,7 @@ export default function Premium() {
 
         {/* Quotas */}
         {!isPremium && quotas && (
-          <Card className="mb-8">
+          <Card className="mb-8 hover:shadow-lg transition-shadow">
             <CardHeader>
               <CardTitle>Vos quotas mensuels</CardTitle>
               <CardDescription>
@@ -158,6 +165,9 @@ export default function Premium() {
                   value={(quotas.copyGenerations.used / quotas.copyGenerations.limit) * 100}
                   className="h-2"
                 />
+                {quotas.copyGenerations.used >= quotas.copyGenerations.limit && (
+                  <Badge variant="destructive" className="mt-2 w-full justify-center">Quota atteint</Badge>
+                )}
               </div>
 
               {/* Analyseur de Contenu */}
@@ -172,6 +182,9 @@ export default function Premium() {
                   value={(quotas.contentAnalyses.used / quotas.contentAnalyses.limit) * 100}
                   className="h-2"
                 />
+                {quotas.contentAnalyses.used >= quotas.contentAnalyses.limit && (
+                  <Badge variant="destructive" className="mt-2 w-full justify-center">Quota atteint</Badge>
+                )}
               </div>
 
               {/* Persona Builder */}
@@ -186,6 +199,9 @@ export default function Premium() {
                   value={(quotas.avatars.used / quotas.avatars.limit) * 100}
                   className="h-2"
                 />
+                {quotas.avatars.used >= quotas.avatars.limit && (
+                  <Badge variant="destructive" className="mt-2 w-full justify-center">Quota atteint</Badge>
+                )}
               </div>
 
               {/* Correcteur */}
@@ -200,6 +216,9 @@ export default function Premium() {
                   value={(quotas.corrections.used / quotas.corrections.limit) * 100}
                   className="h-2"
                 />
+                {quotas.corrections.used >= quotas.corrections.limit && (
+                  <Badge variant="destructive" className="mt-2 w-full justify-center">Quota atteint</Badge>
+                )}
               </div>
 
               {/* Générateur de Citations */}
@@ -214,6 +233,9 @@ export default function Premium() {
                   value={(quotas.quotes.used / quotas.quotes.limit) * 100}
                   className="h-2"
                 />
+                {quotas.quotes.used >= quotas.quotes.limit && (
+                  <Badge variant="destructive" className="mt-2 w-full justify-center">Quota atteint</Badge>
+                )}
               </div>
             </CardContent>
           </Card>
