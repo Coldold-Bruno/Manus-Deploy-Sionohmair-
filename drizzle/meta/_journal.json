@@ -596,6 +596,34 @@
       "when": 1764884212685,
       "tag": "0084_lush_scream",
       "breakpoints": true
+    },
+    {
+      "idx": 85,
+      "version": "5",
+      "when": 1764884341259,
+      "tag": "0085_shocking_bastion",
+      "breakpoints": true
+    },
+    {
+      "idx": 86,
+      "version": "5",
+      "when": 1764884367948,
+      "tag": "0086_volatile_solo",
+      "breakpoints": true
+    },
+    {
+      "idx": 87,
+      "version": "5",
+      "when": 1764884919955,
+      "tag": "0087_kind_hardball",
+      "breakpoints": true
+    },
+    {
+      "idx": 88,
+      "version": "5",
+      "when": 1764885168268,
+      "tag": "0088_loud_mathemanic",
+      "breakpoints": true
     }
   ]
 }

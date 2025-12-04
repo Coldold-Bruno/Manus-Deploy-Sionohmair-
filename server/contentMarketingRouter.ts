@@ -1,6 +1,8 @@
 import { z } from 'zod';
+import { TRPCError } from '@trpc/server';
 import { router, protectedProcedure } from './_core/trpc';
 import { getDb } from './db';
+import { checkQuota, incrementQuota } from './lib/quotas';
 import { contentAnalyses, clientAvatars, copywritingFrameworks, generatedCopies, marketingFunnels } from '../drizzle/schema';
 import { eq, desc } from 'drizzle-orm';
 import { invokeLLM } from './_core/llm';
@@ -29,6 +31,15 @@ export const contentMarketingRouter = router({
     }))
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.user.id;
+      
+      // Vérifier le quota
+      const quotaCheck = await checkQuota(userId, 'content_analyses');
+      if (!quotaCheck.allowed) {
+        throw new TRPCError({
+          code: 'FORBIDDEN',
+          message: quotaCheck.message || 'Quota dépassé',
+        });
+      }
       
       // Appeler l'IA pour analyser le contenu avec un prompt simplifié
       const analysisPrompt = `Analyse ce contenu marketing en JSON :
@@ -118,6 +129,9 @@ Réponds en JSON avec cette structure exacte:
         createdAt: new Date(),
       });
       
+      // Incrémenter le quota
+      await incrementQuota(userId, 'content_analyses');
+      
       return {
         id: analysis.insertId,
         ...analysisData,
@@ -191,6 +205,15 @@ Réponds en JSON avec cette structure exacte:
     }))
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.user.id;
+      
+      // Vérifier le quota
+      const quotaCheck = await checkQuota(userId, 'copy_generations');
+      if (!quotaCheck.allowed) {
+        throw new TRPCError({
+          code: 'FORBIDDEN',
+          message: quotaCheck.message || 'Quota dépassé',
+        });
+      }
       
       const db = await getDb();
       if (!db) throw new Error('Database not available');
@@ -278,6 +301,9 @@ Réponds en JSON avec :
         createdAt: new Date(),
       });
       
+      // Incrémenter le quota
+      await incrementQuota(userId, 'copy_generations');
+      
       // Note: On ne track plus l'utilisation des frameworks en DB pour l'instant
       
       return {
@@ -347,6 +373,15 @@ Réponds en JSON avec :
     .mutation(async ({ ctx, input }) => {
       const userId = ctx.user.id;
       
+      // Vérifier le quota
+      const quotaCheck = await checkQuota(userId, 'avatars');
+      if (!quotaCheck.allowed) {
+        throw new TRPCError({
+          code: 'FORBIDDEN',
+          message: quotaCheck.message || 'Quota dépassé',
+        });
+      }
+      
       const db = await getDb();
       if (!db) throw new Error('Database not available');
       
@@ -355,6 +390,9 @@ Réponds en JSON avec :
         ...input,
         createdAt: new Date(),
       });
+      
+      // Incrémenter le quota
+      await incrementQuota(userId, 'avatars');
       
       return { id: avatar.insertId };
     }),

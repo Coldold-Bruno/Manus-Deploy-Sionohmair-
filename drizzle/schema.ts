@@ -641,3 +641,9 @@ export * from "./schema_honofication";
 // ============================================================================
 
 export * from "./schema_content_marketing";
+
+// ============================================================================
+// SYSTÈME DE QUOTAS UTILISATEURS (GRATUIT VS PREMIUM)
+// ============================================================================
+
+export * from "./schema_quotas";

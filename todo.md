@@ -1643,3 +1643,80 @@
 - [x] Mapper les IDs de frameworks frontend (string) vers les IDs en base de données (number)
 - [x] Tester la génération de copy avec chaque framework
 - [x] Vérifier que le timeout de 60s est suffisant pour la génération
+
+
+## Phase Premium : Système de Monétisation Gratuit vs Premium
+
+### Infrastructure Backend
+- [ ] Créer la table user_quotas dans le schéma de base de données
+- [ ] Implémenter le middleware checkQuota pour vérifier les limitations
+- [ ] Créer les fonctions incrementQuota et resetQuota
+- [ ] Ajouter les champs isPremium et premiumUntil dans user_quotas
+- [ ] Implémenter la logique de reset mensuel automatique des quotas
+
+### Procédures tRPC avec Quotas
+- [ ] Modifier generateCopy pour vérifier le quota avant génération
+- [ ] Modifier analyzeContent pour vérifier le quota
+- [ ] Modifier createAvatar pour vérifier le quota (limite 3 avatars gratuits)
+- [ ] Modifier correctText pour vérifier le quota
+- [ ] Modifier generateQuote pour vérifier le quota
+- [ ] Ajouter le retour quotaInfo dans toutes les réponses (remaining, isPremium)
+
+### Stripe Premium
+- [ ] Créer les produits Stripe (Plan Mensuel 29€, Plan Annuel 279€)
+- [ ] Configurer les Price IDs dans les variables d'environnement
+- [ ] Créer la page /fr/pricing avec tableau comparatif Gratuit vs Premium
+- [ ] Implémenter le flux de checkout Stripe pour Premium
+- [ ] Créer le webhook pour activer Premium après paiement
+- [ ] Implémenter la gestion de l'annulation d'abonnement
+- [ ] Tester le flux complet en mode test Stripe
+
+### Composants UI Premium
+- [ ] Créer le composant PremiumBadge (badge "💎 PREMIUM")
+- [ ] Créer le composant QuotaDisplay (affichage 3/5 utilisations)
+- [ ] Créer le composant UpgradeModal (modal de conversion)
+- [ ] Créer le composant PremiumFeatureLock (verrouillage fonctionnalités)
+- [ ] Ajouter les banners de limitation (80% et 100% du quota)
+
+### Page de Tarification
+- [ ] Créer /fr/pricing avec Hero Section
+- [ ] Ajouter le tableau comparatif Gratuit vs Premium
+- [ ] Créer la section FAQ (5-7 questions fréquentes)
+- [ ] Ajouter 3 témoignages d'utilisateurs Premium
+- [ ] Implémenter les boutons CTA vers Stripe Checkout
+- [ ] Ajouter le badge "Économisez 20%" sur le plan annuel
+
+### Fonctionnalités Premium Avancées
+- [ ] Créer /fr/dashboard/analytics (Dashboard Analytics Premium)
+- [ ] Afficher les métriques : total générations, frameworks utilisés, évolution
+- [ ] Créer des graphiques avec Recharts (ligne, barres, radar)
+- [ ] Créer /fr/templates (50+ templates prêts à l'emploi)
+- [ ] Implémenter l'export PDF pour les copies générés
+- [ ] Implémenter l'export DOCX pour les copies générés
+- [ ] Créer l'API REST pour accès Premium (1000 req/jour)
+
+### UX de Conversion
+- [ ] Ajouter un CTA "Passer Premium" dans le header (si gratuit)
+- [ ] Afficher une modal au 5ème usage gratuit
+- [ ] Ajouter des badges "Premium" sur les fonctionnalités avancées
+- [ ] Créer une page /fr/success-premium (après souscription)
+- [ ] Implémenter le tracking des conversions Gratuit → Premium
+
+### Tests et Validation
+- [ ] Tester le système de quotas (incrémentation, reset)
+- [ ] Tester le paiement Stripe en mode test
+- [ ] Vérifier l'activation Premium après paiement
+- [ ] Tester l'accès illimité pour les utilisateurs Premium
+- [ ] Vérifier que les quotas ne s'appliquent pas aux Premium
+- [ ] Tester l'annulation d'abonnement
+- [ ] Vérifier les webhooks Stripe (payment_succeeded, subscription_deleted)
+
+### Documentation
+- [ ] Documenter le système de quotas dans PREMIUM_SPECS.md
+- [ ] Créer un guide utilisateur pour passer Premium
+- [ ] Documenter l'API Premium pour les développeurs
+- [ ] Ajouter des exemples de code pour l'API
+
+### Checkpoint Premium
+- [ ] Créer le checkpoint final avec système Premium complet
+- [ ] Tester le parcours complet Gratuit → Premium → Utilisation
