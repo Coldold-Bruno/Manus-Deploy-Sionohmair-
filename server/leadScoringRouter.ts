@@ -168,6 +168,24 @@ export const leadScoringRouter = router({
             console.error("Failed to send hot lead notification:", error);
           }
         });
+
+        // Send Slack/Discord alert (async, don't wait)
+        import("./services/alertService").then(async ({ alertHotLead }) => {
+          try {
+            // Get recent activities for the alert
+            const recentActivities = await db
+              .select()
+              .from(leadActivities)
+              .where(eq(leadActivities.email, input.email))
+              .orderBy(desc(leadActivities.createdAt))
+              .limit(5);
+            
+            const activityDescriptions = recentActivities.map(a => a.activityType);
+            await alertHotLead(input.email, totalScore, activityDescriptions);
+          } catch (error) {
+            console.error("Failed to send Slack/Discord alert:", error);
+          }
+        });
       }
 
       return {

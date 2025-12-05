@@ -604,6 +604,44 @@ export type Subscription = typeof subscriptions.$inferSelect;
 export type InsertSubscription = typeof subscriptions.$inferInsert;
 
 // ============================================================================
+// SYSTÈME DE SEGMENTS PERSONNALISÉS
+// ============================================================================
+
+export const customSegments = mysqlTable("customSegments", {
+  id: int("id").autoincrement().primaryKey(),
+  
+  /** Nom du segment */
+  name: varchar("name", { length: 255 }).notNull(),
+  
+  /** Description du segment */
+  description: text("description"),
+  
+  /** Critères du segment (JSON) */
+  criteria: text("criteria").notNull(),
+  
+  /** Type de logique: AND ou OR */
+  logic: mysqlEnum("logic", ["AND", "OR"]).default("AND").notNull(),
+  
+  /** Nombre de leads dans le segment (mis à jour automatiquement) */
+  leadCount: int("leadCount").default(0),
+  
+  /** Dernière mise à jour du comptage */
+  lastCountUpdate: timestamp("lastCountUpdate"),
+  
+  /** Créé par (userId) */
+  createdBy: int("createdBy").notNull(),
+  
+  /** Date de création */
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
+  
+  /** Date de mise à jour */
+  updatedAt: timestamp("updatedAt").defaultNow().onUpdateNow().notNull(),
+});
+
+export type CustomSegment = typeof customSegments.$inferSelect;
+export type InsertCustomSegment = typeof customSegments.$inferInsert;
+
+// ============================================================================
 // SYSTÈME DE DEVIS
 // ============================================================================
 
