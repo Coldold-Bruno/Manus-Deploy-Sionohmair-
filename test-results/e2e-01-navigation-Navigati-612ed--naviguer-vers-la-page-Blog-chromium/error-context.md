@@ -1,0 +1,259 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - region "Notifications alt+T"
+    - generic [ref=e3]:
+      - navigation [ref=e4]:
+        - generic [ref=e5]:
+          - link "Sionohmair Insight Academy Sionohmair Insight Academy" [ref=e6] [cursor=pointer]:
+            - /url: /en/
+            - generic [ref=e8]:
+              - img "Sionohmair Insight Academy" [ref=e9]
+              - generic [ref=e10]: Sionohmair Insight Academy
+          - generic [ref=e11]:
+            - button "🇬🇧 English" [ref=e12] [cursor=pointer]:
+              - img
+              - generic [ref=e13]: 🇬🇧 English
+            - link "Analyseur" [ref=e14] [cursor=pointer]:
+              - /url: /en/content-analyzer
+            - link "Générateur" [ref=e15] [cursor=pointer]:
+              - /url: /en/copy-generator
+            - link "Avatar Client" [ref=e16] [cursor=pointer]:
+              - /url: /en/avatar-builder
+            - link "Scripts" [ref=e17] [cursor=pointer]:
+              - /url: /en/script-analyzer
+            - link "Frameworks" [ref=e18] [cursor=pointer]:
+              - /url: /en/frameworks
+            - link "Chat IA" [ref=e19] [cursor=pointer]:
+              - /url: /en/chat-ia
+            - link "Templates" [ref=e20] [cursor=pointer]:
+              - /url: /en/templates
+            - link "Exemples" [ref=e21] [cursor=pointer]:
+              - /url: /en/exemples
+            - link "Éditeur" [ref=e22] [cursor=pointer]:
+              - /url: /en/editor
+            - link "Guide" [ref=e23] [cursor=pointer]:
+              - /url: /en/guide
+            - link "Tarifs" [ref=e24] [cursor=pointer]:
+              - /url: /en/pricing
+            - link "Blog" [ref=e25] [cursor=pointer]:
+              - /url: /en/blog
+            - link "À Propos" [ref=e26] [cursor=pointer]:
+              - /url: /en/about
+            - link "Essai gratuit (30j)" [ref=e27] [cursor=pointer]:
+              - /url: /en/subscription
+              - img
+              - text: Essai gratuit (30j)
+      - generic [ref=e30]:
+        - generic [ref=e31]:
+          - generic [ref=e32]: "Le Problème : Votre Message Se Perd"
+          - heading "Votre contenu est invisible. Vos conversions stagnent." [level=1] [ref=e33]:
+            - text: Votre contenu est invisible.
+            - text: Vos conversions stagnent.
+          - paragraph [ref=e34]:
+            - text: 90% des contenus marketing échouent. Pas par manque de qualité, mais par manque de
+            - strong [ref=e35]: méthodologie
+            - text: . Les 3 frictions invisibles (Attention, Cognitive, Émotionnelle) tuent vos conversions.
+          - paragraph [ref=e36]: "🎯 La vérité : vous avez besoin d'une science, pas d'un art."
+        - generic [ref=e37]:
+          - generic [ref=e38]: "La Solution : Frameworks de Copywriting Scientifiques"
+          - 'heading "PFPMA & APTEA : Les frameworks qui multiplient vos conversions en une science de la performance" [level=2] [ref=e39]':
+            - text: "PFPMA & APTEA : Les frameworks qui multiplient vos conversions"
+            - text: en une science de la performance
+          - paragraph [ref=e40]: "La méthodologie Sionohmair Insight élimine les 3 frictions qui tuent vos messages : Friction d'Attention, Friction Cognitive, et Friction Émotionnelle."
+          - generic [ref=e41]:
+            - paragraph [ref=e42]: Le Facteur Alpha (α = 22.67)
+            - paragraph [ref=e43]:
+              - text: Chaque point de friction corrigé ne produit pas un gain linéaire de 15%, mais un
+              - strong [ref=e44]: gain exponentiel de 340%
+              - text: grâce au Facteur d'Amplification α = 22.67.
+            - paragraph [ref=e45]:
+              - text: C'est la
+              - strong [ref=e46]: Loi de la Clarté
+              - text: ": 340% = 15% × 22.67"
+        - generic [ref=e47]:
+          - generic [ref=e49]:
+            - generic [ref=e50]: +340%
+            - generic [ref=e51]: Gain réel grâce au Facteur α = 22.67
+          - generic [ref=e53]:
+            - generic [ref=e54]: 7 jours
+            - generic [ref=e55]: Pour transformer votre message
+          - generic [ref=e57]:
+            - generic [ref=e58]: 310 pages
+            - generic [ref=e59]: De méthodologie documentée
+        - generic [ref=e60]:
+          - img "Sprint de Clarté - Offre de lancement 490€" [ref=e62]
+          - img "Sionohmair Insight Academy - Analyse, Stratégisation, Amplification" [ref=e64]
+        - generic [ref=e65]:
+          - heading "3 Outils Puissants pour Maximiser Vos Conversions" [level=3] [ref=e66]
+          - generic [ref=e67]:
+            - generic [ref=e69] [cursor=pointer]:
+              - img [ref=e70]
+              - generic [ref=e74]: Analyseur de Contenu
+              - generic [ref=e75]: "Analysez votre contenu en 5 dimensions : SEO, Conversion, Engagement, Lisibilité, Psychologie. Score global + recommandations actionnables."
+            - generic [ref=e77] [cursor=pointer]:
+              - img [ref=e78]
+              - generic [ref=e80]: Générateur de Copy
+              - generic [ref=e81]: Créez du copy haute conversion avec PFPMA, APTEA, AIDA, PAS, PASTOR, BAB. IA optimisée pour la méthodologie Sionohmair.
+            - generic [ref=e83] [cursor=pointer]:
+              - img [ref=e84]
+              - generic [ref=e87]: Persona Builder
+              - generic [ref=e88]: "Définissez votre avatar client idéal : démographiques, psychographiques, comportement. Messages ultra-personnalisés garantis."
+        - generic [ref=e89]:
+          - generic [ref=e90]: Commencez Maintenant
+          - heading "Analysez Votre Contenu en 5 Dimensions" [level=3] [ref=e91]
+          - paragraph [ref=e92]:
+            - text: Obtenez un score global, des recommandations actionnables, et générez du copy haute conversion avec les frameworks
+            - strong [ref=e93]: PFPMA & APTEA
+            - text: (Facteur α = 22.67).
+          - paragraph [ref=e94]: Gratuit pour les 100 premiers utilisateurs. Aucune carte bancaire requise.
+          - generic [ref=e95]:
+            - link "Analyser Mon Contenu Maintenant" [ref=e96] [cursor=pointer]:
+              - /url: /en/content-analyzer
+              - text: Analyser Mon Contenu Maintenant
+              - img
+            - link "Générer du Copy" [ref=e97] [cursor=pointer]:
+              - /url: /en/copy-generator
+      - generic [ref=e100]:
+        - generic [ref=e101]:
+          - 'heading "Le Code PFPMA : La Grammaire de la Clarté" [level=2] [ref=e102]'
+          - paragraph [ref=e103]: Tout message qui convertit suit cette structure, consciemment ou non.
+        - generic [ref=e104]:
+          - generic [ref=e107]:
+            - generic [ref=e108]: P
+            - generic [ref=e109]:
+              - generic [ref=e110]: Problème
+              - generic [ref=e111]: Identifiez la douleur n°1 de votre audience. Créez une résonance émotionnelle immédiate.
+              - paragraph [ref=e112]: "Exemple : \"Votre landing page génère 1000 visites mais seulement 10 conversions.\""
+          - generic [ref=e115]:
+            - generic [ref=e116]: F
+            - generic [ref=e117]:
+              - generic [ref=e118]: Formule
+              - generic [ref=e119]: Nommez votre solution de manière mémorable et unique. Créez un désir irrésistible.
+              - paragraph [ref=e120]: "Exemple : \"Le Sprint de Clarté : 3 frictions éliminées en 7 jours.\""
+          - generic [ref=e123]:
+            - generic [ref=e124]: P
+            - generic [ref=e125]:
+              - generic [ref=e126]: Preuve
+              - generic [ref=e127]: Apportez une preuve crédible (chiffre, témoignage, autorité). Éliminez le scepticisme.
+              - paragraph [ref=e128]: "Exemple : \"+340% de conversion grâce au Facteur α = 22.67 (mesure sur 50+ clients).\""
+          - generic [ref=e131]:
+            - generic [ref=e132]: M
+            - generic [ref=e133]:
+              - generic [ref=e134]: Méthode
+              - generic [ref=e135]: Expliquez le processus en 3 étapes maximum. Rendez le chemin clair et actionnable.
+              - paragraph [ref=e136]: "Exemple : \"1) Diagnostiquer, 2) Éliminer, 3) Amplifier.\""
+          - generic [ref=e139]:
+            - generic [ref=e140]: A
+            - generic [ref=e141]:
+              - generic [ref=e142]: Appel
+              - generic [ref=e143]: Proposez une action spécifique et à friction zéro. Rendez le refus irrationnel.
+              - paragraph [ref=e144]: "Exemple : \"Téléchargez le diagnostic gratuit en 1 clic.\""
+      - generic [ref=e147]:
+        - generic [ref=e148]: 🎉 Offre de lancement
+        - heading "Testez GRATUITEMENT pendant 30 jours" [level=2] [ref=e149]
+        - paragraph [ref=e150]: ✅ Sans engagement • ✅ Sans carte bancaire • ✅ Accès complet
+        - paragraph [ref=e151]: "Découvrez tous les outils de Content Marketing & Copywriting : Analyseur de Contenu, Générateur de Copy (8 frameworks), Persona Builder, Chat IA, et Éditeur en temps réel."
+        - generic [ref=e152]:
+          - paragraph [ref=e153]:
+            - strong [ref=e154]: 🔒 Aucune carte bancaire requise
+            - text: Commencez votre essai gratuit en 1 clic. Après 30 jours, continuez pour seulement
+            - strong [ref=e155]: 29€/mois
+            - text: (sans engagement, annulez quand vous voulez).
+            - text: "💰 Économisez avec nos forfaits : 78€/trimestre • 148€/semestre • 278€/an"
+          - generic [ref=e156]:
+            - link "Commencer l'essai gratuit (30 jours)" [ref=e157] [cursor=pointer]:
+              - /url: /en/subscription
+              - img
+              - text: Commencer l'essai gratuit (30 jours)
+            - link "Voir les tarifs" [ref=e158] [cursor=pointer]:
+              - /url: /en/pricing
+        - paragraph [ref=e159]: 📧 Vous recevrez des rappels par email à J-7, J-3, J-1 et J-0 avant la fin de votre essai.
+      - contentinfo [ref=e160]:
+        - generic [ref=e161]:
+          - generic [ref=e162]:
+            - generic [ref=e163]:
+              - generic [ref=e164]:
+                - img [ref=e165]
+                - generic [ref=e167]: Sionohmair Insight Academy
+              - paragraph [ref=e168]: "L'Ingénierie du Génie : Transformez la communication en science de la performance."
+            - generic [ref=e169]:
+              - heading "Navigation" [level=4] [ref=e170]
+              - list [ref=e171]:
+                - listitem [ref=e172]:
+                  - link "Sprint de Clarté" [ref=e173] [cursor=pointer]:
+                    - /url: /en/sprint
+                - listitem [ref=e174]:
+                  - link "Théorème de la Genèse" [ref=e175] [cursor=pointer]:
+                    - /url: /en/theoreme
+                - listitem [ref=e176]:
+                  - link "Services" [ref=e177] [cursor=pointer]:
+                    - /url: /en/services
+                - listitem [ref=e178]:
+                  - link "Ressources" [ref=e179] [cursor=pointer]:
+                    - /url: /en/ressources
+                - listitem [ref=e180]:
+                  - link "À Propos" [ref=e181] [cursor=pointer]:
+                    - /url: /en/about
+                - listitem [ref=e182]:
+                  - link "Contact" [ref=e183] [cursor=pointer]:
+                    - /url: /en/contact
+            - generic [ref=e184]:
+              - heading "Contact" [level=4] [ref=e185]
+              - paragraph [ref=e186]:
+                - text: Bruno Coldold
+                - text: Fondateur, Sionohmair Insight Academy
+              - paragraph [ref=e187]:
+                - text: "LinkedIn:"
+                - link "linkedin.com/in/brunocoldold" [ref=e188] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/in/brunocoldold
+            - generic [ref=e189]:
+              - heading "Newsletter" [level=4] [ref=e190]
+              - paragraph [ref=e191]: Recevez le Manuel PFPMA gratuit + études de cas exclusives.
+              - generic [ref=e192]:
+                - textbox "Votre nom (optionnel)" [ref=e194]
+                - generic [ref=e195]:
+                  - textbox "votre@email.com" [ref=e196]
+                  - button "S'inscrire" [ref=e197] [cursor=pointer]:
+                    - img
+                    - text: S'inscrire
+                - paragraph [ref=e198]:
+                  - text: 🎁 Recevez le
+                  - strong [ref=e199]: Manuel PFPMA gratuit
+                  - text: (50 pages) + études de cas exclusives. Pas de spam, désinscription en 1 clic.
+          - paragraph [ref=e201]: © 2025 Bruno Coldold | Sionohmair Insight Academy. Tous droits réservés. Propriété intellectuelle protégée.
+    - button "Ouvrir le chatbot" [ref=e202] [cursor=pointer]:
+      - img [ref=e203]
+    - generic [ref=e207]:
+      - generic [ref=e208]:
+        - button [ref=e209] [cursor=pointer]:
+          - img
+        - generic [ref=e211]: Étape 1 sur 5
+        - generic [ref=e212]: Bienvenue sur Sionohmair Insight Academy ! 🎉
+        - generic [ref=e213]: La plateforme complète de Content Marketing & Copywriting basée sur la méthodologie Sionohmair. Découvrez comment multiplier vos conversions par 3 grâce à l'élimination des 3 frictions.
+      - generic [ref=e214]:
+        - generic [ref=e215]:
+          - generic [ref=e216]:
+            - img [ref=e217]
+            - generic [ref=e220]: 11 outils puissants à votre disposition
+          - generic [ref=e221]:
+            - img [ref=e222]
+            - generic [ref=e225]: Méthodologie scientifique basée sur le Facteur Alpha (α = 22.67)
+          - generic [ref=e226]:
+            - img [ref=e227]
+            - generic [ref=e230]: 8 frameworks de copywriting (PFPMA, APTEA, AIDA, PAS, etc.)
+          - generic [ref=e231]:
+            - img [ref=e232]
+            - generic [ref=e235]: Analyses IA en temps réel
+        - generic [ref=e237]:
+          - generic [ref=e238]: Progression
+          - generic [ref=e239]: 20%
+        - generic [ref=e243]:
+          - button "Passer" [ref=e244] [cursor=pointer]
+          - button "Suivant" [ref=e245] [cursor=pointer]:
+            - text: Suivant
+            - img
+  - button "Open chat" [ref=e246] [cursor=pointer]
+```

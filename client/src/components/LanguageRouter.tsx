@@ -27,6 +27,7 @@ import SendCampaign from "@/pages/admin/SendCampaign";
 import EmailTemplates from "@/pages/admin/EmailTemplates";
 import EmailWorkflows from "@/pages/admin/EmailWorkflows";
 import Analytics from "@/pages/admin/Analytics";
+import RealtimeAnalytics from "@/pages/admin/RealtimeAnalytics";
 import Portfolio from "@/pages/Portfolio";
 import LoiClarte from "@/pages/LoiClarte";
 import VisualGraphic from "@/pages/VisualGraphic";
@@ -134,6 +135,7 @@ export function LanguageRouter() {
       <Route path={`${langPrefix}/admin/email-templates`} component={EmailTemplates} />
       <Route path={`${langPrefix}/admin/email-workflows`} component={EmailWorkflows} />
       <Route path={`${langPrefix}/admin/analytics`} component={Analytics} />
+      <Route path={`${langPrefix}/admin/realtime-analytics`} component={RealtimeAnalytics} />
       <Route path={`${langPrefix}/admin/nft-gratitude`} component={NftGratitudeAdmin} />
       <Route path={`${langPrefix}/admin/api-keys`} component={ApiKeysManagement} />
       <Route path={`${langPrefix}/admin/honofication`} component={HonoficationAdminDashboard} />
