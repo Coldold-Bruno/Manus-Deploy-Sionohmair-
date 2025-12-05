@@ -1974,3 +1974,4 @@
 - [x] Refactoriser LanguageChangeIndicator avec une approche plus sûre (sans manipulation DOM directe)
 - [x] Tester le changement de langue sur mobile et desktop
 - [x] Vérifier qu'aucune erreur ne s'affiche dans la console
+- [x] Corriger l erreur NotFoundError lors du clic sur Commencer maintenant

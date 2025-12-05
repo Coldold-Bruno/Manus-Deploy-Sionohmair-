@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'wouter';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -97,6 +98,7 @@ const ONBOARDING_KEY = 'sionohmair_onboarding_completed';
 export default function Onboarding() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
+  const [, setLocation] = useLocation();
 
   useEffect(() => {
     // Vérifier si l'onboarding a déjà été complété
@@ -202,13 +204,13 @@ export default function Onboarding() {
               </Button>
               {step.action && (
                 <Button
-                  asChild
                   variant="outline"
-                  onClick={handleComplete}
+                  onClick={() => {
+                    handleComplete();
+                    setLocation(step.action!.url);
+                  }}
                 >
-                  <a href={step.action.url}>
-                    {step.action.label}
-                  </a>
+                  {step.action.label}
                 </Button>
               )}
               {isLastStep ? (
