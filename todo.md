@@ -1975,3 +1975,11 @@
 - [x] Tester le changement de langue sur mobile et desktop
 - [x] Vérifier qu'aucune erreur ne s'affiche dans la console
 - [x] Corriger l erreur NotFoundError lors du clic sur Commencer maintenant
+
+## Bug Critique - Onboarding Navigation (Décembre 2025)
+- [x] Corriger l'erreur NotFoundError lors du clic sur "Commencer maintenant"
+- [x] Identifier la cause : URLs sans préfixe de langue (/avatar-builder au lieu de /fr/avatar-builder)
+- [x] Ajouter useTranslation dans le composant Onboarding
+- [x] Modifier tous les boutons d'action pour inclure le préfixe de langue (/${language}${step.action!.url})
+- [x] Tester la navigation sur toutes les étapes de l'onboarding
+- [x] Vérifier que la navigation fonctionne correctement vers /fr/avatar-builder

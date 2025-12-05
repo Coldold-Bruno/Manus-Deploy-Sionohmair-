@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'wouter';
+import { useTranslation } from 'react-i18next';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -99,6 +100,8 @@ export default function Onboarding() {
   const [isOpen, setIsOpen] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const [, setLocation] = useLocation();
+  const { i18n } = useTranslation();
+  const language = i18n.language;
 
   useEffect(() => {
     // Vérifier si l'onboarding a déjà été complété
@@ -207,7 +210,7 @@ export default function Onboarding() {
                   variant="outline"
                   onClick={() => {
                     handleComplete();
-                    setLocation(step.action!.url);
+                    setLocation(`/${language}${step.action!.url}`);
                   }}
                 >
                   {step.action.label}
