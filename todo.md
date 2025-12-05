@@ -1988,3 +1988,4 @@
 - [x] Corriger les URLs dans le composant Onboarding (enlever les slashes doubles)
 - [x] Ajouter une navigation au bouton "Commencer" (redirection vers /dashboard)
 - [x] Tester la correction sur Android mobile
+- [ ] Corriger le bug du formulaire d'email dans le modal d'onboarding (affiche "2 errors" et ne se soumet pas)
