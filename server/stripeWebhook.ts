@@ -3,8 +3,11 @@ import Stripe from 'stripe';
 import { ENV } from './_core/env';
 import { getDb } from './db';
 import { orders, users, formationAccess, moduleProgress, subscriptions } from '../drizzle/schema';
-import { eq } from 'drizzle-orm';
+import { promoCodes, promoCodeUsages } from '../drizzle/schema-promo-codes';
+import { eq, and } from 'drizzle-orm';
 import { sendOrderConfirmationEmail } from './emailService';
+import { sendReferrerCongratulationsEmail, sendReferredWelcomeEmail } from './services/referralEmailService';
+import { referrals } from '../drizzle/schema-referrals';
 
 const stripe = new Stripe(ENV.stripeSecretKey, {
   apiVersion: '2025-11-17.clover',
@@ -332,6 +335,60 @@ async function handleSubscriptionCreated(stripeSubscription: Stripe.Subscription
 
   const now = new Date();
 
+  // Détecter et enregistrer le code promo si présent
+  let promoCodeId: number | null = null;
+  let discountAmount = 0;
+
+  // Vérifier si un code promo est appliqué (Stripe peut avoir plusieurs discounts)
+  const discount = stripeSubscription.discounts?.[0];
+  if (discount && typeof discount === 'object' && 'coupon' in discount) {
+    const coupon = (discount as any).coupon;
+    console.log('[Stripe Webhook] Promo code detected:', coupon.id);
+
+    // Trouver le code promo dans la base de données
+    const [promoCode] = await db
+      .select()
+      .from(promoCodes)
+      .where(eq(promoCodes.stripeCouponId, coupon.id))
+      .limit(1);
+
+    if (promoCode) {
+      promoCodeId = promoCode.id;
+
+      // Calculer le montant de la réduction
+      if (coupon.percent_off) {
+        // Réduction en pourcentage
+        const subscriptionAmount = stripeSubscription.items.data[0]?.price?.unit_amount || 0;
+        discountAmount = Math.round((subscriptionAmount * coupon.percent_off) / 100);
+      } else if (coupon.amount_off) {
+        // Réduction en montant fixe
+        discountAmount = coupon.amount_off;
+      }
+
+      // Enregistrer l'utilisation du code promo
+      try {
+        await db.insert(promoCodeUsages).values({
+          promoCodeId: promoCode.id,
+          userId: user.id,
+          stripeSubscriptionId: stripeSubscription.id,
+          discountAmount,
+        });
+
+        // Incrémenter le compteur d'utilisations
+        await db
+          .update(promoCodes)
+          .set({
+            currentUses: promoCode.currentUses + 1,
+          })
+          .where(eq(promoCodes.id, promoCode.id));
+
+        console.log('[Stripe Webhook] Promo code usage recorded:', promoCode.code, 'Discount:', discountAmount / 100, '€');
+      } catch (error: any) {
+        console.error('[Stripe Webhook] Error recording promo code usage:', error);
+      }
+    }
+  }
+
   if (existingSubscription) {
     // Mettre à jour l'abonnement existant
     await db
@@ -342,6 +399,7 @@ async function handleSubscriptionCreated(stripeSubscription: Stripe.Subscription
         stripeSubscriptionId: stripeSubscription.id,
         paymentDate: now,
         activatedAt: now,
+        promoCodeId: promoCodeId || existingSubscription.promoCodeId,
       })
       .where(eq(subscriptions.userId, user.id));
 
@@ -361,6 +419,7 @@ async function handleSubscriptionCreated(stripeSubscription: Stripe.Subscription
       stripeSubscriptionId: stripeSubscription.id,
       paymentDate: now,
       activatedAt: now,
+      promoCodeId,
     });
 
     console.log('[Stripe Webhook] Subscription created for user:', user.id);
@@ -373,6 +432,62 @@ async function handleSubscriptionCreated(stripeSubscription: Stripe.Subscription
     console.log('[Stripe Webhook] Welcome email sent to user:', user.id);
   } catch (error: any) {
     console.error('[Stripe Webhook] Error sending welcome email:', error);
+  }
+
+  // Vérifier si c'est une conversion via parrainage et envoyer les emails
+  try {
+    const [referral] = await db
+      .select()
+      .from(referrals)
+      .where(and(
+        eq(referrals.referredUserId, user.id),
+        eq(referrals.status, 'signed_up')
+      ))
+      .limit(1);
+
+    if (referral) {
+      // Mettre à jour le statut du parrainage
+      await db
+        .update(referrals)
+        .set({
+          status: 'converted',
+          convertedAt: new Date(),
+          stripeSubscriptionId: stripeSubscription.id,
+          creditApplied: true,
+          creditAppliedAt: new Date(),
+        })
+        .where(eq(referrals.id, referral.id));
+
+      console.log('[Stripe Webhook] Referral conversion detected:', referral.referralCode);
+
+      // Récupérer les informations du parrain
+      const [referrer] = await db
+        .select()
+        .from(users)
+        .where(eq(users.id, referral.referrerId))
+        .limit(1);
+
+      if (referrer && referrer.email && user.email) {
+        // Envoyer l'email de félicitations au parrain
+        await sendReferrerCongratulationsEmail(
+          referrer.email,
+          referrer.name || 'Parrain',
+          user.name || 'Nouveau membre',
+          30 // 30 jours de crédit
+        );
+        console.log('[Stripe Webhook] Referrer congratulations email sent to:', referrer.email);
+
+        // Envoyer l'email de bienvenue au filleul
+        await sendReferredWelcomeEmail(
+          user.email,
+          user.name || 'Nouveau membre',
+          referrer.name || 'Votre parrain'
+        );
+        console.log('[Stripe Webhook] Referred welcome email sent to:', user.email);
+      }
+    }
+  } catch (error: any) {
+    console.error('[Stripe Webhook] Error processing referral emails:', error);
   }
 }
 

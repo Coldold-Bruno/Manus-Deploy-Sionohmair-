@@ -590,6 +590,9 @@ export const subscriptions = mysqlTable("subscriptions", {
   /** Stripe Subscription ID */
   stripeSubscriptionId: varchar("stripeSubscriptionId", { length: 255 }),
   
+  /** Code promo utilisé (si applicable) */
+  promoCodeId: int("promoCodeId"),
+  
   /** Date de création */
   createdAt: timestamp("createdAt").defaultNow().notNull(),
   

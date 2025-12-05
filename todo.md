@@ -1833,3 +1833,37 @@
 - [x] Tester le programme de parrainage end-to-end
 - [x] Vérifier les calculs du dashboard analytics
 - [x] Créer le checkpoint final
+
+## Phase 57 : Intégration codes promo au webhook Stripe
+
+- [x] Modifier le webhook Stripe pour détecter les codes promo appliqués
+- [x] Enregistrer automatiquement l'utilisation du code promo dans promo_code_usages
+- [x] Lier le code promo à l'abonnement créé
+- [x] Tester avec un paiement Stripe incluant un code promo
+
+## Phase 58 : Emails automatiques de parrainage
+
+- [x] Créer le template d'email de félicitations pour le parrain
+- [x] Créer le template d'email de bienvenue pour le filleul
+- [x] Implémenter l'envoi automatique lors d'une conversion réussie
+- [x] Ajouter les informations de crédit dans l'email du parrain
+- [x] Tester l'envoi des emails
+
+## Phase 59 : Système de badges de fidélité
+
+- [x] Créer la table badges dans la base de données
+- [x] Créer la table user_badges pour l'attribution
+- [x] Définir les 10 badges (Parrain d'Or, Vétéran, Expert, etc.)
+- [x] Créer le router badgesRouter avec les procédures
+- [x] Implémenter la logique d'attribution automatique
+- [x] Créer la page /badges pour afficher les badges
+- [x] Afficher les badges dans le profil utilisateur
+- [x] Créer des notifications lors de l'obtention d'un badge
+
+## Phase 60 : Tests et livraison finale
+
+- [x] Tester le webhook Stripe avec codes promo
+- [x] Tester l'envoi des emails de parrainage
+- [x] Tester l'attribution automatique des badges
+- [x] Vérifier l'affichage des badges
+- [x] Créer le checkpoint final
