@@ -3,6 +3,7 @@ import { useLocation } from 'wouter';
 import { trpc } from '@/lib/trpc';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Input } from '@/components/ui/input';
 import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, CheckCircle2, XCircle, AlertCircle, CreditCard, Calendar, Sparkles } from 'lucide-react';
@@ -19,6 +20,9 @@ export default function Subscription() {
   const [isCreatingTrial, setIsCreatingTrial] = useState(false);
   const [isCreatingCheckout, setIsCreatingCheckout] = useState(false);
   const [isCreatingPortal, setIsCreatingPortal] = useState(false);
+  const [promoCode, setPromoCode] = useState('');
+  const [validatedPromoCode, setValidatedPromoCode] = useState<any>(null);
+  const [isValidatingPromo, setIsValidatingPromo] = useState(false);
 
   // Récupérer l'utilisateur connecté
   const { data: user, isLoading: isLoadingUser } = trpc.auth.me.useQuery();
@@ -86,6 +90,37 @@ export default function Subscription() {
       await createTrialMutation.mutateAsync();
     } finally {
       setIsCreatingTrial(false);
+    }
+  };
+
+  // Mutation pour valider un code promo
+  const validatePromoMutation = trpc.promoCodes.validate.useQuery(
+    { code: promoCode },
+    { enabled: false }
+  );
+
+  // Valider un code promo
+  const handleValidatePromoCode = async () => {
+    if (!promoCode.trim()) {
+      setValidatedPromoCode(null);
+      return;
+    }
+
+    setIsValidatingPromo(true);
+    try {
+      const result = await validatePromoMutation.refetch();
+      if (result.data?.valid && result.data.promoCode) {
+        setValidatedPromoCode(result.data.promoCode);
+        toast.success(`Code promo "${result.data.promoCode.code}" appliqué !`);
+      } else {
+        setValidatedPromoCode(null);
+        toast.error(result.data?.error || 'Code promo invalide');
+      }
+    } catch (error: any) {
+      setValidatedPromoCode(null);
+      toast.error(error.message || 'Erreur lors de la validation du code promo');
+    } finally {
+      setIsValidatingPromo(false);
     }
   };
 
@@ -243,6 +278,48 @@ export default function Subscription() {
                       Vous recevrez des rappels par email à J-7, J-3, J-1 et J-0.
                     </p>
                   </div>
+
+                  {/* Champ code promo */}
+                  <Card className="bg-amber-50 border-amber-200">
+                    <CardContent className="pt-6">
+                      <div className="space-y-3">
+                        <div className="flex items-center gap-2 mb-2">
+                          <Sparkles className="w-5 h-5 text-amber-600" />
+                          <h3 className="font-semibold text-slate-900">Vous avez un code promo ?</h3>
+                        </div>
+                        <div className="flex gap-2">
+                          <Input
+                            placeholder="Entrez votre code promo"
+                            value={promoCode}
+                            onChange={(e) => setPromoCode(e.target.value.toUpperCase())}
+                            className="flex-1"
+                          />
+                          <Button
+                            onClick={handleValidatePromoCode}
+                            disabled={isValidatingPromo || !promoCode.trim()}
+                            variant="outline"
+                          >
+                            {isValidatingPromo ? (
+                              <Loader2 className="w-4 h-4 animate-spin" />
+                            ) : (
+                              'Valider'
+                            )}
+                          </Button>
+                        </div>
+                        {validatedPromoCode && (
+                          <div className="bg-green-100 border border-green-300 rounded-lg p-3">
+                            <p className="text-sm text-green-900 font-medium">
+                              ✅ Code promo appliqué : {validatedPromoCode.discountType === 'percentage' ? `${validatedPromoCode.discountValue}%` : `${validatedPromoCode.discountValue}€`} de réduction
+                            </p>
+                            {validatedPromoCode.description && (
+                              <p className="text-xs text-green-800 mt-1">{validatedPromoCode.description}</p>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </CardContent>
+                  </Card>
+
                   <DurationSelector onSelect={handleSubscribe} isLoading={isCreatingCheckout} />
                 </div>
               </CardContent>

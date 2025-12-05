@@ -694,6 +694,27 @@
       "when": 1764935405399,
       "tag": "0098_careful_squadron_supreme",
       "breakpoints": true
+    },
+    {
+      "idx": 99,
+      "version": "5",
+      "when": 1764935557554,
+      "tag": "0099_long_sue_storm",
+      "breakpoints": true
+    },
+    {
+      "idx": 100,
+      "version": "5",
+      "when": 1764935888600,
+      "tag": "0100_nifty_sir_ram",
+      "breakpoints": true
+    },
+    {
+      "idx": 101,
+      "version": "5",
+      "when": 1764936345386,
+      "tag": "0101_rainy_fallen_one",
+      "breakpoints": true
     }
   ]
 }

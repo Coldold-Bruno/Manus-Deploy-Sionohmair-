@@ -55,6 +55,9 @@ import Guide from "@/pages/Guide";
 import Pricing from "@/pages/Pricing";
 import Subscription from "@/pages/Subscription";
 import Premium from "@/pages/Premium";
+import Referral from "@/pages/Referral";
+import PromoCodesAdmin from "@/pages/admin/PromoCodesAdmin";
+import SubscriptionAnalytics from "@/pages/admin/SubscriptionAnalytics";
 import NotFound from "@/pages/NotFound";
 
 /**
@@ -150,6 +153,9 @@ export function LanguageRouter() {
       <Route path={`${langPrefix}/pricing`} component={Pricing} />
       <Route path={`${langPrefix}/subscription`} component={Subscription} />
       <Route path={`${langPrefix}/premium`} component={Premium} />
+      <Route path={`${langPrefix}/referral`} component={Referral} />
+      <Route path={`${langPrefix}/admin/promo-codes`} component={PromoCodesAdmin} />
+      <Route path={`${langPrefix}/admin/subscription-analytics`} component={SubscriptionAnalytics} />
       <Route path={`${langPrefix}/config`} component={ConfigDashboard} />
       <Route path={`${langPrefix}/blog`} component={Blog} />
       <Route path={`${langPrefix}/blog/:slug`} component={BlogPost} />

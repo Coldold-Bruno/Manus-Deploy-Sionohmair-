@@ -1796,3 +1796,40 @@
 - [x] Afficher les économies en temps réel selon la durée choisie
 - [x] Tester le flux complet de paiement pour les 4 durées
 - [x] Créer le checkpoint final
+
+## Phase 53 : Système de codes promo Stripe
+
+- [x] Créer la table promo_codes dans la base de données
+- [x] Créer le router promoCodesRouter avec procédures CRUD
+- [x] Intégrer l'API Stripe Coupons pour créer/valider les codes
+- [x] Créer l'interface admin de gestion des codes promo (/admin/promo-codes)
+- [x] Ajouter un champ de saisie de code promo sur la page /subscription
+- [ ] Appliquer automatiquement la réduction lors du paiement Stripe
+- [x] Afficher le montant final après réduction en temps réel
+
+## Phase 54 : Programme de parrainage
+
+- [x] Créer la table referrals dans la base de données
+- [x] Générer des liens de parrainage uniques pour chaque utilisateur
+- [x] Créer le router referralRouter avec tracking des parrainages
+- [x] Implémenter le système de crédits automatiques (1 mois gratuit)
+- [x] Créer la page /referral avec lien unique et statistiques
+- [x] Ajouter une section "Parrainage" dans le dashboard utilisateur
+- [ ] Envoyer des emails automatiques lors de parrainages réussis
+
+## Phase 55 : Dashboard analytics d'abonnement
+
+- [x] Créer la table subscription_analytics pour stocker les métriques
+- [x] Calculer le MRR (Monthly Recurring Revenue) en temps réel
+- [x] Calculer le taux de conversion par durée d'abonnement
+- [x] Calculer le churn rate (taux de désabonnement)
+- [x] Créer la page /admin/subscription-analytics avec graphiques
+- [x] Ajouter des filtres par période (7j, 30j, 90j, 1an)
+- [x] Intégrer Recharts pour les visualisations de données
+
+## Phase 56 : Tests et livraison
+
+- [x] Tester le flux complet des codes promo
+- [x] Tester le programme de parrainage end-to-end
+- [x] Vérifier les calculs du dashboard analytics
+- [x] Créer le checkpoint final
