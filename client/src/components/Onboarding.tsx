@@ -107,10 +107,10 @@ export default function Onboarding() {
     // Vérifier si l'onboarding a déjà été complété
     const completed = localStorage.getItem(ONBOARDING_KEY);
     if (!completed) {
-      // Attendre 1 seconde avant d'afficher l'onboarding
+      // Attendre 1.5 secondes avant d'afficher l'onboarding
       const timer = setTimeout(() => {
         setIsOpen(true);
-      }, 1000);
+      }, 1500);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -143,103 +143,111 @@ export default function Onboarding() {
   const isLastStep = currentStep === ONBOARDING_STEPS.length - 1;
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-      <Card className="w-full max-w-2xl mx-4 shadow-2xl">
-        <CardHeader className="relative">
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={handleSkip}
-            className="absolute top-4 right-4"
-          >
-            <X className="h-4 w-4" />
-          </Button>
-          <div className="flex items-center gap-2 mb-4">
-            <Badge variant="outline">
-              Étape {step.id} sur {ONBOARDING_STEPS.length}
-            </Badge>
-          </div>
-          <CardTitle className="text-3xl">{step.title}</CardTitle>
-          <CardDescription className="text-base">
-            {step.description}
-          </CardDescription>
-        </CardHeader>
+    <div 
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
+      style={{
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+        backdropFilter: 'blur(8px)'
+      }}
+    >
+      <div className="w-full max-w-2xl">
+        <Card className="shadow-2xl border-2">
+          <CardHeader className="relative pb-4">
+            <button
+              onClick={handleSkip}
+              className="absolute top-4 right-4 p-2 rounded-full hover:bg-secondary/80 transition-colors"
+              aria-label="Fermer"
+            >
+              <X className="h-4 w-4" />
+            </button>
+            <div className="mb-4">
+              <Badge variant="outline" className="text-sm">
+                Étape {step.id} sur {ONBOARDING_STEPS.length}
+              </Badge>
+            </div>
+            <CardTitle className="text-2xl sm:text-3xl pr-8">{step.title}</CardTitle>
+            <CardDescription className="text-base mt-2">
+              {step.description}
+            </CardDescription>
+          </CardHeader>
 
-        <CardContent className="space-y-6">
-          {/* Points clés */}
-          <div className="space-y-3">
-            {step.tips.map((tip, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
-                <span className="text-sm">{tip}</span>
+          <CardContent className="space-y-6">
+            {/* Points clés */}
+            <div className="space-y-3">
+              {step.tips.map((tip, i) => (
+                <div key={i} className="flex items-start gap-3">
+                  <CheckCircle className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <span className="text-sm">{tip}</span>
+                </div>
+              ))}
+            </div>
+
+            {/* Barre de progression */}
+            <div className="space-y-2">
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>Progression</span>
+                <span>{Math.round(((currentStep + 1) / ONBOARDING_STEPS.length) * 100)}%</span>
               </div>
-            ))}
-          </div>
-
-          {/* Barre de progression */}
-          <div className="space-y-2">
-            <div className="flex justify-between text-xs text-muted-foreground">
-              <span>Progression</span>
-              <span>{Math.round(((currentStep + 1) / ONBOARDING_STEPS.length) * 100)}%</span>
-            </div>
-            <div className="w-full bg-secondary/20 rounded-full h-2">
-              <div
-                className="bg-accent h-2 rounded-full transition-all"
-                style={{ width: `${((currentStep + 1) / ONBOARDING_STEPS.length) * 100}%` }}
-              ></div>
-            </div>
-          </div>
-
-          {/* Actions */}
-          <div className="flex items-center justify-between pt-4 border-t">
-            <div>
-              {currentStep > 0 && (
-                <Button variant="outline" onClick={handlePrevious}>
-                  <ArrowLeft className="mr-2 h-4 w-4" />
-                  Précédent
-                </Button>
-              )}
+              <div className="w-full bg-secondary/20 rounded-full h-2 overflow-hidden">
+                <div
+                  className="bg-accent h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${((currentStep + 1) / ONBOARDING_STEPS.length) * 100}%` }}
+                />
+              </div>
             </div>
 
-            <div className="flex items-center gap-2">
-              <Button variant="ghost" onClick={handleSkip}>
-                Passer
-              </Button>
-              {step.action && (
-                <Button
-                  variant="outline"
-                  onClick={() => {
-                    handleComplete();
-                    setLocation(`/${language}${step.action!.url}`);
-                  }}
-                >
-                  {step.action.label}
+            {/* Actions */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-4 border-t">
+              <div className="order-2 sm:order-1">
+                {currentStep > 0 && (
+                  <Button variant="outline" onClick={handlePrevious} className="w-full sm:w-auto">
+                    <ArrowLeft className="mr-2 h-4 w-4" />
+                    Précédent
+                  </Button>
+                )}
+              </div>
+
+              <div className="flex items-center gap-2 order-1 sm:order-2">
+                <Button variant="ghost" onClick={handleSkip} className="flex-1 sm:flex-none">
+                  Passer
                 </Button>
-              )}
-              {isLastStep ? (
-                <Button
-                  onClick={() => {
-                    handleComplete();
-                    setLocation(`/${language}/dashboard`);
-                  }}
-                  className="bg-accent text-accent-foreground hover:bg-accent/90"
-                >
-                  <Sparkles className="mr-2 h-4 w-4" />
-                  Commencer
-                </Button>
-              ) : (
-                <Button
-                  onClick={handleNext}
-                  className="bg-accent text-accent-foreground hover:bg-accent/90"
-                >
-                  Suivant
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
-              )}
+                {step.action && (
+                  <Button
+                    variant="outline"
+                    onClick={() => {
+                      handleComplete();
+                      setLocation(`/${language}/${step.action!.url}`);
+                    }}
+                    className="flex-1 sm:flex-none"
+                  >
+                    {step.action.label}
+                  </Button>
+                )}
+                {isLastStep ? (
+                  <Button
+                    onClick={() => {
+                      handleComplete();
+                      setLocation(`/${language}/dashboard`);
+                    }}
+                    className="bg-accent text-accent-foreground hover:bg-accent/90 flex-1 sm:flex-none"
+                  >
+                    <Sparkles className="mr-2 h-4 w-4" />
+                    Commencer
+                  </Button>
+                ) : (
+                  <Button
+                    onClick={handleNext}
+                    className="bg-accent text-accent-foreground hover:bg-accent/90 flex-1 sm:flex-none"
+                  >
+                    Suivant
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                )}
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
+          </CardContent>
+        </Card>
+      </div>
     </div>
   );
 }

@@ -2006,3 +2006,15 @@
 - [x] Corriger tous les composants problématiques avec des approches React-safe
 - [x] Vérifier les bibliothèques tierces et leurs usages
 - [x] Tester et créer un checkpoint final
+
+## Phase 103 : Correction définitive du bug NotFoundError sur Android mobile
+- [x] Analyser l'erreur avec capture d'écran utilisateur (erreur insertBefore dans Hy/Preact)
+- [x] Identifier le composant Onboarding comme source du problème
+- [x] Réécrire le composant Onboarding avec approche simplifiée
+- [x] Remplacer backdrop-blur-sm par style inline pour compatibilité Android
+- [x] Augmenter z-index à 9999 pour éviter conflits de stacking
+- [x] Simplifier la structure DOM (moins d'imbrication)
+- [x] Remplacer Button shadcn par button natif pour fermeture
+- [x] Augmenter délai d'apparition à 1.5s pour stabilité DOM
+- [x] Tester sur Android mobile et confirmer résolution (test navigateur desktop OK, en attente test utilisateur Android)
+- [x] Créer checkpoint final si test réussi
