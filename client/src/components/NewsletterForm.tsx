@@ -77,7 +77,14 @@ export function NewsletterForm() {
           )}
         </Button>
       </div>
-      <p className="text-xs text-muted-foreground" dangerouslySetInnerHTML={{ __html: t('newsletter.gift') }} />
+      <p className="text-xs text-muted-foreground">
+        {t('newsletter.gift').split('<br/>').map((line, i, arr) => (
+          <span key={i}>
+            {line}
+            {i < arr.length - 1 && <br />}
+          </span>
+        ))}
+      </p>
     </form>
   );
 }

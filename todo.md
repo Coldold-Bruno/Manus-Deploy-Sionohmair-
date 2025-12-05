@@ -1989,3 +1989,6 @@
 - [x] Ajouter une navigation au bouton "Commencer" (redirection vers /dashboard)
 - [x] Tester la correction sur Android mobile
 - [ ] Corriger le bug du formulaire d'email dans le modal d'onboarding (affiche "2 errors" et ne se soumet pas)
+
+## Phase 40 : Correction bug newsletter
+- [x] Corriger l'erreur NotFoundError dans le formulaire de newsletter (soumission génère une erreur "insertBefore" sur Android mobile)
