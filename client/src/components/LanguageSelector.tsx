@@ -25,15 +25,16 @@ export default function LanguageSelector() {
   const currentLanguage = languages.find(lang => lang.code === i18n.language) || languages[0];
   
   const switchLanguage = (newLang: Language) => {
-    // Changer la langue dans i18next
-    i18n.changeLanguage(newLang);
+    // Sauvegarder la langue dans localStorage
     localStorage.setItem('sionohmair-language', newLang);
     document.documentElement.lang = newLang;
     
-    // Changer l'URL pour refléter la nouvelle langue
+    // Construire la nouvelle URL
     const pathWithoutLang = location.replace(/^\/(fr|en|es|de)(\/|$)/, '/');
     const newPath = `/${newLang}${pathWithoutLang === '/' ? '' : pathWithoutLang}`;
-    setLocation(newPath);
+    
+    // Recharger la page avec la nouvelle URL pour forcer le rechargement des traductions
+    window.location.href = newPath;
   };
 
   return (

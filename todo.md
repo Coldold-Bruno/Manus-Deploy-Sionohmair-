@@ -1938,3 +1938,6 @@
 - [x] Remplacer le système LanguageContext par i18next dans Home.tsx
 - [x] Tester le changement de langue (FR/EN/DE)
 - [x] Créer le checkpoint final
+
+## Phase 42 : Correction du sélecteur de langue
+- [x] Corriger le sélecteur de langue - le contenu ne se met pas à jour après le clic
