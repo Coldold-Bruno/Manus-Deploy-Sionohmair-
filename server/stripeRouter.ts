@@ -13,12 +13,12 @@ const stripe = new Stripe(ENV.stripeSecretKey, {
 
 export const stripeRouter = router({
   /**
-   * Créer une session de paiement Stripe Checkout
+   * Créer une session de paiement Stripe Checkout avec Price ID
    */
   createCheckoutSession: protectedProcedure
     .input(
       z.object({
-        productId: z.enum(['SPRINT_CLARTE', 'ARCHITECTURE_INSIGHT', 'PARTENARIAT_STRATEGIQUE', 'FORMATION_SPRINT_CLARTE']),
+        productId: z.enum(['ABONNEMENT_PREMIUM', 'NFT_BRONZE', 'NFT_SILVER', 'NFT_GOLD', 'SPRINT_CLARTE', 'ARCHITECTURE_INSIGHT', 'PARTENARIAT_STRATEGIQUE', 'FORMATION_SPRINT_CLARTE']),
       })
     )
     .mutation(async ({ ctx, input }) => {
@@ -51,22 +51,34 @@ export const stripeRouter = router({
           .where(eq(users.id, ctx.user.id));
       }
 
+      // Vérifier si le produit a un Price ID Stripe
+      const hasStripePriceId = 'stripePriceId' in product;
+
       // Créer la session Checkout
       const session = await stripe.checkout.sessions.create({
         customer: stripeCustomerId,
-        line_items: [
-          {
-            price_data: {
-              currency: product.currency,
-              product_data: {
-                name: product.name,
-                description: product.description,
+        line_items: hasStripePriceId
+          ? [
+              {
+                // Utiliser le Price ID Stripe pour les nouveaux produits
+                price: (product as any).stripePriceId,
+                quantity: 1,
               },
-              unit_amount: product.price,
-            },
-            quantity: 1,
-          },
-        ],
+            ]
+          : [
+              {
+                // Utiliser price_data pour les anciens produits
+                price_data: {
+                  currency: product.currency,
+                  product_data: {
+                    name: product.name,
+                    description: product.description,
+                  },
+                  unit_amount: product.price,
+                },
+                quantity: 1,
+              },
+            ],
         mode: 'payment',
         success_url: `${ctx.req.headers.origin}/payment/success?session_id={CHECKOUT_SESSION_ID}`,
         cancel_url: `${ctx.req.headers.origin}/payment/cancel`,
@@ -88,6 +100,7 @@ export const stripeRouter = router({
 
   /**
    * Créer une session de paiement pour l'abonnement mensuel (36€/mois)
+   * DEPRECATED: Utiliser createCheckoutSession avec productId: 'ABONNEMENT_PREMIUM'
    */
   createSubscriptionCheckout: protectedProcedure
     .mutation(async ({ ctx }) => {
