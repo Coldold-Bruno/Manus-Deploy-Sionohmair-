@@ -1,10 +1,10 @@
-import { useAuth } from "@/_core/hooks/useAuth";
 import { Button } from "@/components/ui/button";
 import { Sparkles } from "lucide-react";
 import { APP_LOGO } from "@/const";
 import LanguageSelector from "@/components/LanguageSelector";
 import { NavLink } from "@/components/NavLink";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
+import { trpc } from "@/lib/trpc";
 
 /**
  * ToolHeader - Header de navigation pour les pages d'outils
@@ -17,8 +17,10 @@ import { useLanguage } from "@/contexts/LanguageContext";
  * - Bouton "Mon abonnement" (si connecté)
  */
 export function ToolHeader() {
-  const { user, isAuthenticated } = useAuth();
-  const { language } = useLanguage();
+  const { data: user } = trpc.auth.me.useQuery();
+  const isAuthenticated = !!user;
+  const { i18n } = useTranslation();
+  const language = i18n.language;
 
   return (
     <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">

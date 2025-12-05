@@ -8,11 +8,14 @@ import { Link } from "wouter";
 import { APP_LOGO } from "@/const";
 import LanguageSelector from "@/components/LanguageSelector";
 import { NavLink } from "@/components/NavLink";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
+import { trpc } from "@/lib/trpc";
 
 export default function Home() {
-  let { user, loading, error, isAuthenticated, logout } = useAuth();
-  const { language, t } = useLanguage();
+  const { data: user } = trpc.auth.me.useQuery();
+  const isAuthenticated = !!user;
+  const { t, i18n } = useTranslation();
+  const language = i18n.language;
 
   return (
     <div className="min-h-screen">

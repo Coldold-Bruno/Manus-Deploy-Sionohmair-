@@ -3,7 +3,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
-import { LanguageProvider } from "./contexts/LanguageContext";
 import { LanguageRouter } from "./components/LanguageRouter";
 import Chatbot from "./components/Chatbot";
 import Onboarding from "./components/Onboarding";
@@ -16,20 +15,18 @@ import Onboarding from "./components/Onboarding";
 function App() {
   return (
     <ErrorBoundary>
-      <LanguageProvider>
-        <ThemeProvider
-          defaultTheme="light"
-          // switchable
-        >
-          <TooltipProvider>
-            <Toaster />
-            <LanguageRouter />
-            <Chatbot />
-            <Onboarding />
-            <ScrollToTop />
-          </TooltipProvider>
-        </ThemeProvider>
-      </LanguageProvider>
+      <ThemeProvider
+        defaultTheme="light"
+        // switchable
+      >
+        <TooltipProvider>
+          <Toaster />
+          <LanguageRouter />
+          <Chatbot />
+          <Onboarding />
+          <ScrollToTop />
+        </TooltipProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }

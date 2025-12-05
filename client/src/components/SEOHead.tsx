@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { useLocation } from 'wouter';
-import { useLanguage, Language } from '@/contexts/LanguageContext';
+import { useTranslation } from 'react-i18next';
+
+type Language = 'fr' | 'en' | 'es' | 'de';
 
 interface SEOHeadProps {
   title?: string;
@@ -27,7 +29,8 @@ export function SEOHead({
   tags,
 }: SEOHeadProps) {
   const [location] = useLocation();
-  const { language } = useLanguage();
+  const { i18n } = useTranslation();
+  const language = i18n.language as Language;
 
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
   const currentUrl = `${baseUrl}${location}`;

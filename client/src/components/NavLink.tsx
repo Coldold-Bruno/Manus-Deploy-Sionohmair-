@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { useLanguage } from "@/contexts/LanguageContext";
+import { useTranslation } from "react-i18next";
 import { ReactNode } from "react";
 
 interface NavLinkProps {
@@ -22,7 +22,8 @@ interface NavLinkProps {
  * - Si langue = 'de' → /de/content-analyzer
  */
 export function NavLink({ href, children, className, onClick }: NavLinkProps) {
-  const { language } = useLanguage();
+  const { i18n } = useTranslation();
+  const language = i18n.language;
   
   // Construire l'URL complète avec le préfixe de langue
   // Si l'URL commence par /, ajouter le préfixe de langue

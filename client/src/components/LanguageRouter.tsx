@@ -1,6 +1,8 @@
-import { Route, Switch, useLocation, Redirect } from "wouter";
-import { useLanguage, Language } from "@/contexts/LanguageContext";
+import { Route, Switch, useLocation } from "wouter";
+import { useTranslation } from "react-i18next";
 import { useEffect } from "react";
+
+type Language = 'fr' | 'en' | 'es' | 'de';
 
 // Pages
 import Home from "@/pages/Home";
@@ -75,7 +77,8 @@ import NotFound from "@/pages/NotFound";
  */
 export function LanguageRouter() {
   const [location, setLocation] = useLocation();
-  const { language, setLanguage } = useLanguage();
+  const { i18n } = useTranslation();
+  const language = i18n.language as Language;
 
   // Extraire la langue depuis l'URL
   const getLangFromPath = (path: string): Language | null => {
@@ -89,13 +92,15 @@ export function LanguageRouter() {
     if (langFromUrl) {
       // Si l'URL contient une langue, la définir comme langue active
       if (langFromUrl !== language) {
-        setLanguage(langFromUrl);
+        i18n.changeLanguage(langFromUrl);
+        localStorage.setItem('sionohmair-language', langFromUrl);
+        document.documentElement.lang = langFromUrl;
       }
     } else if (location === '/') {
       // Redirection de la racine vers la langue active
       setLocation(`/${language}`, { replace: true });
     }
-  }, [location, language, setLanguage, setLocation]);
+  }, [location, language, i18n, setLocation]);
 
   // Routes pour chaque langue
   const langPrefix = '/:lang(fr|en|es|de)';
