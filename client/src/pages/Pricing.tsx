@@ -34,7 +34,7 @@ export default function Pricing() {
             Tarification Simple et Transparente
           </h1>
           <p className="text-xl text-muted-foreground max-w-3xl mx-auto">
-            30 jours gratuits sans engagement, puis 36€/mois pour continuer. 
+            30 jours gratuits sans engagement, puis 29€/mois pour continuer. 
             Annulez à tout moment, aucune carte bancaire requise pour l'essai.
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function Pricing() {
                   </div>
                   <div className="text-3xl font-bold text-muted-foreground">puis</div>
                   <div className="bg-accent/10 text-accent px-8 py-4 rounded-lg">
-                    <div className="text-5xl font-bold">36€</div>
+                    <div className="text-5xl font-bold">29€</div>
                     <p className="text-lg mt-1">par mois</p>
                   </div>
                 </div>
@@ -153,7 +153,7 @@ export default function Pricing() {
               <CardContent>
                 <p className="text-muted-foreground">
                   Vous avez accès à tous les outils pendant 30 jours sans aucun paiement et sans fournir de carte bancaire. 
-                  Après 30 jours, vous recevrez une notification pour souscrire à l'abonnement mensuel de 36€ si vous souhaitez continuer.
+                  Après 30 jours, vous recevrez une notification pour souscrire à l'abonnement mensuel de 29€ si vous souhaitez continuer.
                 </p>
               </CardContent>
             </Card>
@@ -164,7 +164,7 @@ export default function Pricing() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Vous pouvez souscrire à l'abonnement mensuel de 36€ pour continuer à utiliser la plateforme. 
+                  Vous pouvez souscrire à l'abonnement mensuel de 29€ pour continuer à utiliser la plateforme. 
                   Si vous ne souscrivez pas, votre accès sera simplement suspendu (vos données sont conservées pendant 6 mois).
                 </p>
               </CardContent>
@@ -188,7 +188,7 @@ export default function Pricing() {
               </CardHeader>
               <CardContent>
                 <p className="text-muted-foreground">
-                  Non, aucun frais caché. Le prix affiché (36€/mois) est le seul paiement que vous effectuerez. 
+                  Non, aucun frais caché. Le prix affiché (29€/mois) est le seul paiement que vous effectuerez. 
                   Pas de frais d'inscription, pas de frais de résiliation, pas de surprise.
                 </p>
               </CardContent>

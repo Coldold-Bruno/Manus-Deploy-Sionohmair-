@@ -1,4 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { ToolHeader } from '@/components/ToolHeader';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Sparkles, BookOpen, TrendingUp, Zap, Target, Users, Heart, MessageSquare } from 'lucide-react';
@@ -330,7 +331,9 @@ const FRAMEWORKS = [
 
 export default function FrameworksLibrary() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+      <ToolHeader />
+      <div className="py-12">
       <div className="container max-w-7xl">
         {/* Header */}
         <div className="text-center mb-12">
@@ -541,6 +544,8 @@ export default function FrameworksLibrary() {
             </a>
           </CardContent>
         </Card>
+      </div>
+
       </div>
     </div>
   );

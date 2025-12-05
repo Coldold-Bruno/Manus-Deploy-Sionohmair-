@@ -1760,3 +1760,15 @@
 - [ ] Tester le script configure-stripe-production.sh
 - [ ] Exécuter les tests E2E et générer le rapport
 - [ ] Créer le checkpoint final avant publication
+
+- [ ] BUG: Ajouter la navigation (header avec logo, menu, connexion) sur toutes les pages d'outils
+
+## Phase 50 : Mise à jour des prix Stripe (29€, 290€, 900€, 2900€)
+- [x] Mettre à jour la page /pricing avec les nouveaux prix
+- [x] Mettre à jour le composant SubscriptionDashboard
+- [x] Mettre à jour toutes les références aux prix dans le code
+- [x] Vérifier la cohérence des descriptions de plans
+- [x] Tester l'affichage sur toutes les pages concernées
+- [x] Corriger l'import dans ToolHeader.tsx
+- [x] Vérifier la navigation sur toutes les pages d'outils
+- [x] Créer le checkpoint final

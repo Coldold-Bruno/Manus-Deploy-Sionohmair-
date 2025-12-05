@@ -72,7 +72,7 @@ export default function ConfigDashboard() {
     {
       id: 'stripe',
       title: 'Configuration Stripe',
-      description: 'Paiements et abonnements (36€/mois)',
+      description: 'Paiements et abonnements (29€/mois)',
       status: 'pending',
       variables: [
         { key: 'STRIPE_SECRET_KEY', value: 'sk_test_...' },
@@ -81,7 +81,7 @@ export default function ConfigDashboard() {
       ],
       instructions: [
         'Activez votre compte Stripe (lien ci-dessous)',
-        'Créez le produit "Abonnement Sionohmair" (36€/mois)',
+        'Créez le produit "Abonnement Sionohmair" (29€/mois)',
         'Récupérez les clés API dans Developers → API keys',
         'Configurez le webhook dans Developers → Webhooks',
         'Ajoutez les 3 variables dans Manus → Settings → Secrets',

@@ -30,7 +30,7 @@ const DEMO_SUBSCRIPTION_TRIAL: Subscription = {
   status: 'trial',
   trialStartDate: new Date('2025-10-28'),
   trialEndDate: new Date('2025-11-27'),
-  oneTimePaymentAmount: 3600 // 36€/mois (abonnement mensuel)
+  oneTimePaymentAmount: 2900 // 29€/mois (abonnement mensuel)
 };
 
 // Données de démo - Abonnement actif
@@ -40,7 +40,7 @@ const DEMO_SUBSCRIPTION_PAID: Subscription = {
   trialStartDate: new Date('2025-09-27'),
   trialEndDate: new Date('2025-10-27'),
   paymentDate: new Date('2025-10-25'),
-  oneTimePaymentAmount: 3600 // 36€/mois (abonnement mensuel)
+  oneTimePaymentAmount: 2900 // 29€/mois (abonnement mensuel)
 };
 
 export default function SubscriptionDashboard() {
@@ -222,7 +222,7 @@ export default function SubscriptionDashboard() {
                         className="w-full bg-accent text-accent-foreground hover:bg-accent/90"
                       >
                         <CreditCard className="mr-2 h-5 w-5" />
-                        S'abonner maintenant (36€/mois)
+                        S'abonner maintenant (29€/mois)
                       </Button>
                       <p className="text-center text-sm text-muted-foreground mt-3">
                         Pas d'engagement • Annulez à tout moment
@@ -265,7 +265,7 @@ export default function SubscriptionDashboard() {
                         <div>
                           <h4 className="font-semibold text-blue-900">Abonnement mensuel</h4>
                           <p className="text-sm text-blue-800 mt-1">
-                            Votre abonnement de 36€/mois est actif. Toutes les mises à jour futures sont incluses. Annulez à tout moment sans frais.
+                            Votre abonnement de 29€/mois est actif. Toutes les mises à jour futures sont incluses. Annulez à tout moment sans frais.
                           </p>
                         </div>
                       </div>

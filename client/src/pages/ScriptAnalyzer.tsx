@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ToolHeader } from '@/components/ToolHeader';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
@@ -62,7 +63,9 @@ export default function ScriptAnalyzer() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+      <ToolHeader />
+      <div className="py-12">
       <div className="container max-w-7xl">
         {/* Header */}
         <div className="text-center mb-12">
@@ -334,6 +337,8 @@ export default function ScriptAnalyzer() {
             </CardContent>
           </Card>
         )}
+      </div>
+
       </div>
     </div>
   );

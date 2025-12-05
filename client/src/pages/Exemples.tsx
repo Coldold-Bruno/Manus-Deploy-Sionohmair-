@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { ToolHeader } from '@/components/ToolHeader';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
@@ -269,7 +270,9 @@ export default function Exemples() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20 py-12">
+    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
+      <ToolHeader />
+      <div className="py-12">
       <div className="container max-w-7xl">
         {/* Header */}
         <div className="text-center mb-12">
@@ -511,6 +514,8 @@ export default function Exemples() {
             </Button>
           </CardContent>
         </Card>
+      </div>
+
       </div>
     </div>
   );

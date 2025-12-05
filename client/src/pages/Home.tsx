@@ -311,7 +311,7 @@ export default function Home() {
             <div className="bg-white/10 backdrop-blur border border-white/30 rounded-xl p-6 max-w-2xl mx-auto">
               <p className="text-sm mb-4">
                 <strong className="text-lg">🔒 Aucune carte bancaire requise</strong><br />
-                Commencez votre essai gratuit en 1 clic. Après 30 jours, continuez pour seulement <strong>36€/mois</strong> (sans engagement, annulez quand vous voulez).
+                Commencez votre essai gratuit en 1 clic. Après 30 jours, continuez pour seulement <strong>29€/mois</strong> (sans engagement, annulez quand vous voulez).
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button asChild size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-bold text-lg px-8 py-6">
