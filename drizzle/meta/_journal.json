@@ -743,6 +743,13 @@
       "when": 1764937315663,
       "tag": "0105_light_bill_hollister",
       "breakpoints": true
+    },
+    {
+      "idx": 106,
+      "version": "5",
+      "when": 1764940899340,
+      "tag": "0106_nasty_colossus",
+      "breakpoints": true
     }
   ]
 }
