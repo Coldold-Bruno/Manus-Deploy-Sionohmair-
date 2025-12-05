@@ -757,6 +757,13 @@
       "when": 1764941952942,
       "tag": "0107_narrow_tyger_tiger",
       "breakpoints": true
+    },
+    {
+      "idx": 108,
+      "version": "5",
+      "when": 1764942851609,
+      "tag": "0108_lonely_husk",
+      "breakpoints": true
     }
   ]
 }

@@ -136,3 +136,139 @@ Pour toute question :
 ---
 
 **Bon déploiement ! 🚀**
+
+
+---
+
+## 🤖 Scripts d'Automatisation Avancée
+
+### 3. `auto-setup-all.mjs` - Automatisation Complète (NOUVEAU)
+
+**Description :** Script maître qui configure automatiquement les 3 systèmes avancés en une seule commande
+
+**Utilisation :**
+```bash
+node scripts/auto-setup-all.mjs
+```
+
+**Durée :** ~5-10 minutes
+
+**Ce qu'il fait :**
+1. ✅ Configure le webhook Stripe automatiquement
+2. ✅ Installe et configure les tests E2E Playwright
+3. ✅ Active le monitoring Sentry (ou fallback local)
+4. 📊 Génère un rapport dans `logs/automation-report.json`
+
+**Résultat :**
+```
+✅ Webhook Stripe configuré
+✅ Tests E2E Playwright prêts
+✅ Monitoring d'erreurs actif
+⏱️  Temps gagné : ~4-6 heures !
+```
+
+---
+
+### 4. `auto-setup-stripe-webhook.mjs` - Webhook Stripe
+
+**Description :** Configure automatiquement le webhook Stripe pour les paiements
+
+**Utilisation :**
+```bash
+node scripts/auto-setup-stripe-webhook.mjs
+```
+
+**Prérequis :**
+- Variable `STRIPE_SECRET_KEY` configurée dans Settings → Secrets
+
+**Ce qu'il fait :**
+1. Se connecte à votre compte Stripe
+2. Crée (ou met à jour) le webhook endpoint
+3. Configure les événements à écouter
+4. Sauvegarde le webhook secret dans `.env`
+
+---
+
+### 5. `auto-setup-playwright.mjs` - Tests E2E
+
+**Description :** Installe et configure les tests E2E automatisés
+
+**Utilisation :**
+```bash
+node scripts/auto-setup-playwright.mjs
+```
+
+**Ce qu'il fait :**
+1. Installe Playwright et les navigateurs
+2. Crée 4 suites de tests (accueil, navigation, calculateur, formulaires)
+3. Exécute automatiquement tous les tests
+4. Génère un rapport HTML
+
+**Commandes après installation :**
+```bash
+# Exécuter les tests
+pnpm exec playwright test
+
+# Interface graphique
+pnpm exec playwright test --ui
+
+# Voir le rapport
+pnpm exec playwright show-report
+```
+
+---
+
+### 6. `auto-setup-sentry.mjs` - Monitoring d'erreurs
+
+**Description :** Configure le monitoring d'erreurs (Sentry ou fallback local)
+
+**Utilisation :**
+```bash
+node scripts/auto-setup-sentry.mjs
+```
+
+**Mode automatique :**
+- **Si `VITE_SENTRY_DSN` est configuré** → Installe et configure Sentry
+- **Si `VITE_SENTRY_DSN` n'est pas configuré** → Active le système de fallback local
+
+**Fallback local (sans Sentry) :**
+- ✅ Logging des erreurs dans `logs/errors.log`
+- ✅ Logging des accès dans `logs/access.log`
+- ✅ ErrorBoundary React pour capturer les erreurs
+- ✅ API compatible avec Sentry (migration facile)
+
+---
+
+## 📚 Documentation d'Automatisation
+
+Pour plus de détails sur l'automatisation, consultez :
+- `docs/GUIDE_AUTOMATISATION.md` - Guide complet d'automatisation
+- `logs/automation-report.json` - Rapport d'exécution
+
+---
+
+## ✅ Checklist d'Automatisation
+
+Après avoir exécuté `auto-setup-all.mjs`, vérifiez :
+
+- [ ] Webhook Stripe visible dans le dashboard Stripe
+- [ ] Tests Playwright exécutables : `pnpm exec playwright test`
+- [ ] Logs d'erreurs enregistrés (Sentry ou `logs/errors.log`)
+- [ ] Rapport d'automatisation généré : `logs/automation-report.json`
+
+---
+
+## 🎯 Workflow Complet de Configuration
+
+### Configuration Manuelle (Ancienne méthode)
+1. Configurer SMTP : `./scripts/configure-smtp.sh`
+2. Configurer Stripe manuellement
+3. Tester : `./scripts/test-system.sh`
+
+### Configuration Automatique (Nouvelle méthode) ⭐ RECOMMANDÉ
+```bash
+# Une seule commande pour tout automatiser !
+node scripts/auto-setup-all.mjs
+```
+
+**Temps gagné : ~4-6 heures de configuration manuelle !** 🚀
