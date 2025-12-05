@@ -11,18 +11,17 @@ import { NavLink } from "@/components/NavLink";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Home() {
-  // The userAuth hooks provides authentication state
-  // To implement login/logout functionality, simply call logout() or redirect to getLoginUrl()
   let { user, loading, error, isAuthenticated, logout } = useAuth();
-  const { language } = useLanguage();
+  const { language, t } = useLanguage();
 
   return (
     <div className="min-h-screen">
       <SEO
-        title="L'Ingénierie du Génie"
-        description="Transformez la communication d'un art subjectif en une science de la performance. Sprint de Clarté : 3 frictions éliminées en 7 jours. +250% de conversion en moyenne."
+        title={t('hero.title')}
+        description={t('hero.description')}
         keywords={['clarté', 'communication', 'conversion', 'PFPMA', 'insight', 'sprint de clarté', 'méthodologie Sionohmair', 'Bruno Coldold']}
       />
+      
       {/* Navigation */}
       <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
@@ -34,24 +33,24 @@ export default function Home() {
           </NavLink>
           <div className="flex items-center space-x-4">
             <LanguageSelector />
-            <NavLink href="/content-analyzer" className="text-sm font-medium hover:text-accent transition-colors">Analyseur</NavLink>
-            <NavLink href="/copy-generator" className="text-sm font-medium hover:text-accent transition-colors">Générateur</NavLink>
-            <NavLink href="/avatar-builder" className="text-sm font-medium hover:text-accent transition-colors">Avatar Client</NavLink>
-            <NavLink href="/script-analyzer" className="text-sm font-medium hover:text-accent transition-colors">Scripts</NavLink>
-            <NavLink href="/frameworks" className="text-sm font-medium hover:text-accent transition-colors">Frameworks</NavLink>
-            <NavLink href="/chat-ia" className="text-sm font-medium hover:text-accent transition-colors">Chat IA</NavLink>
-            <NavLink href="/templates" className="text-sm font-medium hover:text-accent transition-colors">Templates</NavLink>
-            <NavLink href="/exemples" className="text-sm font-medium hover:text-accent transition-colors">Exemples</NavLink>
-            <NavLink href="/editor" className="text-sm font-medium hover:text-accent transition-colors">Éditeur</NavLink>
-            <NavLink href="/guide" className="text-sm font-medium hover:text-accent transition-colors">Guide</NavLink>
-            <NavLink href="/pricing" className="text-sm font-medium hover:text-accent transition-colors">Tarifs</NavLink>
-            <NavLink href="/blog" className="text-sm font-medium hover:text-accent transition-colors">Blog</NavLink>
-            <NavLink href="/about" className="text-sm font-medium hover:text-accent transition-colors">À Propos</NavLink>
+            <NavLink href="/content-analyzer" className="text-sm font-medium hover:text-accent transition-colors">{t('nav.analyzer')}</NavLink>
+            <NavLink href="/copy-generator" className="text-sm font-medium hover:text-accent transition-colors">{t('nav.generator')}</NavLink>
+            <NavLink href="/avatar-builder" className="text-sm font-medium hover:text-accent transition-colors">{t('nav.avatarClient')}</NavLink>
+            <NavLink href="/script-analyzer" className="text-sm font-medium hover:text-accent transition-colors">{t('nav.scripts')}</NavLink>
+            <NavLink href="/frameworks" className="text-sm font-medium hover:text-accent transition-colors">{t('nav.frameworks')}</NavLink>
+            <NavLink href="/chat-ia" className="text-sm font-medium hover:text-accent transition-colors">{t('nav.chatIA')}</NavLink>
+            <NavLink href="/templates" className="text-sm font-medium hover:text-accent transition-colors">{t('nav.templates')}</NavLink>
+            <NavLink href="/exemples" className="text-sm font-medium hover:text-accent transition-colors">{t('nav.examples')}</NavLink>
+            <NavLink href="/editor" className="text-sm font-medium hover:text-accent transition-colors">{t('nav.editor')}</NavLink>
+            <NavLink href="/guide" className="text-sm font-medium hover:text-accent transition-colors">{t('nav.guide')}</NavLink>
+            <NavLink href="/pricing" className="text-sm font-medium hover:text-accent transition-colors">{t('common.pricing')}</NavLink>
+            <NavLink href="/blog" className="text-sm font-medium hover:text-accent transition-colors">{t('common.blog')}</NavLink>
+            <NavLink href="/about" className="text-sm font-medium hover:text-accent transition-colors">{t('common.about')}</NavLink>
             {isAuthenticated && (
               <NavLink href="/subscription" className="text-sm font-medium hover:text-accent transition-colors flex items-center gap-2">
-                Mon abonnement
+                {t('nav.mySubscription')}
                 <span className="px-2 py-0.5 bg-amber-500 text-white text-xs font-semibold rounded-full">
-                  Essai gratuit
+                  {t('nav.freeTrial')}
                 </span>
               </NavLink>
             )}
@@ -59,324 +58,309 @@ export default function Home() {
               <Button asChild variant="default" className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold">
                 <a href={`/${language}/subscription`} className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4" />
-                  Essai gratuit (30j)
+                  {t('hero.cta')}
                 </a>
               </Button>
             )}
             {isAuthenticated && (
               <Button asChild variant="default" className="bg-accent text-accent-foreground hover:bg-accent/90">
-                <a href={`/${language}/content-analyzer`}>Analyser mon contenu →</a>
+                <a href={`/${language}/content-analyzer`}>{t('nav.analyzeContent')}</a>
               </Button>
             )}
           </div>
         </div>
       </nav>
 
-      {/* Hero Section - Content Marketing & Copywriting */}
+      {/* Hero Section */}
       <section className="py-20 md:py-32 bg-gradient-to-b from-background to-secondary/20">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center space-y-8">
             {/* Problème */}
             <div className="space-y-4">
               <div className="inline-block px-4 py-2 bg-destructive/10 text-destructive rounded-full text-sm font-medium mb-4">
-                Le Problème : Votre Message Se Perd
+                {t('hero.problem.badge')}
               </div>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-                Votre contenu est <span className="text-accent">invisible</span>.
-                <br />
-                Vos conversions stagnent.
-              </h1>
-              <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-                90% des contenus marketing échouent. Pas par manque de qualité, mais par manque de <strong>méthodologie</strong>. 
-                Les 3 frictions invisibles (Attention, Cognitive, Émotionnelle) tuent vos conversions.
-              </p>
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight" dangerouslySetInnerHTML={{ __html: t('hero.problem.title') }} />
+              <p className="text-xl text-muted-foreground max-w-2xl mx-auto" dangerouslySetInnerHTML={{ __html: t('hero.problem.description') }} />
               <p className="text-lg text-accent font-semibold mt-4">
-                🎯 La vérité : vous avez besoin d'une science, pas d'un art.
+                {t('hero.problem.truth')}
               </p>
             </div>
 
-            {/* Formule */}
+            {/* Solution */}
             <div className="space-y-4 pt-8">
               <div className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">
-                La Solution : Frameworks de Copywriting Scientifiques
+                {t('hero.solution.badge')}
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold">
-                PFPMA & APTEA : Les frameworks qui multiplient vos conversions
-                <br />
-                en une <span className="text-accent">science de la performance</span>
-              </h2>
+              <h2 className="text-3xl md:text-4xl font-bold" dangerouslySetInnerHTML={{ __html: t('hero.solution.title') }} />
               <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                La méthodologie Sionohmair Insight élimine les 3 frictions qui tuent vos messages : 
-                Friction d'Attention, Friction Cognitive, et Friction Émotionnelle.
+                {t('hero.solution.description')}
               </p>
               <div className="mt-6 p-6 bg-accent/10 border border-accent/20 rounded-xl">
-                <p className="text-2xl font-bold text-accent mb-2">Le Facteur Alpha (α = 22.67)</p>
-                <p className="text-lg">
-                  Chaque point de friction corrigé ne produit pas un gain linéaire de 15%, mais un <strong className="text-accent">gain exponentiel de 340%</strong> grâce au Facteur d'Amplification α = 22.67.
-                </p>
-                <p className="text-sm text-muted-foreground mt-2">
-                  C'est la <strong>Loi de la Clarté</strong> : 340% = 15% × 22.67
-                </p>
+                <p className="text-2xl font-bold text-accent mb-2">{t('hero.alphaFactor.title')}</p>
+                <p className="text-lg" dangerouslySetInnerHTML={{ __html: t('hero.alphaFactor.description') }} />
+                <p className="text-sm text-muted-foreground mt-2" dangerouslySetInnerHTML={{ __html: t('hero.alphaFactor.law') }} />
               </div>
             </div>
 
-            {/* P - Preuve */}
+            {/* Preuves */}
             <div className="grid md:grid-cols-3 gap-6 pt-8">
               <Card className="border-accent/20 bg-accent/5">
                 <CardHeader>
-                  <CardTitle className="text-4xl font-bold text-accent">+340%</CardTitle>
-                  <CardDescription>Gain réel grâce au Facteur α = 22.67</CardDescription>
+                  <CardTitle className="text-4xl font-bold text-accent">{t('hero.alphaFactor.stat1')}</CardTitle>
+                  <CardDescription>{t('hero.alphaFactor.stat1Label')}</CardDescription>
                 </CardHeader>
               </Card>
               <Card className="border-accent/20">
                 <CardHeader>
-                  <CardTitle className="text-4xl font-bold text-accent">7 jours</CardTitle>
-                  <CardDescription>Pour transformer votre message</CardDescription>
+                  <CardTitle className="text-4xl font-bold text-accent">{t('hero.alphaFactor.stat2')}</CardTitle>
+                  <CardDescription>{t('hero.alphaFactor.stat2Label')}</CardDescription>
                 </CardHeader>
               </Card>
               <Card className="border-accent/20">
                 <CardHeader>
-                  <CardTitle className="text-4xl font-bold text-accent">310 pages</CardTitle>
-                  <CardDescription>De méthodologie documentée</CardDescription>
+                  <CardTitle className="text-4xl font-bold text-accent">{t('hero.alphaFactor.stat3')}</CardTitle>
+                  <CardDescription>{t('hero.alphaFactor.stat3Label')}</CardDescription>
                 </CardHeader>
               </Card>
-            </div>
-
-            {/* Visuels Promotionnels */}
-            <div className="grid md:grid-cols-2 gap-8 pt-12">
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-accent/20 transition-shadow duration-300">
-                <img 
-                  src="/sprint-clarte-promo.png" 
-                  alt="Sprint de Clarté - Offre de lancement 490€" 
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-              <div className="relative overflow-hidden rounded-2xl shadow-2xl hover:shadow-accent/20 transition-shadow duration-300">
-                <img 
-                  src="/sionohmair-academy-3d.png" 
-                  alt="Sionohmair Insight Academy - Analyse, Stratégisation, Amplification" 
-                  className="w-full h-auto object-cover"
-                />
-              </div>
-            </div>
-
-            {/* 3 Outils Content Marketing */}
-            <div className="space-y-6 pt-12">
-              <h3 className="text-2xl font-bold">3 Outils Puissants pour Maximiser Vos Conversions</h3>
-              <div className="grid md:grid-cols-3 gap-6">
-                <Card className="hover:border-accent/50 transition-colors cursor-pointer" onClick={() => window.location.href = '/content-analyzer'}>
-                  <CardHeader>
-                    <Target className="h-10 w-10 text-accent mb-2" />
-                    <CardTitle>Analyseur de Contenu</CardTitle>
-                    <CardDescription>
-                      Analysez votre contenu en 5 dimensions : SEO, Conversion, Engagement, Lisibilité, Psychologie.
-                      Score global + recommandations actionnables.
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-                <Card className="hover:border-accent/50 transition-colors cursor-pointer" onClick={() => window.location.href = '/copy-generator'}>
-                  <CardHeader>
-                    <Zap className="h-10 w-10 text-accent mb-2" />
-                    <CardTitle>Générateur de Copy</CardTitle>
-                    <CardDescription>
-                      Créez du copy haute conversion avec PFPMA, APTEA, AIDA, PAS, PASTOR, BAB.
-                      IA optimisée pour la méthodologie Sionohmair.
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-                <Card className="hover:border-accent/50 transition-colors cursor-pointer" onClick={() => window.location.href = '/avatar-builder'}>
-                  <CardHeader>
-                    <TrendingUp className="h-10 w-10 text-accent mb-2" />
-                    <CardTitle>Persona Builder</CardTitle>
-                    <CardDescription>
-                      Définissez votre avatar client idéal : démographiques, psychographiques, comportement.
-                      Messages ultra-personnalisés garantis.
-                    </CardDescription>
-                  </CardHeader>
-                </Card>
-              </div>
-            </div>
-
-            {/* Appel à l'action */}
-            <div className="space-y-6 pt-12">
-              <div className="inline-block px-4 py-2 bg-accent/10 text-accent rounded-full text-sm font-medium">
-                Commencez Maintenant
-              </div>
-              <h3 className="text-3xl font-bold">
-                Analysez Votre Contenu en <span className="text-accent">5 Dimensions</span>
-              </h3>
-              <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                Obtenez un score global, des recommandations actionnables, et générez du copy haute conversion
-                avec les frameworks <strong className="text-accent">PFPMA & APTEA</strong> (Facteur α = 22.67).
-              </p>
-              <p className="text-sm text-muted-foreground mt-2">
-                Gratuit pour les 100 premiers utilisateurs. Aucune carte bancaire requise.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-                <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 text-lg px-8">
-                  <a href={`/${language}/content-analyzer`} className="flex items-center gap-2">
-                    Analyser Mon Contenu Maintenant
-                    <ArrowRight className="h-5 w-5" />
-                  </a>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="text-lg px-8">
-                  <a href={`/${language}/copy-generator`}>Générer du Copy</a>
-                </Button>
-              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Section Méthodologie */}
+      {/* Section Outils */}
       <section className="py-20 bg-background">
         <div className="container">
-          <div className="max-w-4xl mx-auto space-y-12">
-            <div className="text-center space-y-4">
-              <h2 className="text-4xl font-bold">Le Code PFPMA : La Grammaire de la Clarté</h2>
-              <p className="text-xl text-muted-foreground">
-                Tout message qui convertit suit cette structure, consciemment ou non.
-              </p>
+          <div className="text-center mb-12">
+            <h2 className="text-4xl font-bold mb-4">{t('home.toolsSection.title')}</h2>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Target className="w-12 h-12 text-accent mb-4" />
+                <CardTitle>{t('home.toolsSection.analyzer.title')}</CardTitle>
+                <CardDescription>{t('home.toolsSection.analyzer.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button asChild className="w-full">
+                  <Link href={`/${language}/content-analyzer`}>
+                    {t('home.toolsSection.cta')} <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <Zap className="w-12 h-12 text-accent mb-4" />
+                <CardTitle>{t('home.toolsSection.generator.title')}</CardTitle>
+                <CardDescription>{t('home.toolsSection.generator.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button asChild className="w-full">
+                  <Link href={`/${language}/copy-generator`}>
+                    {t('home.toolsSection.cta')} <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardHeader>
+                <TrendingUp className="w-12 h-12 text-accent mb-4" />
+                <CardTitle>{t('home.toolsSection.persona.title')}</CardTitle>
+                <CardDescription>{t('home.toolsSection.persona.description')}</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <Button asChild className="w-full">
+                  <Link href={`/${language}/avatar-builder`}>
+                    {t('home.toolsSection.cta')} <ArrowRight className="ml-2 w-4 h-4" />
+                  </Link>
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Section Analyse */}
+      <section className="py-20 bg-secondary/20">
+        <div className="container">
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <h2 className="text-4xl font-bold">{t('home.analyzeSection.title')}</h2>
+            <p className="text-xl text-muted-foreground" dangerouslySetInnerHTML={{ __html: t('home.analyzeSection.description') }} />
+            <p className="text-lg">{t('home.analyzeSection.free')}</p>
+            <Button asChild size="lg" className="mt-6">
+              <Link href={`/${language}/content-analyzer`}>
+                {t('home.toolsSection.cta')} <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Code PFPMA */}
+      <section className="py-20 bg-background">
+        <div className="container">
+          <div className="max-w-4xl mx-auto">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold mb-4">{t('home.pfpmaCode.title')}</h2>
+              <p className="text-lg text-muted-foreground">{t('home.pfpmaCode.subtitle')}</p>
             </div>
 
-            <div className="grid gap-6">
-              {[
-                {
-                  letter: "P",
-                  title: "Problème",
-                  description: "Identifiez la douleur n°1 de votre audience. Créez une résonance émotionnelle immédiate.",
-                  example: '"Votre landing page génère 1000 visites mais seulement 10 conversions."'
-                },
-                {
-                  letter: "F",
-                  title: "Formule",
-                  description: "Nommez votre solution de manière mémorable et unique. Créez un désir irrésistible.",
-                  example: '"Le Sprint de Clarté : 3 frictions éliminées en 7 jours."'
-                },
-                {
-                  letter: "P",
-                  title: "Preuve",
-                  description: "Apportez une preuve crédible (chiffre, témoignage, autorité). Éliminez le scepticisme.",
-                  example: '"+340% de conversion grâce au Facteur α = 22.67 (mesure sur 50+ clients)."'
-                },
-                {
-                  letter: "M",
-                  title: "Méthode",
-                  description: "Expliquez le processus en 3 étapes maximum. Rendez le chemin clair et actionnable.",
-                  example: '"1) Diagnostiquer, 2) Éliminer, 3) Amplifier."'
-                },
-                {
-                  letter: "A",
-                  title: "Appel",
-                  description: "Proposez une action spécifique et à friction zéro. Rendez le refus irrationnel.",
-                  example: '"Téléchargez le diagnostic gratuit en 1 clic."'
-                }
-              ].map((item, index) => (
-                <Card key={index} className="border-l-4 border-l-accent">
-                  <CardHeader>
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-accent/10 text-accent font-bold text-xl">
-                        {item.letter}
-                      </div>
-                      <div className="flex-1">
-                        <CardTitle className="text-2xl mb-2">{item.title}</CardTitle>
-                        <CardDescription className="text-base mb-3">{item.description}</CardDescription>
-                        <p className="text-sm italic text-muted-foreground">Exemple : {item.example}</p>
-                      </div>
+            <div className="space-y-8">
+              {/* Problème */}
+              <Card className="border-l-4 border-l-destructive">
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-destructive/10 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-destructive">{t('home.pfpmaCode.problem.letter')}</span>
                     </div>
-                  </CardHeader>
-                </Card>
-              ))}
+                    <CardTitle className="text-2xl">{t('home.pfpmaCode.problem.title')}</CardTitle>
+                  </div>
+                  <CardDescription className="mt-4">{t('home.pfpmaCode.problem.description')}</CardDescription>
+                  <p className="text-sm text-muted-foreground mt-2 italic">{t('home.pfpmaCode.problem.example')}</p>
+                </CardHeader>
+              </Card>
+
+              {/* Formule */}
+              <Card className="border-l-4 border-l-accent">
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-accent">{t('home.pfpmaCode.formula.letter')}</span>
+                    </div>
+                    <CardTitle className="text-2xl">{t('home.pfpmaCode.formula.title')}</CardTitle>
+                  </div>
+                  <CardDescription className="mt-4">{t('home.pfpmaCode.formula.description')}</CardDescription>
+                  <p className="text-sm text-muted-foreground mt-2 italic">{t('home.pfpmaCode.formula.example')}</p>
+                </CardHeader>
+              </Card>
+
+              {/* Preuve */}
+              <Card className="border-l-4 border-l-blue-500">
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-blue-500/10 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-blue-500">{t('home.pfpmaCode.proof.letter')}</span>
+                    </div>
+                    <CardTitle className="text-2xl">{t('home.pfpmaCode.proof.title')}</CardTitle>
+                  </div>
+                  <CardDescription className="mt-4">{t('home.pfpmaCode.proof.description')}</CardDescription>
+                  <p className="text-sm text-muted-foreground mt-2 italic">{t('home.pfpmaCode.proof.example')}</p>
+                </CardHeader>
+              </Card>
+
+              {/* Méthode */}
+              <Card className="border-l-4 border-l-green-500">
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-green-500/10 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-green-500">{t('home.pfpmaCode.method.letter')}</span>
+                    </div>
+                    <CardTitle className="text-2xl">{t('home.pfpmaCode.method.title')}</CardTitle>
+                  </div>
+                  <CardDescription className="mt-4">{t('home.pfpmaCode.method.description')}</CardDescription>
+                  <p className="text-sm text-muted-foreground mt-2 italic">{t('home.pfpmaCode.method.example')}</p>
+                </CardHeader>
+              </Card>
+
+              {/* Action */}
+              <Card className="border-l-4 border-l-purple-500">
+                <CardHeader>
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 rounded-full bg-purple-500/10 flex items-center justify-center">
+                      <span className="text-2xl font-bold text-purple-500">{t('home.pfpmaCode.action.letter')}</span>
+                    </div>
+                    <CardTitle className="text-2xl">{t('home.pfpmaCode.action.title')}</CardTitle>
+                  </div>
+                  <CardDescription className="mt-4">{t('home.pfpmaCode.action.description')}</CardDescription>
+                  <p className="text-sm text-muted-foreground mt-2 italic">{t('home.pfpmaCode.action.example')}</p>
+                </CardHeader>
+              </Card>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Essai Gratuit */}
-      <section className="py-20 bg-gradient-to-br from-amber-500 via-orange-500 to-red-500">
+      {/* Offre de lancement */}
+      <section className="py-20 bg-gradient-to-b from-accent/5 to-accent/10">
         <div className="container">
-          <div className="max-w-4xl mx-auto text-center space-y-8 text-white">
-            <div className="inline-block px-4 py-2 bg-white/20 backdrop-blur rounded-full text-sm font-medium mb-4">
-              🎉 Offre de lancement
+          <div className="max-w-4xl mx-auto text-center space-y-6">
+            <div className="inline-block px-4 py-2 bg-accent text-accent-foreground rounded-full text-sm font-medium mb-4">
+              {t('home.launchOffer.badge')}
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Testez GRATUITEMENT pendant 30 jours
-            </h2>
-            <p className="text-xl md:text-2xl font-semibold">
-              ✅ Sans engagement &nbsp;•&nbsp; ✅ Sans carte bancaire &nbsp;•&nbsp; ✅ Accès complet
-            </p>
-            <p className="text-lg max-w-2xl mx-auto">
-              Découvrez tous les outils de Content Marketing & Copywriting : Analyseur de Contenu, Générateur de Copy (8 frameworks), Persona Builder, Chat IA, et Éditeur en temps réel.
-            </p>
-            <div className="bg-white/10 backdrop-blur border border-white/30 rounded-xl p-6 max-w-2xl mx-auto">
-              <p className="text-sm mb-4">
-                <strong className="text-lg">🔒 Aucune carte bancaire requise</strong><br />
-                Commencez votre essai gratuit en 1 clic. Après 30 jours, continuez pour seulement <strong>29€/mois</strong> (sans engagement, annulez quand vous voulez).<br />
-                <span className="text-sm opacity-90">💰 Économisez avec nos forfaits : 78€/trimestre • 148€/semestre • 278€/an</span>
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button asChild size="lg" className="bg-white text-orange-600 hover:bg-white/90 font-bold text-lg px-8 py-6">
-                  <a href={`/${language}/subscription`} className="flex items-center gap-2">
-                    <Sparkles className="w-5 h-5" />
-                    Commencer l'essai gratuit (30 jours)
-                  </a>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="border-2 border-white text-white hover:bg-white/10 font-semibold text-lg px-8 py-6">
-                  <a href={`/${language}/pricing`}>Voir les tarifs</a>
-                </Button>
-              </div>
+            <h2 className="text-4xl font-bold">{t('home.launchOffer.title')}</h2>
+            <p className="text-xl">{t('home.launchOffer.features')}</p>
+            <p className="text-lg text-muted-foreground">{t('home.launchOffer.description')}</p>
+            <div className="bg-background/50 backdrop-blur p-6 rounded-xl space-y-4 mt-8">
+              <p className="text-lg font-semibold">{t('home.launchOffer.noCard')}</p>
+              <p className="text-muted-foreground" dangerouslySetInnerHTML={{ __html: t('home.launchOffer.pricing') }} />
+              <p className="text-sm text-muted-foreground">{t('home.launchOffer.plans')}</p>
+              <p className="text-sm text-muted-foreground">{t('home.launchOffer.reminders')}</p>
             </div>
-            <p className="text-sm opacity-90">
-              📧 Vous recevrez des rappels par email à J-7, J-3, J-1 et J-0 avant la fin de votre essai.
-            </p>
+            <Button asChild size="lg" className="mt-6">
+              <Link href={`/${language}/subscription`}>
+                {t('hero.cta')} <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter */}
+      <section className="py-20 bg-secondary/20">
+        <div className="container">
+          <div className="max-w-2xl mx-auto text-center space-y-6">
+            <h2 className="text-3xl font-bold">{t('home.newsletter.title')}</h2>
+            <NewsletterForm />
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t py-12 bg-secondary/20">
+      <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-12">
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Sparkles className="h-6 w-6 text-accent" />
-                <span className="font-bold text-lg">Sionohmair Insight Academy</span>
+            <div className="space-y-4">
+              <div className="flex items-center space-x-3">
+                <img src={APP_LOGO} alt="Sionohmair Insight Academy" className="h-10 w-auto" />
+                <span className="font-bold">Sionohmair</span>
               </div>
-              <p className="text-sm text-muted-foreground">
-                L'Ingénierie du Génie : Transformez la communication en science de la performance.
-              </p>
+              <p className="text-sm text-muted-foreground">{t('footer.description')}</p>
             </div>
+
             <div>
-              <h4 className="font-semibold mb-4">Navigation</h4>
+              <h3 className="font-semibold mb-4">{t('footer.quickLinks')}</h3>
               <ul className="space-y-2 text-sm">
-                <li><NavLink href="/sprint" className="text-muted-foreground hover:text-accent">Sprint de Clarté</NavLink></li>
-                <li><NavLink href="/theoreme" className="text-muted-foreground hover:text-accent">Théorème de la Genèse</NavLink></li>
-                <li><NavLink href="/services" className="text-muted-foreground hover:text-accent">Services</NavLink></li>
-                <li><NavLink href="/ressources" className="text-muted-foreground hover:text-accent">Ressources</NavLink></li>
-                <li><NavLink href="/about" className="text-muted-foreground hover:text-accent">À Propos</NavLink></li>
-                <li><NavLink href="/contact" className="text-muted-foreground hover:text-accent">Contact</NavLink></li>
+                <li><NavLink href="/services">{t('common.services')}</NavLink></li>
+                <li><NavLink href="/blog">{t('common.blog')}</NavLink></li>
+                <li><NavLink href="/about">{t('common.about')}</NavLink></li>
+                <li><NavLink href="/contact">{t('common.contact')}</NavLink></li>
               </ul>
             </div>
+
             <div>
-              <h4 className="font-semibold mb-4">Contact</h4>
-              <p className="text-sm text-muted-foreground mb-2">
-                Bruno Coldold<br />
-                Fondateur, Sionohmair Insight Academy
-              </p>
-              <p className="text-sm text-muted-foreground">
-                LinkedIn: <a href="https://www.linkedin.com/in/brunocoldold" className="text-accent hover:underline">linkedin.com/in/brunocoldold</a>
-              </p>
+              <h3 className="font-semibold mb-4">{t('common.tools')}</h3>
+              <ul className="space-y-2 text-sm">
+                <li><NavLink href="/content-analyzer">{t('nav.analyzer')}</NavLink></li>
+                <li><NavLink href="/copy-generator">{t('nav.generator')}</NavLink></li>
+                <li><NavLink href="/avatar-builder">{t('nav.avatarClient')}</NavLink></li>
+                <li><NavLink href="/frameworks">{t('nav.frameworks')}</NavLink></li>
+              </ul>
             </div>
+
             <div>
-              <h4 className="font-semibold mb-4">Newsletter</h4>
-              <p className="text-sm text-muted-foreground mb-4">
-                Recevez le Manuel PFPMA gratuit + études de cas exclusives.
-              </p>
-              <NewsletterForm />
+              <h3 className="font-semibold mb-4">{t('footer.legal')}</h3>
+              <ul className="space-y-2 text-sm">
+                <li><NavLink href="/privacy">{t('footer.privacyPolicy')}</NavLink></li>
+                <li><NavLink href="/terms">{t('footer.termsOfService')}</NavLink></li>
+              </ul>
             </div>
           </div>
-          <div className="mt-8 pt-8 border-t text-center text-sm text-muted-foreground">
-            <p>© 2025 Bruno Coldold | Sionohmair Insight Academy. Tous droits réservés. Propriété intellectuelle protégée.</p>
+
+          <div className="mt-12 pt-8 border-t text-center text-sm text-muted-foreground">
+            <p>{t('footer.copyright')}</p>
           </div>
         </div>
       </footer>

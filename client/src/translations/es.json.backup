@@ -1,0 +1,127 @@
+{
+  "common": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "blog": "Blog",
+    "about": "Acerca de",
+    "contact": "Contacto",
+    "login": "Iniciar sesión",
+    "logout": "Cerrar sesión",
+    "dashboard": "Panel",
+    "getStarted": "Empezar",
+    "learnMore": "Saber más",
+    "readMore": "Leer más",
+    "subscribe": "Suscribirse",
+    "tryFree": "Prueba gratis",
+    "pricing": "Precios",
+    "testimonials": "Testimonios",
+    "resources": "Recursos",
+    "tools": "Herramientas"
+  },
+  "hero": {
+    "title": "Transforme Sus Mensajes en Insights Poderosos",
+    "subtitle": "Ingeniería del Genio - Marketing de Contenidos & Copywriting",
+    "description": "Descubra la metodología PFPMA para crear mensajes que cautivan, convencen y convierten. Pase de la intuición a la ciencia de la claridad.",
+    "cta": "Iniciar prueba gratuita de 30 días",
+    "secondaryCta": "Descubrir el método"
+  },
+  "services": {
+    "title": "Nuestros Servicios",
+    "subtitle": "3 Niveles de Excelencia",
+    "sprint": {
+      "name": "Sprint de Claridad",
+      "price": "490€",
+      "description": "El diagnóstico que revela lo que frena sus conversiones",
+      "features": [
+        "Análisis PFPMA completo",
+        "Puntuación de Claridad /20",
+        "Recomendaciones accionables",
+        "Entrega en 7 días"
+      ]
+    },
+    "level2": {
+      "name": "Arquitectura del Insight",
+      "price": "10.000€",
+      "description": "Formación completa para dominar el copywriting estratégico",
+      "features": [
+        "5 Artefactos de Claridad",
+        "Mapa PFPMA personalizado",
+        "Hoja de ruta de transformación",
+        "Acompañamiento de 3 meses"
+      ]
+    },
+    "level3": {
+      "name": "Asociación Estratégica",
+      "price": "50.000€",
+      "description": "Transformación completa de su comunicación",
+      "features": [
+        "Hoja de ruta de 12 meses",
+        "Playbook personalizado",
+        "NFT de certificación",
+        "Soporte prioritario"
+      ]
+    }
+  },
+  "blog": {
+    "title": "Blog y Recursos",
+    "subtitle": "Domine el arte del copywriting estratégico",
+    "categories": {
+      "all": "Todos",
+      "aptea": "Método APTEA",
+      "pfpma": "Código PFPMA",
+      "copywriting": "Copy Mastery"
+    },
+    "readTime": "min de lectura",
+    "publishedOn": "Publicado el"
+  },
+  "tools": {
+    "title": "Herramientas de Copywriting IA",
+    "subtitle": "Analice y optimice sus mensajes con inteligencia artificial",
+    "analyzer": {
+      "name": "Analizador de Contenido",
+      "description": "Analice sus mensajes según la metodología PFPMA y obtenga una puntuación de claridad"
+    },
+    "generator": {
+      "name": "Generador de Copy",
+      "description": "Genere mensajes poderosos optimizados para la conversión"
+    },
+    "persona": {
+      "name": "Constructor de Personas",
+      "description": "Cree personas detalladas para dirigir mejor sus mensajes"
+    }
+  },
+  "footer": {
+    "description": "Ingeniería del Genio - Transforme sus mensajes en insights poderosos con la metodología PFPMA.",
+    "quickLinks": "Enlaces rápidos",
+    "legal": "Legal",
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Reciba nuestros mejores consejos de copywriting cada semana",
+    "emailPlaceholder": "Su email",
+    "privacyPolicy": "Política de privacidad",
+    "termsOfService": "Términos de servicio",
+    "copyright": "© 2025 Bruno Coldold | Sionohmair Insight Academy. Todos los derechos reservados."
+  },
+  "auth": {
+    "signIn": "Iniciar sesión",
+    "signUp": "Crear cuenta",
+    "signOut": "Cerrar sesión",
+    "email": "Email",
+    "password": "Contraseña",
+    "forgotPassword": "¿Olvidó su contraseña?",
+    "noAccount": "¿No tiene cuenta?",
+    "hasAccount": "¿Ya tiene cuenta?"
+  },
+  "subscription": {
+    "title": "Suscripción Premium",
+    "price": "36€/mes",
+    "trial": "Prueba gratuita de 30 días",
+    "features": [
+      "Acceso ilimitado a 3 herramientas IA",
+      "20 artículos de blog premium",
+      "Nuevos contenidos cada semana",
+      "Soporte prioritario"
+    ],
+    "cta": "Iniciar prueba gratuita",
+    "cancel": "Cancelar en cualquier momento"
+  }
+}

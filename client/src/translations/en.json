@@ -18,12 +18,120 @@
     "resources": "Resources",
     "tools": "Tools"
   },
+  "nav": {
+    "analyzer": "Analyzer",
+    "generator": "Generator",
+    "avatarClient": "Client Avatar",
+    "scripts": "Scripts",
+    "frameworks": "Frameworks",
+    "chatIA": "AI Chat",
+    "templates": "Templates",
+    "examples": "Examples",
+    "editor": "Editor",
+    "guide": "Guide",
+    "mySubscription": "My Subscription",
+    "freeTrial": "Free Trial",
+    "analyzeContent": "Analyze my content →"
+  },
   "hero": {
     "title": "Transform Your Messages into Powerful Insights",
     "subtitle": "Engineering Genius - Content Marketing & Copywriting",
     "description": "Discover the PFPMA methodology to create messages that captivate, convince, and convert. Move from intuition to the science of clarity.",
     "cta": "Start 30-Day Free Trial",
-    "secondaryCta": "Discover the Method"
+    "secondaryCta": "Discover the Method",
+    "problem": {
+      "badge": "The Problem: Your Message Gets Lost",
+      "title": "Your content is <span>invisible</span>.<br />Your conversions stagnate.",
+      "description": "90% of marketing content fails. Not from lack of quality, but from lack of <strong>methodology</strong>. The 3 invisible frictions (Attention, Cognitive, Emotional) kill your conversions.",
+      "truth": "🎯 The truth: you need a science, not an art."
+    },
+    "solution": {
+      "badge": "The Solution: Scientific Copywriting Frameworks",
+      "title": "PFPMA & APTEA: The frameworks that multiply your conversions<br />into a performance science",
+      "description": "The Sionohmair Insight methodology eliminates the 3 frictions that kill your messages: Attention Friction, Cognitive Friction, and Emotional Friction."
+    },
+    "alphaFactor": {
+      "title": "The Alpha Factor (α = 22.67)",
+      "description": "Each corrected friction point doesn't produce a linear gain of 15%, but an <strong>exponential gain of 340%</strong> thanks to the Amplification Factor α = 22.67.",
+      "law": "This is the <strong>Law of Clarity</strong>: 340% = 15% × 22.67",
+      "stat1": "+340%",
+      "stat1Label": "Real gain thanks to Factor α = 22.67",
+      "stat2": "7 days",
+      "stat2Label": "To transform your message",
+      "stat3": "310 pages",
+      "stat3Label": "Of documented methodology"
+    }
+  },
+  "home": {
+    "toolsSection": {
+      "title": "3 Powerful Tools to Maximize Your Conversions",
+      "analyzer": {
+        "title": "Content Analyzer",
+        "description": "Analyze your content in 5 dimensions: SEO, Conversion, Engagement, Readability, Psychology. Overall score + actionable recommendations."
+      },
+      "generator": {
+        "title": "Copy Generator",
+        "description": "Create high-conversion copy with PFPMA, APTEA, AIDA, PAS, PASTOR, BAB. AI optimized for Sionohmair methodology."
+      },
+      "persona": {
+        "title": "Persona Builder",
+        "description": "Define your ideal client avatar: demographics, psychographics, behavior. Ultra-personalized messages guaranteed."
+      },
+      "cta": "Start Now"
+    },
+    "analyzeSection": {
+      "title": "Analyze Your Content in 5 Dimensions",
+      "description": "Get an overall score, actionable recommendations, and generate high-conversion copy with <strong>PFPMA & APTEA</strong> frameworks (Factor α = 22.67).",
+      "free": "Free for the first 100 users. No credit card required."
+    },
+    "pfpmaCode": {
+      "title": "The PFPMA Code: The Grammar of Clarity",
+      "subtitle": "Every message that converts follows this structure, consciously or not.",
+      "problem": {
+        "letter": "P",
+        "title": "Problem",
+        "description": "Identify your audience's #1 pain point. Create immediate emotional resonance.",
+        "example": "Example: \"Your landing page generates 1000 visits but only 10 conversions.\""
+      },
+      "formula": {
+        "letter": "F",
+        "title": "Formula",
+        "description": "Name your solution in a memorable and unique way. Create irresistible desire.",
+        "example": "Example: \"The Clarity Sprint: 3 frictions eliminated in 7 days.\""
+      },
+      "proof": {
+        "letter": "P",
+        "title": "Proof",
+        "description": "Provide credible evidence (number, testimonial, authority). Eliminate skepticism.",
+        "example": "Example: \"+340% conversion thanks to Factor α = 22.67 (measured on 50+ clients).\""
+      },
+      "method": {
+        "letter": "M",
+        "title": "Method",
+        "description": "Explain the process in 3 steps maximum. Make the path clear and actionable.",
+        "example": "Example: \"1) Diagnose, 2) Eliminate, 3) Amplify.\""
+      },
+      "action": {
+        "letter": "A",
+        "title": "Action",
+        "description": "Propose a specific, zero-friction action. Make refusal irrational.",
+        "example": "Example: \"Download the free diagnostic in 1 click.\""
+      }
+    },
+    "launchOffer": {
+      "badge": "🎉 Launch Offer",
+      "title": "Test FREE for 30 days",
+      "features": "✅ No commitment  •  ✅ No credit card  •  ✅ Full access",
+      "description": "Discover all Content Marketing & Copywriting tools: Content Analyzer, Copy Generator (8 frameworks), Persona Builder, AI Chat, and real-time Editor.",
+      "noCard": "🔒 No credit card required",
+      "pricing": "Start your free trial in 1 click. After 30 days, continue for only <strong>€29/month</strong> (no commitment, cancel anytime).",
+      "plans": "💰 Save with our plans: €78/quarter • €148/semester • €278/year",
+      "reminders": "📧 You'll receive email reminders at D-7, D-3, D-1 and D-0 before your trial ends."
+    },
+    "newsletter": {
+      "title": "Receive the free PFPMA Manual + exclusive case studies.",
+      "cta": "Get the Manual"
+    }
   },
   "services": {
     "title": "Our Services",
@@ -73,6 +181,10 @@
     },
     "readTime": "min read",
     "publishedOn": "Published on"
+  },
+  "about": {
+    "title": "About Us",
+    "subtitle": "The mission behind Sionohmair Insight Academy"
   },
   "tools": {
     "title": "AI Copywriting Tools",

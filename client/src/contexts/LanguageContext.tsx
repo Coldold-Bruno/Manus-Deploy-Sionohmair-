@@ -1,4 +1,8 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
+import frTranslations from '../translations/fr.json';
+import enTranslations from '../translations/en.json';
+import esTranslations from '../translations/es.json';
+import deTranslations from '../translations/de.json';
 
 export type Language = 'fr' | 'en' | 'es' | 'de';
 
@@ -11,6 +15,14 @@ interface LanguageContextType {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 const STORAGE_KEY = 'sionohmair-language';
+
+// Map des traductions statiques
+const translationsMap: Record<Language, any> = {
+  fr: frTranslations,
+  en: enTranslations,
+  es: esTranslations,
+  de: deTranslations,
+};
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>(() => {
@@ -41,9 +53,8 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   }, [language]);
 
   const t = (key: string): string => {
-    // Import dynamique des traductions
     try {
-      const translations = require(`../translations/${language}.json`);
+      const translations = translationsMap[language];
       const keys = key.split('.');
       let value: any = translations;
       
@@ -51,9 +62,14 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
         value = value?.[k];
       }
       
-      return value || key;
+      if (value === undefined || value === null) {
+        console.warn(`Translation missing for key: ${key} in language: ${language}`);
+        return key;
+      }
+      
+      return String(value);
     } catch (error) {
-      console.warn(`Translation missing for key: ${key} in language: ${language}`);
+      console.error(`Translation error for key: ${key}`, error);
       return key;
     }
   };

@@ -18,12 +18,120 @@
     "resources": "Recursos",
     "tools": "Herramientas"
   },
+  "nav": {
+    "analyzer": "Analizador",
+    "generator": "Generador",
+    "avatarClient": "Avatar Cliente",
+    "scripts": "Scripts",
+    "frameworks": "Frameworks",
+    "chatIA": "Chat IA",
+    "templates": "Plantillas",
+    "examples": "Ejemplos",
+    "editor": "Editor",
+    "guide": "Guía",
+    "mySubscription": "Mi Suscripción",
+    "freeTrial": "Prueba Gratuita",
+    "analyzeContent": "Analizar mi contenido →"
+  },
   "hero": {
     "title": "Transforme Sus Mensajes en Insights Poderosos",
-    "subtitle": "Ingeniería del Genio - Marketing de Contenidos & Copywriting",
+    "subtitle": "La Ingeniería del Genio - Marketing de Contenidos & Copywriting",
     "description": "Descubra la metodología PFPMA para crear mensajes que cautivan, convencen y convierten. Pase de la intuición a la ciencia de la claridad.",
     "cta": "Iniciar prueba gratuita de 30 días",
-    "secondaryCta": "Descubrir el método"
+    "secondaryCta": "Descubrir el método",
+    "problem": {
+      "badge": "El Problema: Su Mensaje Se Pierde",
+      "title": "Su contenido es <span class=\"text-accent\">invisible</span>.<br />Sus conversiones se estancan.",
+      "description": "El 90% de los contenidos de marketing fracasan. No por falta de calidad, sino por falta de <strong>metodología</strong>. Las 3 fricciones invisibles (Atención, Cognitiva, Emocional) matan sus conversiones.",
+      "truth": "🎯 La verdad: necesita una ciencia, no un arte."
+    },
+    "solution": {
+      "badge": "La Solución: Frameworks de Copywriting Científicos",
+      "title": "PFPMA & APTEA: Los frameworks que multiplican sus conversiones<br />en una <span class=\"text-accent\">ciencia del rendimiento</span>",
+      "description": "La metodología Sionohmair Insight elimina las 3 fricciones que matan sus mensajes: Fricción de Atención, Fricción Cognitiva y Fricción Emocional."
+    },
+    "alphaFactor": {
+      "title": "El Factor Alpha (α = 22.67)",
+      "description": "Cada punto de fricción corregido no produce una ganancia lineal del 15%, sino una <strong class=\"text-accent\">ganancia exponencial del 340%</strong> gracias al Factor de Amplificación α = 22.67.",
+      "law": "Esta es la <strong>Ley de la Claridad</strong>: 340% = 15% × 22.67",
+      "stat1": "+340%",
+      "stat1Label": "Ganancia real gracias al Factor α = 22.67",
+      "stat2": "7 días",
+      "stat2Label": "Para transformar su mensaje",
+      "stat3": "310 páginas",
+      "stat3Label": "De metodología documentada"
+    }
+  },
+  "home": {
+    "toolsSection": {
+      "title": "3 Herramientas Poderosas para Maximizar Sus Conversiones",
+      "analyzer": {
+        "title": "Analizador de Contenido",
+        "description": "Analice su contenido en 5 dimensiones: SEO, Conversión, Engagement, Legibilidad, Psicología. Puntuación global + recomendaciones accionables."
+      },
+      "generator": {
+        "title": "Generador de Copy",
+        "description": "Cree copy de alta conversión con PFPMA, APTEA, AIDA, PAS, PASTOR, BAB. IA optimizada para la metodología Sionohmair."
+      },
+      "persona": {
+        "title": "Constructor de Personas",
+        "description": "Defina su avatar de cliente ideal: demográficos, psicográficos, comportamiento. Mensajes ultra-personalizados garantizados."
+      },
+      "cta": "Comenzar Ahora"
+    },
+    "analyzeSection": {
+      "title": "Analice Su Contenido en 5 Dimensiones",
+      "description": "Obtenga una puntuación global, recomendaciones accionables y genere copy de alta conversión con los frameworks <strong>PFPMA & APTEA</strong> (Factor α = 22.67).",
+      "free": "Gratis para los primeros 100 usuarios. No se requiere tarjeta de crédito."
+    },
+    "pfpmaCode": {
+      "title": "El Código PFPMA: La Gramática de la Claridad",
+      "subtitle": "Todo mensaje que convierte sigue esta estructura, conscientemente o no.",
+      "problem": {
+        "letter": "P",
+        "title": "Problema",
+        "description": "Identifique el dolor #1 de su audiencia. Cree una resonancia emocional inmediata.",
+        "example": "Ejemplo: \"Su landing page genera 1000 visitas pero solo 10 conversiones.\""
+      },
+      "formula": {
+        "letter": "F",
+        "title": "Fórmula",
+        "description": "Nombre su solución de manera memorable y única. Cree un deseo irresistible.",
+        "example": "Ejemplo: \"El Sprint de Claridad: 3 fricciones eliminadas en 7 días.\""
+      },
+      "proof": {
+        "letter": "P",
+        "title": "Prueba",
+        "description": "Proporcione evidencia creíble (número, testimonio, autoridad). Elimine el escepticismo.",
+        "example": "Ejemplo: \"+340% de conversión gracias al Factor α = 22.67 (medido en 50+ clientes).\""
+      },
+      "method": {
+        "letter": "M",
+        "title": "Método",
+        "description": "Explique el proceso en 3 pasos máximo. Haga el camino claro y accionable.",
+        "example": "Ejemplo: \"1) Diagnosticar, 2) Eliminar, 3) Amplificar.\""
+      },
+      "action": {
+        "letter": "A",
+        "title": "Acción",
+        "description": "Proponga una acción específica y sin fricción. Haga que el rechazo sea irracional.",
+        "example": "Ejemplo: \"Descargue el diagnóstico gratuito en 1 clic.\""
+      }
+    },
+    "launchOffer": {
+      "badge": "🎉 Oferta de Lanzamiento",
+      "title": "Pruebe GRATIS durante 30 días",
+      "features": "✅ Sin compromiso  •  ✅ Sin tarjeta de crédito  •  ✅ Acceso completo",
+      "description": "Descubra todas las herramientas de Marketing de Contenidos & Copywriting: Analizador de Contenido, Generador de Copy (8 frameworks), Constructor de Personas, Chat IA y Editor en tiempo real.",
+      "noCard": "🔒 No se requiere tarjeta de crédito",
+      "pricing": "Comience su prueba gratuita en 1 clic. Después de 30 días, continúe por solo <strong>€29/mes</strong> (sin compromiso, cancele cuando quiera).",
+      "plans": "💰 Ahorre con nuestros planes: €78/trimestre • €148/semestre • €278/año",
+      "reminders": "📧 Recibirá recordatorios por correo electrónico en D-7, D-3, D-1 y D-0 antes de que termine su prueba."
+    },
+    "newsletter": {
+      "title": "Reciba el Manual PFPMA gratuito + estudios de caso exclusivos.",
+      "cta": "Obtener el Manual"
+    }
   },
   "services": {
     "title": "Nuestros Servicios",
@@ -41,21 +149,21 @@
     },
     "level2": {
       "name": "Arquitectura del Insight",
-      "price": "10.000€",
+      "price": "10 000€",
       "description": "Formación completa para dominar el copywriting estratégico",
       "features": [
         "5 Artefactos de Claridad",
         "Mapa PFPMA personalizado",
-        "Hoja de ruta de transformación",
-        "Acompañamiento de 3 meses"
+        "Roadmap de transformación",
+        "Acompañamiento 3 meses"
       ]
     },
     "level3": {
       "name": "Asociación Estratégica",
-      "price": "50.000€",
+      "price": "50 000€",
       "description": "Transformación completa de su comunicación",
       "features": [
-        "Hoja de ruta de 12 meses",
+        "Roadmap 12 meses",
         "Playbook personalizado",
         "NFT de certificación",
         "Soporte prioritario"
@@ -63,7 +171,7 @@
     }
   },
   "blog": {
-    "title": "Blog y Recursos",
+    "title": "Blog & Recursos",
     "subtitle": "Domine el arte del copywriting estratégico",
     "categories": {
       "all": "Todos",
@@ -74,6 +182,10 @@
     "readTime": "min de lectura",
     "publishedOn": "Publicado el"
   },
+  "about": {
+    "title": "Acerca de Nosotros",
+    "subtitle": "La misión detrás de Sionohmair Insight Academy"
+  },
   "tools": {
     "title": "Herramientas de Copywriting IA",
     "subtitle": "Analice y optimice sus mensajes con inteligencia artificial",
@@ -83,7 +195,7 @@
     },
     "generator": {
       "name": "Generador de Copy",
-      "description": "Genere mensajes poderosos optimizados para la conversión"
+      "description": "Genere mensajes impactantes optimizados para la conversión"
     },
     "persona": {
       "name": "Constructor de Personas",
@@ -91,7 +203,7 @@
     }
   },
   "footer": {
-    "description": "Ingeniería del Genio - Transforme sus mensajes en insights poderosos con la metodología PFPMA.",
+    "description": "La Ingeniería del Genio - Transforme sus mensajes en insights impactantes gracias a la metodología PFPMA.",
     "quickLinks": "Enlaces rápidos",
     "legal": "Legal",
     "newsletter": "Newsletter",
@@ -114,9 +226,9 @@
   "subscription": {
     "title": "Suscripción Premium",
     "price": "36€/mes",
-    "trial": "Prueba gratuita de 30 días",
+    "trial": "Prueba gratuita 30 días",
     "features": [
-      "Acceso ilimitado a 3 herramientas IA",
+      "Acceso ilimitado a las 3 herramientas IA",
       "20 artículos de blog premium",
       "Nuevos contenidos cada semana",
       "Soporte prioritario"

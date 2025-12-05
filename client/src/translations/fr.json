@@ -18,12 +18,120 @@
     "resources": "Ressources",
     "tools": "Outils"
   },
+  "nav": {
+    "analyzer": "Analyseur",
+    "generator": "Générateur",
+    "avatarClient": "Avatar Client",
+    "scripts": "Scripts",
+    "frameworks": "Frameworks",
+    "chatIA": "Chat IA",
+    "templates": "Templates",
+    "examples": "Exemples",
+    "editor": "Éditeur",
+    "guide": "Guide",
+    "mySubscription": "Mon abonnement",
+    "freeTrial": "Essai gratuit",
+    "analyzeContent": "Analyser mon contenu →"
+  },
   "hero": {
     "title": "Transformez Vos Messages en Insights Percutants",
     "subtitle": "L'Ingénierie du Génie - Content Marketing & Copywriting",
     "description": "Découvrez la méthodologie PFPMA pour créer des messages qui captivent, convainquent et convertissent. Passez de l'intuition à la science de la clarté.",
     "cta": "Démarrer l'essai gratuit 30 jours",
-    "secondaryCta": "Découvrir la méthode"
+    "secondaryCta": "Découvrir la méthode",
+    "problem": {
+      "badge": "Le Problème : Votre Message Se Perd",
+      "title": "Votre contenu est <span class=\"text-accent\">invisible</span>.<br />Vos conversions stagnent.",
+      "description": "90% des contenus marketing échouent. Pas par manque de qualité, mais par manque de <strong>méthodologie</strong>. Les 3 frictions invisibles (Attention, Cognitive, Émotionnelle) tuent vos conversions.",
+      "truth": "🎯 La vérité : vous avez besoin d'une science, pas d'un art."
+    },
+    "solution": {
+      "badge": "La Solution : Frameworks de Copywriting Scientifiques",
+      "title": "PFPMA & APTEA : Les frameworks qui multiplient vos conversions<br />en une <span class=\"text-accent\">science de la performance</span>",
+      "description": "La méthodologie Sionohmair Insight élimine les 3 frictions qui tuent vos messages : Friction d'Attention, Friction Cognitive, et Friction Émotionnelle."
+    },
+    "alphaFactor": {
+      "title": "Le Facteur Alpha (α = 22.67)",
+      "description": "Chaque point de friction corrigé ne produit pas un gain linéaire de 15%, mais un <strong class=\"text-accent\">gain exponentiel de 340%</strong> grâce au Facteur d'Amplification α = 22.67.",
+      "law": "C'est la <strong>Loi de la Clarté</strong> : 340% = 15% × 22.67",
+      "stat1": "+340%",
+      "stat1Label": "Gain réel grâce au Facteur α = 22.67",
+      "stat2": "7 jours",
+      "stat2Label": "Pour transformer votre message",
+      "stat3": "310 pages",
+      "stat3Label": "De méthodologie documentée"
+    }
+  },
+  "home": {
+    "toolsSection": {
+      "title": "3 Outils Puissants pour Maximiser Vos Conversions",
+      "analyzer": {
+        "title": "Analyseur de Contenu",
+        "description": "Analysez votre contenu en 5 dimensions : SEO, Conversion, Engagement, Lisibilité, Psychologie. Score global + recommandations actionnables."
+      },
+      "generator": {
+        "title": "Générateur de Copy",
+        "description": "Créez du copy haute conversion avec PFPMA, APTEA, AIDA, PAS, PASTOR, BAB. IA optimisée pour la méthodologie Sionohmair."
+      },
+      "persona": {
+        "title": "Persona Builder",
+        "description": "Définissez votre avatar client idéal : démographiques, psychographiques, comportement. Messages ultra-personnalisés garantis."
+      },
+      "cta": "Commencer Maintenant"
+    },
+    "analyzeSection": {
+      "title": "Analysez Votre Contenu en 5 Dimensions",
+      "description": "Obtenez un score global, des recommandations actionnables, et générez du copy haute conversion avec les frameworks <strong>PFPMA & APTEA</strong> (Facteur α = 22.67).",
+      "free": "Gratuit pour les 100 premiers utilisateurs. Aucune carte bancaire requise."
+    },
+    "pfpmaCode": {
+      "title": "Le Code PFPMA : La Grammaire de la Clarté",
+      "subtitle": "Tout message qui convertit suit cette structure, consciemment ou non.",
+      "problem": {
+        "letter": "P",
+        "title": "Problème",
+        "description": "Identifiez la douleur n°1 de votre audience. Créez une résonance émotionnelle immédiate.",
+        "example": "Exemple : \"Votre landing page génère 1000 visites mais seulement 10 conversions.\""
+      },
+      "formula": {
+        "letter": "F",
+        "title": "Formule",
+        "description": "Nommez votre solution de manière mémorable et unique. Créez un désir irrésistible.",
+        "example": "Exemple : \"Le Sprint de Clarté : 3 frictions éliminées en 7 jours.\""
+      },
+      "proof": {
+        "letter": "P",
+        "title": "Preuve",
+        "description": "Apportez une preuve crédible (chiffre, témoignage, autorité). Éliminez le scepticisme.",
+        "example": "Exemple : \"+340% de conversion grâce au Facteur α = 22.67 (mesure sur 50+ clients).\""
+      },
+      "method": {
+        "letter": "M",
+        "title": "Méthode",
+        "description": "Expliquez le processus en 3 étapes maximum. Rendez le chemin clair et actionnable.",
+        "example": "Exemple : \"1) Diagnostiquer, 2) Éliminer, 3) Amplifier.\""
+      },
+      "action": {
+        "letter": "A",
+        "title": "Appel",
+        "description": "Proposez une action spécifique et à friction zéro. Rendez le refus irrationnel.",
+        "example": "Exemple : \"Téléchargez le diagnostic gratuit en 1 clic.\""
+      }
+    },
+    "launchOffer": {
+      "badge": "🎉 Offre de lancement",
+      "title": "Testez GRATUITEMENT pendant 30 jours",
+      "features": "✅ Sans engagement  •  ✅ Sans carte bancaire  •  ✅ Accès complet",
+      "description": "Découvrez tous les outils de Content Marketing & Copywriting : Analyseur de Contenu, Générateur de Copy (8 frameworks), Persona Builder, Chat IA, et Éditeur en temps réel.",
+      "noCard": "🔒 Aucune carte bancaire requise",
+      "pricing": "Commencez votre essai gratuit en 1 clic. Après 30 jours, continuez pour seulement <strong>29€/mois</strong> (sans engagement, annulez quand vous voulez).",
+      "plans": "💰 Économisez avec nos forfaits : 78€/trimestre • 148€/semestre • 278€/an",
+      "reminders": "📧 Vous recevrez des rappels par email à J-7, J-3, J-1 et J-0 avant la fin de votre essai."
+    },
+    "newsletter": {
+      "title": "Recevez le Manuel PFPMA gratuit + études de cas exclusives.",
+      "cta": "Obtenir le Manuel"
+    }
   },
   "services": {
     "title": "Nos Services",
@@ -73,6 +181,10 @@
     },
     "readTime": "min de lecture",
     "publishedOn": "Publié le"
+  },
+  "about": {
+    "title": "À Propos",
+    "subtitle": "La mission derrière Sionohmair Insight Academy"
   },
   "tools": {
     "title": "Outils de Copywriting IA",
