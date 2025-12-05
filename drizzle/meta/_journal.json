@@ -673,6 +673,20 @@
       "when": 1764932656280,
       "tag": "0095_silent_smiling_tiger",
       "breakpoints": true
+    },
+    {
+      "idx": 96,
+      "version": "5",
+      "when": 1764934636522,
+      "tag": "0096_hard_puff_adder",
+      "breakpoints": true
+    },
+    {
+      "idx": 97,
+      "version": "5",
+      "when": 1764934890227,
+      "tag": "0097_sloppy_quentin_quire",
+      "breakpoints": true
     }
   ]
 }

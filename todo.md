@@ -1772,3 +1772,15 @@
 - [x] Corriger l'import dans ToolHeader.tsx
 - [x] Vérifier la navigation sur toutes les pages d'outils
 - [x] Créer le checkpoint final
+
+## Phase 51 : Ajustement des tarifs avec réductions progressives
+- [x] Calculer les nouveaux tarifs (Base 29€/mois)
+  - Trimestriel: 78€ (-10%, soit 26€/mois)
+  - Semestriel: 148€ (-15%, soit 24,67€/mois)
+  - Annuel: 278€ (-20%, soit 23,17€/mois)
+- [x] Mettre à jour la page /pricing avec les nouveaux tarifs
+- [x] Mettre à jour la page Home avec les références aux tarifs
+- [x] Mettre à jour SubscriptionDashboard avec les nouveaux montants
+- [x] Mettre à jour ConfigDashboard avec les descriptions correctes
+- [x] Vérifier la cohérence sur toutes les pages
+- [x] Tester l'affichage et créer le checkpoint
