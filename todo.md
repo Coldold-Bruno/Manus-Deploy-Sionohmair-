@@ -1958,3 +1958,19 @@
 - [x] Corriger la logique de montage/démontage du composant
 - [x] Tester le changement de langue sur mobile et desktop
 - [x] Vérifier qu'aucune erreur ne s'affiche dans la console
+
+
+## Phase 44 : Correction définitive erreur NotFoundError sur mobile
+
+- [x] Analyser l'erreur NotFoundError qui persiste sur mobile
+- [x] Refactoriser LanguageChangeIndicator avec une approche plus sûre (sans manipulation DOM directe)
+- [x] Tester le changement de langue sur mobile et desktop
+- [x] Vérifier qu'aucune erreur ne s'affiche dans la console
+
+
+## Phase 44 : Correction définitive erreur NotFoundError sur mobile - COMPLÉTÉE
+
+- [x] Analyser l'erreur NotFoundError qui persiste sur mobile
+- [x] Refactoriser LanguageChangeIndicator avec une approche plus sûre (sans manipulation DOM directe)
+- [x] Tester le changement de langue sur mobile et desktop
+- [x] Vérifier qu'aucune erreur ne s'affiche dans la console
