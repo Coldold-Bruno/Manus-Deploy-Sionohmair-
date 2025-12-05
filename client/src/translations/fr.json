@@ -235,5 +235,14 @@
     ],
     "cta": "Démarrer l'essai gratuit",
     "cancel": "Annuler à tout moment"
+  },
+  "toast": {
+    "saved": "Enregistré avec succès",
+    "deleted": "Supprimé avec succès",
+    "copied": "Copié dans le presse-papier",
+    "error": "Une erreur est survenue",
+    "networkError": "Erreur de connexion au serveur",
+    "comingSoon": "Fonctionnalité bientôt disponible",
+    "languageChanged": "Langue changée"
   }
 }

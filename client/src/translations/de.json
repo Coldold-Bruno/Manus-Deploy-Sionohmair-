@@ -1,33 +1,210 @@
 {
-  "common": {
+  "nav": {
     "home": "Startseite",
     "services": "Dienstleistungen",
-    "blog": "Blog",
     "about": "Über uns",
+    "blog": "Blog",
+    "testimonials": "Referenzen",
+    "calculator": "Klarheitsrechner",
     "contact": "Kontakt",
+    "dashboard": "Dashboard",
     "login": "Anmelden",
     "logout": "Abmelden",
-    "dashboard": "Dashboard",
-    "getStarted": "Loslegen",
+    "admin": "Admin",
+    "resources": "Ressourcen",
+    "tools": "Werkzeuge",
+    "pricing": "Preise"
+  },
+  "hero": {
+    "title": "Die Ingenieurkunst des Genies",
+    "subtitle": "Verwandeln Sie Ihre Botschaft in einen klaren und kraftvollen Insight, der Aufmerksamkeit erregt, überzeugt und zum Handeln bewegt.",
+    "description": "Entdecken Sie die PFPMA-Methodik, um Botschaften zu erstellen, die fesseln, überzeugen und konvertieren. Vom Bauchgefühl zur Wissenschaft der Klarheit.",
+    "cta": "Starten Sie Ihren Klarheits-Sprint",
+    "secondaryCta": "Methode entdecken",
+    "price": "490 €",
     "learnMore": "Mehr erfahren",
-    "readMore": "Weiterlesen",
+    "tryFree": "Kostenlos testen"
+  },
+  "problem": {
+    "title": "Das Problem",
+    "description": "Ihre Botschaft ist unsichtbar. Nicht weil sie schlecht ist, sondern weil sie in einem Meer von Informationen untergeht. Aufmerksamkeit, Verständnis und Vertrauen sind die drei Reibungen, die Ihre Wirkung blockieren."
+  },
+  "formula": {
+    "title": "Die Formel",
+    "description": "Der PFPMA-Code ist die Methode, um Ihre Botschaft zu strukturieren: Problem, Formel, Beweis, Methode, Aufruf zum Handeln. Jedes Element ist darauf ausgelegt, eine Reibung zu beseitigen und Ihren Leser zur Aktion zu führen.",
+    "attention": "Aufmerksamkeit",
+    "attentionDesc": "Erregen Sie Aufmerksamkeit mit einem klaren Problem",
+    "comprehension": "Verständnis",
+    "comprehensionDesc": "Erklären Sie Ihre Lösung mit einer einfachen Formel",
+    "credibility": "Glaubwürdigkeit",
+    "credibilityDesc": "Beweisen Sie Ihre Expertise mit konkreten Beweisen",
+    "action": "Aktion",
+    "actionDesc": "Führen Sie zur Aktion mit einer klaren Methode",
+    "impact": "Wirkung",
+    "impactDesc": "Messen Sie Ihre Wirkung mit dem Klarheitswert"
+  },
+  "proof": {
+    "title": "Der Beweis",
+    "description": "Über 200 Unternehmen haben ihre Konversionsrate um durchschnittlich 37% verbessert, indem sie die PFPMA-Methode angewendet haben. Ihre Botschaft wird nicht nur verstanden, sondern erinnert und geteilt.",
+    "stat1": "+37%",
+    "stat1Label": "Konversionsrate",
+    "stat2": "200+",
+    "stat2Label": "Begleitete Unternehmen",
+    "stat3": "4,9/5",
+    "stat3Label": "Kundenzufriedenheit"
+  },
+  "method": {
+    "title": "Die Methode",
+    "description": "Der Klarheits-Sprint ist ein 5-tägiger Prozess, um Ihre Botschaft zu transformieren. Jede Iteration konzentriert sich auf ein Element des PFPMA-Codes und liefert konkrete Artefakte, die Sie sofort verwenden können.",
+    "iteration1": "Iteration 1: Aufmerksamkeit",
+    "iteration1Desc": "Identifizieren Sie das zentrale Problem und erregen Sie Aufmerksamkeit",
+    "iteration2": "Iteration 2: Verständnis",
+    "iteration2Desc": "Strukturieren Sie Ihre Lösung mit einer klaren Formel",
+    "iteration3": "Iteration 3: Glaubwürdigkeit",
+    "iteration3Desc": "Sammeln Sie Beweise und bauen Sie Vertrauen auf",
+    "iteration4": "Iteration 4: Aktion",
+    "iteration4Desc": "Gestalten Sie eine reibungslose Benutzererfahrung",
+    "iteration5": "Iteration 5: Wirkung",
+    "iteration5Desc": "Messen Sie Ihren Klarheitswert und optimieren Sie"
+  },
+  "cta": {
+    "title": "Bereit, Ihre Botschaft zu transformieren?",
+    "description": "Buchen Sie Ihren Klarheits-Sprint heute und erhalten Sie in 5 Tagen eine klare, kraftvolle und konvertierende Botschaft.",
+    "button": "Buchen Sie Ihren Sprint für 490 €",
+    "guarantee": "30-Tage-Geld-zurück-Garantie"
+  },
+  "footer": {
+    "company": "Unternehmen",
+    "services": "Dienstleistungen",
+    "resources": "Ressourcen",
+    "legal": "Rechtliches",
+    "privacy": "Datenschutz",
+    "privacyPolicy": "Datenschutzrichtlinie",
+    "terms": "AGB",
+    "termsOfService": "Nutzungsbedingungen",
+    "contact": "Kontakt",
+    "rights": "Alle Rechte vorbehalten",
+    "about": "Über uns",
+    "blog": "Blog",
+    "testimonials": "Referenzen",
+    "sprint": "Klarheits-Sprint",
+    "level2": "Stufe 2: Architektur",
+    "level3": "Stufe 3: Partnerschaft",
+    "automation": "KI-Automatisierung",
+    "manual": "Handbuch",
+    "templates": "Vorlagen",
+    "glossary": "Glossar",
+    "description": "Ingenieurwesen des Genies - Verwandeln Sie Ihre Botschaften in kraftvolle Insights mit der PFPMA-Methodik.",
+    "quickLinks": "Schnelllinks",
+    "newsletter": "Newsletter",
+    "newsletterDescription": "Erhalten Sie jede Woche unsere besten Copywriting-Tipps",
+    "emailPlaceholder": "Ihre E-Mail",
+    "copyright": "© 2025 Bruno Coldold | Sionohmair Insight Academy. Alle Rechte vorbehalten."
+  },
+  "common": {
+    "loading": "Wird geladen...",
+    "error": "Ein Fehler ist aufgetreten",
+    "success": "Erfolg!",
+    "save": "Speichern",
+    "cancel": "Abbrechen",
+    "delete": "Löschen",
+    "edit": "Bearbeiten",
+    "back": "Zurück",
+    "next": "Weiter",
+    "submit": "Absenden",
+    "close": "Schließen",
+    "confirm": "Bestätigen",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "sort": "Sortieren",
+    "download": "Herunterladen",
+    "upload": "Hochladen",
+    "view": "Ansehen",
+    "share": "Teilen",
+    "copy": "Kopieren",
+    "copied": "Kopiert!",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "name": "Name",
+    "message": "Nachricht",
+    "send": "Senden",
+    "readMore": "Mehr lesen",
+    "learnMore": "Mehr erfahren",
+    "getStarted": "Loslegen",
+    "bookNow": "Jetzt buchen",
+    "contactUs": "Kontaktieren Sie uns",
+    "tryNow": "Jetzt testen",
+    "viewAll": "Alle anzeigen",
+    "showMore": "Mehr anzeigen",
+    "showLess": "Weniger anzeigen",
+    "noResults": "Keine Ergebnisse gefunden",
+    "comingSoon": "Demnächst verfügbar",
+    "home": "Startseite",
     "subscribe": "Abonnieren",
     "tryFree": "Kostenlos testen",
     "pricing": "Preise",
-    "testimonials": "Referenzen",
     "resources": "Ressourcen",
-    "tools": "Werkzeuge"
-  },
-  "hero": {
-    "title": "Verwandeln Sie Ihre Botschaften in Kraftvolle Insights",
-    "subtitle": "Ingenieurwesen des Genies - Content Marketing & Copywriting",
-    "description": "Entdecken Sie die PFPMA-Methodik, um Botschaften zu erstellen, die fesseln, überzeugen und konvertieren. Vom Bauchgefühl zur Wissenschaft der Klarheit.",
-    "cta": "30-tägige kostenlose Testversion starten",
-    "secondaryCta": "Methode entdecken"
+    "tools": "Werkzeuge",
+    "readTime": "Min. Lesezeit",
+    "publishedOn": "Veröffentlicht am"
   },
   "services": {
     "title": "Unsere Dienstleistungen",
-    "subtitle": "3 Stufen der Exzellenz",
+    "subtitle": "Drei Stufen der Begleitung, um Ihre Botschaft zu transformieren",
+    "level1": {
+      "title": "Stufe 1: Klarheits-Sprint",
+      "name": "Klarheits-Sprint",
+      "price": "490 €",
+      "duration": "5 Tage",
+      "description": "Transformieren Sie Ihre Botschaft in 5 Iterationen mit der PFPMA-Methode",
+      "features": [
+        "5 Iterationen des PFPMA-Codes",
+        "Klarheitswert /20",
+        "Konkrete Artefakte",
+        "Sofortige Umsetzung",
+        "Vollständige PFPMA-Analyse",
+        "Umsetzbare Empfehlungen",
+        "Lieferung in 7 Tagen"
+      ],
+      "cta": "Sprint buchen"
+    },
+    "level2": {
+      "title": "Stufe 2: Insight-Architektur",
+      "name": "Insight-Architektur",
+      "price": "10.000 €",
+      "duration": "3 Monate",
+      "description": "Bauen Sie eine vollständige Bibliothek von Insights für alle Ihre Kommunikationen",
+      "features": [
+        "5 transformierte Artefakte",
+        "PFPMA-Karte",
+        "Insight-Bibliothek",
+        "12-Monats-Roadmap",
+        "Vollständige Schulung zur Beherrschung des strategischen Copywritings",
+        "5 Klarheits-Artefakte",
+        "Personalisierte PFPMA-Karte",
+        "Transformations-Roadmap",
+        "3-monatige Begleitung"
+      ],
+      "cta": "Mehr erfahren"
+    },
+    "level3": {
+      "title": "Stufe 3: Strategische Partnerschaft",
+      "name": "Strategische Partnerschaft",
+      "price": "50.000 €",
+      "duration": "12 Monate",
+      "description": "Eine strategische Partnerschaft, um Ihre gesamte Kommunikation zu transformieren",
+      "features": [
+        "12-Monats-Roadmap",
+        "Internes Playbook",
+        "NFT-Raster",
+        "Dashboards & Analyse",
+        "Vollständige Transformation Ihrer Kommunikation",
+        "Personalisiertes Playbook",
+        "Zertifizierungs-NFT",
+        "Prioritäts-Support"
+      ],
+      "cta": "Kontaktieren Sie uns"
+    },
     "sprint": {
       "name": "Klarheits-Sprint",
       "price": "490€",
@@ -38,41 +215,181 @@
         "Umsetzbare Empfehlungen",
         "Lieferung in 7 Tagen"
       ]
+    }
+  },
+  "calculator": {
+    "title": "Klarheitsrechner",
+    "subtitle": "Bewerten Sie die Klarheit Ihrer Botschaft mit dem PFPMA-Code",
+    "inputLabel": "Geben Sie Ihre Botschaft ein",
+    "inputPlaceholder": "Fügen Sie hier Ihre Botschaft ein (Website, E-Mail, Präsentation...)",
+    "analyze": "Analysieren",
+    "analyzing": "Analyse läuft...",
+    "score": "Klarheitswert",
+    "outOf20": "/20",
+    "pfpma": {
+      "title": "PFPMA-Analyse",
+      "problem": "Problem",
+      "formula": "Formel",
+      "proof": "Beweis",
+      "method": "Methode",
+      "action": "Aufruf zum Handeln"
     },
-    "level2": {
-      "name": "Insight-Architektur",
-      "price": "10.000€",
-      "description": "Vollständige Schulung zur Beherrschung des strategischen Copywritings",
-      "features": [
-        "5 Klarheits-Artefakte",
-        "Personalisierte PFPMA-Karte",
-        "Transformations-Roadmap",
-        "3-monatige Begleitung"
-      ]
+    "frictions": {
+      "title": "Erkannte Reibungen",
+      "attention": "Aufmerksamkeitsreibung",
+      "cognitive": "Kognitive Reibung",
+      "emotional": "Emotionale Reibung"
     },
-    "level3": {
-      "name": "Strategische Partnerschaft",
-      "price": "50.000€",
-      "description": "Vollständige Transformation Ihrer Kommunikation",
-      "features": [
-        "12-Monats-Roadmap",
-        "Personalisiertes Playbook",
-        "Zertifizierungs-NFT",
-        "Prioritäts-Support"
-      ]
+    "recommendations": {
+      "title": "Empfehlungen",
+      "cta": "Möchten Sie Ihre Botschaft transformieren? Buchen Sie einen Klarheits-Sprint."
+    }
+  },
+  "about": {
+    "title": "Über Sionohmair Insight Academy",
+    "subtitle": "Die Ingenieurkunst des Genies",
+    "mission": {
+      "title": "Unsere Mission",
+      "description": "Wir glauben, dass jede großartige Idee eine klare Botschaft verdient. Unsere Mission ist es, Ihnen zu helfen, Ihre Expertise in kraftvolle Insights zu verwandeln, die Aufmerksamkeit erregen, überzeugen und zum Handeln bewegen."
+    },
+    "founder": {
+      "title": "Bruno Coldold",
+      "role": "Gründer & Klarheits-Architekt",
+      "bio": "Mit über 15 Jahren Erfahrung in strategischer Kommunikation hat Bruno die PFPMA-Methode entwickelt, um Unternehmen zu helfen, ihre Botschaft zu strukturieren und ihre Wirkung zu maximieren."
+    },
+    "vision": {
+      "title": "Unsere Vision",
+      "description": "Eine Welt, in der jede Botschaft klar, kraftvoll und wirkungsvoll ist. Wo Aufmerksamkeit nicht mehr eine Frage des Glücks ist, sondern das Ergebnis einer rigorosen Methode."
+    },
+    "values": {
+      "title": "Unsere Werte",
+      "clarity": "Klarheit",
+      "clarityDesc": "Komplexität in Einfachheit verwandeln",
+      "rigor": "Genauigkeit",
+      "rigorDesc": "Eine bewährte und messbare Methode",
+      "impact": "Wirkung",
+      "impactDesc": "Konkrete und sofortige Ergebnisse"
     }
   },
   "blog": {
-    "title": "Blog & Ressourcen",
-    "subtitle": "Meistern Sie die Kunst des strategischen Copywritings",
+    "title": "Blog & Fallstudien",
+    "subtitle": "Entdecken Sie unsere Artikel und Erfolgsgeschichten",
+    "readMore": "Mehr lesen",
+    "backToBlog": "Zurück zum Blog",
+    "shareArticle": "Artikel teilen",
+    "relatedArticles": "Verwandte Artikel",
     "categories": {
       "all": "Alle",
+      "case-study": "Fallstudie",
+      "tutorial": "Tutorial",
+      "insight": "Insight",
+      "method": "Methode",
       "aptea": "APTEA-Methode",
       "pfpma": "PFPMA-Code",
       "copywriting": "Copy Mastery"
     },
-    "readTime": "Min. Lesezeit",
-    "publishedOn": "Veröffentlicht am"
+    "filters": {
+      "category": "Kategorie",
+      "date": "Datum",
+      "author": "Autor"
+    }
+  },
+  "testimonials": {
+    "title": "Video-Referenzen",
+    "subtitle": "Entdecken Sie die Erfahrungen unserer Kunden",
+    "filters": {
+      "all": "Alle Sektoren",
+      "tech": "Technologie",
+      "consulting": "Beratung",
+      "ecommerce": "E-Commerce",
+      "education": "Bildung"
+    },
+    "results": {
+      "before": "Vorher",
+      "after": "Nachher",
+      "roi": "ROI"
+    },
+    "watchVideo": "Video ansehen"
+  },
+  "contact": {
+    "title": "Kontaktieren Sie uns",
+    "subtitle": "Haben Sie eine Frage? Wir sind hier, um zu helfen.",
+    "form": {
+      "name": "Vollständiger Name",
+      "email": "E-Mail-Adresse",
+      "phone": "Telefon (optional)",
+      "subject": "Betreff",
+      "message": "Ihre Nachricht",
+      "budget": "Budget",
+      "budgetOptions": {
+        "sprint": "Sprint (490 €)",
+        "level2": "Stufe 2 (10.000 €)",
+        "level3": "Stufe 3 (50.000 €)",
+        "other": "Sonstiges"
+      },
+      "submit": "Nachricht senden",
+      "sending": "Wird gesendet...",
+      "success": "Ihre Nachricht wurde gesendet! Wir werden uns bald bei Ihnen melden.",
+      "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut."
+    },
+    "info": {
+      "title": "Kontaktinformationen",
+      "email": "kontakt@sionohmair.com",
+      "phone": "+33 1 23 45 67 89",
+      "address": "Paris, Frankreich"
+    }
+  },
+  "dashboard": {
+    "title": "Mein Dashboard",
+    "welcome": "Willkommen zurück",
+    "orders": {
+      "title": "Meine Bestellungen",
+      "empty": "Sie haben noch keine Bestellungen",
+      "orderNumber": "Bestellung #",
+      "date": "Datum",
+      "amount": "Betrag",
+      "status": "Status",
+      "artifacts": "Artefakte",
+      "download": "Herunterladen",
+      "pending": "Ausstehend",
+      "processing": "In Bearbeitung",
+      "completed": "Abgeschlossen",
+      "cancelled": "Storniert"
+    },
+    "profile": {
+      "title": "Mein Profil",
+      "email": "E-Mail",
+      "name": "Name",
+      "phone": "Telefon",
+      "company": "Unternehmen",
+      "edit": "Profil bearbeiten",
+      "save": "Änderungen speichern"
+    }
+  },
+  "payment": {
+    "success": {
+      "title": "Zahlung erfolgreich!",
+      "message": "Vielen Dank für Ihre Bestellung. Sie erhalten in Kürze eine Bestätigungs-E-Mail.",
+      "orderNumber": "Bestellnummer",
+      "backToDashboard": "Zurück zum Dashboard",
+      "backToHome": "Zurück zur Startseite"
+    },
+    "cancel": {
+      "title": "Zahlung abgebrochen",
+      "message": "Ihre Zahlung wurde abgebrochen. Sie können jederzeit zurückkehren, um Ihre Bestellung abzuschließen.",
+      "tryAgain": "Erneut versuchen",
+      "backToHome": "Zurück zur Startseite"
+    }
+  },
+  "newsletter": {
+    "title": "Newsletter",
+    "subtitle": "Erhalten Sie unsere neuesten Artikel und Tipps",
+    "placeholder": "Ihre E-Mail-Adresse",
+    "subscribe": "Abonnieren",
+    "subscribing": "Wird abonniert...",
+    "success": "Vielen Dank für Ihr Abonnement!",
+    "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
+    "alreadySubscribed": "Sie sind bereits abonniert"
   },
   "tools": {
     "title": "KI-Copywriting-Tools",
@@ -89,17 +406,6 @@
       "name": "Persona-Builder",
       "description": "Erstellen Sie detaillierte Personas, um Ihre Botschaften besser zu zielen"
     }
-  },
-  "footer": {
-    "description": "Ingenieurwesen des Genies - Verwandeln Sie Ihre Botschaften in kraftvolle Insights mit der PFPMA-Methodik.",
-    "quickLinks": "Schnelllinks",
-    "legal": "Rechtliches",
-    "newsletter": "Newsletter",
-    "newsletterDescription": "Erhalten Sie jede Woche unsere besten Copywriting-Tipps",
-    "emailPlaceholder": "Ihre E-Mail",
-    "privacyPolicy": "Datenschutzrichtlinie",
-    "termsOfService": "Nutzungsbedingungen",
-    "copyright": "© 2025 Bruno Coldold | Sionohmair Insight Academy. Alle Rechte vorbehalten."
   },
   "auth": {
     "signIn": "Anmelden",
@@ -123,5 +429,14 @@
     ],
     "cta": "Kostenlose Testversion starten",
     "cancel": "Jederzeit kündbar"
+  },
+  "toast": {
+    "saved": "Erfolgreich gespeichert",
+    "deleted": "Erfolgreich gelöscht",
+    "copied": "In die Zwischenablage kopiert",
+    "error": "Ein Fehler ist aufgetreten",
+    "networkError": "Serververbindungsfehler",
+    "comingSoon": "Funktion demnächst verfügbar",
+    "languageChanged": "Sprache geändert"
   }
 }

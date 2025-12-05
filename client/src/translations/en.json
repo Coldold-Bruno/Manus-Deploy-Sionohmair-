@@ -235,5 +235,14 @@
     ],
     "cta": "Start Free Trial",
     "cancel": "Cancel anytime"
+  },
+  "toast": {
+    "saved": "Saved successfully",
+    "deleted": "Deleted successfully",
+    "copied": "Copied to clipboard",
+    "error": "An error occurred",
+    "networkError": "Server connection error",
+    "comingSoon": "Feature coming soon",
+    "languageChanged": "Language changed"
   }
 }
