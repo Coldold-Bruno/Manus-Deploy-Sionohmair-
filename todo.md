@@ -1992,3 +1992,17 @@
 
 ## Phase 40 : Correction bug newsletter
 - [x] Corriger l'erreur NotFoundError dans le formulaire de newsletter (soumission génère une erreur "insertBefore" sur Android mobile)
+
+## Phase 101 : Correction définitive erreur insertBefore sur Android mobile
+- [x] Analyser l'erreur NotFoundError insertBefore dans les composants SEO
+- [x] Corriger SEOHead.tsx pour nettoyer les tags article avant d'en créer de nouveaux
+- [x] Corriger SEO.tsx avec la même approche de nettoyage
+- [x] Améliorer Map.tsx pour éviter de charger le script Google Maps plusieurs fois
+- [x] Tester la correction sur Android mobile
+
+## Phase 102 : Analyse exhaustive et correction définitive des problèmes DOM sur Android mobile
+- [x] Analyser tous les composants avec useEffect et manipulation DOM
+- [x] Identifier tous les patterns dangereux (portals, refs, manipulation directe)
+- [x] Corriger tous les composants problématiques avec des approches React-safe
+- [x] Vérifier les bibliothèques tierces et leurs usages
+- [x] Tester et créer un checkpoint final

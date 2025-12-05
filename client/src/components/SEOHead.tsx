@@ -2,59 +2,56 @@ import { useEffect } from 'react';
 import { useLocation } from 'wouter';
 import { useTranslation } from 'react-i18next';
 
-type Language = 'fr' | 'en' | 'es' | 'de';
-
 interface SEOHeadProps {
   title?: string;
   description?: string;
   image?: string;
   type?: 'website' | 'article';
+  author?: string;
   publishedTime?: string;
   modifiedTime?: string;
-  author?: string;
   tags?: string[];
 }
 
-/**
- * Composant SEO pour gérer les meta tags et balises hreflang
- */
-export function SEOHead({
+export default function SEOHead({
   title,
   description,
   image,
   type = 'website',
+  author,
   publishedTime,
   modifiedTime,
-  author,
-  tags,
+  tags = []
 }: SEOHeadProps) {
   const [location] = useLocation();
   const { i18n } = useTranslation();
-  const language = i18n.language as Language;
+  const language = i18n.language;
 
+  const defaultTitle = 'Sionohmair Insight Academy - L\'Ingénierie du Génie';
+  const defaultDescription = 'Maîtrisez le Content Marketing & Copywriting avec la méthodologie Sionohmair. 11 outils IA pour multiplier vos conversions par 3 grâce à l\'élimination des 3 frictions.';
+  const defaultImage = 'https://sionacademy-fpekmv2k.manus.space/og-image.jpg';
+
+  // Construire l'URL complète
   const baseUrl = typeof window !== 'undefined' ? window.location.origin : '';
   const currentUrl = `${baseUrl}${location}`;
-  
-  const basePath = location.replace(/^\/(fr|en|es|de)(\/|$)/, '/');
-  
-  const alternateUrls: Record<Language, string> = {
-    fr: `${baseUrl}/fr${basePath === '/' ? '' : basePath}`,
-    en: `${baseUrl}/en${basePath === '/' ? '' : basePath}`,
-    es: `${baseUrl}/es${basePath === '/' ? '' : basePath}`,
-    de: `${baseUrl}/de${basePath === '/' ? '' : basePath}`,
-  };
 
-  const defaultTitle = 'Sionohmair Insight Academy';
-  const defaultDescription = 'Transformez votre communication en science de la performance';
-  const defaultImage = `${baseUrl}/og-image.png`;
+  // URLs alternatives pour chaque langue
+  const alternateUrls = {
+    fr: `${baseUrl}/fr${location.replace(/^\/(fr|en|es|de)/, '')}`,
+    en: `${baseUrl}/en${location.replace(/^\/(fr|en|es|de)/, '')}`,
+    es: `${baseUrl}/es${location.replace(/^\/(fr|en|es|de)/, '')}`,
+    de: `${baseUrl}/de${location.replace(/^\/(fr|en|es|de)/, '')}`
+  };
 
   const finalTitle = title ? `${title} | Sionohmair` : defaultTitle;
   const finalDescription = description || defaultDescription;
   const finalImage = image || defaultImage;
 
   useEffect(() => {
+    // Update document title
     document.title = finalTitle;
 
+    // Helper function to update or create meta tags
     const updateMetaTag = (name: string, content: string, property = false) => {
       const attr = property ? 'property' : 'name';
       let tag = document.querySelector(`meta[${attr}="${name}"]`);
@@ -90,7 +87,12 @@ export function SEOHead({
       if (publishedTime) updateMetaTag('article:published_time', publishedTime, true);
       if (modifiedTime) updateMetaTag('article:modified_time', modifiedTime, true);
       if (author) updateMetaTag('article:author', author, true);
-      if (tags) {
+      
+      // Nettoyer les anciens tags avant d'en ajouter de nouveaux
+      document.querySelectorAll('meta[property="article:tag"]').forEach(el => el.remove());
+      
+      // Ajouter les nouveaux tags
+      if (tags && tags.length > 0) {
         tags.forEach(tag => {
           const tagElement = document.createElement('meta');
           tagElement.setAttribute('property', 'article:tag');
@@ -100,7 +102,7 @@ export function SEOHead({
       }
     }
 
-    // Balises hreflang pour SEO multilingue
+    // Nettoyer les anciennes balises hreflang avant d'en ajouter de nouvelles
     document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(el => el.remove());
 
     // Ajouter les balises hreflang pour chaque langue
@@ -127,7 +129,16 @@ export function SEOHead({
       document.head.appendChild(canonical);
     }
     canonical.setAttribute('href', currentUrl);
-  }, [finalTitle, finalDescription, finalImage, currentUrl, language]);
+
+    // Cleanup function pour éviter les fuites mémoire
+    return () => {
+      // Pas besoin de nettoyer les meta tags car ils seront réutilisés
+      // Mais on nettoie les tags d'articles qui peuvent s'accumuler
+      if (type === 'article') {
+        document.querySelectorAll('meta[property="article:tag"]').forEach(el => el.remove());
+      }
+    };
+  }, [finalTitle, finalDescription, finalImage, currentUrl, language, type, publishedTime, modifiedTime, author, tags]);
 
   return null;
 }

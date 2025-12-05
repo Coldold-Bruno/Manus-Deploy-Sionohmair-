@@ -75,8 +75,16 @@ export function SEO({
         updateMetaTag('article:modified_time', modifiedTime, true);
       }
       updateMetaTag('article:author', author, true);
+      
+      // Nettoyer les anciens tags avant d'en ajouter de nouveaux
+      document.querySelectorAll('meta[property="article:tag"]').forEach(el => el.remove());
+      
+      // Ajouter les nouveaux tags
       keywords.forEach(keyword => {
-        updateMetaTag('article:tag', keyword, true);
+        const tagElement = document.createElement('meta');
+        tagElement.setAttribute('property', 'article:tag');
+        tagElement.setAttribute('content', keyword);
+        document.head.appendChild(tagElement);
       });
     }
 
@@ -89,6 +97,15 @@ export function SEO({
     }
     linkElement.setAttribute('href', canonicalUrl);
   }, [fullTitle, description, image, canonicalUrl, type, author, publishedTime, modifiedTime, keywords]);
+
+  // Cleanup function pour éviter les fuites mémoire
+  useEffect(() => {
+    return () => {
+      if (type === 'article') {
+        document.querySelectorAll('meta[property="article:tag"]').forEach(el => el.remove());
+      }
+    };
+  }, [type]);
 
   return null;
 }

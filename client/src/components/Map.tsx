@@ -73,6 +73,10 @@ export function MapView({
 
   useEffect(() => {
     if (!window.google) {
+      // Vérifier si le script n'est pas déjà en cours de chargement
+      const existingScript = document.querySelector('script[data-google-maps]');
+      if (existingScript) return;
+      
       const scriptUrl = `${MAPS_PROXY_URL}/maps/api/js?key=${API_KEY}&libraries=places,drawing,geometry,visualization,marker`;
       
       fetch(scriptUrl, {
@@ -85,6 +89,7 @@ export function MapView({
         })
         .then(scriptContent => {
           const script = document.createElement('script');
+          script.setAttribute('data-google-maps', 'true');
           script.textContent = scriptContent;
           document.head.appendChild(script);
           
