@@ -6,7 +6,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageRouter } from "./components/LanguageRouter";
 import { LanguageChangeIndicator } from "./components/LanguageChangeIndicator";
 import Chatbot from "./components/Chatbot";
-import Onboarding from "./components/Onboarding";
+// import Onboarding from "./components/Onboarding";
 
 // NOTE: About Theme
 // - First choose a default theme according to your design style (dark or light bg), than change color palette in index.css
@@ -25,7 +25,7 @@ function App() {
           <LanguageChangeIndicator />
           <LanguageRouter />
           <Chatbot />
-          <Onboarding />
+          {/* <Onboarding /> */}
           <ScrollToTop />
         </TooltipProvider>
       </ThemeProvider>

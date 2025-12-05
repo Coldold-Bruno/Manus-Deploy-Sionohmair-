@@ -2018,3 +2018,22 @@
 - [x] Augmenter délai d'apparition à 1.5s pour stabilité DOM
 - [x] Tester sur Android mobile et confirmer résolution (test navigateur desktop OK, en attente test utilisateur Android)
 - [x] Créer checkpoint final si test réussi
+
+
+## Phase 82 : Bug Android - Erreur NotFoundError insertBefore (Analyse Approfondie)
+
+### Phase 1: Analyse de la stack trace
+- [ ] Analyser la stack trace complète de l'erreur
+- [ ] Identifier tous les composants React/Preact impliqués (Hy, Go, KR, $o)
+- [ ] Localiser les lignes exactes dans le bundle JavaScript
+- [ ] Identifier les patterns communs entre tous les appels
+
+### Phase 2: Corrections radicales
+- [x] Désactiver temporairement le composant Onboarding pour isoler le problème
+- [x] Vérifier si l'erreur persiste sans Onboarding (en attente de test utilisateur)
+- [ ] Appliquer des corrections sur tous les composants identifiés
+- [ ] Simplifier le rendu React pour éviter les conflits DOM
+
+### Phase 3: Test et validation
+- [ ] Tester sur Android mobile réel
+- [ ] Créer checkpoint final si résolu
