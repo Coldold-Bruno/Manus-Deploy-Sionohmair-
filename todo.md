@@ -1950,3 +1950,11 @@
 - [x] Optimiser le SEO multilingue avec balises hreflang dans SEOHead.tsx
 - [x] Tester le changement de langue sur toutes les pages
 - [x] Vérifier que tous les textes sont traduits
+
+
+## Phase 43 : Correction erreur NotFoundError LanguageChangeIndicator
+
+- [x] Analyser l'erreur NotFoundError dans LanguageChangeIndicator.tsx
+- [x] Corriger la logique de montage/démontage du composant
+- [x] Tester le changement de langue sur mobile et desktop
+- [x] Vérifier qu'aucune erreur ne s'affiche dans la console

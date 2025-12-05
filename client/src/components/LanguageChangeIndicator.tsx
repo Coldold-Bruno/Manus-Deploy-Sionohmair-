@@ -25,21 +25,29 @@ export function LanguageChangeIndicator() {
   };
 
   useEffect(() => {
+    let timer: NodeJS.Timeout | null = null;
+
     const handleLanguageChange = (lng: string) => {
+      // Nettoyer le timer précédent s'il existe
+      if (timer) {
+        clearTimeout(timer);
+      }
+
       setCurrentLang(lng);
       setIsVisible(true);
 
       // Masquer après 2 secondes
-      const timer = setTimeout(() => {
+      timer = setTimeout(() => {
         setIsVisible(false);
       }, 2000);
-
-      return () => clearTimeout(timer);
     };
 
     i18n.on('languageChanged', handleLanguageChange);
 
     return () => {
+      if (timer) {
+        clearTimeout(timer);
+      }
       i18n.off('languageChanged', handleLanguageChange);
     };
   }, [i18n]);
