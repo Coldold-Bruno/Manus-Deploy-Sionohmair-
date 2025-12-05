@@ -94,7 +94,7 @@ export default function HonoficationDashboard() {
   return (
     <div className="min-h-screen bg-background">
       {/* Header */}
-      <nav className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-50">
+      <nav className="border-b bg-card/50 bg-background/98 sticky top-0 z-50">
         <div className="container flex items-center justify-between h-16">
           <Link href="/">
             <a className="text-xl font-bold hover:text-accent transition-colors">

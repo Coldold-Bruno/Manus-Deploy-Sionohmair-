@@ -26,7 +26,7 @@ export default function Home() {
       />
       
       {/* Navigation */}
-      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <nav className="border-b bg-background/95 bg-background/98 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
           <NavLink href="/">
             <div className="flex items-center space-x-3">
@@ -322,7 +322,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 py-12">
+      <footer className="border-t bg-background/95 bg-background/98 py-12">
         <div className="container">
           <div className="grid md:grid-cols-4 gap-8">
             <div className="space-y-4">

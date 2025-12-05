@@ -9,7 +9,7 @@ export default function LoiClarte() {
   return (
     <div className="min-h-screen">
       {/* Navigation */}
-      <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <nav className="border-b bg-background/95 bg-background/98 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
           <Link href="/">
             <a className="flex items-center space-x-3">

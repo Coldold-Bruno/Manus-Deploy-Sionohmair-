@@ -23,7 +23,7 @@ export function ToolHeader() {
   const language = i18n.language;
 
   return (
-    <nav className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+    <nav className="border-b bg-background/95 bg-background/98 sticky top-0 z-50">
       <div className="container flex h-16 items-center justify-between">
         <NavLink href="/">
           <div className="flex items-center space-x-3">

@@ -74,7 +74,7 @@ export default function PaymentModal({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 bg-background/98">
       <Card className="w-full max-w-md mx-4 shadow-2xl">
         <CardHeader className="relative">
           <Button

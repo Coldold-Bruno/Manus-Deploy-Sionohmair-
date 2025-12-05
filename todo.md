@@ -2037,3 +2037,40 @@
 ### Phase 3: Test et validation
 - [ ] Tester sur Android mobile réel
 - [ ] Créer checkpoint final si résolu
+
+
+## Phase 104 : REFONTE COMPLÈTE POUR COMPATIBILITÉ ANDROID MOBILE (Décembre 2025)
+
+### Diagnostic complet
+- [x] Analyser tous les composants avec manipulation DOM
+- [x] Identifier tous les usages de portals, refs, et manipulation directe
+- [x] Lister tous les composants avec animations complexes
+- [x] Vérifier tous les composants avec position fixed/absolute
+
+### Refonte des composants critiques
+- [x] Réécrire SEOHead.tsx avec approche simple (react-helmet-async)
+- [x] Réécrire SEO.tsx avec approche simple (react-helmet-async)
+- [x] Simplifier Map.tsx (vérifications strictes)
+- [x] Simplifier AvatarBuilder.tsx (téléchargement sécurisé)
+- [x] Simplifier CopyEditor.tsx (téléchargement sécurisé)
+- [x] Réécrire LanguageChangeIndicator.tsx avec CSS pur (pas de backdrop-blur)
+- [x] Réécrire Onboarding.tsx avec structure simple (z-index réduit, pas de backdrop-filter)
+
+### Simplification DOM
+- [x] Éliminer tous les backdrop-filter (remplacés par bg-background/98)
+- [x] Réduire les z-index élevés (Onboarding z-50 au lieu de 9999)
+- [x] Simplifier les transitions CSS complexes (LanguageChangeIndicator)
+- [x] Réduire les délais d'apparition (Onboarding 1s au lieu de 1.5s)
+
+### Tests progressifs
+- [ ] Créer checkpoint après chaque composant corrigé
+- [ ] Tester sur Android après chaque checkpoint
+- [ ] Valider que l'erreur NotFoundError a disparu
+- [ ] Vérifier toutes les fonctionnalités (navigation, formulaires, outils IA)
+
+### Livraison finale
+- [ ] Application 100% fonctionnelle sur desktop
+- [ ] Application 100% fonctionnelle sur Android mobile
+- [ ] Aucune erreur JavaScript dans la console
+- [ ] Tous les outils IA opérationnels
+- [ ] Système d'abonnement fonctionnel

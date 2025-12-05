@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { APP_TITLE } from '@/const';
 
 interface SEOProps {
@@ -27,85 +27,48 @@ export function SEO({
   const fullTitle = title ? `${title} | ${APP_TITLE}` : APP_TITLE;
   const canonicalUrl = url || (typeof window !== 'undefined' ? window.location.href : '');
 
-  useEffect(() => {
-    // Update document title
-    document.title = fullTitle;
+  return (
+    <Helmet>
+      {/* Title */}
+      <title>{fullTitle}</title>
 
-    // Update or create meta tags
-    const updateMetaTag = (name: string, content: string, isProperty = false) => {
-      const attribute = isProperty ? 'property' : 'name';
-      let element = document.querySelector(`meta[${attribute}="${name}"]`);
-      
-      if (!element) {
-        element = document.createElement('meta');
-        element.setAttribute(attribute, name);
-        document.head.appendChild(element);
-      }
-      
-      element.setAttribute('content', content);
-    };
+      {/* Basic meta tags */}
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords.join(', ')} />
+      <meta name="author" content={author} />
 
-    // Basic meta tags
-    updateMetaTag('description', description);
-    updateMetaTag('keywords', keywords.join(', '));
-    updateMetaTag('author', author);
+      {/* Open Graph meta tags */}
+      <meta property="og:title" content={fullTitle} />
+      <meta property="og:description" content={description} />
+      <meta property="og:image" content={image} />
+      <meta property="og:url" content={canonicalUrl} />
+      <meta property="og:type" content={type} />
+      <meta property="og:site_name" content={APP_TITLE} />
+      <meta property="og:locale" content="fr_FR" />
 
-    // Open Graph meta tags
-    updateMetaTag('og:title', fullTitle, true);
-    updateMetaTag('og:description', description, true);
-    updateMetaTag('og:image', image, true);
-    updateMetaTag('og:url', canonicalUrl, true);
-    updateMetaTag('og:type', type, true);
-    updateMetaTag('og:site_name', APP_TITLE, true);
-    updateMetaTag('og:locale', 'fr_FR', true);
+      {/* Twitter Card meta tags */}
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:title" content={fullTitle} />
+      <meta name="twitter:description" content={description} />
+      <meta name="twitter:image" content={image} />
+      <meta name="twitter:creator" content="@brunocoldold" />
 
-    // Twitter Card meta tags
-    updateMetaTag('twitter:card', 'summary_large_image');
-    updateMetaTag('twitter:title', fullTitle);
-    updateMetaTag('twitter:description', description);
-    updateMetaTag('twitter:image', image);
-    updateMetaTag('twitter:creator', '@brunocoldold');
+      {/* Article-specific meta tags */}
+      {type === 'article' && publishedTime && (
+        <meta property="article:published_time" content={publishedTime} />
+      )}
+      {type === 'article' && modifiedTime && (
+        <meta property="article:modified_time" content={modifiedTime} />
+      )}
+      {type === 'article' && (
+        <meta property="article:author" content={author} />
+      )}
+      {type === 'article' && keywords.map(keyword => (
+        <meta key={keyword} property="article:tag" content={keyword} />
+      ))}
 
-    // Article-specific meta tags
-    if (type === 'article') {
-      if (publishedTime) {
-        updateMetaTag('article:published_time', publishedTime, true);
-      }
-      if (modifiedTime) {
-        updateMetaTag('article:modified_time', modifiedTime, true);
-      }
-      updateMetaTag('article:author', author, true);
-      
-      // Nettoyer les anciens tags avant d'en ajouter de nouveaux
-      document.querySelectorAll('meta[property="article:tag"]').forEach(el => el.remove());
-      
-      // Ajouter les nouveaux tags
-      keywords.forEach(keyword => {
-        const tagElement = document.createElement('meta');
-        tagElement.setAttribute('property', 'article:tag');
-        tagElement.setAttribute('content', keyword);
-        document.head.appendChild(tagElement);
-      });
-    }
-
-    // Canonical URL
-    let linkElement = document.querySelector('link[rel="canonical"]');
-    if (!linkElement) {
-      linkElement = document.createElement('link');
-      linkElement.setAttribute('rel', 'canonical');
-      document.head.appendChild(linkElement);
-    }
-    linkElement.setAttribute('href', canonicalUrl);
-  }, [fullTitle, description, image, canonicalUrl, type, author, publishedTime, modifiedTime, keywords]);
-
-  // Cleanup function pour éviter les fuites mémoire
-  useEffect(() => {
-    return () => {
-      if (type === 'article') {
-        document.querySelectorAll('meta[property="article:tag"]').forEach(el => el.remove());
-      }
-    };
-  }, [type]);
-
-  return null;
+      {/* Canonical URL */}
+      <link rel="canonical" href={canonicalUrl} />
+    </Helmet>
+  );
 }

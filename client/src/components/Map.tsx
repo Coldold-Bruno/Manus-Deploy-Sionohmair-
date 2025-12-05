@@ -88,6 +88,9 @@ export function MapView({
           return response.text();
         })
         .then(scriptContent => {
+          // Vérifier que le document.head existe et qu'aucun script n'a été ajouté entre-temps
+          if (!document.head || document.querySelector('script[data-google-maps]')) return;
+          
           const script = document.createElement('script');
           script.setAttribute('data-google-maps', 'true');
           script.textContent = scriptContent;

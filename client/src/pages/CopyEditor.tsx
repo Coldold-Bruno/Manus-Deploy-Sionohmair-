@@ -175,10 +175,13 @@ export default function CopyEditor() {
     const a = document.createElement('a');
     a.href = url;
     a.download = `copy-${contentType}-${Date.now()}.txt`;
+    a.style.display = 'none';
+    
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
     URL.revokeObjectURL(url);
+    
     toast.success('Contenu téléchargé !');
   };
 

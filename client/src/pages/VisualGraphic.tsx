@@ -105,7 +105,7 @@ export default function VisualGraphic() {
   return (
     <div className="min-h-screen flex flex-col">
       {/* Header */}
-      <header className="border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-50">
+      <header className="border-b bg-background/95 bg-background/98 sticky top-0 z-50">
         <div className="container flex h-16 items-center justify-between">
           <Button variant="ghost" asChild>
             <Link href="/">

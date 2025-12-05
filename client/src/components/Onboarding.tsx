@@ -107,10 +107,10 @@ export default function Onboarding() {
     // Vérifier si l'onboarding a déjà été complété
     const completed = localStorage.getItem(ONBOARDING_KEY);
     if (!completed) {
-      // Attendre 1.5 secondes avant d'afficher l'onboarding
+      // Attendre 1 seconde avant d'afficher l'onboarding (réduit de 1.5s à 1s)
       const timer = setTimeout(() => {
         setIsOpen(true);
-      }, 1500);
+      }, 1000);
       return () => clearTimeout(timer);
     }
   }, []);
@@ -144,11 +144,7 @@ export default function Onboarding() {
 
   return (
     <div 
-      className="fixed inset-0 z-[9999] flex items-center justify-center p-4"
-      style={{
-        backgroundColor: 'rgba(0, 0, 0, 0.5)',
-        backdropFilter: 'blur(8px)'
-      }}
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50"
     >
       <div className="w-full max-w-2xl">
         <Card className="shadow-2xl border-2">

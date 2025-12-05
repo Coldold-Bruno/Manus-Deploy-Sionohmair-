@@ -121,8 +121,14 @@ export default function AvatarBuilder() {
     const a = document.createElement('a');
     a.href = url;
     a.download = `avatar-${avatarName.toLowerCase().replace(/\s+/g, '-')}.json`;
+    a.style.display = 'none';
+    
+    // Ajouter, cliquer, puis retirer immédiatement
+    document.body.appendChild(a);
     a.click();
+    document.body.removeChild(a);
     URL.revokeObjectURL(url);
+    
     toast.success('Avatar exporté en JSON !');
   };
 

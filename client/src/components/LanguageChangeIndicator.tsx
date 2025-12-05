@@ -11,7 +11,7 @@ import { Globe, Check } from 'lucide-react';
  * - Icône de confirmation
  * - Disparition automatique après 2 secondes
  * 
- * Note : Utilise CSS transitions au lieu de Framer Motion pour éviter les erreurs NotFoundError sur mobile
+ * Note : Version simplifiée pour compatibilité Android mobile (pas de backdrop-blur, z-index réduit)
  */
 export function LanguageChangeIndicator() {
   const { i18n } = useTranslation();
@@ -59,26 +59,19 @@ export function LanguageChangeIndicator() {
 
   return (
     <div
-      className={`fixed top-20 left-1/2 -translate-x-1/2 z-[9999] pointer-events-none transition-all duration-300 ease-out ${
-        isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-4 scale-95'
+      className={`fixed top-20 left-1/2 -translate-x-1/2 z-50 pointer-events-none transition-all duration-300 ease-out ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
       }`}
-      style={{
-        animation: isVisible ? 'slideInDown 0.3s ease-out' : 'slideOutUp 0.3s ease-out'
-      }}
     >
-      <div className="bg-gradient-to-r from-accent/95 to-accent/90 backdrop-blur-md text-accent-foreground px-6 py-3 rounded-full shadow-2xl border border-accent/20 flex items-center gap-3">
-        <div className="animate-spin-slow">
-          <Globe className="h-5 w-5" />
-        </div>
+      <div className="bg-accent/95 text-accent-foreground px-6 py-3 rounded-full shadow-lg border border-accent/20 flex items-center gap-3">
+        <Globe className="h-5 w-5" />
         
         <div className="flex items-center gap-2">
           <span className="font-semibold text-sm">
             {languageNames[currentLang] || currentLang}
           </span>
           
-          <div className="animate-scale-in">
-            <Check className="h-4 w-4 text-green-400" />
-          </div>
+          <Check className="h-4 w-4 text-green-400" />
         </div>
       </div>
     </div>
