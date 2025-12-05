@@ -42,7 +42,7 @@ const ONBOARDING_STEPS: OnboardingStep[] = [
     ],
     action: {
       label: 'Créer Mon Premier Avatar',
-      url: '/avatar-builder'
+      url: 'avatar-builder'
     }
   },
   {
@@ -57,7 +57,7 @@ const ONBOARDING_STEPS: OnboardingStep[] = [
     ],
     action: {
       label: 'Analyser Mon Contenu',
-      url: '/content-analyzer'
+      url: 'content-analyzer'
     }
   },
   {
@@ -72,7 +72,7 @@ const ONBOARDING_STEPS: OnboardingStep[] = [
     ],
     action: {
       label: 'Générer Mon Premier Copy',
-      url: '/copy-generator'
+      url: 'copy-generator'
     }
   },
   {
@@ -89,7 +89,7 @@ const ONBOARDING_STEPS: OnboardingStep[] = [
     ],
     action: {
       label: 'Voir le Guide Complet',
-      url: '/guide'
+      url: 'guide'
     }
   }
 ];
@@ -218,7 +218,10 @@ export default function Onboarding() {
               )}
               {isLastStep ? (
                 <Button
-                  onClick={handleComplete}
+                  onClick={() => {
+                    handleComplete();
+                    setLocation(`/${language}/dashboard`);
+                  }}
                   className="bg-accent text-accent-foreground hover:bg-accent/90"
                 >
                   <Sparkles className="mr-2 h-4 w-4" />

@@ -1983,3 +1983,8 @@
 - [x] Modifier tous les boutons d'action pour inclure le préfixe de langue (/${language}${step.action!.url})
 - [x] Tester la navigation sur toutes les étapes de l'onboarding
 - [x] Vérifier que la navigation fonctionne correctement vers /fr/avatar-builder
+
+## Phase 100 : Correction Bug Onboarding Mobile
+- [x] Corriger les URLs dans le composant Onboarding (enlever les slashes doubles)
+- [x] Ajouter une navigation au bouton "Commencer" (redirection vers /dashboard)
+- [x] Tester la correction sur Android mobile
