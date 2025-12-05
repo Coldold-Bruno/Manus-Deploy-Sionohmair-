@@ -4,8 +4,10 @@ import { Input } from '@/components/ui/input';
 import { trpc } from '@/lib/trpc';
 import { toast } from 'sonner';
 import { Loader2, Mail } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export function NewsletterForm() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
 
@@ -20,7 +22,7 @@ export function NewsletterForm() {
       }
     },
     onError: (error) => {
-      toast.error(error.message || 'Erreur lors de l\'inscription');
+      toast.error(error.message || t('newsletter.errorSubscription'));
     },
   });
 
@@ -28,7 +30,7 @@ export function NewsletterForm() {
     e.preventDefault();
     
     if (!email) {
-      toast.error('Veuillez entrer votre email');
+      toast.error(t('newsletter.errorEmail'));
       return;
     }
 
@@ -40,7 +42,7 @@ export function NewsletterForm() {
       <div className="flex flex-col sm:flex-row gap-2">
         <Input
           type="text"
-          placeholder="Votre nom (optionnel)"
+          placeholder={t('newsletter.namePlaceholder')}
           value={name}
           onChange={(e) => setName(e.target.value)}
           disabled={subscribe.isPending}
@@ -50,7 +52,7 @@ export function NewsletterForm() {
       <div className="flex flex-col sm:flex-row gap-2">
         <Input
           type="email"
-          placeholder="votre@email.com"
+          placeholder={t('newsletter.emailPlaceholder')}
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           disabled={subscribe.isPending}
@@ -65,20 +67,17 @@ export function NewsletterForm() {
           {subscribe.isPending ? (
             <>
               <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-              Inscription...
+              {t('newsletter.subscribing')}
             </>
           ) : (
             <>
               <Mail className="h-4 w-4 mr-2" />
-              S'inscrire
+              {t('newsletter.subscribe')}
             </>
           )}
         </Button>
       </div>
-      <p className="text-xs text-muted-foreground">
-        🎁 Recevez le <strong>Manuel PFPMA gratuit</strong> (50 pages) + études de cas exclusives. 
-        Pas de spam, désinscription en 1 clic.
-      </p>
+      <p className="text-xs text-muted-foreground" dangerouslySetInnerHTML={{ __html: t('newsletter.gift') }} />
     </form>
   );
 }

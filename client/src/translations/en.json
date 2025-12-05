@@ -243,6 +243,29 @@
     "error": "An error occurred",
     "networkError": "Server connection error",
     "comingSoon": "Feature coming soon",
-    "languageChanged": "Language changed"
+    "languageChanged": "Language changed successfully"
+  },
+  "newsletter": {
+    "namePlaceholder": "Your name (optional)",
+    "emailPlaceholder": "your@email.com",
+    "subscribing": "Subscribing...",
+    "subscribe": "Subscribe",
+    "gift": "🎁 Receive the <strong>free PFPMA Manual</strong> (50 pages) + exclusive case studies. No spam, unsubscribe in 1 click.",
+    "errorEmail": "Please enter your email",
+    "errorSubscription": "Error during subscription"
+  },
+  "subscription": {
+    "title": "Premium Subscription",
+    "price": "€36/month",
+    "trial": "30-day free trial",
+    "features": [
+      "Unlimited access to 3 AI tools",
+      "20 premium blog articles",
+      "New content every week",
+      "Priority support"
+    ],
+    "cta": "Start Free Trial",
+    "cancel": "Cancel anytime",
+    "subscribeNow": "Subscribe Now"
   }
 }

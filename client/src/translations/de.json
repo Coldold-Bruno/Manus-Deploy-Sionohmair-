@@ -385,8 +385,13 @@
     "title": "Newsletter",
     "subtitle": "Erhalten Sie unsere neuesten Artikel und Tipps",
     "placeholder": "Ihre E-Mail-Adresse",
+    "namePlaceholder": "Ihr Name (optional)",
+    "emailPlaceholder": "ihre@email.com",
     "subscribe": "Abonnieren",
     "subscribing": "Wird abonniert...",
+    "gift": "🎁 Erhalten Sie das <strong>kostenlose PFPMA-Handbuch</strong> (50 Seiten) + exklusive Fallstudien. Kein Spam, Abmeldung in 1 Klick.",
+    "errorEmail": "Bitte geben Sie Ihre E-Mail ein",
+    "errorSubscription": "Fehler bei der Anmeldung",
     "success": "Vielen Dank für Ihr Abonnement!",
     "error": "Ein Fehler ist aufgetreten. Bitte versuchen Sie es erneut.",
     "alreadySubscribed": "Sie sind bereits abonniert"
@@ -428,7 +433,8 @@
       "Prioritäts-Support"
     ],
     "cta": "Kostenlose Testversion starten",
-    "cancel": "Jederzeit kündbar"
+    "cancel": "Jederzeit kündbar",
+    "subscribeNow": "Jetzt abonnieren"
   },
   "toast": {
     "saved": "Erfolgreich gespeichert",
@@ -437,6 +443,6 @@
     "error": "Ein Fehler ist aufgetreten",
     "networkError": "Serververbindungsfehler",
     "comingSoon": "Funktion demnächst verfügbar",
-    "languageChanged": "Sprache geändert"
+    "languageChanged": "Sprache erfolgreich geändert"
   }
 }

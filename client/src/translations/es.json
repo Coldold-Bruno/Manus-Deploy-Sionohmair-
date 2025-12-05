@@ -223,6 +223,24 @@
     "noAccount": "¿No tiene cuenta?",
     "hasAccount": "¿Ya tiene cuenta?"
   },
+  "toast": {
+    "saved": "Guardado exitosamente",
+    "deleted": "Eliminado exitosamente",
+    "copied": "Copiado al portapapeles",
+    "error": "Ocurrió un error",
+    "networkError": "Error de conexión al servidor",
+    "comingSoon": "Función próximamente disponible",
+    "languageChanged": "Idioma cambiado exitosamente"
+  },
+  "newsletter": {
+    "namePlaceholder": "Su nombre (opcional)",
+    "emailPlaceholder": "su@email.com",
+    "subscribing": "Suscribiendo...",
+    "subscribe": "Suscribirse",
+    "gift": "🎁 Reciba el <strong>Manual PFPMA gratuito</strong> (50 páginas) + estudios de caso exclusivos. Sin spam, baja en 1 clic.",
+    "errorEmail": "Por favor ingrese su email",
+    "errorSubscription": "Error durante la suscripción"
+  },
   "subscription": {
     "title": "Suscripción Premium",
     "price": "36€/mes",
@@ -234,6 +252,7 @@
       "Soporte prioritario"
     ],
     "cta": "Iniciar prueba gratuita",
-    "cancel": "Cancelar en cualquier momento"
+    "cancel": "Cancelar en cualquier momento",
+    "subscribeNow": "Suscribirse ahora"
   }
 }

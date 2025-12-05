@@ -4,6 +4,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ScrollToTop } from "./components/ScrollToTop";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import { LanguageRouter } from "./components/LanguageRouter";
+import { LanguageChangeIndicator } from "./components/LanguageChangeIndicator";
 import Chatbot from "./components/Chatbot";
 import Onboarding from "./components/Onboarding";
 
@@ -21,6 +22,7 @@ function App() {
       >
         <TooltipProvider>
           <Toaster />
+          <LanguageChangeIndicator />
           <LanguageRouter />
           <Chatbot />
           <Onboarding />

@@ -243,6 +243,29 @@
     "error": "Une erreur est survenue",
     "networkError": "Erreur de connexion au serveur",
     "comingSoon": "Fonctionnalité bientôt disponible",
-    "languageChanged": "Langue changée"
+    "languageChanged": "Langue changée avec succès"
+  },
+  "newsletter": {
+    "namePlaceholder": "Votre nom (optionnel)",
+    "emailPlaceholder": "votre@email.com",
+    "subscribing": "Inscription...",
+    "subscribe": "S'inscrire",
+    "gift": "🎁 Recevez le <strong>Manuel PFPMA gratuit</strong> (50 pages) + études de cas exclusives. Pas de spam, désinscription en 1 clic.",
+    "errorEmail": "Veuillez entrer votre email",
+    "errorSubscription": "Erreur lors de l'inscription"
+  },
+  "subscription": {
+    "title": "Abonnement Premium",
+    "price": "36€/mois",
+    "trial": "Essai gratuit 30 jours",
+    "features": [
+      "Accès illimité aux 3 outils IA",
+      "20 articles de blog premium",
+      "Nouveaux contenus chaque semaine",
+      "Support prioritaire"
+    ],
+    "cta": "Démarrer l'essai gratuit",
+    "cancel": "Annuler à tout moment",
+    "subscribeNow": "S'abonner maintenant"
   }
 }

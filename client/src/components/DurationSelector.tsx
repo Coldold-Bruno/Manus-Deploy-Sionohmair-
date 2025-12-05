@@ -3,6 +3,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Check, Sparkles, TrendingDown } from 'lucide-react';
 import { SUBSCRIPTION_PRICES, type SubscriptionDuration } from '../../../shared/subscriptionPrices';
+import { useTranslation } from 'react-i18next';
 
 interface DurationSelectorProps {
   onSelect: (priceId: string) => void;
@@ -10,6 +11,7 @@ interface DurationSelectorProps {
 }
 
 export default function DurationSelector({ onSelect, isLoading = false }: DurationSelectorProps) {
+  const { t } = useTranslation();
   const [selectedDuration, setSelectedDuration] = useState<SubscriptionDuration>('biannual');
   
   const durations: SubscriptionDuration[] = ['monthly', 'quarterly', 'biannual', 'annual'];
@@ -118,12 +120,12 @@ export default function DurationSelector({ onSelect, isLoading = false }: Durati
               {isLoading ? (
                 <>
                   <span className="animate-spin mr-2">⏳</span>
-                  Chargement...
+                  {t('common.loading', 'Chargement...')}
                 </>
               ) : (
                 <>
                   <Check className="mr-2 h-5 w-5" />
-                  S'abonner maintenant
+                  {t('subscription.subscribeNow')}
                 </>
               )}
             </Button>
