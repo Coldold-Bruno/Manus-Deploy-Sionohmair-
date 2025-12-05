@@ -1784,3 +1784,15 @@
 - [x] Mettre à jour ConfigDashboard avec les descriptions correctes
 - [x] Vérifier la cohérence sur toutes les pages
 - [x] Tester l'affichage et créer le checkpoint
+
+## Phase 52 : Système d'abonnement complet avec 4 durées
+- [x] Créer les 3 nouveaux produits Stripe (Trimestriel 78€, Semestriel 148€, Annuel 278€)
+- [x] Mettre à jour le router Stripe pour gérer les 4 options d'abonnement
+- [x] Créer une procédure createSubscriptionCheckout avec paramètre priceId
+- [x] Ajouter un tableau comparatif sur /pricing avec économies réalisées
+- [x] Créer un composant PricingComparison avec badges de réduction
+- [x] Implémenter un sélecteur de durée sur /subscription
+- [x] Créer un composant DurationSelector avec toggle interactif
+- [x] Afficher les économies en temps réel selon la durée choisie
+- [x] Tester le flux complet de paiement pour les 4 durées
+- [x] Créer le checkpoint final

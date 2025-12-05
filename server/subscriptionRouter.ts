@@ -93,10 +93,15 @@ export const subscriptionRouter = router({
   }),
 
   /**
-   * Créer une session Stripe Checkout pour l'abonnement mensuel (36€/mois)
-   * (Déjà implémenté dans stripeRouter.createSubscriptionCheckout)
+   * Créer une session Stripe Checkout pour l'abonnement avec choix de durée
    */
-  createSubscriptionCheckout: protectedProcedure.mutation(async ({ ctx }) => {
+  createSubscriptionCheckout: protectedProcedure
+    .input(
+      z.object({
+        priceId: z.string(),
+      })
+    )
+    .mutation(async ({ ctx, input }) => {
     const db = await getDb();
 
     if (!db) {
@@ -141,17 +146,7 @@ export const subscriptionRouter = router({
       customer: stripeCustomerId,
       line_items: [
         {
-          price_data: {
-            currency: 'eur',
-            product_data: {
-              name: 'Abonnement Sionohmair Insight Academy',
-              description: 'Accès complet à tous les outils de Content Marketing & Copywriting',
-            },
-            unit_amount: 3600, // 36€ en centimes
-            recurring: {
-              interval: 'month',
-            },
-          },
+          price: input.priceId,
           quantity: 1,
         },
       ],
@@ -164,6 +159,7 @@ export const subscriptionRouter = router({
         user_id: ctx.user.id.toString(),
         customer_email: ctx.user.email || '',
         customer_name: ctx.user.name || '',
+        price_id: input.priceId,
       },
     });
 

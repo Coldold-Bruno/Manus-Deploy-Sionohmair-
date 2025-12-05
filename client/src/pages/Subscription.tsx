@@ -7,6 +7,7 @@ import { Progress } from '@/components/ui/progress';
 import { Badge } from '@/components/ui/badge';
 import { Loader2, CheckCircle2, XCircle, AlertCircle, CreditCard, Calendar, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
+import DurationSelector from '@/components/DurationSelector';
 
 /**
  * Page de gestion de l'abonnement
@@ -88,11 +89,11 @@ export default function Subscription() {
     }
   };
 
-  // Gérer la création d'une session Stripe Checkout
-  const handleSubscribe = async () => {
+  // Gérer la création d'une session Stripe Checkout avec priceId
+  const handleSubscribe = async (priceId: string) => {
     setIsCreatingCheckout(true);
     try {
-      await createCheckoutMutation.mutateAsync();
+      await createCheckoutMutation.mutateAsync({ priceId });
     } finally {
       setIsCreatingCheckout(false);
     }
@@ -242,23 +243,7 @@ export default function Subscription() {
                       Vous recevrez des rappels par email à J-7, J-3, J-1 et J-0.
                     </p>
                   </div>
-                  <Button
-                    onClick={handleSubscribe}
-                    disabled={isCreatingCheckout}
-                    className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-6 text-lg"
-                  >
-                    {isCreatingCheckout ? (
-                      <>
-                        <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                        Redirection vers Stripe...
-                      </>
-                    ) : (
-                      <>
-                        <CreditCard className="w-5 h-5 mr-2" />
-                        S'abonner maintenant (29€/mois)
-                      </>
-                    )}
-                  </Button>
+                  <DurationSelector onSelect={handleSubscribe} isLoading={isCreatingCheckout} />
                 </div>
               </CardContent>
             </Card>
@@ -390,25 +375,9 @@ export default function Subscription() {
                   Votre essai gratuit s'est terminé le <strong>{new Date(subscription.trialEndDate).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</strong>.
                 </p>
                 <p className="text-slate-700">
-                  Pour continuer à utiliser tous les outils de Content Marketing & Copywriting, abonnez-vous pour seulement <strong>29€/mois</strong> (sans engagement).
+                  Pour continuer à utiliser tous les outils de Content Marketing & Copywriting, choisissez votre formule d'abonnement :
                 </p>
-                <Button
-                  onClick={handleSubscribe}
-                  disabled={isCreatingCheckout}
-                  className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-6 text-lg"
-                >
-                  {isCreatingCheckout ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                      Redirection vers Stripe...
-                    </>
-                  ) : (
-                    <>
-                      <CreditCard className="w-5 h-5 mr-2" />
-                      S'abonner maintenant (29€/mois)
-                    </>
-                  )}
-                </Button>
+                <DurationSelector onSelect={handleSubscribe} isLoading={isCreatingCheckout} />
               </div>
             </CardContent>
           </Card>
@@ -434,25 +403,9 @@ export default function Subscription() {
                   Votre abonnement a été annulé. Vous n'avez plus accès aux outils de Content Marketing & Copywriting.
                 </p>
                 <p className="text-slate-700">
-                  Vous pouvez vous réabonner à tout moment pour seulement <strong>29€/mois</strong> (sans engagement).
+                  Vous pouvez vous réabonner à tout moment en choisissant votre formule :
                 </p>
-                <Button
-                  onClick={handleSubscribe}
-                  disabled={isCreatingCheckout}
-                  className="w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-semibold py-6 text-lg"
-                >
-                  {isCreatingCheckout ? (
-                    <>
-                      <Loader2 className="w-5 h-5 animate-spin mr-2" />
-                      Redirection vers Stripe...
-                    </>
-                  ) : (
-                    <>
-                      <CreditCard className="w-5 h-5 mr-2" />
-                      Se réabonner (29€/mois)
-                    </>
-                  )}
-                </Button>
+                <DurationSelector onSelect={handleSubscribe} isLoading={isCreatingCheckout} />
               </div>
             </CardContent>
           </Card>

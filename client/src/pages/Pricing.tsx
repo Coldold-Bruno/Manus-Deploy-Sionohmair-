@@ -1,6 +1,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Check, Zap, Shield, TrendingUp, Gift, Calendar } from 'lucide-react';
+import PricingComparison from '@/components/PricingComparison';
 
 export default function Pricing() {
   const features = [
@@ -82,53 +83,8 @@ export default function Pricing() {
                   <span>Abonnement mensuel • Annulez quand vous voulez</span>
                 </div>
 
-                {/* Options d'abonnement avec réductions */}
-                <div className="border-t pt-6 mt-6">
-                  <h3 className="text-lg font-semibold mb-4 text-accent">💰 Économisez avec un abonnement long terme</h3>
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    {/* Trimestriel */}
-                    <div className="border-2 border-accent/30 rounded-lg p-4 hover:border-accent transition-colors">
-                      <div className="text-center">
-                        <div className="inline-block bg-green-100 text-green-700 text-xs font-semibold px-3 py-1 rounded-full mb-2">
-                          -10% 🎉
-                        </div>
-                        <div className="text-2xl font-bold text-accent">78€</div>
-                        <p className="text-sm text-muted-foreground mt-1">pour 3 mois</p>
-                        <p className="text-xs text-muted-foreground mt-2">soit 26€/mois</p>
-                      </div>
-                    </div>
-
-                    {/* Semestriel */}
-                    <div className="border-2 border-accent rounded-lg p-4 bg-accent/5 relative">
-                      <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-accent text-accent-foreground text-xs font-bold px-3 py-1 rounded-full">
-                        ⭐ POPULAIRE
-                      </div>
-                      <div className="text-center">
-                        <div className="inline-block bg-orange-100 text-orange-700 text-xs font-semibold px-3 py-1 rounded-full mb-2">
-                          -15% 🔥
-                        </div>
-                        <div className="text-2xl font-bold text-accent">148€</div>
-                        <p className="text-sm text-muted-foreground mt-1">pour 6 mois</p>
-                        <p className="text-xs text-muted-foreground mt-2">soit 24,67€/mois</p>
-                      </div>
-                    </div>
-
-                    {/* Annuel */}
-                    <div className="border-2 border-accent/30 rounded-lg p-4 hover:border-accent transition-colors">
-                      <div className="text-center">
-                        <div className="inline-block bg-red-100 text-red-700 text-xs font-semibold px-3 py-1 rounded-full mb-2">
-                          -20% 🚀
-                        </div>
-                        <div className="text-2xl font-bold text-accent">278€</div>
-                        <p className="text-sm text-muted-foreground mt-1">pour 12 mois</p>
-                        <p className="text-xs text-muted-foreground mt-2">soit 23,17€/mois</p>
-                      </div>
-                    </div>
-                  </div>
-                  <p className="text-center text-sm text-muted-foreground mt-4">
-                    💡 Économisez jusqu'à 70€/an avec l'abonnement annuel
-                  </p>
-                </div>
+                {/* Tableau comparatif des économies */}
+                <PricingComparison />
               </div>
 
               {/* Fonctionnalités */}
