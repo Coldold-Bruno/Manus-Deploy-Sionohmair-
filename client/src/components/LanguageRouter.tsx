@@ -94,7 +94,6 @@ export function LanguageRouter() {
       if (langFromUrl !== language) {
         i18n.changeLanguage(langFromUrl);
         localStorage.setItem('sionohmair-language', langFromUrl);
-        document.documentElement.lang = langFromUrl;
       }
     } else if (location === '/') {
       // Redirection de la racine vers la langue active

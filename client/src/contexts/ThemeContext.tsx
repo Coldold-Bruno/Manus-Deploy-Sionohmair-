@@ -30,12 +30,17 @@ export function ThemeProvider({
   });
 
   useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
+    // Utiliser requestAnimationFrame pour éviter les problèmes Android
+    requestAnimationFrame(() => {
+      const root = document.documentElement;
+      if (root) {
+        if (theme === "dark") {
+          root.classList.add("dark");
+        } else {
+          root.classList.remove("dark");
+        }
+      }
+    });
 
     if (switchable) {
       localStorage.setItem("theme", theme);

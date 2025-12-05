@@ -44,13 +44,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
     localStorage.setItem(STORAGE_KEY, lang);
-    // Mettre à jour la balise html lang
-    document.documentElement.lang = lang;
   };
-
-  useEffect(() => {
-    document.documentElement.lang = language;
-  }, [language]);
 
   const t = (key: string): string => {
     try {

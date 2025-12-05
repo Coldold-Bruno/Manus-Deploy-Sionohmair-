@@ -2063,8 +2063,8 @@
 - [x] Réduire les délais d'apparition (Onboarding 1s au lieu de 1.5s)
 
 ### Tests progressifs
-- [ ] Créer checkpoint après chaque composant corrigé
-- [ ] Tester sur Android après chaque checkpoint
+- [x] Créer checkpoint après tous les composants corrigés (version ebf5d836)
+- [ ] Tester sur Android après checkpoint
 - [ ] Valider que l'erreur NotFoundError a disparu
 - [ ] Vérifier toutes les fonctionnalités (navigation, formulaires, outils IA)
 
@@ -2074,3 +2074,29 @@
 - [ ] Aucune erreur JavaScript dans la console
 - [ ] Tous les outils IA opérationnels
 - [ ] Système d'abonnement fonctionnel
+
+
+## Phase 105 : CORRECTIONS FINALES ANDROID (Décembre 2025)
+
+### Analyse approfondie du code source
+- [x] Identifier tous les composants avec manipulations DOM restantes
+- [x] Rechercher tous les usages de document.addEventListener
+- [x] Rechercher tous les usages de document.body.style
+- [x] Rechercher tous les usages de document.cookie
+- [x] Rechercher tous les usages de document.documentElement
+
+### Corrections systématiques
+- [x] Corriger DashboardLayout.tsx (window.addEventListener au lieu de document)
+- [x] Corriger LanguageRouter.tsx (supprimer document.documentElement.lang)
+- [x] Corriger LanguageSelector.tsx (supprimer document.documentElement.lang)
+- [x] Corriger LanguageContext.tsx (supprimer manipulations DOM)
+- [x] Corriger ThemeContext.tsx (ajouter requestAnimationFrame)
+- [x] Corriger sidebar.tsx (localStorage au lieu de document.cookie)
+- [x] Corriger Calculateur.tsx (améliorer scrollIntoView)
+- [x] Redémarrer le serveur pour appliquer les changements
+
+### Tests et validation
+- [ ] Tester sur Android mobile pour confirmer la résolution
+- [ ] Vérifier que l'erreur NotFoundError a disparu
+- [ ] Tester la navigation entre les pages
+- [ ] Créer checkpoint final si tout fonctionne

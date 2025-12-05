@@ -27,7 +27,6 @@ export default function LanguageSelector() {
   const switchLanguage = (newLang: Language) => {
     // Sauvegarder la langue dans localStorage
     localStorage.setItem('sionohmair-language', newLang);
-    document.documentElement.lang = newLang;
     
     // Construire la nouvelle URL
     const pathWithoutLang = location.replace(/^\/(fr|en|es|de)(\/|$)/, '/');

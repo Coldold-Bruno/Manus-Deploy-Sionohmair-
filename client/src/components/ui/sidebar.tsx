@@ -81,8 +81,12 @@ function SidebarProvider({
         _setOpen(openState);
       }
 
-      // This sets the cookie to keep the sidebar state.
-      document.cookie = `${SIDEBAR_COOKIE_NAME}=${openState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`;
+      // Utiliser localStorage au lieu de cookies pour éviter les problèmes Android
+      try {
+        localStorage.setItem(SIDEBAR_COOKIE_NAME, String(openState));
+      } catch (e) {
+        console.warn('Failed to save sidebar state:', e);
+      }
     },
     [setOpenProp, open]
   );

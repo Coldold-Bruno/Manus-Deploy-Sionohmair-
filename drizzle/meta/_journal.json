@@ -911,6 +911,13 @@
       "when": 1764973936658,
       "tag": "0129_talented_karen_page",
       "breakpoints": true
+    },
+    {
+      "idx": 130,
+      "version": "5",
+      "when": 1764974573134,
+      "tag": "0130_parallel_vulcan",
+      "breakpoints": true
     }
   ]
 }

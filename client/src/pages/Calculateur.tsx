@@ -279,9 +279,12 @@ export default function Calculateur() {
                         const rewritten = rewriteContentAdaptive(message, result);
                         setRewrittenText(rewritten);
                         setShowComparison(true);
-                        // Scroll vers la comparaison
+                        // Scroll vers la comparaison (compatible Android)
                         setTimeout(() => {
-                          document.getElementById('comparison')?.scrollIntoView({ behavior: 'smooth' });
+                          const element = document.getElementById('comparison');
+                          if (element) {
+                            element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                          }
                         }, 100);
                       }}
                       size="lg"
